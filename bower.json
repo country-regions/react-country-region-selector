@@ -1,0 +1,27 @@
+{
+	"name": "country-region-selector",
+	"version": "0.3.2",
+	"main": "dist/crs.min.js",
+	"license": "MIT",
+	"ignore": [
+		".gitignore",
+		"*.md",
+		"gruntfile.js",
+		"LICENSE",
+		"package.json",
+		"bower.json"
+	],
+	"devDependencies": { },
+	"keywords": [
+		"country",
+		"countries",
+		"regions",
+		"states",
+		"provinces",
+		"counties",
+		"territories",
+		"forms",
+		"dropdowns",
+		"select boxes"
+	]
+}
