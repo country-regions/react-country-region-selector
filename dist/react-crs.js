@@ -11,6 +11,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _underscore = require('underscore');
+
+var _underscore2 = _interopRequireDefault(_underscore);
+
+var _sourceData = require('../source/source-data.js');
+
+var _sourceData2 = _interopRequireDefault(_sourceData);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19,7 +27,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// a helper method that handles the mapping of the two dropdowns so you don't have to maintain state explicitly
+// a helper method that handles the mapping of the two dropdowns so the user doesn't have to explicitly maintain state
+// and provide all the related boilerplate
 
 var CountryRegionsHelper = function (_React$Component) {
   _inherits(CountryRegionsHelper, _React$Component);
@@ -42,7 +51,7 @@ var CountryRegionsHelper = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
 
-      // validation: confirm that a single <RegionDropdown /> and <CountryDropdown> are in its children
+      // validation: confirm that a single <RegionDropdown /> and <CountryDropdown> are contained in its children
 
     }
   }, {
@@ -74,16 +83,25 @@ var CountryDropdown = function (_React$Component2) {
   }
 
   _createClass(CountryDropdown, [{
+    key: 'getCountries',
+    value: function getCountries() {
+      return _underscore2.default.map(_sourceData2.default, function (countryData) {
+        var countryName = countryData[0];
+        var countrySlug = countryData[1];
+        return _react2.default.createElement(
+          'option',
+          { value: '' },
+          countryName
+        );
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'select',
         null,
-        _react2.default.createElement(
-          'option',
-          null,
-          'COUNTRY'
-        )
+        this.getCountries()
       );
     }
   }]);
