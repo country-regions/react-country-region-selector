@@ -8,38 +8,29 @@ module.exports = function (grunt) {
       dist: {
         files: {
           'dist/react-crs.js': 'source/react-crs.jsx'
+        },
+        options: {
+          presets: ['react', 'es2015']
         }
-      },
-
-      //test: {
-      //  files: {
-      //    'test/build.js': 'test/index.js'
-      //  }
-      //}
+      }
     },
 
     browserify: {
       test: {
         src: [
-          "./test/index.js"
+          './dist/react-crs.js',
+          './test/index.jsx'
         ],
         dest: './test/build.js',
         options: {
           browserifyOptions: { debug: true },
-          transform: [["babelify", { "presets": ["es2015"] }]]
-          //plugin: [
-          //  ["factor-bundle", { outputs: [
-          //    "./dist/js/main-home.js",
-          //    "./dist/js/main-products.js"
-          //  ] }]
-          //]
+          transform: [["babelify", { "presets": ["es2015", "react"] }]]
         }
       }
     }
 
   });
 
-  grunt.registerTask('default', ['babel:dist']);
-  grunt.registerTask('test', ['browserify:test']);
+  grunt.registerTask('default', ['babel:dist', 'browserify:test']);
 
 };
