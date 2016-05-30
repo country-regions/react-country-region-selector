@@ -1,3 +1,5 @@
+import React from 'react';
+
 
 // a helper method that handles the mapping of the two dropdowns so the user doesn't have to explicitly maintain state
 // and provide all the related boilerplate
@@ -22,3 +24,5 @@ CountryRegionsHelper.childContextTypes = {
   regions: React.PropTypes.array
 };
 
+
+export { CountryRegionsHelper };

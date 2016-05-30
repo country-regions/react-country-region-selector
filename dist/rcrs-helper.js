@@ -3,21 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.RegionDropdown = exports.CountryDropdown = exports.CountryRegionsHelper = undefined;
+exports.CountryRegionsHelper = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _underscore = require('underscore');
-
-var _underscore2 = _interopRequireDefault(_underscore);
-
-var _sourceData = require('../source/source-data.js');
-
-var _sourceData2 = _interopRequireDefault(_sourceData);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50,9 +42,7 @@ var CountryRegionsHelper = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-
       // validation: confirm that a single <RegionDropdown /> and <CountryDropdown> are contained in its children
-
     }
   }, {
     key: 'render',
@@ -73,77 +63,4 @@ CountryRegionsHelper.childContextTypes = {
   regions: _react2.default.PropTypes.array
 };
 
-var CountryDropdown = function (_React$Component2) {
-  _inherits(CountryDropdown, _React$Component2);
-
-  function CountryDropdown() {
-    _classCallCheck(this, CountryDropdown);
-
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(CountryDropdown).apply(this, arguments));
-  }
-
-  _createClass(CountryDropdown, [{
-    key: 'getCountries',
-    value: function getCountries() {
-      return _underscore2.default.map(_sourceData2.default, function (countryData) {
-        var countryName = countryData[0];
-        var countrySlug = countryData[1];
-        return _react2.default.createElement(
-          'option',
-          { value: '' },
-          countryName
-        );
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'select',
-        null,
-        this.getCountries()
-      );
-    }
-  }]);
-
-  return CountryDropdown;
-}(_react2.default.Component);
-
-CountryDropdown.contextTypes = {
-  color: _react2.default.PropTypes.string
-};
-
-var RegionDropdown = function (_React$Component3) {
-  _inherits(RegionDropdown, _React$Component3);
-
-  function RegionDropdown() {
-    _classCallCheck(this, RegionDropdown);
-
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(RegionDropdown).apply(this, arguments));
-  }
-
-  _createClass(RegionDropdown, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'select',
-        { style: { color: this.context.color } },
-        _react2.default.createElement(
-          'option',
-          null,
-          'REGION'
-        )
-      );
-    }
-  }]);
-
-  return RegionDropdown;
-}(_react2.default.Component);
-
-RegionDropdown.contextTypes = {
-  color: _react2.default.PropTypes.string
-};
-
 exports.CountryRegionsHelper = CountryRegionsHelper;
-exports.CountryDropdown = CountryDropdown;
-exports.RegionDropdown = RegionDropdown;

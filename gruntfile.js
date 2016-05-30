@@ -60,7 +60,8 @@ module.exports = function (grunt) {
     babel: {
       dist: {
         files: {
-          'dist/react-crs.js': 'source/react-crs.jsx'
+          'dist/rcrs.js': 'source/rcrs.jsx',
+          'dist/rcrs-helper.js': 'source/rcrs-helper.jsx'
         },
         options: {
           presets: ['react', 'es2015']
@@ -71,7 +72,8 @@ module.exports = function (grunt) {
     browserify: {
       test: {
         src: [
-          './dist/react-crs.js',
+          './dist/rcrs.js',
+          './dist/rcrs-helper.js',
           './test/index.jsx'
         ],
         dest: './test/build.js',
@@ -106,6 +108,6 @@ module.exports = function (grunt) {
 
   });
 
-  grunt.registerTask('default', ['template:includeData', 'babel:dist', 'browserify:test', 'uglify:test']);
+  grunt.registerTask('default', ['template:includeData', 'babel:dist', 'browserify:test']);
 
 };
