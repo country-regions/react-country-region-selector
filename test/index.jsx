@@ -30,22 +30,27 @@ import { CountryRegionsHelper } from '../dist/rcrs-helper';
 
 
 // a more idiomatic React example. This relies on you to maintain the selected country and region
-// in your store and pass the selected values to the components explicitly. You will need to replace the
+// in your store and pass the selected values to the components explicitly
 class StandardExample extends React.Component {
 
+  constructor (props) {
+    super(props);
+    this.state = {
+      country: '',
+      region: ''
+    };
+  }
+
   selectCountry (val) {
-    console.log("selected country: ", val);
+    this.setState({ country: val });
   }
 
   selectRegion (val) {
-    console.log("selected region: ", val);
+    this.setState({ region: val });
   }
 
   render () {
-    const country = "";
-    const region = "";
-    //const { country, region } = this.state;
-
+    const { country, region } = this.state;
     return (
       <div>
         <CountryDropdown

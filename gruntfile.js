@@ -33,9 +33,7 @@ module.exports = function (grunt) {
 
 
   grunt.initConfig({
-
     template: {
-
       includeData: {
         options: {
           data: { __DATA__: JSON.stringify(minifyJSON(countriesJSON)) }

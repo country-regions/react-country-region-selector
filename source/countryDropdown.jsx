@@ -14,7 +14,7 @@ class CountryDropdown extends React.Component {
 
   getCountries () {
     const { valueType, labelType } = this.props;
-    return _.map(this.state.countries, function ([countryName, countrySlug]) {
+    return _.map(this.state.countries, ([countryName, countrySlug]) => {
       return (
         <option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
           {(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}
@@ -36,7 +36,7 @@ class CountryDropdown extends React.Component {
   render () {
     const { name, value, onChange } = this.props;
     return (
-      <select name={name} defaultValue={value} onChange={onChange}>
+      <select name={name} defaultValue={value} onChange={(e) => onChange(e.target.value)}>
         {this.getDefaultOption()}
         {this.getCountries()}
       </select>
@@ -48,13 +48,13 @@ CountryDropdown.contextTypes = {
   color: React.PropTypes.string
 };
 CountryDropdown.propTypes = {
-  value: React.PropTypes.oneOf([React.PropTypes.string, React.PropTypes.number]),
+  value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
   name: React.PropTypes.string,
   showBlankOption: React.PropTypes.bool,
-  blankOptionLabel: React.PropTypes.oneOf([React.PropTypes.string, React.PropTypes.number]),
+  blankOptionLabel: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
   onChange: React.PropTypes.func,
-  labelType: React.PropTypes.string,
-  valueType: React.PropTypes.string,
+  labelType: React.PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
+  valueType: React.PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   whitelist: React.PropTypes.array,
   blacklist: React.PropTypes.array
 };
@@ -81,13 +81,9 @@ function _filterCountries (countries, whitelist, blacklist) {
   var filteredCountries = countries;
 
   if (whitelist.length > 0) {
-    filteredCountries = _.filter(countries, function ([countryName, countrySlug]) {
-      return _.contains(whitelist, countrySlug);
-    });
+    filteredCountries = _.filter(countries, ([countryName, countrySlug]) => { return _.contains(whitelist, countrySlug); });
   } else if (blacklist.length > 0) {
-    filteredCountries = _.filter(countries, function ([countryName, countrySlug]) {
-      return !_.contains(blacklist, countrySlug);
-    });
+    filteredCountries = _.filter(countries, ([countryName, countrySlug]) => { return !_.contains(blacklist, countrySlug); });
   }
 
   return filteredCountries;

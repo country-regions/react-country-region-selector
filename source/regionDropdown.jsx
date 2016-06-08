@@ -23,7 +23,7 @@ class RegionDropdown extends React.Component {
 RegionDropdown.propTypes = {
   name: React.PropTypes.string,
   country: React.PropTypes.string,
-  value: React.PropTypes.oneOf([React.PropTypes.string, React.PropTypes.number]),
+  value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
   showBlankOption: React.PropTypes.bool,
   blankOptionLabel: React.PropTypes.string,
   onChange: React.PropTypes.func,
