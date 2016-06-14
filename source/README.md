@@ -1,15 +1,15 @@
 ## React-Country-Region-Selector
 
-Yikes, when did web development get so complex?! Let me explain all this.
-
-This folder contains the raw source code for the `react-country-region-selector` component. If you want to just _use_
-the component, ignore all this: you'll want the code in the `/dist` (distribution) folder.
+Yikes, when did web development get so complex?! This folder contains the raw source code for the 
+`react-country-region-selector` component. If you want to just _use_ the component, ignore all this: you'll want 
+the code in the `/dist` (distribution) folder. This folder should only be touched if you want to edit the actual 
+script.
 
 
 ### Content
 
 - `react-crs.jsx`: the main code file. It's written in ES6 with JSX. 
-- `data.js`: the country-region data used for the most recent build of the script. This is a commonJS module that 
+- `source-data.js`: the country-region data used for the most recent build of the script. This is a commonJS module that 
 returns whatever country data is pertinent.
 
 

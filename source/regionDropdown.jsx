@@ -7,25 +7,82 @@ import C from '../source/constants.js';
 class RegionDropdown extends React.Component {
   constructor (props) {
     super(props);
+    this.state = { regions: this.getRegions(props.country) };
+    this.getRegions = this.getRegions.bind(this);
+  }
+
+  shouldComponentUpdate (nextProps) {
+    return nextProps.country !== this.props.country;
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.country === this.props.country) {
+      return;
+    }
+    this.setState({ regions: this.getRegions(nextProps.country) })
+  }
+
+  getRegions (country) {
+    if (!country) {
+      return [];
+    }
+
+    const { countryValueType } = this.props;
+    const searchIndex = (countryValueType === C.DISPLAY_TYPE_FULL) ? 0 : 1;
+    const regions = _.find(CountryRegionData, (i) => { return i[searchIndex] === country; });
+
+    // this could happen if the user is managing the state of the region/country themselves and screws up passing
+    // in a valid country
+    if (!regions) {
+      console.error('Error. Unknown country passed:', country, '. If you\'re passing a country shortcode, be sure to include valueType="short" on the RegionDropdown');
+      return [];
+    }
+
+    // clean up the region info here. TODO MEMOIZE
+    return _.map(regions[2].split(C.REGION_LIST_DELIMITER), (regionPair) => {
+      let [regionName, regionShortCode = null] = regionPair.split(C.SINGLE_REGION_DELIMITER);
+      return { regionName, regionShortCode };
+    });
+  }
+
+  getRegionList () {
+    const { labelType, valueType } = this.props;
+    return _.map(this.state.regions, ({ regionName, regionShortCode }) => {
+      const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
+      const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
+      return <option value={value} key={regionShortCode}>{label}</option>;
+    });
+  }
+
+  // there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
+  // a "default" option which shows
+  getDefaultOption () {
+    const { blankOptionLabel, showDefaultOption, defaultOptionLabel, country } = this.props;
+    if (!country) {
+      return <option value="">{blankOptionLabel}</option>;
+    }
+    if (showDefaultOption) {
+      return <option value="">{defaultOptionLabel}</option>;
+    }
+    return null;
   }
 
   render () {
     return (
       <select style={{color: this.context.color}}>
-        <option>REGION</option>
+        {this.getDefaultOption()}
+        {this.getRegionList()}
       </select>
     );
   }
 }
-
-//RegionDropdown.contextTypes = {}
-
 RegionDropdown.propTypes = {
   name: React.PropTypes.string,
   country: React.PropTypes.string,
   value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
-  showBlankOption: React.PropTypes.bool,
   blankOptionLabel: React.PropTypes.string,
+  showDefaultOption: React.PropTypes.bool,
+  defaultOptionLabel: React.PropTypes.string,
   onChange: React.PropTypes.func,
   labelType: React.PropTypes.string,
   valueType: React.PropTypes.string
@@ -34,12 +91,17 @@ RegionDropdown.defaultProps = {
   name: 'rcrs-region',
   country: '',
   value: '',
-  showBlankOption: true,
   blankOptionLabel: '-',
+  showDefaultOption: true,
+  defaultOptionLabel: 'Select region',
   onChange: () => {},
+  countryValueType: C.DISPLAY_TYPE_FULL,
   labelType: C.DISPLAY_TYPE_FULL,
-  valueType: C.DISPLAY_TYPE_SHORT
+  valueType: C.DISPLAY_TYPE_FULL
 };
+//RegionDropdown.contextTypes = {}
+
+
 
 //- `data-default-option` - optional. Default: "Select region". This determines the default, blank option display value
 //that shows up after a user has selected a country.

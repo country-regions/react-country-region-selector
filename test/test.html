@@ -3,6 +3,119 @@
 </head>
 <body>
 
+<h3>Examples</h3>
+
+<h4>Example 1</h4>
+
+<p>
+    Let's start with a simple, no-frills example. You can lay the fields out in your markup - as this one
+    demonstrates - however you want - but for simplicity, the rest of the examples will just put them side to side.
+</p>
+
+<div id="example1"></div>
+
+<hr size="1" />
+
+<h4>Example 2</h4>
+
+<p>
+    Custom default option texts for both the country and region dropdowns.
+</p>
+
+<div id="example2"></div>
+
+
+<select class="crs-country" data-region-id="two" data-default-option="Select a country, man."></select>
+<select id="two" data-blank-option="No country selected, mon. (blank value)" data-default-option="Select a region, pal. (default option)"></select>
+
+<hr size="1" />
+
+
+<h4>Example 3</h4>
+
+<p>
+    The country dropdown values are by default the same as the display values: the full country names.
+    By adding the <b>data-value="shortcode"</b> attribute to the country field, the values will be a
+    2-char character code. See Example 8 for a similar example with the region dropdown.
+</p>
+
+<select class="crs-country" data-region-id="three" data-value="shortcode"></select>
+<select id="three"></select>
+
+<hr size="1" />
+
+<h4>Example 4</h4>
+
+<p>
+    Pre-filling the fields on page load.
+</p>
+
+<select class="crs-country" data-region-id="four" data-default-value="Canada"></select>
+<select id="four" data-default-value="British Columbia"></select>
+
+<hr size="1" />
+
+<h4>Example 5</h4>
+
+<p>
+    Manual initialization for dynamically inserted DOM content.
+</p>
+
+<script>
+    function createAndInit() {
+        var html = '<select class="crs-country" data-region-id="five"></select>' +
+                '<select id="five"></select>';
+        document.getElementById('example5_target').innerHTML = html;
+
+        // manually initialize
+        window.crs.init();
+    }
+</script>
+<input type="button" value="Insert country + region selects and initialize" onclick="createAndInit()" />
+<div id="example5_target"></div>
+
+
+<hr size="1" />
+
+<h4>Example 6</h4>
+
+<p>
+    Whitelisting a subset of countries to limit what appears. This just shows the UK, United States and Canada.
+</p>
+
+<select class="crs-country" data-whitelist="GB,US,CA" data-region-id="six"></select>
+<select id="six"></select>
+
+
+<hr size="1" />
+
+<h4>Example 7</h4>
+
+<p>
+    This example does the reverse of the previous: it blacklists a list of countries, so all EXCEPT those
+    countries show up. In this case it blacklists all countries beginning with letter A.
+</p>
+
+<select class="crs-country"  data-blacklist="AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ" data-region-id="seven"></select>
+<select id="seven"></select>
+
+
+<hr size="1" />
+
+<h4>Example 8</h4>
+
+<p>
+    This demos the <code>data-value="shortcode"</code> option for the region field. Like with data-value setting
+    on the country field, this option changes the value attribute of region dropdowns so a shorter version
+    of the region is passed to the server (e.g. BC instead of British Columbia). <b>Please note: not all
+    region shortcodes have been entered yet, so if there isn't anything available it will fallback to the
+    full region name. If you're storing this info in a DB, make sure to allocate enough room!</b>
+</p>
+
+<select class="crs-country" data-region-id="eight"></select>
+<select id="eight" data-value="shortcode"></select>
+
+
 <script src="./build.js"></script>
 
 </body>
