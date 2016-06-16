@@ -58,8 +58,7 @@ module.exports = function (grunt) {
     babel: {
       dist: {
         files: {
-          'dist/rcrs.js': 'source/rcrs.jsx',
-          'dist/rcrs-helper.js': 'source/rcrs-helper.jsx'
+          'dist/rcrs.js': 'source/rcrs.jsx'
         },
         options: {
           presets: ['react', 'es2015']
@@ -71,7 +70,6 @@ module.exports = function (grunt) {
       doc: {
         src: [
           './dist/rcrs.js',
-          './dist/rcrs-helper.js',
           './doc/doc-source.jsx'
         ],
         dest: './doc/doc.min.js',

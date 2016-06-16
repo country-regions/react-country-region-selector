@@ -119,11 +119,6 @@ var CountryDropdown = function (_React$Component) {
   return CountryDropdown;
 }(_react2.default.Component);
 
-//CountryDropdown.contextTypes = {
-//  color: React.PropTypes.string
-//};
-
-
 CountryDropdown.propTypes = {
   value: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number]),
   name: _react2.default.PropTypes.string,
@@ -263,9 +258,15 @@ var RegionDropdown = function (_React$Component2) {
   }, {
     key: 'render',
     value: function render() {
+      var _props6 = this.props;
+      var value = _props6.value;
+      var _onChange2 = _props6.onChange;
+
       return _react2.default.createElement(
         'select',
-        { style: { color: this.context.color } },
+        { defaultValue: value, onChange: function onChange(e) {
+            return _onChange2(e.target.value);
+          } },
         this.getDefaultOption(),
         this.getRegionList()
       );

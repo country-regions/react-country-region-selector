@@ -55,10 +55,6 @@ class CountryDropdown extends React.Component {
     );
   }
 }
-
-//CountryDropdown.contextTypes = {
-//  color: React.PropTypes.string
-//};
 CountryDropdown.propTypes = {
   value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
   name: React.PropTypes.string,
@@ -85,7 +81,6 @@ CountryDropdown.defaultProps = {
   whitelist: [],
   blacklist: []
 };
-
 
 
 class RegionDropdown extends React.Component {
@@ -152,8 +147,9 @@ class RegionDropdown extends React.Component {
   }
 
   render () {
+    const { value, onChange } = this.props;
     return (
-      <select style={{color: this.context.color}}>
+      <select defaultValue={value} onChange={(e) => onChange(e.target.value)}>
         {this.getDefaultOption()}
         {this.getRegionList()}
       </select>
