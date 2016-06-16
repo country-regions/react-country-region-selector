@@ -1,8 +1,8 @@
 import React from 'react';
 
 
-// a helper method that handles the mapping of the two dropdowns so the user doesn't have to explicitly maintain state
-// and provide all the related boilerplate
+// Helper element to wrap <CountryDropdown /> and <RegionDropdown /> and tie them together so the user doesn't
+// explicitly have to handle their own state
 class CountryRegionsHelper extends React.Component {
   getChildContext () {
     return {

@@ -68,44 +68,21 @@ module.exports = function (grunt) {
     },
 
     browserify: {
-      test: {
+      doc: {
         src: [
           './dist/rcrs.js',
           './dist/rcrs-helper.js',
-          './test/index.jsx'
+          './doc/doc-source.jsx'
         ],
-        dest: './test/build.js',
+        dest: './doc/doc.min.js',
         options: {
           browserifyOptions: { debug: true },
           transform: [['babelify', { "presets": ['es2015', 'react'] }]]
         }
       }
-    },
-
-    // TODO this obviously shouldn't give the banner to the test file. There when I need it.... can probably do this in browserify command
-    uglify: {
-      test: {
-        files: {
-          'test/build.min.js': 'test/build.js'
-        },
-        options: {
-          report: "min",
-          compress: {},
-          mangleProperties: true,
-          banner: "/*!\n" +
-          "* react-country-region-selector\n" +
-          "* -----------------------------\n" +
-          "* " + packageFile.version + "\n" +
-          "* @author Ben Keen\n" +
-          "* @repo https://github.com/benkeen/react-country-region-selector\n" +
-          "* @licence MIT\n" +
-          "*/\n"
-        }
-      }
     }
-
   });
 
-  grunt.registerTask('default', ['template:includeData', 'babel:dist', 'browserify:test']);
+  grunt.registerTask('default', ['template:includeData', 'babel:dist', 'browserify:doc']);
 
 };

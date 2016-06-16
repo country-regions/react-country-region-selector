@@ -19,8 +19,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// a helper method that handles the mapping of the two dropdowns so the user doesn't have to explicitly maintain state
-// and provide all the related boilerplate
+// Helper element to wrap <CountryDropdown /> and <RegionDropdown /> and tie them together so the user doesn't
+// explicitly have to handle their own state
 
 var CountryRegionsHelper = function (_React$Component) {
   _inherits(CountryRegionsHelper, _React$Component);

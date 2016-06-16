@@ -1,0 +1,125 @@
+<html>
+<head>
+
+<style type="text/css">
+
+</style>
+
+</head>
+<body>
+
+<h3>Settings - examples</h3>
+
+<p>
+    This section illustrates all variations of the available settings.
+</p>
+
+<ol>
+    <li>
+        <p>
+            Simple, no-frills example.
+        </p>
+        <div id="example1"></div>
+    </li>
+
+    <li>
+        <p>
+            <code>showDefaultOption</code>. No country dropdown default option.
+        </p>
+        <div id="example2"></div>
+    </li>
+
+    <li>
+        <p>
+            Custom default option texts for both the country and region dropdowns.
+        </p>
+        <div id="example3"></div>
+    </li>
+
+    <li>
+        <p>
+            Custom name attributes (e.g. if you're using the fields in a standard form submit).
+        </p>
+        <div id="example4"></div>
+    </li>
+
+    <li>
+        <p>
+            Custom ID attribute.
+        </p>
+        <div id="example5"></div>
+    </li>
+
+    <li>
+        <p>
+            Custom class.
+        </p>
+        <div id="example6"></div>
+    </li>
+
+    <li>
+        <p>
+            <code>labelType</code>, <code>valueType</code>
+        </p>
+        <div id="example7"></div>
+    </li>
+
+    <li>
+        <p>
+            Pre-filling the fields.
+        </p>
+        <div id="example8"></div>
+    </li>
+</ol>
+
+
+
+<!--example                   CountryDropdown     RegionDropdown    code-->
+
+<!--<select class="crs-country" data-region-id="four" data-default-value="Canada"></select>-->
+<!--<select id="four" data-default-value="British Columbia"></select>-->
+
+
+<!--<h4>Example 6</h4>-->
+
+<!--<p>-->
+    <!--Whitelisting a subset of countries to limit what appears. This just shows the UK, United States and Canada.-->
+<!--</p>-->
+
+<!--<select class="crs-country" data-whitelist="GB,US,CA" data-region-id="six"></select>-->
+<!--<select id="six"></select>-->
+
+
+<!--<hr size="1" />-->
+
+<!--<h4>Example 7</h4>-->
+
+<!--<p>-->
+    <!--This example does the reverse of the previous: it blacklists a list of countries, so all EXCEPT those-->
+    <!--countries show up. In this case it blacklists all countries beginning with letter A.-->
+<!--</p>-->
+
+<!--<select class="crs-country"  data-blacklist="AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ" data-region-id="seven"></select>-->
+<!--<select id="seven"></select>-->
+
+
+<!--<hr size="1" />-->
+
+<!--<h4>Example 8</h4>-->
+
+<!--<p>-->
+    <!--This demos the <code>data-value="shortcode"</code> option for the region field. Like with data-value setting-->
+    <!--on the country field, this option changes the value attribute of region dropdowns so a shorter version-->
+    <!--of the region is passed to the server (e.g. BC instead of British Columbia). <b>Please note: not all-->
+    <!--region shortcodes have been entered yet, so if there isn't anything available it will fallback to the-->
+    <!--full region name. If you're storing this info in a DB, make sure to allocate enough room!</b>-->
+<!--</p>-->
+
+<!--<select class="crs-country" data-region-id="eight"></select>-->
+<!--<select id="eight" data-value="shortcode"></select>-->
+
+
+<script src="./doc.min.js"></script>
+
+</body>
+</html>
