@@ -1,20 +1,23 @@
 ## React-Country-Region-Selector
 
-
-### Changelog
-
-- `0.1.0` - Under development.
+> Incomplete! This isn't finished yet. 
 
 
 ### Installation
 
-Installing it via npm is the simplest way:
+When did modern JS development get SO INSANE?! Here are the litany of different ways to consume this component. 
 
-```
+
+1. Installing via npm
+
+```javascript
 npm install react-country-region-selector --save
 ```
 
-Alternatively, you can just use the UMD version of the file. That'll work for AMD, CommonJS or just plain old `<script>`
+2. Use Bower
+
+
+3. Alternatively, you can just use the UMD version of the file. That'll work for AMD, CommonJS or just plain old `<script>`
 
 
 
@@ -36,7 +39,8 @@ define([
     'react-country-region-selector'
 ], function (React, rcrs) {
 
-    var CountryDropdown = rcrs.
+    var CountryDropdown = rcrs.CountryDropdown;
+    var RegionDropdown = rcrs.CountryDropdown;
 
 });
 
@@ -104,6 +108,11 @@ class Example extends React.Component {
 | country | Yes | `string` | The currently selected country option value. |
 | value | Yes | `string` | The currently selected region option value. |
 | onChange | Yes | `Function` | Callback that gets called when the user selects a region. |
+
+
+### Changelog
+
+- `0.1.0` - Under development.
 
 
 ### License
