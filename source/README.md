@@ -5,10 +5,13 @@ Yikes, when did web development get so complex?! This folder contains the raw so
 the code in the `/dist` (distribution) folder. This folder should only be touched if you want to edit the actual 
 script.
 
+The code is written in ES6 with JSX, then compiled down to plain ol' ES5 javascript in both UMD and CommonJS format. 
+Hopefully that'll make it easy to consume.
+
 
 ### Content
 
-- `react-crs.jsx`: the main code file. It's written in ES6 with JSX. 
+- `react-crs.jsx`: the main code file. 
 - `source-data.js`: the country-region data used for the most recent build of the script. This is a commonJS module that 
 returns whatever country data is pertinent.
 
