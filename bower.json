@@ -1,6 +1,6 @@
 {
-	"name": "country-region-selector",
-	"version": "0.3.2",
+	"name": "react-country-region-selector",
+	"version": "0.0.1",
 	"main": "dist/crs.min.js",
 	"license": "MIT",
 	"ignore": [
