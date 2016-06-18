@@ -22,6 +22,7 @@
     "url": "https://github.com/benkeen/react-country-region-dropdowns/issues"
   },
   "devDependencies": {
+    "babel-plugin-transform-es2015-modules-umd": "^6.8.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",

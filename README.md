@@ -2,11 +2,13 @@
 
 > Incomplete! This isn't finished yet. 
 
+### Demo
+
+You can see it in action here: [...]
 
 ### Installation
 
-When did modern JS development get SO INSANE?! Here are the litany of different ways to consume this component. 
-
+Depending on your setup, pick one of the following. 
 
 1. Installing via npm
 
@@ -16,9 +18,14 @@ npm install react-country-region-selector --save
 
 2. Use Bower
 
+```javascript
+bower install react-country-region-selector 
+```
 
-3. Alternatively, you can just use the UMD version of the file. That'll work for AMD, CommonJS or just plain old `<script>`
+3. Alternatively, you can just use the UMD version of the file. That'll work for AMD, CommonJS or just plain old 
+non-namespaced JS code. For the latter, it'll expose a `window.rsrc` object.
 
+The scripts only dependency is React (tested with 15.0.1, but should work on earlier versions).
 
 
 ### Usage

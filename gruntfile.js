@@ -69,7 +69,7 @@ module.exports = function (grunt) {
     browserify: {
       doc: {
         src: [
-          './dist/rcrs.js',
+//          './dist/rcrs.js',
           './doc/doc-source.jsx'
         ],
         dest: './doc/doc.min.js',
