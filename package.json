@@ -1,8 +1,8 @@
 {
   "name": "react-country-region-selector",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple, configurable React component that lets you add a country dropdown that automatically updates a corresponding region dropdown in your forms.",
-  "main": "dist/rcrs.min.js",
+  "main": "dist/rcrs.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

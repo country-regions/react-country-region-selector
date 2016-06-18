@@ -33,7 +33,6 @@ module.exports = function (grunt) {
 
 
   grunt.initConfig({
-
     template: {
       includeData: {
         options: {
