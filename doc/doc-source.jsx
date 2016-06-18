@@ -83,7 +83,7 @@ class ExamplesPage extends React.Component {
               blankOptionLabel="No country selected, man."
               defaultOptionLabel="Now select a region, pal."
               country={examples[2].country}
-              value={region}
+              value={examples[2].region}
               onChange={(val) => this.selectRegion(2, val)} />
           </li>
 

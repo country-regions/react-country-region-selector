@@ -1,6 +1,6 @@
 import React from 'react';
-import _ from 'underscore';
 import CountryRegionData from '../source/source-data.js';
+import _ from 'underscore';
 import C from '../source/constants.js';
 
 
@@ -14,7 +14,8 @@ class CountryDropdown extends React.Component {
 
   getCountries () {
     const { valueType, labelType } = this.props;
-    return _.map(this.state.countries, ([countryName, countrySlug]) => {
+
+    return this.state.countries.map(([countryName, countrySlug]) => {
       return (
         <option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
           {(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}

@@ -33,6 +33,7 @@ module.exports = function (grunt) {
 
 
   grunt.initConfig({
+
     template: {
       includeData: {
         options: {
@@ -55,6 +56,7 @@ module.exports = function (grunt) {
       //}
     },
 
+    // this creates an es6 common JS file LINKING to the sources in /sources
     babel: {
       dist: {
         files: {
@@ -67,9 +69,20 @@ module.exports = function (grunt) {
     },
 
     browserify: {
+      dist: {
+        options: {
+          transform: [
+            ["babelify", { "presets": ['es2015', 'react'] }]
+          ],
+          exclude: ['react', 'react-dom']
+        },
+        files: {
+          'dist/rcrs-umd.js': ['source/rcrs.jsx']
+        }
+      },
+
       doc: {
         src: [
-//          './dist/rcrs.js',
           './doc/doc-source.jsx'
         ],
         dest: './doc/doc.min.js',
@@ -81,6 +94,8 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['template:includeData', 'babel:dist', 'browserify:doc']);
+  grunt.registerTask('default', ['dist', 'doc']);
+  grunt.registerTask('dist', ['template:includeData', 'babel:dist']);
+  grunt.registerTask('doc', ['browserify:doc']);
 
 };
