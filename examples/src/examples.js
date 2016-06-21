@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CountryDropdown, RegionDropdown } from '../dist/rcrs';
+import { CountryDropdown, RegionDropdown } from '../../lib/rcrs';
 
 
 class ExamplesPage extends React.Component {

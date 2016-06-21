@@ -1,7 +1,7 @@
 import React from 'react';
-import CountryRegionData from '../source/source-data.js';
+import CountryRegionData from './source-data.js';
 import _ from 'underscore';
-import C from '../source/constants.js';
+import C from './constants.js';
 
 
 class CountryDropdown extends React.Component {
