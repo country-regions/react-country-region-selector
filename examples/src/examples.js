@@ -7,18 +7,198 @@ class ExamplesPage extends React.Component {
   constructor (props) {
     super(props);
 
-    // this just creates storage for all the selections made in the various examples in the page
+    this.getCountryValue = this.getCountryValue.bind(this);
+    this.getRegionValue = this.getRegionValue.bind(this);
+
+    // we really only need to stash the selected region + country in state, but I was feeling wacky
     this.state = {
       examples: [
-        { country: '', region: '' },
-        { country: '', region: '' },
-        { country: '', region: '' },
-        { country: '', region: '' },
-        { country: '', region: '' },
-        { country: '', region: '' },
-        { country: '', region: '' },
-        { country: '', region: '' },
-        { country: '', region: '' }
+        {
+          label: 'Simple, no-frills example.',
+          jsx: () => {
+            return (
+              <div>
+                <CountryDropdown
+                  value={this.getCountryValue(0)}
+                  onChange={(val) => this.selectCountry(0, val)}/>
+                <RegionDropdown
+                  country={this.getCountryValue(0)}
+                  value={this.getRegionValue(0)}
+                  onChange={(val) => this.selectRegion(0, val)}/>
+              </div>
+            );
+          },
+          codeVisible: false,
+          code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
+          country: '',
+          region: ''
+        },
+
+        {
+          label: 'Region field disabled until a country is selected.',
+          jsx: () => {
+            return (
+              <div>
+                <CountryDropdown
+                  value={this.getCountryValue(1)}
+                  onChange={(val) => this.selectCountry(1, val)} />
+                <RegionDropdown
+                  disableWhenEmpty={true}
+                  country={this.getCountryValue(1)}
+                  value={this.getRegionValue(1)}
+                  onChange={(val) => this.selectRegion(1, val)} />
+              </div>
+            );
+          },
+          codeVisible: false,
+          code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  disableWhenEmpty={true}\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
+          country: '',
+          region: ''
+        },
+
+        {
+          label: 'No country or region dropdown default option.',
+          jsx: () => {
+            return (
+              <div>
+                <CountryDropdown
+                  showDefaultOption={false}
+                  value={this.getCountryValue(2)}
+                  onChange={(val) => this.selectCountry(2, val)} />
+                <RegionDropdown
+                  showDefaultOption={false}
+                  country={this.getCountryValue(2)}
+                  region={this.getRegionValue(2)}
+                  onChange={(val) => this.selectRegion(2, val)} />
+              </div>
+            );
+          },
+          codeVisible: false,
+          code: '&lt;CountryDropdown\n  showDefaultOption={false}\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  showDefaultOption={false}\n  country={country}\n  region={region}\n  onChange={selectRegion} />',
+          country: '',
+          region: ''
+        },
+
+        {
+          label: 'Custom default option texts for both the country and region dropdowns.',
+          jsx: () => {
+            return (
+              <div>
+                <CountryDropdown
+                  defaultOptionLabel="Select a country, man."
+                  value={this.getCountryValue(3)}
+                  onChange={(val) => this.selectCountry(3, val)} />
+                <RegionDropdown
+                  blankOptionLabel="No country selected, man."
+                  defaultOptionLabel="Now select a region, pal."
+                  country={this.getCountryValue(3)}
+                  value={this.getRegionValue(3)}
+                  onChange={(val) => this.selectRegion(3, val)} />
+              </div>
+            );
+          },
+          codeVisible: false,
+          code: '&lt;CountryDropdown\n  defaultOptionLabel="Select a country, man."\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  blankOptionLabel="No country selected, man."\n  defaultOptionLabel="Now select a region, pal."\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
+          country: '',
+          region: ''
+        },
+
+        {
+          label: 'Custom name, class and ID attributes for both dropdowns.',
+          jsx: () => {
+            return (
+              <div>
+                <CountryDropdown
+                  value={this.getCountryValue(4)}
+                  id="my-country-field-id"
+                  name="my-country-field"
+                  classes="my-custom-class second-class"
+                  onChange={(val) => this.selectCountry(4, val)} />
+                <RegionDropdown
+                  country={this.getCountryValue(4)}
+                  value={this.getRegionValue(4)}
+                  name="my-region-field-name"
+                  id="my-region-field-id"
+                  classes="another-custom-class"
+                  onChange={(val) => this.selectRegion(4, val)} />
+              </div>
+            );
+          },
+          codeVisible: false,
+          code: '&lt;CountryDropdown\n  value={country}\n  id="my-country-field-id"\n  name="my-country-field"\n  classes="my-custom-class second-class"\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  name="my-region-field-name"\n  id="my-region-field-id"\n  classes="another-custom-class"\n  onChange={selectRegion} />',
+          country: '',
+          region: ''
+        },
+
+        {
+          label: 'Abbreviated country and region names.',
+          jsx: () => {
+            return (
+              <div>
+                <CountryDropdown
+                  value={this.getCountryValue(5)}
+                  labelType="short"
+                  valueType="short"
+                  onChange={(val) => this.selectCountry(5, val)} />
+                <RegionDropdown
+                  country={this.getCountryValue(5)}
+                  value={this.getRegionValue(5)}
+                  countryValueType="short"
+                  labelType="short"
+                  valueType="short"
+                  onChange={(val) => this.selectRegion(5, val)} />
+              </div>
+            );
+          },
+          codeVisible: false,
+          code: '&lt;CountryDropdown\n  value={country}\n  labelType="short"\n  valueType="short"\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  countryValueType="short"\n  labelType="short"\n  valueType="short"\n  onChange={selectRegion} />',
+          country: '',
+          region: ''
+        },
+
+        {
+          label: 'Specify which countries should appear. This just shows the UK, United States and Canada. See the countryShortCode property in the source data for the country shortcodes you need to pass here.',
+          jsx: () => {
+            return (
+              <div>
+                <CountryDropdown
+                  value={this.getCountryValue(6)}
+                  onChange={(val) => this.selectCountry(6, val)}
+                  whitelist={['GB','US','CA']} />
+                <RegionDropdown
+                  country={this.getCountryValue(6)}
+                  value={this.getRegionValue(6)}
+                  onChange={(val) => this.selectRegion(6, val)} />
+              </div>
+            );
+          },
+          codeVisible: false,
+          code: '&lt;CountryDropdown\n  value={country}\n  labelType="short"\n  valueType="short"\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  countryValueType="short"\n  labelType="short"\n  valueType="short"\n  onChange={selectRegion} />',
+          country: '',
+          region: ''
+        },
+
+        {
+          label: 'Specify which countries should NOT appear. This omits all countries that start with "A".',
+          jsx: () => {
+            return (
+              <div>
+                <CountryDropdown
+                  value={this.getCountryValue(7)}
+                  onChange={(val) => this.selectCountry(7, val)}
+                  blacklist={['AF','AX','AL','DZ','AS','AD','AO','AI','AQ','AG','AR','AM','AW','AU','AT','AZ']} />
+                <RegionDropdown
+                  country={this.getCountryValue(7)}
+                  value={this.getRegionValue(7)}
+                  onChange={(val) => this.selectRegion(7, val)} />
+              </div>
+            );
+          },
+          codeVisible: false,
+          code: "&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry}\n  blacklist={['AF','AX','AL','DZ','AS','AD','AO','AI','AQ','AG']} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion} />",
+          country: '',
+          region: ''
+        }
       ]
     };
   }
@@ -35,255 +215,48 @@ class ExamplesPage extends React.Component {
     this.setState({ examples: updatedValues });
   }
 
+  getCountryValue (index) {
+    return this.state.examples[index].country;
+  }
+
+  getRegionValue (index) {
+    return this.state.examples[index].region;
+  }
+
+  toggleCode (exampleIndex) {
+    const updatedValues = this.state.examples;
+    updatedValues[exampleIndex].codeVisible = !updatedValues[exampleIndex].codeVisible;
+    this.setState({ examples: updatedValues });
+  }
+
+  getExamples () {
+    let i = 0;
+    return this.state.examples.map((example) => {
+      let j = i++;
+      return (
+        <section key={i}>
+          <p>
+            <span className="counter">{i}.</span>
+            {example.label}
+            <span className="toggleCode" title="Toggle code" onClick={() => this.toggleCode(j)}>&lt;/&gt;</span>
+          </p>
+          {example.jsx()}
+          <pre className="hljs html" style={{ display: example.codeVisible ? 'block' : 'none' }}>
+            <code className="html" dangerouslySetInnerHTML={{__html: example.code }} />
+          </pre>
+        </section>
+      );
+    });
+  }
+
   render () {
-    const { examples } = this.state;
     return (
       <div>
-        <h3>Settings - examples</h3>
-
-        <p>
-          This page illustrates all variations of the available settings.
-        </p>
-
-        <ol>
-          <li>
-            <p>Simple, no-frills example.</p>
-            <CountryDropdown
-              value={examples[0].country}
-              onChange={(val) => this.selectCountry(0, val)} />
-            <RegionDropdown
-              country={examples[0].country}
-              value={examples[0].region}
-              onChange={(val) => this.selectRegion(0, val)} />
-          </li>
-
-          <li>
-            <p>
-              <code>showDefaultOption</code>. No country dropdown default option.
-            </p>
-            <CountryDropdown
-              showDefaultOption={false}
-              value={examples[1].country}
-              onChange={(val) => this.selectCountry(1, val)} />
-            <RegionDropdown
-              country={examples[1].country}
-              value={examples[1].region}
-              onChange={(val) => this.selectRegion(1, val)} />
-          </li>
-
-          <li>
-            <p>
-              Custom default option texts for both the country and region dropdowns.
-            </p>
-            <CountryDropdown
-              defaultOptionLabel="Select a country, man."
-              value={examples[2].country}
-              onChange={(val) => this.selectCountry(2, val)} />
-            <RegionDropdown
-              blankOptionLabel="No country selected, man."
-              defaultOptionLabel="Now select a region, pal."
-              country={examples[2].country}
-              value={examples[2].region}
-              onChange={(val) => this.selectRegion(2, val)} />
-          </li>
-
-          <li>
-            <p>
-              Custom name attributes (e.g. if you're using the fields in a standard form submit).
-            </p>
-            <div id="example4"></div>
-          </li>
-
-          <li>
-            <p>
-              Custom ID attribute.
-            </p>
-            <div id="example5"></div>
-          </li>
-
-          <li>
-            <p>
-              Custom class.
-            </p>
-            <div id="example6"></div>
-          </li>
-
-          <li>
-            <p>
-              Abbreviated country and region names. <code>labelType</code>, <code>valueType</code>
-            </p>
-            <div id="example7"></div>
-          </li>
-
-          <li>
-            <p>
-              Pre-filling the fields.
-            </p>
-            <div id="example8"></div>
-          </li>
-
-        </ol>
-
-
+        {this.getExamples()}
       </div>
     );
   }
 }
 
-//class StandardExample4 extends React.Component {
-//  constructor (props) {
-//    super(props);
-//    this.state = { country: '', region: '' };
-//  }
-//
-//  selectCountry (val) {
-//    this.setState({ country: val });
-//  }
-//
-//  selectRegion (val) {
-//    this.setState({ region: val });
-//  }
-//
-//  render () {
-//    const { country, region } = this.state;
-//    return (
-//      <div>
-//        <CountryDropdown
-//          value={country}
-//          name="my-country-field"
-//          onChange={(val) => this.selectCountry(val)} />
-//        <RegionDropdown
-//          country={country}
-//          value={region}
-//          onChange={(val) => this.selectRegion(val)} />
-//      </div>
-//    );
-//  }
-//}
-//
-//class StandardExample5 extends React.Component {
-//  constructor (props) {
-//    super(props);
-//    this.state = { country: '', region: '' };
-//  }
-//
-//  selectCountry (val) {
-//    this.setState({ country: val });
-//  }
-//
-//  selectRegion (val) {
-//    this.setState({ region: val });
-//  }
-//
-//  render () {
-//    const { country, region } = this.state;
-//    return (
-//      <div>
-//        <CountryDropdown
-//          value={country}
-//          id="my-country-field-id"
-//          onChange={(val) => this.selectCountry(val)} />
-//        <RegionDropdown
-//          country={country}
-//          value={region}
-//          onChange={(val) => this.selectRegion(val)} />
-//      </div>
-//    );
-//  }
-//}
-//
-//class StandardExample6 extends React.Component {
-//  constructor (props) {
-//    super(props);
-//    this.state = { country: '', region: '' };
-//  }
-//
-//  selectCountry (val) {
-//    this.setState({ country: val });
-//  }
-//
-//  selectRegion (val) {
-//    this.setState({ region: val });
-//  }
-//
-//  render () {
-//    const { country, region } = this.state;
-//    return (
-//      <div>
-//        <CountryDropdown
-//          value={country}
-//          classes="my-custom-class second-class"
-//          onChange={(val) => this.selectCountry(val)} />
-//        <RegionDropdown
-//          country={country}
-//          value={region}
-//          onChange={(val) => this.selectRegion(val)} />
-//      </div>
-//    );
-//  }
-//}
-//
-//class StandardExample7 extends React.Component {
-//  constructor (props) {
-//    super(props);
-//    this.state = { country: '', region: '' };
-//  }
-//
-//  selectCountry (val) {
-//    this.setState({ country: val });
-//  }
-//
-//  selectRegion (val) {
-//    this.setState({ region: val });
-//  }
-//
-//  render () {
-//    const { country, region } = this.state;
-//    return (
-//      <div>
-//        <CountryDropdown
-//          value={country}
-//          labelType="short"
-//          valueType="short"
-//          onChange={(val) => this.selectCountry(val)} />
-//        <RegionDropdown
-//          country={country}
-//          countryValueType="short"
-//          value={region}
-//          onChange={(val) => this.selectRegion(val)} />
-//      </div>
-//    );
-//  }
-//}
-//
-//class StandardExample8 extends React.Component {
-//  constructor (props) {
-//    super(props);
-//    this.state = { country: 'Canada', region: 'British Columbia' };
-//  }
-//
-//  selectCountry (val) {
-//    this.setState({ country: val });
-//  }
-//
-//  selectRegion (val) {
-//    this.setState({ region: val });
-//  }
-//
-//  render () {
-//    const { country, region } = this.state;
-//    return (
-//      <div>
-//        <CountryDropdown
-//          value={country}
-//          onChange={(val) => this.selectCountry(val)} />
-//        <RegionDropdown
-//          country={country}
-//          value={region}
-//          onChange={(val) => this.selectRegion(val)} />
-//      </div>
-//    );
-//  }
-//}
 
 ReactDOM.render(<ExamplesPage />, document.getElementById('examples'));

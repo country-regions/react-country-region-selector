@@ -1,7 +1,13 @@
 import React from 'react';
 import CountryRegionData from './source-data.js';
-import _ from 'underscore';
-import C from './constants.js';
+
+
+const C = {
+  DISPLAY_TYPE_FULL: 'full',
+  DISPLAY_TYPE_SHORT: 'short',
+  REGION_LIST_DELIMITER: '|',
+  SINGLE_REGION_DELIMITER: '~'
+};
 
 
 class CountryDropdown extends React.Component {
@@ -45,7 +51,7 @@ class CountryDropdown extends React.Component {
       attrs.id = id;
     }
     if (classes) {
-      attrs.classes = classes;
+      attrs.className = classes;
     }
 
     return (
@@ -109,7 +115,7 @@ class RegionDropdown extends React.Component {
 
     const { countryValueType } = this.props;
     const searchIndex = (countryValueType === C.DISPLAY_TYPE_FULL) ? 0 : 1;
-    const regions = _.find(CountryRegionData, (i) => { return i[searchIndex] === country; });
+    const regions = CountryRegionData.find((i) => { return i[searchIndex] === country; });
 
     // this could happen if the user is managing the state of the region/country themselves and screws up passing
     // in a valid country
@@ -117,9 +123,7 @@ class RegionDropdown extends React.Component {
       console.error('Error. Unknown country passed: ' + country + '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionDropdown');
       return [];
     }
-
-    // clean up the region info here. TODO MEMOIZE
-    return _.map(regions[2].split(C.REGION_LIST_DELIMITER), (regionPair) => {
+    return regions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
       let [regionName, regionShortCode = null] = regionPair.split(C.SINGLE_REGION_DELIMITER);
       return { regionName, regionShortCode };
     });
@@ -127,10 +131,10 @@ class RegionDropdown extends React.Component {
 
   getRegionList () {
     const { labelType, valueType } = this.props;
-    return _.map(this.state.regions, ({ regionName, regionShortCode }) => {
+    return this.state.regions.map(({ regionName, regionShortCode }) => {
       const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
       const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
-      return <option value={value} key={regionShortCode}>{label}</option>;
+      return <option value={value} key={regionName}>{label}</option>;
     });
   }
 
@@ -148,9 +152,23 @@ class RegionDropdown extends React.Component {
   }
 
   render () {
-    const { value, onChange } = this.props;
+    const { value, country, onChange, id, name, classes, disableWhenEmpty } = this.props;
+    const disabled = (disableWhenEmpty && country == '');
+    const attrs = {
+      name,
+      defaultValue: value,
+      onChange: (e) => onChange(e.target.value),
+      disabled
+    };
+    if (id) {
+      attrs.id = id;
+    }
+    if (classes) {
+      attrs.className = classes;
+    }
+
     return (
-      <select defaultValue={value} onChange={(e) => onChange(e.target.value)}>
+      <select {...attrs}>
         {this.getDefaultOption()}
         {this.getRegionList()}
       </select>
@@ -158,27 +176,33 @@ class RegionDropdown extends React.Component {
   }
 }
 RegionDropdown.propTypes = {
-  name: React.PropTypes.string,
   country: React.PropTypes.string,
   value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
+  name: React.PropTypes.string,
+  id: React.PropTypes.string,
+  classes: React.PropTypes.string,
   blankOptionLabel: React.PropTypes.string,
   showDefaultOption: React.PropTypes.bool,
   defaultOptionLabel: React.PropTypes.string,
   onChange: React.PropTypes.func,
   labelType: React.PropTypes.string,
-  valueType: React.PropTypes.string
+  valueType: React.PropTypes.string,
+  disableWhenEmpty: React.PropTypes.bool
 };
 RegionDropdown.defaultProps = {
-  name: 'rcrs-region',
   country: '',
   value: '',
+  name: 'rcrs-region',
+  id: '',
+  classes: '',
   blankOptionLabel: '-',
   showDefaultOption: true,
-  defaultOptionLabel: 'Select region',
+  defaultOptionLabel: 'Select Region',
   onChange: () => {},
   countryValueType: C.DISPLAY_TYPE_FULL,
   labelType: C.DISPLAY_TYPE_FULL,
-  valueType: C.DISPLAY_TYPE_FULL
+  valueType: C.DISPLAY_TYPE_FULL,
+  disableWhenEmpty: false
 };
 
 
@@ -190,10 +214,13 @@ RegionDropdown.defaultProps = {
 function _filterCountries (countries, whitelist, blacklist) {
   var filteredCountries = countries;
 
+  // N.B. I'd rather use ES6 array.includes() but it requires a polyfill on various browsers. Bit surprising that
+  // babel doesn't automatically convert it to ES5-friendly code, like the new syntax additions, but that requires
+  // a separate polyfill which is a total kludge
   if (whitelist.length > 0) {
-    filteredCountries = _.filter(countries, ([countryName, countrySlug]) => { return _.contains(whitelist, countrySlug); });
+    filteredCountries = countries.filter(([, countrySlug]) => { return whitelist.indexOf(countrySlug) > -1; });
   } else if (blacklist.length > 0) {
-    filteredCountries = _.filter(countries, ([countryName, countrySlug]) => { return !_.contains(blacklist, countrySlug); });
+    filteredCountries = countries.filter(([, countrySlug]) => { return blacklist.indexOf(countrySlug) === -1; });
   }
 
   return filteredCountries;

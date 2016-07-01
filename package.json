@@ -1,7 +1,7 @@
 {
   "name": "react-country-region-selector",
-  "version": "0.0.2",
-  "description": "A simple, configurable React component that lets you add a country dropdown that automatically updates a corresponding region dropdown in your forms.",
+  "version": "1.0.0",
+  "description": "CountryDropdown and RegionDropdown React components for your forms.",
   "main": "dist/rcrs.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,9 +11,16 @@
     "url": "https://github.com/benkeen/react-country-region-dropdowns.git"
   },
   "keywords": [
+    "country",
     "countries",
     "regions",
-    "dropdowns"
+    "states",
+    "provinces",
+    "counties",
+    "territories",
+    "forms",
+    "dropdowns",
+    "select boxes"
   ],
   "author": "Ben Keen",
   "license": "MIT",
@@ -30,6 +37,7 @@
     ]
   },
   "dependencies": {
+    "highlight.js": "^9.4.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "reactify": "^1.1.1"
@@ -37,9 +45,12 @@
   "devDependencies": {
     "country-region-data": "^1.2.1",
     "gulp": "^3.9.1",
+    "gulp-param": "^1.0.3",
     "gulp-rename": "^1.2.2",
     "gulp-template": "^4.0.0",
+    "gulp-util": "^3.0.7",
     "react-component-gulp-tasks": "^0.7.7",
-    "run-sequence": "^1.2.1"
+    "run-sequence": "^1.2.1",
+    "yargs": "^4.7.1"
   }
 }
