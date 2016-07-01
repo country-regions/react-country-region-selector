@@ -211,13 +211,11 @@ define([
 |:---|:---:|:---|:---|:---|
 | countryValue | Yes | `""` | `string` | The currently selected country. |
 | value | Yes | `""` | `string` | The currently selected region. |
-| onChange | Yes | - | `function` | Callback that gets called when the user selects a region. Use this to store the 
-value in whatever store you're using (or just the parent component state). |
+| onChange | Yes | - | `function` | Callback that gets called when the user selects a region. Use this to store the value in whatever store you're using (or just the parent component state). |
 | name | No | `"rcrs-region"` | `string` | The name attribute of the generated select box. |
 | id | No | `""` | `string` | The ID of the generated select box. Not added by default. |
 | classes | No | `""` | `string` | Any additional space-separated classes you want to add. |
-| blankOptionLabel | No | `-` | `string` | The label that appears in the region dropdown when the user hasn't selected
-a country yet.|
+| blankOptionLabel | No | `-` | `string` | The label that appears in the region dropdown when the user hasn't selected a country yet.|
 | showDefaultOption | No | `true` | `boolean` | Whether you want to show a default option. This is what the user sees in the region dropdown after selecting a country. It defaults to the `defaultOptionLabel` setting (see next). |
 | defaultOptionLabel | No | `Select Region` | `string` | The default region option. |
 | onChange | No | `-` | `function` | Called when the user selects a region. Use this to store the region value. |
