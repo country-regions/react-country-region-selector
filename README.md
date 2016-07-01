@@ -17,7 +17,7 @@ change name attributes, add you own custom onChange handlers to do whatever you 
 
 ### Examples
 
-Check out the [github pages](benkeen.github.io/react-country-region-selector) section for some examples + example
+Check out the [github pages](http://benkeen.github.io/react-country-region-selector/) section for some examples + example
 JSX code.
 
 
