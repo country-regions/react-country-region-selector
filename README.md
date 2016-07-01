@@ -264,7 +264,7 @@ Big thanks to Jed Watson there.
 
 ### Changelog
 
-- `0.1.0` - *July 1, 2016* - initial version.
+- `1.0.0` - *July 1, 2016* - initial version.
 
 
 ### License
