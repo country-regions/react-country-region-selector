@@ -218,13 +218,11 @@ value in whatever store you're using (or just the parent component state). |
 | classes | No | `""` | `string` | Any additional space-separated classes you want to add. |
 | blankOptionLabel | No | `-` | `string` | The label that appears in the region dropdown when the user hasn't selected
 a country yet.|
-| showDefaultOption | No | `true` | `boolean` | Whether you want to show a default option. This is what the user sees 
-in the region dropdown after selecting a country. It defaults to the `defaultOptionLabel` setting (see next). |
+| showDefaultOption | No | `true` | `boolean` | Whether you want to show a default option. This is what the user sees in the region dropdown after selecting a country. It defaults to the `defaultOptionLabel` setting (see next). |
 | defaultOptionLabel | No | `Select Region` | `string` | The default region option. |
 | onChange | No | `-` | `function` | Called when the user selects a region. Use this to store the region value. |
 | countryValueType | No | `full` | `string` | If you've changed the country dropdown `valueType` to `short` you will need to set this value to `short` as well, so the component knows what's being passed in the `country` property. |
-| labelType | No | `"full"` | `string` | Either `"full"` or `"short"`. This governs whether you see region names or 
-region short codes in the dropdown. |
+| labelType | No | `"full"` | `string` | Either `"full"` or `"short"`. This governs whether you see region names or region short codes in the dropdown. |
 | valueType | No | `"full"` | `string` | Either `"full"` or `"short"`. This controls the actual `value` attribute of each `<option>` in the dropdown.  |
 | disableWhenEmpty | No | `false` | `boolean` | Disables the region field when the user hasn't selected a country. |
 
