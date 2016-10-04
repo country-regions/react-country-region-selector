@@ -1,6 +1,6 @@
 {
   "name": "react-country-region-selector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CountryDropdown and RegionDropdown React components for your forms.",
   "main": "lib/rcrs.js",
   "scripts": {
@@ -44,7 +44,7 @@
     "reactify": "^1.1.1"
   },
   "devDependencies": {
-    "country-region-data": "^1.3.0",
+    "country-region-data": "^1.3.1",
     "gulp": "^3.9.1",
     "gulp-param": "^1.0.3",
     "gulp-rename": "^1.2.2",
