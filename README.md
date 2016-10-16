@@ -249,6 +249,7 @@ Big thanks to Jed Watson there.
 
 ### Changelog
 
+- `1.0.2` - *October 16, 2016* - Fix issue where source-data.js in lib had no country data.
 - `1.0.0` - *July 1, 2016* - initial version.
 
 

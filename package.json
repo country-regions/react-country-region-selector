@@ -1,6 +1,6 @@
 {
   "name": "react-country-region-selector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CountryDropdown and RegionDropdown React components for your forms.",
   "main": "lib/rcrs.js",
   "scripts": {
