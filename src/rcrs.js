@@ -206,7 +206,6 @@ class RegionDropdown extends React.Component {
     const disabled = (disableWhenEmpty && country == '');
     const attrs = {
       name,
-      defaultValue: value,
       disabled,
       onChange: (e) => {
         onChange(e.target.value)
@@ -223,7 +222,6 @@ class RegionDropdown extends React.Component {
         this.setState({
           selectedRegion: value
         });
-        console.log(this.state.selectedRegion);
         onChange(value);
       }
       return (
@@ -235,6 +233,7 @@ class RegionDropdown extends React.Component {
     }
     else {
       attrs.onChange = (e) => onChange(e.target.value);
+      defaultValue =  value;
       return (
         <select {...attrs}>
           {this.getDefaultOption()}
