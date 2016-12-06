@@ -241,7 +241,7 @@ class RegionDropdown extends React.Component {
         SelectField,
         _extends({}, attrs, { value: this.state.selectedValue }),
         this.getDefaultOption(),
-        this.getCountries()
+        this.getRegionList()
       );
     } else {
       attrs.onChange = e => onChange(e.target.value);
