@@ -19,13 +19,14 @@ class CountryDropdown extends React.Component {
       countries: _filterCountries(CountryRegionData, props.whitelist, props.blacklist),
       selectedValue: ''
     };
+    console.log(props);
   }
 
   getCountries() {
-    const { valueType, labelType } = this.props;
+    const { valueType, labelType, isMaterial } = this.props;
 
     return this.state.countries.map(([countryName, countrySlug]) => {
-      if (this.props.isMaterial) {
+      if (isMaterial) {
         return (
           <MenuItem value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}
             primaryText={(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} />
@@ -40,11 +41,11 @@ class CountryDropdown extends React.Component {
   }
 
   getDefaultOption() {
-    const { showDefaultOption, defaultOptionLabel } = this.props;
+    const { showDefaultOption, defaultOptionLabel, isMaterial } = this.props;
     if (!showDefaultOption) {
       return null;
     }
-    if (this.props.isMaterial) {
+    if (isMaterial) {
       return (
         <MenuItem key="default"
           primaryText={defaultOptionLabel} />
@@ -61,7 +62,6 @@ class CountryDropdown extends React.Component {
       name,
       defaultValue: value,
       onChange: (e) => {
-        console.log(e.target.value, "Simple");
         onChange(e.target.value)
       }
     };
@@ -79,7 +79,6 @@ class CountryDropdown extends React.Component {
         console.log(value);
         onChange(value);
       }
-      console.log("heere");
       return (
         <SelectField {...attrs} value={this.state.selectedValue}>
           {this.getDefaultOption()}
@@ -89,8 +88,6 @@ class CountryDropdown extends React.Component {
     }
     else {
       attrs.onChange = (e) => onChange(e.target.value)
-      console.log("simple");
-
       return (
         <select {...attrs}>
           {this.getDefaultOption()}
@@ -112,7 +109,7 @@ CountryDropdown.propTypes = {
   valueType: React.PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   whitelist: React.PropTypes.array,
   blacklist: React.PropTypes.array,
-  isMaterial: React.PropTypes.bool
+  isMaterial: React.PropTypes.bool,
 };
 CountryDropdown.defaultProps = {
   value: '',
@@ -126,7 +123,7 @@ CountryDropdown.defaultProps = {
   valueType: C.DISPLAY_TYPE_FULL,
   whitelist: [],
   blacklist: [],
-  isMaterial: false
+  isMaterial: false,
 };
 
 
@@ -260,7 +257,7 @@ RegionDropdown.propTypes = {
   labelType: React.PropTypes.string,
   valueType: React.PropTypes.string,
   disableWhenEmpty: React.PropTypes.bool,
-  isMaterial: React.PropTypes.bool
+  isMaterial: React.PropTypes.bool,
 };
 RegionDropdown.defaultProps = {
   country: '',
@@ -276,7 +273,7 @@ RegionDropdown.defaultProps = {
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
   disableWhenEmpty: false,
-  isMaterial: false
+  isMaterial: false,
 };
 
 
