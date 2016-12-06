@@ -19,7 +19,6 @@ class CountryDropdown extends React.Component {
       countries: _filterCountries(CountryRegionData, props.whitelist, props.blacklist),
       selectedValue: ''
     };
-    console.log(props);
   }
 
   getCountries() {
@@ -79,7 +78,6 @@ class CountryDropdown extends React.Component {
         this.setState({
           selectedValue: value
         });
-        console.log(value);
         onChange(value);
       }
       return (
@@ -133,7 +131,10 @@ CountryDropdown.defaultProps = {
 class RegionDropdown extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { regions: this.getRegions(props.country), selectedValue: '' };
+    this.state = {
+      regions: this.getRegions(props.country),
+      selectedRegion: '',
+    };
     this.getRegions = this.getRegions.bind(this);
   }
 
@@ -222,14 +223,13 @@ class RegionDropdown extends React.Component {
     if (isMaterial) {
       attrs.onChange = (event, index, value) => {
         this.setState({
-          selectedValue: value
+          selectedRegion: value
         });
-        console.log(value);
         onChange(value);
       }
 
       return (
-        <SelectField {...attrs} value={this.state.selectedValue}>
+        <SelectField {...attrs} value={this.state.selectedRegion}>
           {this.getDefaultOption()}
           {this.getRegionList()}
         </SelectField>
