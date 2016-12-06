@@ -56,7 +56,7 @@ class CountryDropdown extends React.Component {
   }
 
   render() {
-    const { name, id, classes, value, onChange } = this.props;
+    const { name, id, classes, value, onChange, isMaterial } = this.props;
     const attrs = {
       name,
       defaultValue: value,
@@ -79,6 +79,13 @@ class CountryDropdown extends React.Component {
         console.log(value);
         onChange(value);
       }
+
+      return (
+        <SelectField {...attrs}>
+          {this.getDefaultOption()}
+          {this.getCountries()}
+        </SelectField>
+      )
     }
     else {
       attrs.onChange = (e) => onChange(e.target.value)
@@ -161,10 +168,16 @@ class RegionDropdown extends React.Component {
   }
 
   getRegionList() {
-    const { labelType, valueType } = this.props;
+    const { labelType, valueType, isMaterial } = this.props;
     return this.state.regions.map(({ regionName, regionShortCode }) => {
       const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
       const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
+
+      if (isMaterial) {
+        return <MenuItem value={value} key={regionName}
+          primaryText={label} />
+
+      }
       return <option value={value} key={regionName}>{label}</option>;
     });
   }
@@ -172,23 +185,30 @@ class RegionDropdown extends React.Component {
   // there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
   // a "default" option which shows
   getDefaultOption() {
-    const { blankOptionLabel, showDefaultOption, defaultOptionLabel, country } = this.props;
+    const { blankOptionLabel, showDefaultOption, defaultOptionLabel, country, isMaterial } = this.props;
     if (!country) {
+      if (isMaterial) {
+        return <MenuItem value="" key={blankOptionLabel}
+          primaryText={blankOptionLabel} />
+      }
       return <option value="">{blankOptionLabel}</option>;
     }
     if (showDefaultOption) {
+      if (isMaterial) {
+        return <MenuItem value="" key={defaultOptionLabel}
+          primaryText={defaultOptionLabel} />
+      }
       return <option value="">{defaultOptionLabel}</option>;
     }
     return null;
   }
 
   render() {
-    const { value, country, onChange, id, name, classes, disableWhenEmpty } = this.props;
+    const { value, country, onChange, id, name, classes, disableWhenEmpty, isMaterial } = this.props;
     const disabled = (disableWhenEmpty && country == '');
     const attrs = {
       name,
       defaultValue: value,
-      onChange: (e) => onChange(e.target.value),
       disabled
     };
     if (id) {
@@ -197,13 +217,32 @@ class RegionDropdown extends React.Component {
     if (classes) {
       attrs.className = classes;
     }
+    if (isMaterial) {
+      attrs.onChange = (event, index, value) => {
+        this.setState({
+          selectedValue: value
+        });
+        console.log(value);
+        onChange(value);
+      }
 
-    return (
-      <select {...attrs}>
-        {this.getDefaultOption()}
-        {this.getRegionList()}
-      </select>
-    );
+      return (
+        <SelectField {...attrs}>
+          {this.getDefaultOption()}
+          {this.getCountries()}
+        </SelectField>
+      )
+    }
+    else {
+      attrs.onChange = (e) => onChange(e.target.value);
+      return (
+        <select {...attrs}>
+          {this.getDefaultOption()}
+          {this.getRegionList()}
+        </select>
+      );
+    }
+
   }
 }
 RegionDropdown.propTypes = {
