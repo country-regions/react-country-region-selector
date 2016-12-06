@@ -60,7 +60,10 @@ class CountryDropdown extends React.Component {
     const attrs = {
       name,
       defaultValue: value,
-      onChange: (e) => onChange(e.target.value)
+      onChange: (e) => {
+        console.log(e.target.value, "Simple");
+        onChange(e.target.value)
+      }
     };
     if (id) {
       attrs.id = id;
