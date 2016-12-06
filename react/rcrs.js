@@ -233,7 +233,8 @@ class RegionDropdown extends React.Component {
         this.setState({
           selectedRegion: value
         });
-        console.log(this.state.selectedRegion, value, selectedRegion);
+        console.log("State", this.state.selectedRegion);
+        console.log("Global", selectedRegion);
         onChange(value);
       };
       return React.createElement(
