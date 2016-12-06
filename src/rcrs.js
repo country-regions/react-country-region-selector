@@ -210,7 +210,8 @@ class RegionDropdown extends React.Component {
       disabled,
       onChange: (e) => {
         onChange(e.target.value)
-      }
+      },
+      value: value,
     };
     if (id) {
       attrs.id = id;
@@ -223,12 +224,10 @@ class RegionDropdown extends React.Component {
         this.setState({
           selectedRegion: value
         });
-        console.log("State", this.state.selectedRegion)
-        console.log("Global",selectedRegion);
         onChange(value);
       }
       return (
-        <SelectField {...attrs} value={selectedRegion}>
+        <SelectField {...attrs}>
           {this.getDefaultOption()}
           {this.getRegionList()}
         </SelectField>
