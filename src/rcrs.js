@@ -79,9 +79,9 @@ class CountryDropdown extends React.Component {
         console.log(value);
         onChange(value);
       }
-
+      console.log("heere");
       return (
-        <SelectField {...attrs}>
+        <SelectField {...attrs} value={this.state.selectedValue}>
           {this.getDefaultOption()}
           {this.getCountries()}
         </SelectField>
@@ -89,6 +89,8 @@ class CountryDropdown extends React.Component {
     }
     else {
       attrs.onChange = (e) => onChange(e.target.value)
+      console.log("simple");
+
       return (
         <select {...attrs}>
           {this.getDefaultOption()}
@@ -131,7 +133,7 @@ CountryDropdown.defaultProps = {
 class RegionDropdown extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { regions: this.getRegions(props.country) };
+    this.state = { regions: this.getRegions(props.country), selectedValue: '' };
     this.getRegions = this.getRegions.bind(this);
   }
 
@@ -227,7 +229,7 @@ class RegionDropdown extends React.Component {
       }
 
       return (
-        <SelectField {...attrs}>
+        <SelectField {...attrs} value={this.state.selectedValue}>
           {this.getDefaultOption()}
           {this.getCountries()}
         </SelectField>
