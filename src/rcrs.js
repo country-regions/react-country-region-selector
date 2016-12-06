@@ -1,5 +1,7 @@
 import React from 'react';
 import CountryRegionData from './source-data.js';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 
 const C = {
@@ -11,17 +13,24 @@ const C = {
 
 
 class CountryDropdown extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
-      countries: _filterCountries(CountryRegionData, props.whitelist, props.blacklist)
+      countries: _filterCountries(CountryRegionData, props.whitelist, props.blacklist),
+      selectedValue: ''
     };
   }
 
-  getCountries () {
+  getCountries() {
     const { valueType, labelType } = this.props;
 
     return this.state.countries.map(([countryName, countrySlug]) => {
+      if (this.props.isMaterial) {
+        return (
+          <MenuItem value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}
+            primaryText={(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} />
+        )
+      }
       return (
         <option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
           {(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}
@@ -30,17 +39,23 @@ class CountryDropdown extends React.Component {
     });
   }
 
-  getDefaultOption () {
+  getDefaultOption() {
     const { showDefaultOption, defaultOptionLabel } = this.props;
     if (!showDefaultOption) {
       return null;
+    }
+    if (this.props.isMaterial) {
+      return (
+        <MenuItem key="default"
+          primaryText={defaultOptionLabel} />
+      )
     }
     return (
       <option value="" key="default">{defaultOptionLabel}</option>
     );
   }
 
-  render () {
+  render() {
     const { name, id, classes, value, onChange } = this.props;
     const attrs = {
       name,
@@ -53,13 +68,24 @@ class CountryDropdown extends React.Component {
     if (classes) {
       attrs.className = classes;
     }
-
-    return (
-      <select {...attrs}>
-        {this.getDefaultOption()}
-        {this.getCountries()}
-      </select>
-    );
+    if (isMaterial) {
+      attrs.onChange = (event, index, value) => {
+        this.setState({
+          selectedValue: value
+        });
+        console.log(value);
+        onChange(value);
+      }
+    }
+    else {
+      attrs.onChange = (e) => onChange(e.target.value)
+      return (
+        <select {...attrs}>
+          {this.getDefaultOption()}
+          {this.getCountries()}
+        </select>
+      );
+    }
   }
 }
 CountryDropdown.propTypes = {
@@ -73,7 +99,8 @@ CountryDropdown.propTypes = {
   labelType: React.PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   valueType: React.PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   whitelist: React.PropTypes.array,
-  blacklist: React.PropTypes.array
+  blacklist: React.PropTypes.array,
+  isMaterial: React.PropTypes.bool
 };
 CountryDropdown.defaultProps = {
   value: '',
@@ -82,33 +109,34 @@ CountryDropdown.defaultProps = {
   classes: '',
   showDefaultOption: true,
   defaultOptionLabel: 'Select Country',
-  onChange: () => {},
+  onChange: () => { },
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
   whitelist: [],
-  blacklist: []
+  blacklist: [],
+  isMaterial: false
 };
 
 
 class RegionDropdown extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = { regions: this.getRegions(props.country) };
     this.getRegions = this.getRegions.bind(this);
   }
 
-  shouldComponentUpdate (nextProps) {
+  shouldComponentUpdate(nextProps) {
     return nextProps.country !== this.props.country;
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.country === this.props.country) {
       return;
     }
     this.setState({ regions: this.getRegions(nextProps.country) })
   }
 
-  getRegions (country) {
+  getRegions(country) {
     if (!country) {
       return [];
     }
@@ -129,7 +157,7 @@ class RegionDropdown extends React.Component {
     });
   }
 
-  getRegionList () {
+  getRegionList() {
     const { labelType, valueType } = this.props;
     return this.state.regions.map(({ regionName, regionShortCode }) => {
       const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
@@ -140,7 +168,7 @@ class RegionDropdown extends React.Component {
 
   // there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
   // a "default" option which shows
-  getDefaultOption () {
+  getDefaultOption() {
     const { blankOptionLabel, showDefaultOption, defaultOptionLabel, country } = this.props;
     if (!country) {
       return <option value="">{blankOptionLabel}</option>;
@@ -151,7 +179,7 @@ class RegionDropdown extends React.Component {
     return null;
   }
 
-  render () {
+  render() {
     const { value, country, onChange, id, name, classes, disableWhenEmpty } = this.props;
     const disabled = (disableWhenEmpty && country == '');
     const attrs = {
@@ -187,7 +215,8 @@ RegionDropdown.propTypes = {
   onChange: React.PropTypes.func,
   labelType: React.PropTypes.string,
   valueType: React.PropTypes.string,
-  disableWhenEmpty: React.PropTypes.bool
+  disableWhenEmpty: React.PropTypes.bool,
+  isMaterial: React.PropTypes.bool
 };
 RegionDropdown.defaultProps = {
   country: '',
@@ -198,11 +227,12 @@ RegionDropdown.defaultProps = {
   blankOptionLabel: '-',
   showDefaultOption: true,
   defaultOptionLabel: 'Select Region',
-  onChange: () => {},
+  onChange: () => { },
   countryValueType: C.DISPLAY_TYPE_FULL,
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
-  disableWhenEmpty: false
+  disableWhenEmpty: false,
+  isMaterial: false
 };
 
 
@@ -211,7 +241,7 @@ RegionDropdown.defaultProps = {
 
 // called on country field initialization. It reduces the subset of countries depending on whether the user
 // specified a white/blacklist
-function _filterCountries (countries, whitelist, blacklist) {
+function _filterCountries(countries, whitelist, blacklist) {
   var filteredCountries = countries;
 
   // N.B. I'd rather use ES6 array.includes() but it requires a polyfill on various browsers. Bit surprising that
