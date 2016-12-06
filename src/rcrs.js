@@ -27,7 +27,6 @@ class CountryDropdown extends React.Component {
     return this.state.countries.map(([countryName, countrySlug]) => {
       const label = (labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName;
       const value = (valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName;
-
       if (isMaterial) {
         return (
           <MenuItem value={value} key={countrySlug}
@@ -35,8 +34,8 @@ class CountryDropdown extends React.Component {
         )
       }
       return (
-        <option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
-          {(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}
+        <option value={value} key={countrySlug}>
+          {label}
         </option>
       );
     });
@@ -88,7 +87,6 @@ class CountryDropdown extends React.Component {
       )
     }
     else {
-      attrs.onChange = (e) => onChange(e.target.value)
       return (
         <select {...attrs}>
           {this.getDefaultOption()}
@@ -175,11 +173,8 @@ class RegionDropdown extends React.Component {
     return this.state.regions.map(({ regionName, regionShortCode }) => {
       const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
       const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
-
       if (isMaterial) {
-        return <MenuItem value={value} key={regionName}
-          primaryText={label} />
-
+        return <MenuItem value={value} key={regionName} primaryText={label} />
       }
       return <option value={value} key={regionName}>{label}</option>;
     });
@@ -212,7 +207,10 @@ class RegionDropdown extends React.Component {
     const attrs = {
       name,
       defaultValue: value,
-      disabled
+      disabled,
+      onChange: (e) => {
+        onChange(e.target.value)
+      }
     };
     if (id) {
       attrs.id = id;
@@ -225,9 +223,9 @@ class RegionDropdown extends React.Component {
         this.setState({
           selectedRegion: value
         });
+        console.log(this.state.selectedRegion);
         onChange(value);
       }
-
       return (
         <SelectField {...attrs} value={this.state.selectedRegion}>
           {this.getDefaultOption()}

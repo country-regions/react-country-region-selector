@@ -27,15 +27,14 @@ class CountryDropdown extends React.Component {
     return this.state.countries.map(([countryName, countrySlug]) => {
       const label = labelType === C.DISPLAY_TYPE_SHORT ? countrySlug : countryName;
       const value = valueType === C.DISPLAY_TYPE_SHORT ? countrySlug : countryName;
-
       if (isMaterial) {
         return React.createElement(MenuItem, { value: value, key: countrySlug,
           primaryText: label });
       }
       return React.createElement(
         'option',
-        { value: valueType === C.DISPLAY_TYPE_SHORT ? countrySlug : countryName, key: countrySlug },
-        labelType === C.DISPLAY_TYPE_SHORT ? countrySlug : countryName
+        { value: value, key: countrySlug },
+        label
       );
     });
   }
@@ -85,7 +84,6 @@ class CountryDropdown extends React.Component {
         this.getCountries()
       );
     } else {
-      attrs.onChange = e => onChange(e.target.value);
       return React.createElement(
         'select',
         attrs,
@@ -173,10 +171,8 @@ class RegionDropdown extends React.Component {
     return this.state.regions.map(({ regionName, regionShortCode }) => {
       const label = labelType === C.DISPLAY_TYPE_FULL ? regionName : regionShortCode;
       const value = valueType === C.DISPLAY_TYPE_FULL ? regionName : regionShortCode;
-
       if (isMaterial) {
-        return React.createElement(MenuItem, { value: value, key: regionName,
-          primaryText: label });
+        return React.createElement(MenuItem, { value: value, key: regionName, primaryText: label });
       }
       return React.createElement(
         'option',
@@ -221,7 +217,10 @@ class RegionDropdown extends React.Component {
     const attrs = {
       name,
       defaultValue: value,
-      disabled
+      disabled,
+      onChange: e => {
+        onChange(e.target.value);
+      }
     };
     if (id) {
       attrs.id = id;
@@ -234,9 +233,9 @@ class RegionDropdown extends React.Component {
         this.setState({
           selectedRegion: value
         });
+        console.log(this.state.selectedRegion);
         onChange(value);
       };
-
       return React.createElement(
         SelectField,
         _extends({}, attrs, { value: this.state.selectedRegion }),
