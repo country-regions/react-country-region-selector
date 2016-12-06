@@ -5,7 +5,8 @@
   "main": "lib/rcrs.js",
   "scripts": {
     "test": "No scripts attached",
-    "build": "babel ./src/rcrs.js --presets babel-preset-react --out-dir lib/"
+    "build-react": "babel ./src/ --presets react --out-dir react/",
+    "build-package": "babel ./react/ --presets babel-preset-es2015 --out-dir lib/"
   },
   "repository": {
     "type": "git",
@@ -47,7 +48,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
-    "babel-loader": "^6.2.1",
+    "babel-loader": "^6.2.8",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "chai": "^3.4.1",
