@@ -198,7 +198,7 @@ class RegionDropdown extends React.Component {
     }
     if (showDefaultOption) {
       if (isMaterial) {
-        return React.createElement(MenuItem, { value: '', key: defaultOptionLabel,
+        return React.createElement(MenuItem, { key: 'default',
           primaryText: defaultOptionLabel });
       }
       return React.createElement(

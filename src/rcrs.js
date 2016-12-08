@@ -192,7 +192,7 @@ class RegionDropdown extends React.Component {
     }
     if (showDefaultOption) {
       if (isMaterial) {
-        return <MenuItem value="" key={defaultOptionLabel}
+        return <MenuItem key="default"
           primaryText={defaultOptionLabel} />
       }
       return <option value="">{defaultOptionLabel}</option>;
