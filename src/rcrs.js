@@ -131,7 +131,6 @@ class RegionDropdown extends React.Component {
     super(props);
     this.state = {
       regions: this.getRegions(props.country),
-      selectedRegion: '',
     };
     this.getRegions = this.getRegions.bind(this);
   }
@@ -144,7 +143,7 @@ class RegionDropdown extends React.Component {
     if (nextProps.country === this.props.country) {
       return;
     }
-    this.setState({ regions: this.getRegions(nextProps.country) })
+    this.setState({ regions: this.getRegions(nextProps.country), selectedRegion: '' })
   }
 
   getRegions(country) {
@@ -227,7 +226,7 @@ class RegionDropdown extends React.Component {
         onChange(value);
       }
       return (
-        <SelectField {...attrs}>
+        <SelectField {...attrs} value={this.state.selectedRegion}>
           {this.getDefaultOption()}
           {this.getRegionList()}
         </SelectField>
