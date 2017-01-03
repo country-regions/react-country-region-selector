@@ -14,4 +14,3 @@ first (i.e. generate the src/source-data.js file first) then package it up. Unti
 gulp customBuild 
 gulp build
 ```
-

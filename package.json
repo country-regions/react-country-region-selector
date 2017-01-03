@@ -1,6 +1,6 @@
 {
   "name": "react-country-region-selector",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CountryDropdown and RegionDropdown React components for your forms.",
   "main": "lib/rcrs.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/benkeen/react-country-region-dropdowns.git"
+    "url": "https://github.com/benkeen/react-country-region-selector.git"
   },
   "keywords": [
     "country",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "https://github.com/benkeen/react-country-region-dropdowns/issues"
+    "url": "https://github.com/benkeen/react-country-region-selector/issues"
   },
   "browserify-shim": {
     "react": "global:React"
@@ -44,7 +44,7 @@
     "reactify": "^1.1.1"
   },
   "devDependencies": {
-    "country-region-data": "^1.3.1",
+    "country-region-data": "^1.3.4",
     "gulp": "^3.9.1",
     "gulp-param": "^1.0.3",
     "gulp-rename": "^1.2.2",

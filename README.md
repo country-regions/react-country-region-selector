@@ -240,6 +240,7 @@ you see some invalid characters appearing in the dropdown, make sure you have UT
 - `gulp --countries="UK,US"` - generate a custom build of the script in the `/lib` and `/dist` folder containing only those
 countries you specify here. This *seriously* reduces file size (60KB down to as small as 16KB), so if you can do it, do it.
 
+
 ### Other
 
 This repo uses the extremely handy [react-component-gulp-tasks](https://github.com/JedWatson/react-component-gulp-tasks) 
@@ -249,8 +250,9 @@ Big thanks to Jed Watson there.
 
 ### Changelog
 
-- `1.0.2` - *October 16, 2016* - Fix issue where source-data.js in lib had no country data.
-- `1.0.0` - *July 1, 2016* - initial version.
+- `1.0.3` - Jan 2, 2016 - updated country-region-data, repo link fix. 
+- `1.0.2` - October 16, 2016 - Fix issue where source-data.js in lib had no country data.
+- `1.0.0` - July 1, 2016 - initial version.
 
 
 ### License
