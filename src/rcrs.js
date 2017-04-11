@@ -98,7 +98,7 @@ class RegionDropdown extends React.Component {
   }
 
   shouldComponentUpdate (nextProps) {
-    return nextProps.country !== this.props.country;
+    return (nextProps.country !== this.props.country) || (nextProps.value !== this.props.value);
   }
 
   componentWillReceiveProps (nextProps) {
