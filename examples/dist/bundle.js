@@ -104,7 +104,7 @@ var CountryDropdown = (function (_React$Component) {
 
       var attrs = {
         name: name,
-        defaultValue: value,
+        value: value,
         onChange: function onChange(e) {
           return _onChange(e.target.value);
         }
@@ -274,7 +274,7 @@ var RegionDropdown = (function (_React$Component2) {
       var disabled = disableWhenEmpty && country == '';
       var attrs = {
         name: name,
-        defaultValue: value,
+        value: value,
         onChange: function onChange(e) {
           return _onChange2(e.target.value);
         },
