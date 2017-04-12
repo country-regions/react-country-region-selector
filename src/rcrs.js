@@ -227,4 +227,4 @@ function _filterCountries (countries, whitelist, blacklist) {
 }
 
 
-export { CountryDropdown, RegionDropdown };
+export { CountryDropdown, RegionDropdown, CountryRegionData };
