@@ -44,7 +44,7 @@ class CountryDropdown extends React.Component {
     const { name, id, classes, value, onChange } = this.props;
     const attrs = {
       name,
-      defaultValue: value,
+      value,
       onChange: (e) => onChange(e.target.value)
     };
     if (id) {
@@ -98,7 +98,7 @@ class RegionDropdown extends React.Component {
   }
 
   shouldComponentUpdate (nextProps) {
-    return nextProps.country !== this.props.country;
+    return (nextProps.country !== this.props.country) || (nextProps.value !== this.props.value);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -156,7 +156,7 @@ class RegionDropdown extends React.Component {
     const disabled = (disableWhenEmpty && country == '');
     const attrs = {
       name,
-      defaultValue: value,
+      value,
       onChange: (e) => onChange(e.target.value),
       disabled
     };
