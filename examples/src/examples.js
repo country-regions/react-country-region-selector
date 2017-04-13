@@ -68,13 +68,13 @@ class ExamplesPage extends React.Component {
                 <RegionDropdown
                   showDefaultOption={false}
                   country={this.getCountryValue(2)}
-                  region={this.getRegionValue(2)}
+                  value={this.getRegionValue(2)}
                   onChange={(val) => this.selectRegion(2, val)} />
               </div>
             );
           },
           codeVisible: false,
-          code: '&lt;CountryDropdown\n  showDefaultOption={false}\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  showDefaultOption={false}\n  country={country}\n  region={region}\n  onChange={selectRegion} />',
+          code: '&lt;CountryDropdown\n  showDefaultOption={false}\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  showDefaultOption={false}\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
           country: '',
           region: ''
         },
