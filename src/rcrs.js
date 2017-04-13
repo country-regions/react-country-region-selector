@@ -1,6 +1,6 @@
 import React from 'react';
 import CountryRegionData from './source-data.js';
-
+import PropTypes from 'prop-types';
 
 const C = {
   DISPLAY_TYPE_FULL: 'full',
@@ -63,17 +63,17 @@ class CountryDropdown extends React.Component {
   }
 }
 CountryDropdown.propTypes = {
-  value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
-  name: React.PropTypes.string,
-  id: React.PropTypes.string,
-  classes: React.PropTypes.string,
-  showDefaultOption: React.PropTypes.bool,
-  defaultOptionLabel: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
-  onChange: React.PropTypes.func,
-  labelType: React.PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
-  valueType: React.PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
-  whitelist: React.PropTypes.array,
-  blacklist: React.PropTypes.array
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  name: PropTypes.string,
+  id: PropTypes.string,
+  classes: PropTypes.string,
+  showDefaultOption: PropTypes.bool,
+  defaultOptionLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onChange: PropTypes.func,
+  labelType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
+  valueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
+  whitelist: PropTypes.array,
+  blacklist: PropTypes.array
 };
 CountryDropdown.defaultProps = {
   value: '',
@@ -176,18 +176,18 @@ class RegionDropdown extends React.Component {
   }
 }
 RegionDropdown.propTypes = {
-  country: React.PropTypes.string,
-  value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
-  name: React.PropTypes.string,
-  id: React.PropTypes.string,
-  classes: React.PropTypes.string,
-  blankOptionLabel: React.PropTypes.string,
-  showDefaultOption: React.PropTypes.bool,
-  defaultOptionLabel: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  labelType: React.PropTypes.string,
-  valueType: React.PropTypes.string,
-  disableWhenEmpty: React.PropTypes.bool
+  country: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  name: PropTypes.string,
+  id: PropTypes.string,
+  classes: PropTypes.string,
+  blankOptionLabel: PropTypes.string,
+  showDefaultOption: PropTypes.bool,
+  defaultOptionLabel: PropTypes.string,
+  onChange: PropTypes.func,
+  labelType: PropTypes.string,
+  valueType: PropTypes.string,
+  disableWhenEmpty: PropTypes.bool
 };
 RegionDropdown.defaultProps = {
   country: '',
