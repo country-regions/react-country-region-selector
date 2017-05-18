@@ -209,7 +209,7 @@ define([
 
 | Parameter | Required? | Default | Type | Description |
 |:---|:---:|:---|:---|:---|
-| countryValue | Yes | `""` | `string` | The currently selected country. |
+| country | Yes | `""` | `string` | The currently selected country. |
 | value | Yes | `""` | `string` | The currently selected region. |
 | onChange | Yes | - | `function` | Callback that gets called when the user selects a region. Use this to store the value in whatever store you're using (or just the parent component state). |
 | name | No | `"rcrs-region"` | `string` | The name attribute of the generated select box. |

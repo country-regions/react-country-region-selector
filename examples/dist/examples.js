@@ -98,14 +98,14 @@ var ExamplesPage = (function (_React$Component) {
             _react2['default'].createElement(_libRcrs.RegionDropdown, {
               showDefaultOption: false,
               country: _this.getCountryValue(2),
-              region: _this.getRegionValue(2),
+              value: _this.getRegionValue(2),
               onChange: function (val) {
                 return _this.selectRegion(2, val);
               } })
           );
         },
         codeVisible: false,
-        code: '&lt;CountryDropdown\n  showDefaultOption={false}\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  showDefaultOption={false}\n  country={country}\n  region={region}\n  onChange={selectRegion} />',
+        code: '&lt;CountryDropdown\n  showDefaultOption={false}\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  showDefaultOption={false}\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
         country: '',
         region: ''
       }, {
@@ -1349,7 +1349,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   function createChainableTypeChecker(validate) {
     if (process.env.NODE_ENV !== 'production') {
       var manualPropTypeCallCache = {};
-      var manualPropTypeWarningCount = 0;
     }
     function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
       componentName = componentName || ANONYMOUS;
@@ -1367,11 +1366,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
         } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
-          if (
-            !manualPropTypeCallCache[cacheKey] &&
-            // Avoid spamming the console because they are often not actionable except for lib authors
-            manualPropTypeWarningCount < 3
-          ) {
+          if (!manualPropTypeCallCache[cacheKey]) {
             warning(
               false,
               'You are manually calling a React.PropTypes validation ' +
@@ -1383,7 +1378,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
               componentName
             );
             manualPropTypeCallCache[cacheKey] = true;
-            manualPropTypeWarningCount++;
           }
         }
       }
