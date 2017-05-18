@@ -203,7 +203,7 @@ define([
 | valueType | No | `"full"` | `string` | Either `"full"` or `"short"`. This controls the actual `value` attribute of  each `<option>` in the dropdown. Please note, if you set this to `"short"` you will need to let the corresponding `<RegionDropdown />` component know as well, by passing a `countryValueType="short"` attribute. |
 | whitelist | No | `[]` | `array` | This setting lets you target specific countries to appear in the dropdown. Only those specified here will appear. This should be an array of country shortcodes. See the [country-region-data](https://github.com/benkeen/country-region-data) repo for the data and the shortcodes. |
 | blacklist | No | `[]` | `array` | Lets you target countries that should *not* appear in the dropdown. Should also be an array of country shortcodes. |
-
+| disabled | No | `false` | `boolean` | Disables the country field. |
 
 ```<RegionDropdown />```
 
@@ -223,6 +223,7 @@ define([
 | labelType | No | `"full"` | `string` | Either `"full"` or `"short"`. This governs whether you see region names or region short codes in the dropdown. |
 | valueType | No | `"full"` | `string` | Either `"full"` or `"short"`. This controls the actual `value` attribute of each `<option>` in the dropdown.  |
 | disableWhenEmpty | No | `false` | `boolean` | Disables the region field when the user hasn't selected a country. |
+| disabled | No | `false` | `boolean` | Disables the region field. If set to true, it overrides `disableWhenEmpty` |
 
 
 ### Other Stuff
@@ -250,6 +251,7 @@ Big thanks to Jed Watson there.
 
 ### Changelog
 
+- `1.1.0` - May 18, 2017 - dependency updates. `disabled` option added to `<CountryDropdown />` and `<RegionDropdown />`.
 - `1.0.4` - April 12, 2017 - bug fix. Thanks @bebbi and @tchaffee!
 - `1.0.3` - Jan 2, 2016 - updated country-region-data, repo link fix. 
 - `1.0.2` - October 16, 2016 - Fix issue where source-data.js in lib had no country data.

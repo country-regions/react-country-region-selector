@@ -198,7 +198,32 @@ class ExamplesPage extends React.Component {
           code: "&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry}\n  blacklist={['AF','AX','AL','DZ','AS','AD','AO','AI','AQ','AG']} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion} />",
           country: '',
           region: ''
+        },
+
+        {
+          label: 'Explicitly disabling the country and region dropdowns (with defaults).',
+          jsx: () => {
+            return (
+            <div>
+              <CountryDropdown
+                value={this.getCountryValue(8)}
+                onChange={(val) => this.selectCountry(8, val)}
+                blacklist={['AF','AX','AL','DZ','AS','AD','AO','AI','AQ','AG','AR','AM','AW','AU','AT','AZ']}
+                disabled={true} />
+              <RegionDropdown
+                country={this.getCountryValue(8)}
+                value={this.getRegionValue(8)}
+                onChange={(val) => this.selectRegion(8, val)}
+                disabled={true} />
+            </div>
+            );
+          },
+          codeVisible: false,
+          code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
+          country: 'United States',
+          region: 'Washington'
         }
+
       ]
     };
   }

@@ -41,11 +41,12 @@ class CountryDropdown extends React.Component {
   }
 
   render () {
-    const { name, id, classes, value, onChange } = this.props;
+    const { name, id, classes, value, onChange, disabled } = this.props;
     const attrs = {
       name,
       value,
-      onChange: (e) => onChange(e.target.value)
+      onChange: (e) => onChange(e.target.value),
+      disabled
     };
     if (id) {
       attrs.id = id;
@@ -73,7 +74,8 @@ CountryDropdown.propTypes = {
   labelType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   valueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   whitelist: PropTypes.array,
-  blacklist: PropTypes.array
+  blacklist: PropTypes.array,
+  disabled: PropTypes.bool
 };
 CountryDropdown.defaultProps = {
   value: '',
@@ -86,7 +88,8 @@ CountryDropdown.defaultProps = {
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
   whitelist: [],
-  blacklist: []
+  blacklist: [],
+  disabled: false
 };
 
 
@@ -152,13 +155,13 @@ class RegionDropdown extends React.Component {
   }
 
   render () {
-    const { value, country, onChange, id, name, classes, disableWhenEmpty } = this.props;
-    const disabled = (disableWhenEmpty && country == '');
+    const { value, country, onChange, id, name, classes, disabled, disableWhenEmpty } = this.props;
+    const isDisabled = disabled || (disableWhenEmpty && country == '');
     const attrs = {
       name,
       value,
       onChange: (e) => onChange(e.target.value),
-      disabled
+      disabled: isDisabled
     };
     if (id) {
       attrs.id = id;
@@ -187,6 +190,7 @@ RegionDropdown.propTypes = {
   onChange: PropTypes.func,
   labelType: PropTypes.string,
   valueType: PropTypes.string,
+  disabled: PropTypes.bool,
   disableWhenEmpty: PropTypes.bool
 };
 RegionDropdown.defaultProps = {
@@ -202,6 +206,7 @@ RegionDropdown.defaultProps = {
   countryValueType: C.DISPLAY_TYPE_FULL,
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
+  disabled: false,
   disableWhenEmpty: false
 };
 
