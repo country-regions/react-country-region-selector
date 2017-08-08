@@ -251,6 +251,7 @@ Big thanks to Jed Watson there.
 
 ### Changelog
 
+- `1.2.0` - Aug 7, 2017 - updated country-region-data; dependency updates. 
 - `1.1.0` - May 18, 2017 - dependency updates. `disabled` option added to `<CountryDropdown />` and `<RegionDropdown />`.
 - `1.0.4` - April 12, 2017 - bug fix. Thanks @bebbi and @tchaffee!
 - `1.0.3` - Jan 2, 2016 - updated country-region-data, repo link fix. 

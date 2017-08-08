@@ -70,7 +70,7 @@ gulp.task('customBuild', function () {
     .pipe(gulp.dest('src'))
 });
 
-var taskConfig = {
+const taskConfig = {
   component: {
     name: 'rcrs',
     src: 'src',
