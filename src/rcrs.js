@@ -118,7 +118,13 @@ class RegionDropdown extends React.Component {
 
     const { countryValueType } = this.props;
     const searchIndex = (countryValueType === C.DISPLAY_TYPE_FULL) ? 0 : 1;
-    const regions = CountryRegionData.find((i) => { return i[searchIndex] === country; });
+    let regions = [];
+    CountryRegionData.forEach((i) => {
+      if (i[searchIndex] === country) {
+        regions = i;
+        return;
+      }
+    });
 
     // this could happen if the user is managing the state of the region/country themselves and screws up passing
     // in a valid country
