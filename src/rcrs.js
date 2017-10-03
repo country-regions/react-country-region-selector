@@ -45,7 +45,7 @@ class CountryDropdown extends React.Component {
     const attrs = {
       name,
       value,
-      onChange: (e) => onChange(e.target.value),
+      onChange: (e) => onChange(e.target.value, e),
       disabled
     };
     if (id) {
@@ -166,7 +166,7 @@ class RegionDropdown extends React.Component {
     const attrs = {
       name,
       value,
-      onChange: (e) => onChange(e.target.value),
+      onChange: (e) => onChange(e.target.value, e),
       disabled: isDisabled
     };
     if (id) {
