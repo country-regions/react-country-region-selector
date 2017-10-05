@@ -251,6 +251,7 @@ Big thanks to Jed Watson there.
 
 ### Changelog
 
+- `1.2.2` - Oct 4, 2017 - Update to pass event on change. Thanks [@robertnealan](https://github.com/robertnealan)! 
 - `1.2.1` - Sept 6, 2017 - IE11 bug fix.
 - `1.2.0` - Aug 7, 2017 - updated country-region-data; dependency updates. 
 - `1.1.0` - May 18, 2017 - dependency updates. `disabled` option added to `<CountryDropdown />` and `<RegionDropdown />`.
