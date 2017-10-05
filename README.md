@@ -233,7 +233,7 @@ you see some invalid characters appearing in the dropdown, make sure you have UT
 <code>&lt;head&gt;</code>, like so: ```<meta charset="UTF-8">```
 - *Data source*: the list of countries and regions is maintained separately and pulled from the 
 [country-region-data](https://github.com/benkeen/country-region-data) repo. 
-
+- *Return values*: on an onChange event `event.target.value` is returned as the first value and the full `event` as the second.
 
 ### Gulp commands
 
