@@ -37,10 +37,12 @@
       "reactify"
     ]
   },
+  "peerDependencies": {
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0"
+  },
   "dependencies": {
     "prop-types": "^15.5.8",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
     "reactify": "^1.1.1"
   },
   "devDependencies": {
@@ -50,7 +52,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-template": "^4.0.0",
     "gulp-util": "^3.0.7",
+    "react": "^15.6.1",
     "react-component-gulp-tasks": "^0.7.7",
+    "react-dom": "^15.6.1",
     "run-sequence": "^1.2.1",
     "yargs": "^4.7.1"
   }
