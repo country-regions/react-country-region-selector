@@ -198,6 +198,7 @@ define([
 | id | No | `""` | `string` | The ID of the generated select box. Not added by default. |
 | classes | No | `""` | `string` | Any additional space-separated classes you want to add. |
 | showDefaultOption | No | `true` | `boolean` | Whether you want to show a default option. |
+| mainOptions | No | `[]` | `array` | Lets you target countries that should appear at the top of the dropdown. Should also be an array of country shortcodes. |
 | defaultOptionLabel | No | `"Select Country"` | `string` | The default option label. |
 | labelType | No | `"full"` | `string` | Either `"full"` or `"short"`. This governs whether you see country names or country short codes in the dropdown. |
 | valueType | No | `"full"` | `string` | Either `"full"` or `"short"`. This controls the actual `value` attribute of  each `<option>` in the dropdown. Please note, if you set this to `"short"` you will need to let the corresponding `<RegionDropdown />` component know as well, by passing a `countryValueType="short"` attribute. |
