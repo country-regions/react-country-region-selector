@@ -251,6 +251,7 @@ Big thanks to Jed Watson there.
 
 ### Changelog
 
+- `1.2.4` - Jan 22, 2018 - Added prop to add custom options in the region dropdown.
 - `1.2.3` - Nov 7, 2017. Country data updates. React moved to peer dependency, thanks [@iamdey](https://github.com/iamdey)!
 - `1.2.2` - Oct 4, 2017 - Update to pass event on change. Thanks [@robertnealan](https://github.com/robertnealan)! 
 - `1.2.1` - Sept 6, 2017 - IE11 bug fix.

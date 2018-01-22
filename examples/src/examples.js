@@ -222,8 +222,29 @@ class ExamplesPage extends React.Component {
           code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
           country: 'United States',
           region: 'Washington'
-        }
+        },
 
+        {
+          label: 'With custom options in the dropdown.',
+          jsx: () => {
+            return (
+              <div>
+                <CountryDropdown
+                  value={this.getCountryValue(0)}
+                  onChange={(val) => this.selectCountry(0, val)}/>
+                <RegionDropdown
+                  country={this.getCountryValue(0)}
+                  value={this.getRegionValue(0)}
+                  customOptions={['All', 'Yet another custom option']}
+                  onChange={(val) => this.selectRegion(0, val)}/>
+              </div>
+            );
+          },
+          codeVisible: false,
+          code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'All\', \'Yet another custom option\']}/>',
+          country: '',
+          region: ''
+        },
       ]
     };
   }
@@ -235,6 +256,8 @@ class ExamplesPage extends React.Component {
   }
 
   selectRegion (exampleIndex, val) {
+      console.log('val', val)
+      console.log('exampleIndex', exampleIndex)
     const updatedValues = this.state.examples;
     updatedValues[exampleIndex].region = val;
     this.setState({ examples: updatedValues });

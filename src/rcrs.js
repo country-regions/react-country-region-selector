@@ -139,8 +139,18 @@ class RegionDropdown extends React.Component {
   }
 
   getRegionList () {
-    const { labelType, valueType } = this.props;
-    return this.state.regions.map(({ regionName, regionShortCode }) => {
+    const { labelType, valueType, customOptions, countryValueType } = this.props;
+    const { regions } = this.state;
+
+    if (countryValueType && customOptions.length) {
+      customOptions.forEach((option) => {
+        if (option) {
+          regions.push({regionName: option, regionShortCode: option});
+        }
+      });
+    }
+
+    return regions.map(({ regionName, regionShortCode }) => {
       const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
       const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
       return <option value={value} key={regionName}>{label}</option>;
@@ -197,7 +207,8 @@ RegionDropdown.propTypes = {
   labelType: PropTypes.string,
   valueType: PropTypes.string,
   disabled: PropTypes.bool,
-  disableWhenEmpty: PropTypes.bool
+  disableWhenEmpty: PropTypes.bool,
+  customOptions: PropTypes.array,
 };
 RegionDropdown.defaultProps = {
   country: '',
@@ -213,7 +224,8 @@ RegionDropdown.defaultProps = {
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
   disabled: false,
-  disableWhenEmpty: false
+  disableWhenEmpty: false,
+  customOptions: []
 };
 
 
