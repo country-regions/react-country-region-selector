@@ -1197,7 +1197,7 @@ var RegionDropdown = (function (_React$Component2) {
 
       // this could happen if the user is managing the state of the region/country themselves and screws up passing
       // in a valid country
-      if (!regions || regions.length === 0) {
+      if (!regions) {
         console.error('Error. Unknown country passed: ' + country + '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionDropdown');
         return [];
       }
