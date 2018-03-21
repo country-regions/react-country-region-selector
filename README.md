@@ -194,6 +194,7 @@ define([
 |:---|:---:|:---|:---|:---|
 | value | Yes | `""` | `string` | The currently selected country. This should either be the shortcode, or the full country name depending on what you're using for your value attribute (see the `valueType` option). By default it's the full country name. |
 | onChange | Yes | `-` | `function` | Callback that gets called when the user selects a country. Use this to store the value in whatever store you're using (or just the parent component state). |
+| onBlur | No | `-` | `function` | Callback that gets called when the user blurs off the country field. |
 | name | No | `"rcrs-country"` | `string` | The name attribute of the generated select box. |
 | id | No | `""` | `string` | The ID of the generated select box. Not added by default. |
 | classes | No | `""` | `string` | Any additional space-separated classes you want to add. |
@@ -212,7 +213,7 @@ define([
 | country | Yes | `""` | `string` | The currently selected country. |
 | value | Yes | `""` | `string` | The currently selected region. |
 | onChange | Yes | - | `function` | Callback that gets called when the user selects a region. Use this to store the value in whatever store you're using (or just the parent component state). |
-| onBlur | No | - | `function` | Callback that gets called when the user blurs of the region field. |
+| onBlur | No | - | `function` | Callback that gets called when the user blurs off the region field. |
 | name | No | `"rcrs-region"` | `string` | The name attribute of the generated select box. |
 | id | No | `""` | `string` | The ID of the generated select box. Not added by default. |
 | classes | No | `""` | `string` | Any additional space-separated classes you want to add. |
