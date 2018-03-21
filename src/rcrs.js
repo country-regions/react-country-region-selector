@@ -41,11 +41,12 @@ class CountryDropdown extends React.Component {
   }
 
   render () {
-    const { name, id, classes, value, onChange, disabled } = this.props;
+    const { name, id, classes, value, onChange, onBlur, disabled } = this.props;
     const attrs = {
       name,
       value,
       onChange: (e) => onChange(e.target.value, e),
+      onBlur: (e) => onBlur(e),
       disabled
     };
     if (id) {
@@ -71,6 +72,7 @@ CountryDropdown.propTypes = {
   showDefaultOption: PropTypes.bool,
   defaultOptionLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   labelType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   valueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   whitelist: PropTypes.array,
@@ -85,6 +87,7 @@ CountryDropdown.defaultProps = {
   showDefaultOption: true,
   defaultOptionLabel: 'Select Country',
   onChange: () => {},
+  onBlur: () => {},
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
   whitelist: [],
@@ -161,12 +164,13 @@ class RegionDropdown extends React.Component {
   }
 
   render () {
-    const { value, country, onChange, id, name, classes, disabled, disableWhenEmpty } = this.props;
+    const { value, country, onChange, onBlur, id, name, classes, disabled, disableWhenEmpty } = this.props;
     const isDisabled = disabled || (disableWhenEmpty && country == '');
     const attrs = {
       name,
       value,
       onChange: (e) => onChange(e.target.value, e),
+      onBlur: (e) => onBlur(e),
       disabled: isDisabled
     };
     if (id) {
@@ -194,6 +198,7 @@ RegionDropdown.propTypes = {
   showDefaultOption: PropTypes.bool,
   defaultOptionLabel: PropTypes.string,
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   labelType: PropTypes.string,
   valueType: PropTypes.string,
   disabled: PropTypes.bool,
@@ -209,6 +214,7 @@ RegionDropdown.defaultProps = {
   showDefaultOption: true,
   defaultOptionLabel: 'Select Region',
   onChange: () => {},
+  onBlur: () => {},
   countryValueType: C.DISPLAY_TYPE_FULL,
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,

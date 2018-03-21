@@ -1095,6 +1095,7 @@ var CountryDropdown = (function (_React$Component) {
       var classes = _props3.classes;
       var value = _props3.value;
       var _onChange = _props3.onChange;
+      var _onBlur = _props3.onBlur;
       var disabled = _props3.disabled;
 
       var attrs = {
@@ -1102,6 +1103,9 @@ var CountryDropdown = (function (_React$Component) {
         value: value,
         onChange: function onChange(e) {
           return _onChange(e.target.value, e);
+        },
+        onBlur: function onBlur(e) {
+          return _onBlur(e);
         },
         disabled: disabled
       };
@@ -1132,6 +1136,7 @@ CountryDropdown.propTypes = {
   showDefaultOption: _propTypes2['default'].bool,
   defaultOptionLabel: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].number]),
   onChange: _propTypes2['default'].func,
+  onBlur: _propTypes2['default'].func,
   labelType: _propTypes2['default'].oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   valueType: _propTypes2['default'].oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
   whitelist: _propTypes2['default'].array,
@@ -1146,6 +1151,7 @@ CountryDropdown.defaultProps = {
   showDefaultOption: true,
   defaultOptionLabel: 'Select Country',
   onChange: function onChange() {},
+  onBlur: function onBlur() {},
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
   whitelist: [],
@@ -1268,6 +1274,7 @@ var RegionDropdown = (function (_React$Component2) {
       var value = _props6.value;
       var country = _props6.country;
       var _onChange2 = _props6.onChange;
+      var _onBlur2 = _props6.onBlur;
       var id = _props6.id;
       var name = _props6.name;
       var classes = _props6.classes;
@@ -1280,6 +1287,9 @@ var RegionDropdown = (function (_React$Component2) {
         value: value,
         onChange: function onChange(e) {
           return _onChange2(e.target.value, e);
+        },
+        onBlur: function onBlur(e) {
+          return _onBlur2(e);
         },
         disabled: isDisabled
       };
@@ -1312,6 +1322,7 @@ RegionDropdown.propTypes = {
   showDefaultOption: _propTypes2['default'].bool,
   defaultOptionLabel: _propTypes2['default'].string,
   onChange: _propTypes2['default'].func,
+  onBlur: _propTypes2['default'].func,
   labelType: _propTypes2['default'].string,
   valueType: _propTypes2['default'].string,
   disabled: _propTypes2['default'].bool,
@@ -1327,6 +1338,7 @@ RegionDropdown.defaultProps = {
   showDefaultOption: true,
   defaultOptionLabel: 'Select Region',
   onChange: function onChange() {},
+  onBlur: function onBlur() {},
   countryValueType: C.DISPLAY_TYPE_FULL,
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,

@@ -212,6 +212,7 @@ define([
 | country | Yes | `""` | `string` | The currently selected country. |
 | value | Yes | `""` | `string` | The currently selected region. |
 | onChange | Yes | - | `function` | Callback that gets called when the user selects a region. Use this to store the value in whatever store you're using (or just the parent component state). |
+| onBlur | No | - | `function` | Callback that gets called when the user blurs of the region field. |
 | name | No | `"rcrs-region"` | `string` | The name attribute of the generated select box. |
 | id | No | `""` | `string` | The ID of the generated select box. Not added by default. |
 | classes | No | `""` | `string` | Any additional space-separated classes you want to add. |
@@ -235,6 +236,7 @@ you see some invalid characters appearing in the dropdown, make sure you have UT
 [country-region-data](https://github.com/benkeen/country-region-data) repo. 
 - *Return values*: on an onChange event `event.target.value` is returned as the first value and the full `event` as the second.
 
+
 ### Gulp commands
 
 - `gulp` - regenerate everything.
@@ -251,6 +253,7 @@ Big thanks to Jed Watson there.
 
 ### Changelog
 
+- `1.3.0` - Mar 20, 2018. Bug fix for invalid country, [@n-david](https://github.com/n-david)! onBlur event added.
 - `1.2.3` - Nov 7, 2017. Country data updates. React moved to peer dependency, thanks [@iamdey](https://github.com/iamdey)!
 - `1.2.2` - Oct 4, 2017 - Update to pass event on change. Thanks [@robertnealan](https://github.com/robertnealan)! 
 - `1.2.1` - Sept 6, 2017 - IE11 bug fix.
