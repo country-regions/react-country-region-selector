@@ -20,11 +20,11 @@ class ExamplesPage extends React.Component {
               <div>
                 <CountryDropdown
                   value={this.getCountryValue(0)}
-                  onChange={(val) => this.selectCountry(0, val)}/>
+                  onChange={(val) => this.selectCountry(0, val)} />
                 <RegionDropdown
                   country={this.getCountryValue(0)}
                   value={this.getRegionValue(0)}
-                  onChange={(val) => this.selectRegion(0, val)}/>
+                  onChange={(val) => this.selectRegion(0, val)} />
               </div>
             );
           },
