@@ -224,7 +224,8 @@ define([
 | countryValueType | No | `full` | `string` | If you've changed the country dropdown `valueType` to `short` you will need to set this value to `short` as well, so the component knows what's being passed in the `country` property. |
 | labelType | No | `"full"` | `string` | Either `"full"` or `"short"`. This governs whether you see region names or region short codes in the dropdown. |
 | valueType | No | `"full"` | `string` | Either `"full"` or `"short"`. This controls the actual `value` attribute of each `<option>` in the dropdown.  |
-| disableWhenEmpty | No | `false` | `boolean` | Disables the region field when the user hasn't selected a country. |
+| whitelist | No | `{CountryCode: []}` | `object` | This setting lets you target specific regions to appear in the dropdown. Only those specified here will appear. This should be an array of region codes keyed by the country code. |
+| blacklist | No | `{CountryCode: []}` | `object` | This setting lets you target specific regions that should *not* appear in the dropdown. This should be an array of region codes keyed by the country code. || disableWhenEmpty | No | `false` | `boolean` | Disables the region field when the user hasn't selected a country. |
 | disabled | No | `false` | `boolean` | Disables the region field. If set to true, it overrides `disableWhenEmpty` |
 
 
