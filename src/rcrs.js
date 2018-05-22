@@ -129,13 +129,15 @@ class RegionDropdown extends React.Component {
       }
     });
 
+    const filteredRegions = _filterRegions(regions, this.props.whitelist, this.props.blacklist);
+
     // this could happen if the user is managing the state of the region/country themselves and screws up passing
     // in a valid country
-    if (!regions || regions.length === 0) {
+    if (!filteredRegions || filteredRegions.length === 0) {
       console.error('Error. Unknown country passed: ' + country + '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionDropdown');
       return [];
     }
-    return regions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
+    return filteredRegions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
       let [regionName, regionShortCode = null] = regionPair.split(C.SINGLE_REGION_DELIMITER);
       return { regionName, regionShortCode };
     });
@@ -201,6 +203,8 @@ RegionDropdown.propTypes = {
   onBlur: PropTypes.func,
   labelType: PropTypes.string,
   valueType: PropTypes.string,
+  whitelist: PropTypes.object,
+  blacklist: PropTypes.object,
   disabled: PropTypes.bool,
   disableWhenEmpty: PropTypes.bool
 };
@@ -218,6 +222,8 @@ RegionDropdown.defaultProps = {
   countryValueType: C.DISPLAY_TYPE_FULL,
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
+  whitelist: [],
+  blacklist: [],
   disabled: false,
   disableWhenEmpty: false
 };
@@ -241,6 +247,51 @@ function _filterCountries (countries, whitelist, blacklist) {
   }
 
   return filteredCountries;
+}
+
+function _filterRegions(regionsObject, whitelistObject, blacklistObject) {
+  const [country, countryCode, regions] = regionsObject;
+  const whitelist = whitelistObject.hasOwnProperty(countryCode) ? whitelistObject[countryCode] : [];
+  const blacklist = blacklistObject.hasOwnProperty(countryCode) ? blacklistObject[countryCode] : [];
+  let filteredRegions = regions.split('|');
+
+
+  // N.B. I'd rather use ES6 array.includes() but it requires a polyfill on various browsers. Bit surprising that
+  // babel doesn't automatically convert it to ES5-friendly code, like the new syntax additions, but that requires
+  // a separate polyfill which is a total kludge
+  if (whitelist.length > 0 && filteredRegions.length > 0) {
+    filteredRegions = filteredRegions.filter((region) => {
+      const [name, code] = region;
+
+      for (let i = 0, n = blacklist.length; i < n; i++) {
+        if (region.indexOf(whitelist[i]) > -1) {
+          return true;
+        }
+      }
+
+      return false;
+    });
+  } else if (blacklist.length > 0 && filteredRegions.length > 0) {
+    filteredRegions = filteredRegions.filter((region) => {
+      const [name, code] = region;
+
+      for (let i = 0, n = blacklist.length; i < n; i++) {
+        if (region.indexOf(blacklist[i]) > -1) {
+          return false;
+        }
+      }
+
+      return true;
+    });
+  }
+
+  console.log({ filteredRegions, end: true });
+
+  return [
+    country,
+    countryCode,
+    filteredRegions.join('|')
+  ];
 }
 
 
