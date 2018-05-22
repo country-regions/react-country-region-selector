@@ -11,14 +11,14 @@ const C = {
 
 
 class CountryDropdown extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       countries: _filterCountries(CountryRegionData, props.whitelist, props.blacklist)
     };
   }
 
-  getCountries () {
+  getCountries() {
     const { valueType, labelType } = this.props;
 
     return this.state.countries.map(([countryName, countrySlug]) => {
@@ -30,7 +30,7 @@ class CountryDropdown extends React.Component {
     });
   }
 
-  getDefaultOption () {
+  getDefaultOption() {
     const { showDefaultOption, defaultOptionLabel } = this.props;
     if (!showDefaultOption) {
       return null;
@@ -40,7 +40,7 @@ class CountryDropdown extends React.Component {
     );
   }
 
-  render () {
+  render() {
     const { name, id, classes, value, onChange, onBlur, disabled } = this.props;
     const attrs = {
       name,
@@ -86,8 +86,8 @@ CountryDropdown.defaultProps = {
   classes: '',
   showDefaultOption: true,
   defaultOptionLabel: 'Select Country',
-  onChange: () => {},
-  onBlur: () => {},
+  onChange: () => { },
+  onBlur: () => { },
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
   whitelist: [],
@@ -97,24 +97,24 @@ CountryDropdown.defaultProps = {
 
 
 class RegionDropdown extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = { regions: this.getRegions(props.country) };
     this.getRegions = this.getRegions.bind(this);
   }
 
-  shouldComponentUpdate (nextProps) {
+  shouldComponentUpdate(nextProps) {
     return (nextProps.country !== this.props.country) || (nextProps.value !== this.props.value);
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.country === this.props.country) {
       return;
     }
     this.setState({ regions: this.getRegions(nextProps.country) })
   }
 
-  getRegions (country) {
+  getRegions(country) {
     if (!country) {
       return [];
     }
@@ -143,7 +143,7 @@ class RegionDropdown extends React.Component {
     });
   }
 
-  getRegionList () {
+  getRegionList() {
     const { labelType, valueType } = this.props;
     return this.state.regions.map(({ regionName, regionShortCode }) => {
       const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
@@ -154,7 +154,7 @@ class RegionDropdown extends React.Component {
 
   // there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
   // a "default" option which shows
-  getDefaultOption () {
+  getDefaultOption() {
     const { blankOptionLabel, showDefaultOption, defaultOptionLabel, country } = this.props;
     if (!country) {
       return <option value="">{blankOptionLabel}</option>;
@@ -165,7 +165,7 @@ class RegionDropdown extends React.Component {
     return null;
   }
 
-  render () {
+  render() {
     const { value, country, onChange, onBlur, id, name, classes, disabled, disableWhenEmpty } = this.props;
     const isDisabled = disabled || (disableWhenEmpty && country == '');
     const attrs = {
@@ -217,8 +217,8 @@ RegionDropdown.defaultProps = {
   blankOptionLabel: '-',
   showDefaultOption: true,
   defaultOptionLabel: 'Select Region',
-  onChange: () => {},
-  onBlur: () => {},
+  onChange: () => { },
+  onBlur: () => { },
   countryValueType: C.DISPLAY_TYPE_FULL,
   labelType: C.DISPLAY_TYPE_FULL,
   valueType: C.DISPLAY_TYPE_FULL,
@@ -234,7 +234,7 @@ RegionDropdown.defaultProps = {
 
 // called on country field initialization. It reduces the subset of countries depending on whether the user
 // specified a white/blacklist
-function _filterCountries (countries, whitelist, blacklist) {
+function _filterCountries(countries, whitelist, blacklist) {
   var filteredCountries = countries;
 
   // N.B. I'd rather use ES6 array.includes() but it requires a polyfill on various browsers. Bit surprising that
@@ -249,6 +249,9 @@ function _filterCountries (countries, whitelist, blacklist) {
   return filteredCountries;
 }
 
+
+// called when requesting new regions. It reduces the subset of regions depending on whether the user specifiec
+// a white/blacklist
 function _filterRegions(regionsObject, whitelistObject, blacklistObject) {
   const [country, countryCode, regions] = regionsObject;
   const whitelist = whitelistObject.hasOwnProperty(countryCode) ? whitelistObject[countryCode] : [];
@@ -256,9 +259,6 @@ function _filterRegions(regionsObject, whitelistObject, blacklistObject) {
   let filteredRegions = regions.split('|');
 
 
-  // N.B. I'd rather use ES6 array.includes() but it requires a polyfill on various browsers. Bit surprising that
-  // babel doesn't automatically convert it to ES5-friendly code, like the new syntax additions, but that requires
-  // a separate polyfill which is a total kludge
   if (whitelist.length > 0 && filteredRegions.length > 0) {
     filteredRegions = filteredRegions.filter((region) => {
       const [name, code] = region;
