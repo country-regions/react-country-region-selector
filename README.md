@@ -158,6 +158,9 @@ specified here will be added directly to the `<select>` DOM element._
 | disableWhenEmpty | No | `false` | `boolean` | Disables the region field when the user hasn't selected a country. |
 | disabled | No | `false` | `boolean` | Disables the region field. If set to true, it overrides `disableWhenEmpty` | 
 | customOptions | No | `[]` | `Array<string>` | Appends a list of string to the every region dropdown, regardless of the country selected.
+| whitelist | No | `{CountryCode: []}` | `object` | This setting lets you target specific regions to appear in the dropdown. Only those specified here will appear. This should be an array of region codes keyed by the country code. |
+| blacklist | No | `{CountryCode: []}` | `object` | This setting lets you target specific regions that should *not* appear in the dropdown. This should be an array of region codes keyed by the country code. || disableWhenEmpty | No | `false` | `boolean` | Disables the region field when the user hasn't selected a country. |
+| disabled | No | `false` | `boolean` | Disables the region field. If set to true, it overrides `disableWhenEmpty` |
 
 
 <a name="command-line"></a>
