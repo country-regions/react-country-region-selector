@@ -241,7 +241,7 @@ class ExamplesPage extends React.Component {
             );
           },
           codeVisible: false,
-          code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'All\', \'Yet another custom option\']}/>',
+          code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'All\', \'Yet another custom option\']} />',
           country: '',
           region: ''
         },
@@ -256,8 +256,6 @@ class ExamplesPage extends React.Component {
   }
 
   selectRegion (exampleIndex, val) {
-      console.log('val', val)
-      console.log('exampleIndex', exampleIndex)
     const updatedValues = this.state.examples;
     updatedValues[exampleIndex].region = val;
     this.setState({ examples: updatedValues });
