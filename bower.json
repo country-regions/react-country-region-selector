@@ -2,7 +2,9 @@
 	"name": "react-country-region-selector",
 	"main": "dist/rcrs.min.js",
 	"description": "CountryDropdown and RegionDropdown React components for your forms.",
-	"authors": ["Ben Keen <ben.keen@gmail.com>"],
+	"authors": [
+		"Ben Keen <ben.keen@gmail.com>"
+	],
 	"license": "MIT",
 	"moduleType": [
 		"amd",
@@ -22,7 +24,7 @@
 		"node_modules/",
 		"examples/"
 	],
-	"devDependencies": { },
+	"devDependencies": {},
 	"keywords": [
 		"country",
 		"countries",
@@ -34,5 +36,5 @@
 		"forms",
 		"dropdowns",
 		"select boxes"
-	],
+	]
 }

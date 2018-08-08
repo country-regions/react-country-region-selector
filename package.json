@@ -3,9 +3,6 @@
   "version": "1.4.0",
   "description": "CountryDropdown and RegionDropdown React components for your forms.",
   "main": "dist/rcrs.js",
-  "scripts": {
-    "prod": "webpack"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/benkeen/react-country-region-selector.git"
@@ -21,18 +18,12 @@
     "forms",
     "dropdowns",
     "select boxes",
-    "react-component"
+    "react-component",
+    "react"
   ],
   "author": "Ben Keen",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "babel": {
-    "presets": [
-      "env",
-      "react",
-      "stage-2"
-    ]
-  },
   "bugs": {
     "url": "https://github.com/benkeen/react-country-region-selector/issues"
   },
@@ -42,17 +33,12 @@
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-2": "^6.24.1",
+    "@babel/core": "^7.0.0-beta.56",
+    "@babel/preset-react": "^7.0.0-beta.56",
     "country-region-data": "1.4.4",
     "react": "^16.4.1",
-    "react-component-gulp-tasks": "^0.7.7",
     "react-dom": "^16.4.1",
-    "run-sequence": "^2.2.1",
-    "webpack": "^4.16.1",
-    "webpack-cli": "^3.1.0",
-    "yargs": "^12.0.1"
+    "rollup": "^0.63.5",
+    "rollup-plugin-babel": "^4.0.0-beta.8"
   }
 }
