@@ -1,8 +1,8 @@
-import { rollup } from 'rollup';
 import babel from 'rollup-plugin-babel';
+//import { uglify } from 'rollup-plugin-uglify';
 
-rollup({
-    entry: 'src/main.js',
+export default {
+    input: 'src/index.js',
     output: {
         file: 'dist/rcrs.js',
         format: 'cjs'
@@ -11,5 +11,6 @@ rollup({
         babel({
             exclude: 'node_modules/**'
         })
+  //      uglify()
     ]
-});
+};
