@@ -8,9 +8,9 @@
     "type": "git",
     "url": "https://github.com/benkeen/react-country-region-selector.git"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "main": "dist/rcrs.js",
+  "module": "dist/rcrs.es.js",
+  "jsnext:main": "dist/rcrs.es.js",
   "engines": {
     "node": ">=8",
     "npm": ">=5"

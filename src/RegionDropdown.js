@@ -72,9 +72,10 @@ export default class RegionDropdown extends Component {
 	}
 
 	render () {
-		const { value, country, onChange, onBlur, id, name, classes, disabled, disableWhenEmpty } = this.props;
+		const { value, country, onChange, onBlur, id, name, classes, disabled, disableWhenEmpty, ...arbitraryProps } = this.props;
 		const isDisabled = disabled || (disableWhenEmpty && country === '');
 		const attrs = {
+			...arbitraryProps,
 			name,
 			value,
 			onChange: (e) => onChange(e.target.value, e),

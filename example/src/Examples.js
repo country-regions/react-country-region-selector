@@ -62,12 +62,12 @@ class Examples extends Component {
 								<CountryDropdown
 									showDefaultOption={false}
 									value={this.getCountryValue(2)}
-									onChange={(val) => this.selectCountry(2, val)}/>
+									onChange={(val) => this.selectCountry(2, val)} />
 								<RegionDropdown
 									showDefaultOption={false}
 									country={this.getCountryValue(2)}
 									value={this.getRegionValue(2)}
-									onChange={(val) => this.selectRegion(2, val)}/>
+									onChange={(val) => this.selectRegion(2, val)} />
 							</div>
 						);
 					},
@@ -220,6 +220,38 @@ class Examples extends Component {
 					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
 					country: 'United States',
 					region: 'Washington'
+				},
+
+				{
+					label: 'Arbitrary attributes passed to Country and Region dropdown: styles ',
+					jsx: () => {
+						return (
+							<div>
+								<CountryDropdown
+									value={this.getCountryValue(9)}
+									onChange={(val) => this.selectCountry(9, val)}
+									onKeyUp={(e) => { console.log('key up!', e); }}
+									autoComplete="true"
+									style={{
+										backgroundColor: 'blue',
+										color: 'white',
+										fontSize: 20
+									}} />
+								<RegionDropdown
+									country={this.getCountryValue(9)}
+									value={this.getRegionValue(9)}
+									onChange={(val) => this.selectRegion(9, val)}
+									style={{
+										backgroundColor: 'green',
+										color: 'white'
+									}}/>
+							</div>
+						);
+					},
+					codeVisible: false,
+					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
+					country: '',
+					region: ''
 				}
 
 			]

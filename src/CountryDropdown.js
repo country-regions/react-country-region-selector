@@ -33,8 +33,9 @@ export default class CountryDropdown extends Component {
 	}
 
 	render () {
-		const { name, id, classes, value, onChange, onBlur, disabled } = this.props;
+		const { name, id, classes, value, onChange, onBlur, disabled, ...arbitraryProps } = this.props;
 		const attrs = {
+			...arbitraryProps,
 			name,
 			value,
 			onChange: (e) => onChange(e.target.value, e),
