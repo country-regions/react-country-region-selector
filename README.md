@@ -254,6 +254,7 @@ Big thanks to Jed Watson there.
 
 ### Changelog
 
+- `1.4.0` - Sept 2018 - in development.
 - `1.3.0` - Mar 20, 2018. Bug fix for invalid country, [@n-david](https://github.com/n-david)! onBlur event added.
 - `1.2.3` - Nov 7, 2017. Country data updates. React moved to peer dependency, thanks [@iamdey](https://github.com/iamdey)!
 - `1.2.2` - Oct 4, 2017 - Update to pass event on change. Thanks [@robertnealan](https://github.com/robertnealan)! 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CountryRegionData from './source-data';
+import C from './constants';
 
 export default class RegionDropdown extends Component {
 	constructor (props) {

@@ -79,10 +79,8 @@ CountryDropdown.defaultProps = {
 	classes: '',
 	showDefaultOption: true,
 	defaultOptionLabel: 'Select Country',
-	onChange: () => {
-	},
-	onBlur: () => {
-	},
+	onChange: () => {},
+	onBlur: () => {},
 	labelType: C.DISPLAY_TYPE_FULL,
 	valueType: C.DISPLAY_TYPE_FULL,
 	whitelist: [],
