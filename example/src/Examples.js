@@ -231,7 +231,6 @@ class Examples extends Component {
 									value={this.getCountryValue(9)}
 									onChange={(val) => this.selectCountry(9, val)}
 									onKeyUp={(e) => { console.log('key up!', e); }}
-									autoComplete="true"
 									style={{
 										backgroundColor: 'blue',
 										color: 'white',
