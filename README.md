@@ -1,12 +1,16 @@
 # React-Country-Region-Selector
 
+> *** I'm just updating this library today to release 1.4.0, group things into a single github organization, update the 
+> documentation and update the github pages (demo URLs). When you don't see this message it's all fixed! ***  
+
 A feature you often need in forms is a connected country and region dropdown, where the region field gets automatically 
 updated when the user selects a country. Coding this is perfectly simple, but it's a royal pain having to track down all 
-the raw country/region data. This script contains a pair of components to let you add this feature quickly and easily to your 
-forms. It's the React version of [this script](https://github.com/benkeen/country-region-selector).
+the raw country/region data. This library contains a pair of components to let you add this feature quickly and easily to your 
+forms. It's the React version of [this script](https://github.com/country-regions/country-region-selector).
 
-It's pretty versatile:
-- Has two separate components (`<CountryDropdown />`, `<RegionDropdown>`) that you can embed in your 
+It's pretty versatile.
+
+- There are two separate components (`<CountryDropdown />`, `<RegionDropdown>`) that you can embed in your 
 DOM wherever you need. That sounded like a vulgar euphemism, but it wasn't, honest.
 - Let's you customize the list of countries that appears via a whitelist, blacklist, or even custom build to keep file 
 size down.
@@ -14,25 +18,31 @@ size down.
 - [Lots of options](#options) for the most common use-cases, allowing you style is as you need (via classes/IDs),
 change name attributes, add you own custom onChange handlers to do whatever you want etc.
 
-Version 1.4.0 converted the old gulp build process to a new shiny build process using rollup. 
+
+#### Other notes
 
 - *Page charset*: your page will need an appropriate charset to handle UTF-8 chars used in some country names. So if 
 you see some invalid characters appearing in the dropdown, make sure you have UTF-8 specified in your page 
 <code>&lt;head&gt;</code>, like so: ```<meta charset="UTF-8">```
 - *Data source*: the list of countries and regions is maintained separately and pulled from the 
-[country-region-data](https://github.com/benkeen/country-region-data) repo. 
+[country-region-data](https://github.com/country-regiond/country-region-data) repo. 
 - *Return values*: on an onChange event `event.target.value` is returned as the first value and the full `event` as the second.
 
+### Table of Contents 
 
+- [Examples](#examples)  
+- Installation
+- Usage
+- List of component options
+- Command-line
+- Changelog
+
+
+<a name="examples"></a>
 ### Examples
 
 Check out the [github pages](http://benkeen.github.io/react-country-region-selector/) section for some examples + example
 JSX code.
-
-
-### Requirements
-
-- React (tested with 15.1.0, but should work on earlier versions).
 
 
 ### Installation
@@ -42,7 +52,7 @@ Ah, modern web development: so many choices! Here's how to install it with the m
 #### npm
 
 ```javascript
-npm install react-country-region-selector --save
+npm i -D react-country-region-selector 
 ```
 
 #### Bower
@@ -51,29 +61,18 @@ npm install react-country-region-selector --save
 bower install react-country-region-selector 
 ```
 
-#### UMD (Universal Module Definition)
-
-Just use the `dist/rcrs.js` file. 
-
-
 
 ### Usage
 
-Here are a few examples in a few different formats. 
-
-- [ES6 with JSX](#es6)
-- [ES5 with JSX](#es5)
-
-
-#### ES6 with JSX example
-
-I figure people *not* using JSX will know how to remove the JSX from the code below, if not open a ticket and I'll 
-write up a non-JSX example too. 
-
+The generated `dist/` folder 
+ 
 
 ```javascript
 import React from 'react';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+// note that you can also export the source data via CountryRegionData. It's in a deliberately concise format to 
+// keep file sizes down
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 
 class Example extends React.Component {
@@ -106,45 +105,6 @@ class Example extends React.Component {
   }
 }
 ```
-
-#### ES5 with JSX
-
-```javascript
-// Up to you to include React + the react-country-region-selector (script tags, commonJS, whatever). 
-// That's a choice you need to make with your build setup.
-
-var Example = React.createClass({
-  getInitialState: function () {
-    return {
-      region: '',
-      country: '',
-    };
-  },
-
-  selectCountry: function (val) {
-    this.setState({ country: val });
-  },
-
-  selectRegion: function (val) {
-    this.setState({ region: val });
-  },
-
-  render () {
-    return (
-      <div>
-        <CountryDropdown
-          value={this.state.country}
-          onChange={this.selectCountry} />
-        <RegionDropdown
-          country={this.state.country}
-          value={this.state.region}
-          onChange={this.selectRegion} />
-      </div>
-    );
-  }
-}
-```
-
 
 ### Options
 
@@ -194,23 +154,26 @@ Note: *any other properties you pass onto the component will be output onto the 
 | disabled | No | `false` | `boolean` | Disables the region field. If set to true, it overrides `disableWhenEmpty` | 
 
 
-### Rollup commands
+### Command-line
 
-- `gulp` - regenerate everything.
+- `npm start` - regenerate everything.
 - `gulp --countries="UK,US"` - generate a custom build of the script in the `/lib` and `/dist` folder containing only those
 countries you specify here. This *seriously* reduces file size (60KB down to as small as 16KB), so if you can do it, do it.
 
 
-### Other
-
-This repo uses the extremely handy [react-component-gulp-tasks](https://github.com/JedWatson/react-component-gulp-tasks) 
-script for doing most of the gulp tasks (ES6, JSX conversion, UMD file creation, minifications, watchers, etc.). 
-Big thanks to Jed Watson there.
-
 
 ### Changelog
 
-- `1.4.0` - Sept 2018 - in development.
+- `1.4.0` - Sept 8, 2018 (to be released shortly):
+    - *Breaking change*: the library is no longer exported in UMD format. Now only exported in es6 
+    (`dist/rcrs.es.js`) and commonJS (`dist/rcrs.js`) format. This library is intended for use in _React_ applications. 
+    If you need UMD, check out the []plain vanilla version](https://github.com/country-regions/country-region-selector).
+    - country-region-data updated to latest version (1.4.4)
+    - You can now pass arbitrary attributes to the components (e.g. `style={{ color: 'red' }}` and have them output in the 
+    markup)
+    - the old gulp build process updated to use rollup.
+    - this component library, the source data set and the plain vanilla JS version are now all grouped under a single github 
+organization.
 - `1.3.0` - Mar 20, 2018. Bug fix for invalid country, [@n-david](https://github.com/n-david)! onBlur event added.
 - `1.2.3` - Nov 7, 2017. Country data updates. React moved to peer dependency, thanks [@iamdey](https://github.com/iamdey)!
 - `1.2.2` - Oct 4, 2017 - Update to pass event on change. Thanks [@robertnealan](https://github.com/robertnealan)! 
@@ -221,6 +184,12 @@ Big thanks to Jed Watson there.
 - `1.0.3` - Jan 2, 2016 - updated country-region-data, repo link fix. 
 - `1.0.2` - October 16, 2016 - Fix issue where source-data.js in lib had no country data.
 - `1.0.0` - July 1, 2016 - initial version.
+
+
+### Thanks
+
+Big thanks to the [create-react-library](https://github.com/transitive-bullshit/create-react-library) tool which I use 
+here (un-ejected) to rollup this component library.
 
 
 ### License

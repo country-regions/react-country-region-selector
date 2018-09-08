@@ -10,7 +10,7 @@ import pkg from './package.json';
 
 const argv = require('minimist')(process.argv.slice(2));
 
-// rollup -c --countries=a,b,c
+// e.g. rollup -c --config-countries=GB,CA,US
 let countries = [];
 if (argv.hasOwnProperty('config-countries')) {
 	countries = argv['config-countries'].split(',');
