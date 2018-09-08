@@ -4,8 +4,17 @@ import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
-
+import json from 'rollup-plugin-json';
+import parseCountryList from './rollup-plugin-parse-country-list';
 import pkg from './package.json';
+
+const argv = require('minimist')(process.argv.slice(2));
+
+// rollup -c --countries=a,b,c
+let countries = [];
+if (argv.hasOwnProperty('config-countries')) {
+	countries = argv['config-countries'].split(',');
+}
 
 export default {
 	input: 'src/index.js',
@@ -19,10 +28,12 @@ export default {
 		sourcemap: true
 	}],
 	plugins: [
+		parseCountryList({ countries }),
 		external(),
 		postcss({
 			modules: true
 		}),
+		json(),
 		url(),
 		babel({
 			exclude: 'node_modules/**',

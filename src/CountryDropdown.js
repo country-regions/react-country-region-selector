@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CountryRegionData from './source-data';
+import CountryRegionData from '../node_modules/country-region-data/data.json';
 import C from './constants';
 import * as helpers from './helpers';
+
 
 export default class CountryDropdown extends Component {
 	constructor (props) {
 		super(props);
+
 		this.state = {
 			countries: helpers.filterCountries(CountryRegionData, props.whitelist, props.blacklist)
 		};

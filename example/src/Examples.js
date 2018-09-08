@@ -230,7 +230,6 @@ class Examples extends Component {
 								<CountryDropdown
 									value={this.getCountryValue(9)}
 									onChange={(val) => this.selectCountry(9, val)}
-									onKeyUp={(e) => { console.log('key up!', e); }}
 									style={{
 										backgroundColor: 'blue',
 										color: 'white',
