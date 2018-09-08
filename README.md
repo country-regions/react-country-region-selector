@@ -1,53 +1,69 @@
 # React-Country-Region-Selector
 
-> *** I'm just updating this library today to release 1.4.0, group things into a single github organization, update the 
-> documentation and update the github pages (demo URLs). When you don't see this message it's all fixed! ***  
+> *** Sept 8th, 2018: I'm just updating this library today to release 1.4.0, group things into a single github organization, update the 
+> documentation and update the github pages (demo URLs). When you don't see this message it's all fixed! *** 
 
-A feature you often need in forms is a connected country and region dropdown, where the region field gets automatically 
-updated when the user selects a country. Coding this is perfectly simple, but it's a royal pain having to track down all 
-the raw country/region data. This library contains a pair of components to let you add this feature quickly and easily to your 
-forms. It's the React version of [this script](https://github.com/country-regions/country-region-selector).
+### Table of Contents 
+
+- [About](#about)  
+    - [Features](#features)
+    - [Gotchas](#gotchas)
+- [Demo](#demo)  
+- [Installation](#installation)
+- Usage
+- List of component options
+- Command-line
+- Changelog
+- [Thanks!](#thanks)
+- [License](#license) (spoiler: MIT!)
+
+------------------
+
+<a name="about"></a>
+### About
+
+A feature you often need in forms is connected country and region dropdowns, where the region list gets updated when 
+a country is selected. This library contains a pair of React components to do just that. If you're not using React,
+check out the [plain vanilla JS version](https://github.com/country-regions/country-region-selector).
+
+The list of countries and regions is maintained separately and pulled from the 
+[country-region-data](https://github.com/country-regions/country-region-data) repo. So if you see something wonky, put
+in a PR on that repo. 
+
+
+<a name="features"></a>
+#### Features
 
 It's pretty versatile.
 
 - There are two separate components (`<CountryDropdown />`, `<RegionDropdown>`) that you can embed in your 
 DOM wherever you need. That sounded like a vulgar euphemism, but it wasn't, honest.
-- Let's you customize the list of countries that appears via a whitelist, blacklist, or even custom build to keep file 
-size down.
-- Works as ES6 module, commonJS, AMD, whatever you fancy.
-- [Lots of options](#options) for the most common use-cases, allowing you style is as you need (via classes/IDs),
-change name attributes, add you own custom onChange handlers to do whatever you want etc.
+- The source data used by the library is also exposed, should you need it.
+- It let's you customize the list of countries that appears via a whitelist, blacklist.
+- [A lot of options](#options) are provided, for things like styling, event callbacks and so on.
+- To keep file sizes down you have the option of creating a custom build of the library containing only a list of 
+those countries you want to show up. See [command line options](#command-line) for more info.
 
 
-#### Other notes
+<a name="gotchas"></a>
+#### Gotchas
 
-- *Page charset*: your page will need an appropriate charset to handle UTF-8 chars used in some country names. So if 
-you see some invalid characters appearing in the dropdown, make sure you have UTF-8 specified in your page 
+- *Page charset*: some country names contain UTF-8 chars, so your page will need an appropriate charset to handle them. 
+If  you see some invalid characters appearing in the dropdown, make sure you have UTF-8 specified in your page 
 <code>&lt;head&gt;</code>, like so: ```<meta charset="UTF-8">```
-- *Data source*: the list of countries and regions is maintained separately and pulled from the 
-[country-region-data](https://github.com/country-regiond/country-region-data) repo. 
 - *Return values*: on an onChange event `event.target.value` is returned as the first value and the full `event` as the second.
 
-### Table of Contents 
-
-- [Examples](#examples)  
-- Installation
-- Usage
-- List of component options
-- Command-line
-- Changelog
 
 
-<a name="examples"></a>
-### Examples
+<a name="demo"></a>
+### Demo
 
-Check out the [github pages](http://benkeen.github.io/react-country-region-selector/) section for some examples + example
+Check out the [github pages](http://country-regions.github.io/react-country-region-selector/) section for some examples + example
 JSX code.
 
 
+<a name="examples"></a>
 ### Installation
-
-Ah, modern web development: so many choices! Here's how to install it with the most common build tools:
 
 #### npm
 
@@ -61,17 +77,13 @@ npm i -D react-country-region-selector
 bower install react-country-region-selector 
 ```
 
-
 ### Usage
-
-The generated `dist/` folder 
- 
 
 ```javascript
 import React from 'react';
 
 // note that you can also export the source data via CountryRegionData. It's in a deliberately concise format to 
-// keep file sizes down
+// keep file size down
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 
@@ -109,9 +121,8 @@ class Example extends React.Component {
 ### Options
 
 
-The following table outlines the properties that 
-
-Note: *any other properties you pass onto the component will be output onto the select element in the DOM.*
+The following table outlines the attributes that are explicitly provided for the two components. Note: any other 
+attributes you pass onto the component will be passed on to be outputted on the actual DOM element as attributes.
 
 
 ```<CountryDropdown />```
@@ -128,7 +139,7 @@ Note: *any other properties you pass onto the component will be output onto the 
 | defaultOptionLabel | No | `"Select Country"` | `string` | The default option label. |
 | labelType | No | `"full"` | `string` | Either `"full"` or `"short"`. This governs whether you see country names or country short codes in the dropdown. |
 | valueType | No | `"full"` | `string` | Either `"full"` or `"short"`. This controls the actual `value` attribute of  each `<option>` in the dropdown. Please note, if you set this to `"short"` you will need to let the corresponding `<RegionDropdown />` component know as well, by passing a `countryValueType="short"` attribute. |
-| whitelist | No | `[]` | `array` | This setting lets you target specific countries to appear in the dropdown. Only those specified here will appear. This should be an array of country shortcodes. See the [country-region-data](https://github.com/benkeen/country-region-data) repo for the data and the shortcodes. |
+| whitelist | No | `[]` | `array` | This setting lets you target specific countries to appear in the dropdown. Only those specified here will appear. This should be an array of country shortcodes. See the [country-region-data](https://github.com/country-region-data/country-region-data) repo for the data and the shortcodes. |
 | blacklist | No | `[]` | `array` | Lets you target countries that should *not* appear in the dropdown. Should also be an array of country shortcodes. |
 | disabled | No | `false` | `boolean` | Disables the country field. |
 
@@ -156,12 +167,15 @@ Note: *any other properties you pass onto the component will be output onto the 
 
 ### Command-line
 
-- `npm start` - regenerate everything.
-- `gulp --countries="UK,US"` - generate a custom build of the script in the `/lib` and `/dist` folder containing only those
-countries you specify here. This *seriously* reduces file size (60KB down to as small as 16KB), so if you can do it, do it.
+Check out the `scripts` section of the package.json file to see them all, but these are the higlights:
+
+- `npm start` - regenerate everything, plus a watcher for local development.
+- `npm build` - build the dist files again. No watcher.
+- `rollup -c --config-countries=UK,US` - generate a custom build of the script `/dist` folder containing only those
+countries you specify here. This *seriously* reduces file size, so if you can do it, do it.
 
 
-
+<a name="changelog"></a>
 ### Changelog
 
 - `1.4.0` - Sept 8, 2018 (to be released shortly):
@@ -186,12 +200,16 @@ organization.
 - `1.0.0` - July 1, 2016 - initial version.
 
 
-### Thanks
+<a name="thanks"></a>
+### Thanks!
 
-Big thanks to the [create-react-library](https://github.com/transitive-bullshit/create-react-library) tool which I use 
-here (un-ejected) to rollup this component library.
+Big thanks to a whole boatload of people:
+- contributors to this project and the source data.
+- Special thanks to the [create-react-library](https://github.com/transitive-bullshit/create-react-library) tool which 
+I use here (un-ejected) to rollup this component library. Great stuff.
 
 
+<a name="license"></a>
 ### License
 
 MIT.
