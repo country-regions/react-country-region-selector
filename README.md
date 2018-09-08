@@ -1,7 +1,7 @@
-# React-Country-Region-Selector
+# react-country-region-selector
 
-> *** Sept 8th, 2018: I'm just updating this library today to release 1.4.0, group things into a single github organization, update the 
-> documentation and update the github pages (demo URLs). When you don't see this message it's all fixed! *** 
+> *** Sept 8th, 2018: I'm just updating this library today to release 1.4.0, group things into a single github org, update the 
+> doc, update the github pages (demo URLs). When you don't see this message it's all fixed. *** 
 
 ### Table of Contents 
 
@@ -10,10 +10,10 @@
     - [Gotchas](#gotchas)
 - [Demo](#demo)  
 - [Installation](#installation)
-- Usage
-- List of component options
-- Command-line
-- Changelog
+- [Usage](#usage)
+- [List of component options](#options)
+- [Command-line](#command-line)
+- [Changelog](#changelog)
 - [Thanks!](#thanks)
 - [License](#license) (spoiler: MIT!)
 
@@ -27,8 +27,7 @@ a country is selected. This library contains a pair of React components to do ju
 check out the [plain vanilla JS version](https://github.com/country-regions/country-region-selector).
 
 The list of countries and regions is maintained separately and pulled from the 
-[country-region-data](https://github.com/country-regions/country-region-data) repo. So if you see something wonky, put
-in a PR on that repo. 
+[country-region-data](https://github.com/country-regions/country-region-data) repo.
 
 
 <a name="features"></a>
@@ -54,7 +53,6 @@ If  you see some invalid characters appearing in the dropdown, make sure you hav
 - *Return values*: on an onChange event `event.target.value` is returned as the first value and the full `event` as the second.
 
 
-
 <a name="demo"></a>
 ### Demo
 
@@ -65,19 +63,15 @@ JSX code.
 <a name="examples"></a>
 ### Installation
 
-#### npm
-
 ```javascript
-npm i -D react-country-region-selector 
+npm i -D react-country-region-selector
 ```
 
-#### Bower
-
-```javascript
-bower install react-country-region-selector 
-```
-
+<a name="features"></a>
 ### Usage
+
+It's very easy to use, but note that you will need to track the country and region value somewhere - either in your
+component state or off in a store somewhere. Here's a simple example that uses state:
 
 ```javascript
 import React from 'react';
@@ -118,11 +112,11 @@ class Example extends React.Component {
 }
 ```
 
+<a name="options"></a>
 ### Options
 
-
-The following table outlines the attributes that are explicitly provided for the two components. Note: any other 
-attributes you pass onto the component will be passed on to be outputted on the actual DOM element as attributes.
+These are the attributes that can be explicitly passed to the two components. _Note: any other arbitrary attributes will be 
+added to the actual DOM element._
 
 
 ```<CountryDropdown />```
@@ -165,6 +159,7 @@ attributes you pass onto the component will be passed on to be outputted on the 
 | disabled | No | `false` | `boolean` | Disables the region field. If set to true, it overrides `disableWhenEmpty` | 
 
 
+<a name="command-line"></a>
 ### Command-line
 
 Check out the `scripts` section of the package.json file to see them all, but these are the higlights:
@@ -180,7 +175,9 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 
 - `1.4.0` - Sept 8, 2018 (to be released shortly):
     - *Breaking change*: the library is no longer exported in UMD format. Now only exported in es6 
-    (`dist/rcrs.es.js`) and commonJS (`dist/rcrs.js`) format. This library is intended for use in _React_ applications. 
+    (`dist/rcrs.es.js`) and commonJS (`dist/rcrs.js`) format. This library is intended for use in _React_ applications.
+    - *Breaking change*: no longer available via Bower. I don't recall ANY react component used via Bower, so if I'm
+    mistaken here, open a github issue to explain you use case and I can re-add it.  
     If you need UMD, check out the []plain vanilla version](https://github.com/country-regions/country-region-selector).
     - country-region-data updated to latest version (1.4.4)
     - You can now pass arbitrary attributes to the components (e.g. `style={{ color: 'red' }}` and have them output in the 
