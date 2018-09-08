@@ -1,8 +1,8 @@
 # React-Country-Region-Selector
 
 A feature you often need in forms is a connected country and region dropdown, where the region field gets automatically 
-updated when the user selects a country. Coding this is easy of course, but it's a royal pain having to track down all 
-the raw country-region data. This script contains a pair of components to let you add this feature quickly and easily to your 
+updated when the user selects a country. Coding this is perfectly simple, but it's a royal pain having to track down all 
+the raw country/region data. This script contains a pair of components to let you add this feature quickly and easily to your 
 forms. It's the React version of [this script](https://github.com/benkeen/country-region-selector).
 
 It's pretty versatile:
@@ -14,6 +14,15 @@ size down.
 - [Lots of options](#options) for the most common use-cases, allowing you style is as you need (via classes/IDs),
 change name attributes, add you own custom onChange handlers to do whatever you want etc.
 
+Version 1.4.0 converted the old gulp build process to a new shiny build process using rollup. 
+
+- *Page charset*: your page will need an appropriate charset to handle UTF-8 chars used in some country names. So if 
+you see some invalid characters appearing in the dropdown, make sure you have UTF-8 specified in your page 
+<code>&lt;head&gt;</code>, like so: ```<meta charset="UTF-8">```
+- *Data source*: the list of countries and regions is maintained separately and pulled from the 
+[country-region-data](https://github.com/benkeen/country-region-data) repo. 
+- *Return values*: on an onChange event `event.target.value` is returned as the first value and the full `event` as the second.
+
 
 ### Examples
 
@@ -24,7 +33,6 @@ JSX code.
 ### Requirements
 
 - React (tested with 15.1.0, but should work on earlier versions).
-- If you want to run the repo locally (e.g. generated 
 
 
 ### Installation
@@ -45,7 +53,7 @@ bower install react-country-region-selector
 
 #### UMD (Universal Module Definition)
 
-Just use the `dist/rcrs.min.js` file. 
+Just use the `dist/rcrs.js` file. 
 
 
 
@@ -55,7 +63,6 @@ Here are a few examples in a few different formats.
 
 - [ES6 with JSX](#es6)
 - [ES5 with JSX](#es5)
-- [AMD](#amd)
 
 
 #### ES6 with JSX example
@@ -139,54 +146,13 @@ var Example = React.createClass({
 ```
 
 
-#### AMD
-
-```javascript
-define([
-  'react',
-  'react-country-region-selector'
-], function (React, rcrs) {
-
-  var CountryDropdown = rcrs.CountryDropdown;
-  var RegionDropdown = rcrs.CountryDropdown;
-
-  var Example = React.createClass({
-    getInitialState: function () {
-      return {
-        region: '',
-        country: '',
-      };
-    },
-
-    selectCountry: function (val) {
-      this.setState({ country: val });
-    },
-
-    selectRegion: function (val) {
-      this.setState({ region: val });
-    },
-
-    render () {
-      return (
-        <div>
-          <CountryDropdown
-            value={this.state.country}
-            onChange={this.selectCountry} />
-          <RegionDropdown
-            country={this.state.country}
-            value={this.state.region}
-            onChange={this.selectRegion} />
-        </div>
-      );
-    }
-  }
-
-  return Example;
-});
-```
-
-
 ### Options
+
+
+The following table outlines the properties that 
+
+Note: *any other properties you pass onto the component will be output onto the select element in the DOM.*
+
 
 ```<CountryDropdown />```
 
@@ -225,20 +191,10 @@ define([
 | labelType | No | `"full"` | `string` | Either `"full"` or `"short"`. This governs whether you see region names or region short codes in the dropdown. |
 | valueType | No | `"full"` | `string` | Either `"full"` or `"short"`. This controls the actual `value` attribute of each `<option>` in the dropdown.  |
 | disableWhenEmpty | No | `false` | `boolean` | Disables the region field when the user hasn't selected a country. |
-| disabled | No | `false` | `boolean` | Disables the region field. If set to true, it overrides `disableWhenEmpty` |
+| disabled | No | `false` | `boolean` | Disables the region field. If set to true, it overrides `disableWhenEmpty` | 
 
 
-### Other Stuff
-
-- *Page charset*: your page will need an appropriate charset to handle UTF-8 chars used in some country names. So if 
-you see some invalid characters appearing in the dropdown, make sure you have UTF-8 specified in your page 
-<code>&lt;head&gt;</code>, like so: ```<meta charset="UTF-8">```
-- *Data source*: the list of countries and regions is maintained separately and pulled from the 
-[country-region-data](https://github.com/benkeen/country-region-data) repo. 
-- *Return values*: on an onChange event `event.target.value` is returned as the first value and the full `event` as the second.
-
-
-### Gulp commands
+### Rollup commands
 
 - `gulp` - regenerate everything.
 - `gulp --countries="UK,US"` - generate a custom build of the script in the `/lib` and `/dist` folder containing only those
