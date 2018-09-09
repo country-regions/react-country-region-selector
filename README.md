@@ -168,6 +168,7 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
+- `1.4.1` - Sept 9, 2018: bug fix for invalid JSON data source conversion. 
 - `1.4.0` - Sept 8, 2018:
     - *Breaking change*: the library is no longer exported in UMD format. Now only exported in es6 
     (`dist/rcrs.es.js`) and commonJS (`dist/rcrs.js`) format. This library is intended for use in _React_ applications.

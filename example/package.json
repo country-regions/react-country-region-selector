@@ -9,7 +9,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "react-country-region-selector": "^1.4.0"
+    "react-country-region-selector": "file:../"
   },
   "scripts": {
     "start": "react-scripts start",

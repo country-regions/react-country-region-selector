@@ -4,7 +4,7 @@ export default (options = {}) => {
 		return countries.map((countryData) => [
 			countryData.countryName,
 			countryData.countryShortCode,
-			countryData.regions.map((regionData) => `${regionData.name}|${regionData.shortCode}`).join('|')
+			countryData.regions.map((regionData) => `${regionData.name}~${regionData.shortCode}`).join('|')
 		]);
 	};
 
