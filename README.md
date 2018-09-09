@@ -1,10 +1,5 @@
 # react-country-region-selector
 
-> *** Sept 8th, 2018: I'm just updating this library today to release 1.4.0, group things into a single github org, update the 
-> doc, update the github pages (demo URLs). When you don't see this message it's all fixed. *** 
-
-### Table of Contents 
-
 - [About](#about)  
     - [Features](#features)
     - [Gotchas](#gotchas)
