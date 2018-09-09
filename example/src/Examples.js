@@ -223,7 +223,7 @@ class Examples extends Component {
 				},
 
 				{
-					label: 'Arbitrary attributes passed to Country and Region dropdown: styles ',
+					label: 'Arbitrary attributes (style, tabindex) passed to Country and Region dropdown',
 					jsx: () => {
 						return (
 							<div>
@@ -234,7 +234,8 @@ class Examples extends Component {
 										backgroundColor: 'blue',
 										color: 'white',
 										fontSize: 20
-									}} />
+									}}
+									tabIndex={1000} />
 								<RegionDropdown
 									country={this.getCountryValue(9)}
 									value={this.getRegionValue(9)}
@@ -242,12 +243,13 @@ class Examples extends Component {
 									style={{
 										backgroundColor: 'green',
 										color: 'white'
-									}}/>
+									}}
+									tabIndex={1001} />
 							</div>
 						);
 					},
 					codeVisible: false,
-					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
+					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  style={{\n    backgroundColor: 'blue',\n    color: 'white',\n    fontSize: 20\n}}\n  tabIndex={1000}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n  style={{\n    backgroundColor: 'green',\n    color: 'white']\n  }}\n  tabIndex={1001}\n  disabled={true} />",
 					country: '',
 					region: ''
 				}

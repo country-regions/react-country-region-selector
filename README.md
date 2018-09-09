@@ -22,11 +22,11 @@
 <a name="about"></a>
 ### About
 
-A feature you often need in forms is connected country and region dropdowns, where the region list gets updated when 
-a country is selected. This library contains a pair of React components to do just that. If you're not using React,
-check out the [plain vanilla JS version](https://github.com/country-regions/country-region-selector).
+This library provides a pair of React components to display a connected country and region dropdown in your form containing 
+country and region data. If you're not using React, check out the 
+[plain vanilla JS version](https://github.com/country-regions/country-region-selector).
 
-The list of countries and regions is maintained separately and pulled from the 
+The list of countries and regions is maintained separately and found in the  
 [country-region-data](https://github.com/country-regions/country-region-data) repo.
 
 
@@ -48,7 +48,7 @@ those countries you want to show up. See [command line options](#command-line) f
 #### Gotchas
 
 - *Page charset*: some country names contain UTF-8 chars, so your page will need an appropriate charset to handle them. 
-If  you see some invalid characters appearing in the dropdown, make sure you have UTF-8 specified in your page 
+If you see some invalid characters appearing in the dropdown, make sure you have UTF-8 specified in your page 
 <code>&lt;head&gt;</code>, like so: ```<meta charset="UTF-8">```
 - *Return values*: on an onChange event `event.target.value` is returned as the first value and the full `event` as the second.
 
@@ -173,7 +173,7 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
-- `1.4.0` - Sept 8, 2018 (to be released shortly):
+- `1.4.0` - Sept 8, 2018:
     - *Breaking change*: the library is no longer exported in UMD format. Now only exported in es6 
     (`dist/rcrs.es.js`) and commonJS (`dist/rcrs.js`) format. This library is intended for use in _React_ applications.
     - *Breaking change*: no longer available via Bower. I don't recall ANY react component used via Bower, so if I'm

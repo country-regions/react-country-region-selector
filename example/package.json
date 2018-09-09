@@ -1,7 +1,7 @@
 {
   "name": "react-country-region-selector-example",
   "homepage": "https://benkeen.github.io/react-country-region-selector",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
