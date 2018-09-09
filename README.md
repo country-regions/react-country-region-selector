@@ -1,9 +1,5 @@
 # react-country-region-selector
 
-> *** Sept 8, 2018: sorry, 1.4.0 still isn't published. Having trouble with github auth for publishing the new version. Will update as
-soon as I get it solved. ***
-
-
 - [About](#about)  
     - [Features](#features)
     - [Gotchas](#gotchas)
