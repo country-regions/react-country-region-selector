@@ -170,17 +170,17 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 
 - `1.4.1` - Sept 9, 2018: bug fix for invalid JSON data source conversion. 
 - `1.4.0` - Sept 8, 2018:
-    - *Breaking change*: the library is no longer exported in UMD format. Now only exported in es6 
+    - *Breaking change*: the library is no longer exported in UMD format. Now it's only exported in es6 
     (`dist/rcrs.es.js`) and commonJS (`dist/rcrs.js`) format. This library is intended for use in _React_ applications.
     - *Breaking change*: no longer available via Bower. I don't recall ANY react component used via Bower, so if I'm
-    mistaken here, open a github issue to explain you use case and I can re-add it.  
-    If you need UMD, check out the []plain vanilla version](https://github.com/country-regions/country-region-selector).
+    mistaken here, open a github issue to explain your use-case and I can re-add it.  
+    If you need UMD, check out the [plain vanilla version](https://github.com/country-regions/country-region-selector).
     - country-region-data updated to latest version (1.4.4)
     - You can now pass arbitrary attributes to the components (e.g. `style={{ color: 'red' }}` and have them output in the 
     markup)
-    - the old gulp build process updated to use rollup.
+    - the old gulp build process updated to use rollup
     - this component library, the source data set and the plain vanilla JS version are now all grouped under a single github 
-organization.
+organization
 - `1.3.0` - Mar 20, 2018. Bug fix for invalid country, [@n-david](https://github.com/n-david)! onBlur event added.
 - `1.2.3` - Nov 7, 2017. Country data updates. React moved to peer dependency, thanks [@iamdey](https://github.com/iamdey)!
 - `1.2.2` - Oct 4, 2017 - Update to pass event on change. Thanks [@robertnealan](https://github.com/robertnealan)! 
