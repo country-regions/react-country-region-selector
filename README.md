@@ -17,9 +17,7 @@
 <a name="about"></a>
 ### About
 
-This library provides a pair of React components to display a connected country and region dropdown in your form containing 
-country and region data. If you're not using React, check out the 
-[plain vanilla JS version](https://github.com/country-regions/country-region-selector).
+This library provides a pair of React components to display a connected country and region dropdowns. If you're not using React, check out the [plain vanilla JS version](https://github.com/country-regions/country-region-selector).
 
 The list of countries and regions is maintained separately and found in the  
 [country-region-data](https://github.com/country-regions/country-region-data) repo.
