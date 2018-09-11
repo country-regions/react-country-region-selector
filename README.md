@@ -11,6 +11,7 @@
 - [List of component options](#options)
 - [Command-line](#command-line)
 - [Changelog](#changelog)
+- [Tests](#tests)
 - [Thanks!](#thanks)
 - [License](#license) (spoiler: MIT!)
 
@@ -191,6 +192,12 @@ organization
 - `1.0.3` - Jan 2, 2016 - updated country-region-data, repo link fix. 
 - `1.0.2` - October 16, 2016 - Fix issue where source-data.js in lib had no country data.
 - `1.0.0` - July 1, 2016 - initial version.
+
+
+<a name="tests"></a>
+### Tests
+
+The Jest/Enzyme unit tests are found in the `src/tests` folder. The repo is hooked up to Travis CI to automatically run the tests for each commit.
 
 
 <a name="thanks"></a>
