@@ -1,6 +1,6 @@
 # react-country-region-selector
 
-[![Build Status](https://travis-ci.org/country-regions/react-country-region-selector.svg?branch=master)](https://travis-ci.org/country-regions/react-country-region-selector)
+[![Build Status](https://travis-ci.com/country-regions/react-country-region-selector.svg?branch=master)](https://travis-ci.com/country-regions/react-country-region-selector)
 
 - [About](#about)  
     - [Features](#features)
