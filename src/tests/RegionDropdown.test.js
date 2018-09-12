@@ -176,6 +176,19 @@ describe('RegionDropdown', () => {
 			});
 		});
 
+		describe('customOptions', () => {
+			it('should render the custom options in the dropdown when a valid list is provided.', () => {
+				const wrapper = shallow(
+					<RegionDropdown
+						showDefaultOption={false}
+						customOptions={['All']} />
+				);
+				
+				wrapper.setProps({country: 'Antarctica'});
+				expect(wrapper.find('select').childAt(1).text()).toBe('All');
+			});
+		});
+
 	});
 
 });
