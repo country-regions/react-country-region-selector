@@ -20,7 +20,21 @@ export default class RegionDropdown extends Component {
 		if (nextProps.country === this.props.country) {
 			return;
 		}
-		this.setState({ regions: this.getRegions(nextProps.country) });
+	
+		this.setState({ regions: [
+			...this.getRegions(nextProps.country),
+			...this.getCustomOptions()
+		]});
+	}
+
+	getCustomOptions () {
+		const { customOptions } = this.props;
+
+		return customOptions.map((option) => {
+			if (option) {
+				return {regionName: option, regionShortCode: option};
+			}
+		})
 	}
 
 	getRegions (country) {
@@ -114,7 +128,8 @@ RegionDropdown.propTypes = {
 	labelType: PropTypes.string,
 	valueType: PropTypes.string,
 	disabled: PropTypes.bool,
-	disableWhenEmpty: PropTypes.bool
+	disableWhenEmpty: PropTypes.bool,
+	customOptions: PropTypes.array
 };
 RegionDropdown.defaultProps = {
 	country: '',
@@ -131,5 +146,6 @@ RegionDropdown.defaultProps = {
 	labelType: C.DISPLAY_TYPE_FULL,
 	valueType: C.DISPLAY_TYPE_FULL,
 	disabled: false,
-	disableWhenEmpty: false
+	disableWhenEmpty: false,
+	customOptions: []
 };

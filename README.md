@@ -153,6 +153,7 @@ added to the actual DOM element._
 | valueType | No | `"full"` | `string` | Either `"full"` or `"short"`. This controls the actual `value` attribute of each `<option>` in the dropdown.  |
 | disableWhenEmpty | No | `false` | `boolean` | Disables the region field when the user hasn't selected a country. |
 | disabled | No | `false` | `boolean` | Disables the region field. If set to true, it overrides `disableWhenEmpty` | 
+| customOptions | No | `[]` | `Array<string>` | Adds a list of string to the region dropdown.
 
 
 <a name="command-line"></a>
