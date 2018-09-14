@@ -20,21 +20,39 @@ export default class RegionDropdown extends Component {
 		if (nextProps.country === this.props.country) {
 			return;
 		}
+
+		const defaultRegions = this.getRegions(nextProps.country);
 	
 		this.setState({ regions: [
-			...this.getRegions(nextProps.country),
-			...this.getCustomOptions()
+			...defaultRegions,
+			...this.getCustomOptions(defaultRegions)
 		]});
 	}
 
-	getCustomOptions () {
+	getCustomOptions (regions) {
 		const { customOptions } = this.props;
+
+		const duplicateRegions = this.getDuplicates(regions);
+
+		if (duplicateRegions.length) {
+			console.error('Error: Duplicate regions present: ' + duplicateRegions.toString() + '.\nThe above item(s) is/are already getting added to the region dropdown by the library.');
+			return [];
+		}
 
 		return customOptions.map((option) => {
 			if (option) {
 				return {regionName: option, regionShortCode: option};
 			}
-		})
+		});
+	}
+
+	getDuplicates (regions) {
+		const { customOptions, valueType } = this.props;
+		const regionKey = valueType === C.DISPLAY_TYPE_FULL ? 'regionName' : 'regionShortCode';
+
+		return regions.filter((region) => {
+			return customOptions.indexOf(region[regionKey]) != -1;
+		}).map(region => region[regionKey]);
 	}
 
 	getRegions (country) {

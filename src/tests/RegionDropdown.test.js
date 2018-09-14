@@ -187,6 +187,18 @@ describe('RegionDropdown', () => {
 				wrapper.setProps({country: 'Antarctica'});
 				expect(wrapper.find('select').childAt(1).text()).toBe('All');
 			});
+
+			it('should throw an error when the duplicate values are present.', () => {
+				console.error = jest.fn();
+				const wrapper = shallow(
+					<RegionDropdown
+						showDefaultOption={false}
+						customOptions={['Antarctica']} />
+				);
+				
+				wrapper.setProps({country: 'Antarctica'});
+				expect(console.error).toBeCalledWith('Error: Duplicate regions present: Antarctica.\nThe above item(s) is/are already getting added to the region dropdown by the library.');
+			});
 		});
 
 	});
