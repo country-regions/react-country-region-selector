@@ -176,6 +176,31 @@ describe('RegionDropdown', () => {
 			});
 		});
 
+		describe('customOptions', () => {
+			it('should render the custom options in the dropdown when a valid list is provided.', () => {
+				const wrapper = shallow(
+					<RegionDropdown
+						showDefaultOption={false}
+						customOptions={['All']} />
+				);
+				
+				wrapper.setProps({country: 'Antarctica'});
+				expect(wrapper.find('select').childAt(1).text()).toBe('All');
+			});
+
+			it('should throw an error when the duplicate values are present.', () => {
+				console.error = jest.fn();
+				const wrapper = shallow(
+					<RegionDropdown
+						showDefaultOption={false}
+						customOptions={['Antarctica']} />
+				);
+				
+				wrapper.setProps({country: 'Antarctica'});
+				expect(console.error).toBeCalledWith('Error: Duplicate regions present: Antarctica.\nThe above item(s) is/are already getting added to the region dropdown by the library.');
+			});
+		});
+
 	});
 
 });

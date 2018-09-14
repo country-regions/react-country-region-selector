@@ -252,7 +252,29 @@ class Examples extends Component {
 					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  style={{\n    backgroundColor: 'blue',\n    color: 'white',\n    fontSize: 20\n}}\n  tabIndex={1000}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n  style={{\n    backgroundColor: 'green',\n    color: 'white']\n  }}\n  tabIndex={1001}\n  disabled={true} />",
 					country: '',
 					region: ''
-				}
+				},
+
+				{
+					label: 'With custom options in the dropdown.',
+					jsx: () => {
+					  return (
+						<div>
+						  <CountryDropdown
+							value={this.getCountryValue(10)}
+							onChange={(val) => this.selectCountry(10, val)}/>
+						  <RegionDropdown
+							country={this.getCountryValue(10)}
+							value={this.getRegionValue(10)}
+							customOptions={['All', 'Yet another custom option']}
+							onChange={(val) => this.selectRegion(10, val)}/>
+						</div>
+					  );
+					},
+					codeVisible: false,
+					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'All\', \'Yet another custom option\']} />',
+					country: '',
+					region: ''
+				  },
 
 			]
 		};

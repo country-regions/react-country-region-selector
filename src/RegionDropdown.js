@@ -20,7 +20,39 @@ export default class RegionDropdown extends Component {
 		if (nextProps.country === this.props.country) {
 			return;
 		}
-		this.setState({ regions: this.getRegions(nextProps.country) });
+
+		const defaultRegions = this.getRegions(nextProps.country);
+	
+		this.setState({ regions: [
+			...defaultRegions,
+			...this.getCustomOptions(defaultRegions)
+		]});
+	}
+
+	getCustomOptions (regions) {
+		const { customOptions } = this.props;
+
+		const duplicateRegions = this.getDuplicates(regions);
+
+		if (duplicateRegions.length) {
+			console.error('Error: Duplicate regions present: ' + duplicateRegions.toString() + '.\nThe above item(s) is/are already getting added to the region dropdown by the library.');
+			return [];
+		}
+
+		return customOptions.map((option) => {
+			if (option) {
+				return {regionName: option, regionShortCode: option};
+			}
+		});
+	}
+
+	getDuplicates (regions) {
+		const { customOptions, valueType } = this.props;
+		const regionKey = valueType === C.DISPLAY_TYPE_FULL ? 'regionName' : 'regionShortCode';
+
+		return regions.filter((region) => {
+			return customOptions.indexOf(region[regionKey]) != -1;
+		}).map(region => region[regionKey]);
 	}
 
 	getRegions (country) {
@@ -114,7 +146,8 @@ RegionDropdown.propTypes = {
 	labelType: PropTypes.string,
 	valueType: PropTypes.string,
 	disabled: PropTypes.bool,
-	disableWhenEmpty: PropTypes.bool
+	disableWhenEmpty: PropTypes.bool,
+	customOptions: PropTypes.array
 };
 RegionDropdown.defaultProps = {
 	country: '',
@@ -131,5 +164,6 @@ RegionDropdown.defaultProps = {
 	labelType: C.DISPLAY_TYPE_FULL,
 	valueType: C.DISPLAY_TYPE_FULL,
 	disabled: false,
-	disableWhenEmpty: false
+	disableWhenEmpty: false,
+	customOptions: []
 };
