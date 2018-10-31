@@ -57,7 +57,7 @@ JSX code.
 ### Installation
 
 ```javascript
-npm i -D react-country-region-selector
+npm i react-country-region-selector
 ```
 
 <a name="features"></a>
