@@ -9,7 +9,7 @@ export default class CountryDropdown extends Component {
 		super(props);
 
 		this.state = {
-			countries: helpers.filterCountries(CountryRegionData, props.whitelist, props.blacklist)
+			countries: helpers.filterCountries(CountryRegionData, props.priorityOptions, props.whitelist, props.blacklist)
 		};
 	}
 
@@ -34,7 +34,7 @@ export default class CountryDropdown extends Component {
 	}
 
 	render () {
-		// unused properties deliberately added so the remainder
+		// unused properties deliberately added so arbitraryProps get populated properly
 		const { name, id, classes, value, onChange, onBlur, disabled, showDefaultOption, defaultOptionLabel,
 			labelType, valueType, whitelist, blacklist, ...arbitraryProps } = this.props;
 
@@ -69,6 +69,7 @@ CountryDropdown.propTypes = {
 	classes: PropTypes.string,
 	showDefaultOption: PropTypes.bool,
 	defaultOptionLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	priorityOptions: PropTypes.array,
 	onChange: PropTypes.func,
 	onBlur: PropTypes.func,
 	labelType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
@@ -84,6 +85,7 @@ CountryDropdown.defaultProps = {
 	classes: '',
 	showDefaultOption: true,
 	defaultOptionLabel: 'Select Country',
+	priorityOptions: [],
 	onChange: () => {},
 	onBlur: () => {},
 	labelType: C.DISPLAY_TYPE_FULL,
