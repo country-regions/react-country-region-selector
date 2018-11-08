@@ -53,7 +53,7 @@ Check out the [github pages](http://country-regions.github.io/react-country-regi
 JSX code.
 
 
-<a name="examples"></a>
+<a name="installation"></a>
 ### Installation
 
 ```javascript
@@ -197,7 +197,8 @@ organization
 <a name="tests"></a>
 ### Tests
 
-The Jest/Enzyme unit tests are found in the `src/tests` folder. The repo is hooked up to Travis CI to automatically run the tests for each commit.
+The Jest/Enzyme unit tests are found in the `src/tests` folder. The repo is hooked up to Travis CI to automatically run
+the tests for each commit.
 
 
 <a name="thanks"></a>
