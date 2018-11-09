@@ -168,7 +168,8 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
-- `1.4.2` - Nov 8, 2018. `customOptions` setting added for the Region dropdown. 
+- `1.4.2` - Nov 8, 2018:
+    - `customOptions` setting added for the Region dropdown. 
     - `priorityOptions` option added to the CountryDropdown to allow placing items at the top of the country dropdown.
 - `1.4.1` - Sept 9, 2018: bug fix for invalid JSON data source conversion. 
 - `1.4.0` - Sept 8, 2018:
