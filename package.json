@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/benkeen/react-country-region-selector.git"
+    "url": "https://github.com/country-regions/react-country-region-selector.git"
   },
   "main": "dist/rcrs.js",
   "module": "dist/rcrs.es.js",
