@@ -2,7 +2,7 @@
   "name": "react-country-region-selector",
   "version": "1.4.2",
   "description": "CountryDropdown and RegionDropdown React components for your forms.",
-  "author": "benkeen",
+  "author": "country-regions",
   "license": "MIT",
   "repository": {
     "type": "git",
