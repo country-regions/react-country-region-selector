@@ -18,11 +18,11 @@ class Examples extends Component {
 							<div>
 								<CountryDropdown
 									value={this.getCountryValue(0)}
-									onChange={(val) => this.selectCountry(0, val)} />
+									onChange={(val) => this.selectCountry(0, val)}/>
 								<RegionDropdown
 									country={this.getCountryValue(0)}
 									value={this.getRegionValue(0)}
-									onChange={(val) => this.selectRegion(0, val)} />
+									onChange={(val) => this.selectRegion(0, val)}/>
 							</div>
 						);
 					},
@@ -62,12 +62,12 @@ class Examples extends Component {
 								<CountryDropdown
 									showDefaultOption={false}
 									value={this.getCountryValue(2)}
-									onChange={(val) => this.selectCountry(2, val)} />
+									onChange={(val) => this.selectCountry(2, val)}/>
 								<RegionDropdown
 									showDefaultOption={false}
 									country={this.getCountryValue(2)}
 									value={this.getRegionValue(2)}
-									onChange={(val) => this.selectRegion(2, val)} />
+									onChange={(val) => this.selectRegion(2, val)}/>
 							</div>
 						);
 					},
@@ -235,7 +235,7 @@ class Examples extends Component {
 										color: 'white',
 										fontSize: 20
 									}}
-									tabIndex={1000} />
+									tabIndex={1000}/>
 								<RegionDropdown
 									country={this.getCountryValue(9)}
 									value={this.getRegionValue(9)}
@@ -244,7 +244,7 @@ class Examples extends Component {
 										backgroundColor: 'green',
 										color: 'white'
 									}}
-									tabIndex={1001} />
+									tabIndex={1001}/>
 							</div>
 						);
 					},
@@ -257,25 +257,47 @@ class Examples extends Component {
 				{
 					label: 'With custom options in the dropdown.',
 					jsx: () => {
-					  return (
-						<div>
-						  <CountryDropdown
-							value={this.getCountryValue(10)}
-							onChange={(val) => this.selectCountry(10, val)}/>
-						  <RegionDropdown
-							country={this.getCountryValue(10)}
-							value={this.getRegionValue(10)}
-							customOptions={['All', 'Yet another custom option']}
-							onChange={(val) => this.selectRegion(10, val)}/>
-						</div>
-					  );
+						return (
+							<div>
+								<CountryDropdown
+									value={this.getCountryValue(10)}
+									onChange={(val) => this.selectCountry(10, val)}/>
+								<RegionDropdown
+									country={this.getCountryValue(10)}
+									value={this.getRegionValue(10)}
+									customOptions={['All', 'Yet another custom option']}
+									onChange={(val) => this.selectRegion(10, val)}/>
+							</div>
+						);
 					},
 					codeVisible: false,
 					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'All\', \'Yet another custom option\']} />',
 					country: '',
 					region: ''
-				  },
+				},
 
+				{
+					label: 'Make Canada, United States and the UK appear first in the dropdown list.',
+					jsx: () => {
+						return (
+							<div>
+								<CountryDropdown
+									value={this.getCountryValue(10)}
+									onChange={(val) => this.selectCountry(10, val)}
+									priorityOptions={['CA', 'US', 'GB']} />
+								<RegionDropdown
+									country={this.getCountryValue(10)}
+									value={this.getRegionValue(10)}
+									customOptions={['All', 'Yet another custom option']}
+									onChange={(val) => this.selectRegion(10, val)}/>
+							</div>
+						);
+					},
+					codeVisible: false,
+					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry}\n  priorityOptions={["CA", "US", "GB"]} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'All\', \'Yet another custom option\']} />',
+					country: '',
+					region: ''
+				}
 			]
 		};
 	}
@@ -315,11 +337,12 @@ class Examples extends Component {
 					<p>
 						<span className="counter">{i}.</span>
 						{example.label}
-						<span className="toggleCode" title="Toggle code" onClick={() => this.toggleCode(j)}>&lt;/&gt;</span>
+						<span className="toggleCode" title="Toggle code"
+						      onClick={() => this.toggleCode(j)}>&lt;/&gt;</span>
 					</p>
 					{example.jsx()}
 					<pre className="hljs html" style={{ display: example.codeVisible ? 'block' : 'none' }}>
-						<code className="html" dangerouslySetInnerHTML={{ __html: example.code }} />
+						<code className="html" dangerouslySetInnerHTML={{ __html: example.code }}/>
 					</pre>
 				</section>
 			);

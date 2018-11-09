@@ -37,7 +37,7 @@ export default class CountryDropdown extends Component {
 	render () {
 		// unused properties deliberately added so arbitraryProps get populated properly
 		const { name, id, classes, value, onChange, onBlur, disabled, showDefaultOption, defaultOptionLabel,
-			labelType, valueType, whitelist, blacklist, ...arbitraryProps } = this.props;
+			labelType, valueType, whitelist, blacklist, customOptions, priorityOptions, ...arbitraryProps } = this.props;
 
 		const attrs = {
 			...arbitraryProps,
