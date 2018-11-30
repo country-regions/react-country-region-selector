@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import C from './constants';
 
-export default class RegionDropdown extends Component {
+export default class RegionDropdown extends PureComponent {
 	constructor (props) {
 		super(props);
 		this.state = {
 			regions: this.getRegions(props.country)
 		};
 		this.getRegions = this.getRegions.bind(this);
-	}
-
-	shouldComponentUpdate (nextProps) {
-		return (nextProps.country !== this.props.country) || (nextProps.value !== this.props.value);
 	}
 
 	componentWillReceiveProps (nextProps) {
@@ -50,9 +46,7 @@ export default class RegionDropdown extends Component {
 		const { customOptions, valueType } = this.props;
 		const regionKey = valueType === C.DISPLAY_TYPE_FULL ? 'regionName' : 'regionShortCode';
 
-		return regions.filter((region) => {
-			return customOptions.indexOf(region[regionKey]) != -1;
-		}).map(region => region[regionKey]);
+		return regions.filter((region) => customOptions.indexOf(region[regionKey]) !== -1).map(region => region[regionKey]);
 	}
 
 	getRegions (country) {

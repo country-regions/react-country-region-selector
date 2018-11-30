@@ -56,25 +56,28 @@ JSX code.
 <a name="installation"></a>
 ### Installation
 
+Using npm or yarn:
+
 ```javascript
 npm i react-country-region-selector
+yarn add react-country-region-selector
 ```
 
 <a name="features"></a>
 ### Usage
 
 It's very easy to use, but note that you will need to track the country and region value somewhere - either in your
-component state or off in a store somewhere. Here's a simple example that uses state:
+component state or in a store somewhere. Here's a simple example that uses state:
 
 ```javascript
-import React from 'react';
+import React, { Component } from 'react';
 
 // note that you can also export the source data via CountryRegionData. It's in a deliberately concise format to 
 // keep file size down
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 
-class Example extends React.Component {
+class Example extends Component {
   constructor (props) {
     super(props);
     this.state = { country: '', region: '' };
@@ -105,11 +108,14 @@ class Example extends React.Component {
 }
 ```
 
+Generally you don't need `CountryRegionData`, but should you need it, the raw data is accessible like in the above example.
+
+
 <a name="options"></a>
 ### Options
 
-These are the attributes that can be explicitly passed to the two components. _Note: any other arbitrary attributes will be 
-added to the actual DOM element._
+These are the attributes that can be passed to the two components. _Note: any other attributes that aren't
+specified here will be added directly to the `<select>` DOM element._
 
 
 ```<CountryDropdown />```
@@ -157,7 +163,7 @@ added to the actual DOM element._
 <a name="command-line"></a>
 ### Command-line
 
-Check out the `scripts` section of the package.json file to see them all, but these are the higlights:
+Check out the `scripts` section of the package.json file to see them all, but these are the highlights:
 
 - `npm start` - regenerate everything, plus a watcher for local development.
 - `npm build` - build the dist files again. No watcher.
