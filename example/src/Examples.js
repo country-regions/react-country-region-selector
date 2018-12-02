@@ -255,7 +255,7 @@ class Examples extends Component {
 				},
 
 				{
-					label: 'With custom options in the dropdown.',
+					label: 'With custom options in the RegionDropdown.',
 					jsx: () => {
 						return (
 							<div>
@@ -265,13 +265,13 @@ class Examples extends Component {
 								<RegionDropdown
 									country={this.getCountryValue(10)}
 									value={this.getRegionValue(10)}
-									customOptions={['All', 'Yet another custom option']}
+									customOptions={['-- Custom option 1', '-- Custom option 2']}
 									onChange={(val) => this.selectRegion(10, val)}/>
 							</div>
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'All\', \'Yet another custom option\']} />',
+					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'-- Custom option 1\', \'-- Custom option 2\']} />',
 					country: '',
 					region: ''
 				},
@@ -282,19 +282,18 @@ class Examples extends Component {
 						return (
 							<div>
 								<CountryDropdown
-									value={this.getCountryValue(10)}
-									onChange={(val) => this.selectCountry(10, val)}
+									value={this.getCountryValue(11)}
+									onChange={(val) => this.selectCountry(11, val)}
 									priorityOptions={['CA', 'US', 'GB']} />
 								<RegionDropdown
-									country={this.getCountryValue(10)}
-									value={this.getRegionValue(10)}
-									customOptions={['All', 'Yet another custom option']}
-									onChange={(val) => this.selectRegion(10, val)}/>
+									country={this.getCountryValue(11)}
+									value={this.getRegionValue(11)}
+									onChange={(val) => this.selectRegion(11, val)} />
 							</div>
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry}\n  priorityOptions={["CA", "US", "GB"]} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'All\', \'Yet another custom option\']} />',
+					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry}\n  priorityOptions={["CA", "US", "GB"]} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
 					country: '',
 					region: ''
 				}
