@@ -174,6 +174,7 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
+- `1.4.4` - Aug 2, 2019. Country data updates.
 - `1.4.3` - Dev 2, 2018: 
     - RegionDropdown converted to PureComponent; now updates on any prop change
     - [country region data](https://github.com/country-regions/country-region-data) updated to 1.4.5
