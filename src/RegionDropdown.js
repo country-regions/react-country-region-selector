@@ -12,17 +12,20 @@ export default class RegionDropdown extends PureComponent {
 		this.getRegions = this.getRegions.bind(this);
 	}
 
-	componentWillReceiveProps (nextProps) {
-		if (nextProps.country === this.props.country) {
+	componentDidUpdate (prevProps) {
+		const { country } = this.props;
+		if (country === prevProps.country) {
 			return;
 		}
 
-		const defaultRegions = this.getRegions(nextProps.country);
+		const defaultRegions = this.getRegions(country);
 
-		this.setState({ regions: [
-			...defaultRegions,
-			...this.getCustomOptions(defaultRegions)
-		]});
+		this.setState({
+			regions: [
+				...defaultRegions,
+				...this.getCustomOptions(defaultRegions)
+			]
+		});
 	}
 
 	getCustomOptions (regions) {
@@ -37,7 +40,7 @@ export default class RegionDropdown extends PureComponent {
 
 		return customOptions.map((option) => {
 			if (option) {
-				return {regionName: option, regionShortCode: option};
+				return { regionName: option, regionShortCode: option };
 			}
 		});
 	}
@@ -98,9 +101,11 @@ export default class RegionDropdown extends PureComponent {
 	}
 
 	render () {
-		const { value, country, onChange, onBlur, id, name, classes, disabled, blankOptionLabel, showDefaultOption,
+		const {
+			value, country, onChange, onBlur, id, name, classes, disabled, blankOptionLabel, showDefaultOption,
 			defaultOptionLabel, labelType, valueType, countryValueType, disableWhenEmpty, customOptions,
-			...arbitraryProps } = this.props;
+			...arbitraryProps
+		} = this.props;
 
 		const isDisabled = disabled || (disableWhenEmpty && country === '');
 		const attrs = {
@@ -129,6 +134,7 @@ export default class RegionDropdown extends PureComponent {
 
 RegionDropdown.propTypes = {
 	country: PropTypes.string,
+	countryValueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	name: PropTypes.string,
 	id: PropTypes.string,
@@ -153,8 +159,10 @@ RegionDropdown.defaultProps = {
 	blankOptionLabel: '-',
 	showDefaultOption: true,
 	defaultOptionLabel: 'Select Region',
-	onChange: () => {},
-	onBlur: () => {},
+	onChange: () => {
+	},
+	onBlur: () => {
+	},
 	countryValueType: C.DISPLAY_TYPE_FULL,
 	labelType: C.DISPLAY_TYPE_FULL,
 	valueType: C.DISPLAY_TYPE_FULL,

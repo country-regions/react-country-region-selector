@@ -174,6 +174,10 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
+- `1.4.5` - Oct 9, 2019.
+    - [country region data](https://github.com/country-regions/country-region-data) updated to 1.5.0
+    - RegionDropdown component updates to refactor deprecated componentWillReceiveProps method
+    - misc dependency updates
 - `1.4.4` - Aug 2, 2019. Country data updates.
 - `1.4.3` - Dev 2, 2018: 
     - RegionDropdown converted to PureComponent; now updates on any prop change
@@ -211,6 +215,15 @@ organization
 
 The Jest/Enzyme unit tests are found in the `src/tests` folder. The repo is hooked up to Travis CI to automatically run
 the tests for each commit.
+
+
+<a name="localDev"></a>
+### Local Dev
+
+To run this locally, do the following:
+- `yarn install`
+- in one terminal window: `yarn start`
+- in another terminal window, go to the `/example` subfolder and do the same: `yarn install`, `yarn start`
 
 
 <a name="thanks"></a>
