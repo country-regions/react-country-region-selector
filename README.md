@@ -174,6 +174,9 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
+- `1.4.6` - Dec 22, 2019:
+    - Typescript typings added. Thanks, [Kyle Davis](https://github.com/kyledavisdev)!
+    - [country region data](https://github.com/country-regions/country-region-data) updated to 1.5.1 
 - `1.4.5` - Oct 9, 2019.
     - [country region data](https://github.com/country-regions/country-region-data) updated to 1.5.0
     - RegionDropdown component updates to refactor deprecated componentWillReceiveProps method

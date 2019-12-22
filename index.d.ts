@@ -2,9 +2,7 @@
 // Project: https://github.com/country-regions/react-country-region-selector
 // Definitions by: Kyle Davis <https://github.com/kyledavisdev>
 
-import * as React from "react";
-
-export class CountryDropdown extends React.Component<CountryDropdownProps> {}
+import * as React from 'react';
 
 export interface CountryDropdownProps {
   /**
@@ -122,7 +120,7 @@ export interface CountryDropdownProps {
   disabled?: boolean;
 }
 
-export class RegionDropdown extends React.Component<RegionDropdownProps> {}
+export class CountryDropdown extends React.Component<CountryDropdownProps> {}
 
 export interface RegionDropdownProps {
   /**
@@ -247,3 +245,5 @@ export interface RegionDropdownProps {
    */
   customOptions?: string[];
 }
+
+export class RegionDropdown extends React.Component<RegionDropdownProps> {}
