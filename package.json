@@ -1,6 +1,6 @@
 {
   "name": "react-country-region-selector",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "CountryDropdown and RegionDropdown React components for your forms.",
   "author": "country-regions",
   "license": "MIT",
@@ -64,6 +64,7 @@
     "rollup-plugin-url": "^1.4.0"
   },
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ]
 }
