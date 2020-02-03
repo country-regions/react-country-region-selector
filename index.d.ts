@@ -228,14 +228,14 @@ export interface RegionDropdownProps {
    *
    * Default value: false
    */
-  disableWhenEmpty?: string;
+  disableWhenEmpty?: boolean;
 
   /**
    * Disables the region field. If set to true, it overrides disableWhenEmpty
    *
    * Default value: false
    */
-  disabled?: string;
+  disabled?: boolean;
 
   /**
    * Appends a list of string to the every region dropdown,
