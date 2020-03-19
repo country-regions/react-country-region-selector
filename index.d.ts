@@ -1,8 +1,10 @@
-// Type definitions for react-country-region-selector 1.4.5 by <https://github.com/country-regions/react-country-region-selector>
+// Type definitions for react-country-region-selector 1.4.7 by <https://github.com/country-regions/react-country-region-selector>
 // Project: https://github.com/country-regions/react-country-region-selector
 // Definitions by: Kyle Davis <https://github.com/kyledavisdev>
 
-import * as React from 'react';
+import * as React from "react";
+
+type ValueType = "full" | "short";
 
 export interface CountryDropdownProps {
   /**
@@ -81,7 +83,7 @@ export interface CountryDropdownProps {
    *
    * Default value: "full"
    */
-  labelType?: string;
+  labelType?: ValueType;
 
   /**
    * Either "full" or "short". This controls the actual value
@@ -92,7 +94,7 @@ export interface CountryDropdownProps {
    *
    * Default value: "full"
    */
-  valueType?: string;
+  valueType?: ValueType;
 
   /**
    * This setting lets you target specific countries to appear
@@ -205,7 +207,7 @@ export interface RegionDropdownProps {
    *
    * Default value: "full"
    */
-  countryValueType?: string;
+  countryValueType?: ValueType;
 
   /**
    * Either "full" or "short". This governs whether you see
@@ -213,7 +215,7 @@ export interface RegionDropdownProps {
    *
    * Default value: "full"
    */
-  labelType?: "full" | "short";
+  labelType?: ValueType;
 
   /**
    * Either "full" or "short". This controls the actual value
@@ -221,21 +223,21 @@ export interface RegionDropdownProps {
    *
    * Default value: "full"
    */
-  valueType?: "full" | "short";
+  valueType?: ValueType;
 
   /**
    * Disables the region field when the user hasn't selected a country.
    *
    * Default value: false
    */
-  disableWhenEmpty?: string;
+  disableWhenEmpty?: boolean;
 
   /**
    * Disables the region field. If set to true, it overrides disableWhenEmpty
    *
    * Default value: false
    */
-  disabled?: string;
+  disabled?: boolean;
 
   /**
    * Appends a list of string to the every region dropdown,
