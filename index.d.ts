@@ -4,7 +4,7 @@
 
 import * as React from "react";
 
-type ValueType = "full" | "short";
+export type ValueType = "full" | "short";
 
 export interface CountryDropdownProps {
   /**
