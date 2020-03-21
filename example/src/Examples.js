@@ -1,6 +1,37 @@
 import React, { Component } from 'react';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
+
+const RefForwardingDemo = () => {
+	const [country, setCountry] = React.useState('');
+	const [region, setRegion] = React.useState('');
+	const [showCode, toggleCode] = React.useState(false);
+	const countryFieldRef = React.useRef();
+
+	return (
+		<section>
+			<p>
+				<span className="counter">14.</span>
+				Ref forwarding (with hooks)
+				<span className="toggleCode" title="Toggle code" onClick={() => toggleCode(!showCode)}>&lt;/&gt;</span>
+			</p>
+			<CountryDropdown
+				ref={countryFieldRef}
+				value={country}
+				onChange={(val) => setCountry(val)} />
+			<RegionDropdown
+				country={country}
+				value={region}
+				onChange={(val) => setRegion(val)}/>
+
+			<pre className="hljs html" style={{ display: showCode ? 'block' : 'none' }}>
+				<code className="html" dangerouslySetInnerHTML={{ __html: '<b>code</b>' }}/>
+			</pre>
+		</section>
+	)
+};
+
+
 class Examples extends Component {
 	constructor (props) {
 		super(props);
@@ -352,6 +383,8 @@ class Examples extends Component {
 		return (
 			<div>
 				{this.getExamples()}
+
+				<RefForwardingDemo />
 			</div>
 		);
 	}

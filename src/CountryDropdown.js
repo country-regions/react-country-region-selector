@@ -1,67 +1,61 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import C from './constants';
 import * as helpers from './helpers';
 
-export default class CountryDropdown extends Component {
+const CountryDropdown = React.forwardRef((props, ref) => {
+	// unused properties deliberately added so arbitraryProps gets populated with anything else the user specifies
+	const { name, id, classes, value, onChange, onBlur, disabled, showDefaultOption, defaultOptionLabel,
+		labelType, valueType, whitelist, blacklist, customOptions, priorityOptions, ...arbitraryProps } = props;
 
-	constructor (props) {
-		super(props);
+	const [countries, setCountries] = React.useState([]);
 
-		this.state = {
-			countries: helpers.filterCountries(CountryRegionData, props.priorityOptions, props.whitelist, props.blacklist)
-		};
-	}
+	React.useEffect(() => {
+		setCountries(helpers.filterCountries(CountryRegionData, priorityOptions, whitelist, blacklist));
+	}, [priorityOptions, whitelist, blacklist]);
 
-	getCountries () {
-		const { valueType, labelType } = this.props;
-
-		return this.state.countries.map(([countryName, countrySlug]) => (
+	const getCountries = () => {
+		const { valueType, labelType } = props;
+		return countries.map(([countryName, countrySlug]) => (
 			<option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
 				{(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}
 			</option>
 		));
-	}
+	};
 
-	getDefaultOption () {
-		const { showDefaultOption, defaultOptionLabel } = this.props;
+	const getDefaultOption = () => {
 		if (!showDefaultOption) {
 			return null;
 		}
 		return (
 			<option value="" key="default">{defaultOptionLabel}</option>
 		);
+	};
+
+	const attrs = {
+		ref,
+		...arbitraryProps,
+		name,
+		value,
+		onChange: (e) => onChange(e.target.value, e),
+		onBlur: (e) => onBlur(e),
+		disabled
+	};
+	if (id) {
+		attrs.id = id;
+	}
+	if (classes) {
+		attrs.className = classes;
 	}
 
-	render () {
-		// unused properties deliberately added so arbitraryProps gets populated with anything else the user specifies
-		const { name, id, classes, value, onChange, onBlur, disabled, showDefaultOption, defaultOptionLabel,
-			labelType, valueType, whitelist, blacklist, customOptions, priorityOptions, ...arbitraryProps } = this.props;
-
-		const attrs = {
-			...arbitraryProps,
-			name,
-			value,
-			onChange: (e) => onChange(e.target.value, e),
-			onBlur: (e) => onBlur(e),
-			disabled
-		};
-		if (id) {
-			attrs.id = id;
-		}
-		if (classes) {
-			attrs.className = classes;
-		}
-
-		return (
-			<select {...attrs}>
-				{this.getDefaultOption()}
-				{this.getCountries()}
-			</select>
-		);
-	}
-}
+	return (
+		<select {...attrs}>
+			{getDefaultOption()}
+			{getCountries()}
+		</select>
+	);
+});
 
 CountryDropdown.propTypes = {
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -79,6 +73,7 @@ CountryDropdown.propTypes = {
 	blacklist: PropTypes.array,
 	disabled: PropTypes.bool
 };
+
 CountryDropdown.defaultProps = {
 	value: '',
 	name: 'rcrs-country',
@@ -95,3 +90,5 @@ CountryDropdown.defaultProps = {
 	blacklist: [],
 	disabled: false
 };
+
+export default CountryDropdown;
