@@ -1,4 +1,4 @@
-// Type definitions for react-country-region-selector 1.4.7 by <https://github.com/country-regions/react-country-region-selector>
+// Type definitions for react-country-region-selector 2.0.0 by 
 // Project: https://github.com/country-regions/react-country-region-selector
 // Definitions by: Kyle Davis <https://github.com/kyledavisdev>
 

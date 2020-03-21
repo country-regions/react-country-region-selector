@@ -174,6 +174,9 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
+- `2.0.0` - Mar 21, 2020
+    - Typings fixes
+	- Dependency updates
 - `1.4.7` - Dec 24, 2019:
     - Fix to include typings in published bundle.
 - `1.4.6` - Dec 22, 2019:
@@ -218,17 +221,17 @@ organization
 <a name="tests"></a>
 ### Tests
 
-The Jest/Enzyme unit tests are found in the `src/tests` folder. The repo is hooked up to Travis CI to automatically run
-the tests for each commit.
+The Jest/Enzyme unit tests are found in the `src/tests` folder. The repo is hooked up to Travis CI to automatically run the tests for each commit.
 
 
 <a name="localDev"></a>
 ### Local Dev
 
 To run this locally, do the following:
-- `yarn install`
-- in one terminal window: `yarn start`
-- in another terminal window, go to the `/example` subfolder and do the same: `yarn install`, `yarn start`
+- `npm install`
+- in one terminal window: `npm start`
+- in another terminal window, go to the `/example` subfolder and do the same: `npm install`, `npm start`
+- open `http://localhost:3000` in your browser.
 
 
 <a name="thanks"></a>
