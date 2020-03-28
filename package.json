@@ -1,6 +1,6 @@
 {
   "name": "react-country-region-selector",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "CountryDropdown and RegionDropdown React components for your forms.",
   "author": "country-regions",
   "license": "MIT",
@@ -37,7 +37,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "country-region-data": "^1.5.1",
+    "country-region-data": "^1.6.0",
     "cross-env": "^5.1.4",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
