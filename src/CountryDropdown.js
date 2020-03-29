@@ -10,15 +10,15 @@ export default class CountryDropdown extends Component {
 		super(props);
 
 		this.state = {
-			countries: helpers.filterCountries(CountryRegionData, props.priorityOptions, props.whitelist, props.blacklist)
+			countries: helpers.filterCountries(CountryRegionData, props.priorityOptions, props.whitelist, props.blacklist, props.priorityRepeat)
 		};
 	}
 
 	getCountries () {
 		const { valueType, labelType } = this.props;
 
-		return this.state.countries.map(([countryName, countrySlug]) => (
-			<option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
+		return this.state.countries.map(([countryName, countrySlug], nr) => (
+			<option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug + nr}>
 				{(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}
 			</option>
 		));
@@ -37,7 +37,7 @@ export default class CountryDropdown extends Component {
 	render () {
 		// unused properties deliberately added so arbitraryProps gets populated with anything else the user specifies
 		const { name, id, classes, value, onChange, onBlur, disabled, showDefaultOption, defaultOptionLabel,
-			labelType, valueType, whitelist, blacklist, customOptions, priorityOptions, ...arbitraryProps } = this.props;
+			labelType, valueType, whitelist, blacklist, priorityRepeat, customOptions, priorityOptions, ...arbitraryProps } = this.props;
 
 		const attrs = {
 			...arbitraryProps,
@@ -77,7 +77,8 @@ CountryDropdown.propTypes = {
 	valueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
 	whitelist: PropTypes.array,
 	blacklist: PropTypes.array,
-	disabled: PropTypes.bool
+	disabled: PropTypes.bool,
+	priorityRepeat: PropTypes.bool
 };
 CountryDropdown.defaultProps = {
 	value: '',
@@ -93,5 +94,6 @@ CountryDropdown.defaultProps = {
 	valueType: C.DISPLAY_TYPE_FULL,
 	whitelist: [],
 	blacklist: [],
-	disabled: false
+	disabled: false,
+	priorityRepeat: false,
 };
