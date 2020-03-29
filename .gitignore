@@ -3,7 +3,6 @@ node_modules
 
 # builds
 build
-dist
 
 npm-debug.log*
 yarn-debug.log*
