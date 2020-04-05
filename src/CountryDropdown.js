@@ -4,9 +4,9 @@ import CountryRegionData from '../node_modules/country-region-data/data.json';
 import C from './constants';
 import * as helpers from './helpers';
 
-export default React.forwardRef((props, ref) => <CountryDropdown innerRef={ref} {...props} />)
+export const CountryDropdownWithRef = React.forwardRef((props, ref) => <CountryDropdown innerRef={ref} {...props} />)
 
-class CountryDropdown extends Component {
+export default class CountryDropdown extends Component {
 
 	constructor (props) {
 		super(props);
