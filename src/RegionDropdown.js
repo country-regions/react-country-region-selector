@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import C from './constants';
 
-export default class RegionDropdown extends PureComponent {
+export default React.forwardRef((props, ref) => <RegionDropdown innerRef={ref} {...props} />)
+
+class RegionDropdown extends PureComponent {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -124,7 +126,7 @@ export default class RegionDropdown extends PureComponent {
 		}
 
 		return (
-			<select {...attrs}>
+			<select ref={this.props.innerRef} {...attrs}>
 				{this.getDefaultOption()}
 				{this.getRegionList()}
 			</select>
