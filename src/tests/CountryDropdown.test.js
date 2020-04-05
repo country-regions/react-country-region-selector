@@ -1,6 +1,6 @@
 import React from 'react';
 import { CountryDropdown, CountryRegionData } from '../../dist/rcrs.es';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, mount } from 'enzyme';
 
 const Adapter = require('enzyme-adapter-react-16');
 Enzyme.configure({ adapter: new Adapter() });
@@ -14,7 +14,6 @@ describe('CountryDropdown', () => {
 		expect(wrapper.find('#id-attribute').length).toBe(1);
 		expect(wrapper.find('#fake-id-attribute').length).toBe(0);
 	});
-
 
 	it('classes attribute gets recognized', () => {
 		const wrapper = shallow(
@@ -63,7 +62,7 @@ describe('CountryDropdown', () => {
 
 	describe('default blank option', () => {
 		it('showDefaultOption = false removes the default option', () => {
-			const wrapper = shallow(<CountryDropdown showDefaultOption={false} />);
+			const wrapper = mount(<CountryDropdown showDefaultOption={false} />);
 			expect(wrapper.find('option').length).toBe(CountryRegionData.length);
 		});
 
@@ -85,13 +84,13 @@ describe('CountryDropdown', () => {
 
 	describe('country list', () => {
 		it('outputs the list of countries', () => {
-			const wrapper = shallow(<CountryDropdown />);
+			const wrapper = mount(<CountryDropdown />);
 			expect(wrapper.find('option').length).toBe(CountryRegionData.length + 1); // 1 for the "Select Country" default option
 		});
 
 		it('respects the blacklist', () => {
 			const blacklist = ['GB', 'CA', 'US'];
-			const wrapper = shallow(
+			const wrapper = mount(
 				<CountryDropdown blacklist={blacklist} showDefaultOption={false} />
 			);
 			expect(wrapper.find('option').length).toBe(CountryRegionData.length - blacklist.length);
@@ -107,7 +106,7 @@ describe('CountryDropdown', () => {
 
 		it('respects the whitelist', () => {
 			const whitelist = ['GB', 'CA', 'US'];
-			const wrapper = shallow(
+			const wrapper = mount(
 				<CountryDropdown whitelist={whitelist} showDefaultOption={false} />
 			);
 			expect(wrapper.find('option').length).toBe(whitelist.length);
@@ -121,14 +120,14 @@ describe('CountryDropdown', () => {
 
 	describe('valueType', () => {
 		it('confirm value is full country name by default', () => {
-			const wrapper = shallow(
+			const wrapper = mount(
 				<CountryDropdown showDefaultOption={false} />
 			);
 			expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(CountryRegionData[0][0]);
 		});
 
 		it('confirm explicit valueType="full" also sets full country name', () => {
-			const wrapper = shallow(
+			const wrapper = mount(
 				<CountryDropdown
 					showDefaultOption={false}
 					valueType="full" />
@@ -137,10 +136,8 @@ describe('CountryDropdown', () => {
 		});
 
 		it('confirm valueType="short" outputs country short code', () => {
-			const wrapper = shallow(
-				<CountryDropdown
-					showDefaultOption={false}
-					valueType="short" />
+			const wrapper = mount(
+				<CountryDropdown showDefaultOption={false} valueType="short" />
 			);
 			expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(CountryRegionData[0][1]);
 		});
@@ -148,21 +145,22 @@ describe('CountryDropdown', () => {
 
 	describe('labelType', () => {
 		it('confirm label type is full country name by default', () => {
-			const wrapper = shallow(
+			const wrapper = mount(
 				<CountryDropdown showDefaultOption={false} />
 			);
+
 			expect(wrapper.find('select').childAt(0).text()).toBe(CountryRegionData[0][0]);
 		});
 
 		it('confirm label type is full country name when explicitly set', () => {
-			const wrapper = shallow(
+			const wrapper = mount(
 				<CountryDropdown showDefaultOption={false} labelType="full" />
 			);
 			expect(wrapper.find('select').childAt(0).text()).toBe(CountryRegionData[0][0]);
 		});
 
 		it('confirm label type is the country shortcode when set', () => {
-			const wrapper = shallow(
+			const wrapper = mount(
 				<CountryDropdown showDefaultOption={false} labelType="short" />
 			);
 			expect(wrapper.find('select').childAt(0).text()).toBe(CountryRegionData[0][1]);
