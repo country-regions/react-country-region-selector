@@ -31,6 +31,9 @@
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@testing-library/jest-dom": "^5.4.0",
     "@testing-library/react": "^10.0.2",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
