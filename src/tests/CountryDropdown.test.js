@@ -5,7 +5,7 @@ import Enzyme, { shallow, mount } from 'enzyme';
 const Adapter = require('enzyme-adapter-react-16');
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('CountryDropdown', () => {
+xdescribe('CountryDropdown', () => {
 
 	it('sets ID attribute', () => {
 		const wrapper = shallow(

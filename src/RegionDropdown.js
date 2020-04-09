@@ -1,136 +1,130 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import C from './constants';
 
-export default class RegionDropdown extends PureComponent {
-	constructor (props) {
-		super(props);
-		this.state = {
-			regions: this.getRegions(props.country)
-		};
-		this.getRegions = this.getRegions.bind(this);
+const RegionDropdown = React.forwardRef((props, ref) => {
+	const {
+		value, country, onChange, onBlur, id, name, classes, disabled, blankOptionLabel, showDefaultOption,
+		defaultOptionLabel, labelType, valueType, countryValueType, disableWhenEmpty, customOptions,
+		...arbitraryProps
+	} = props;
+
+	const [regions, setRegions] = React.useState(getRegions(props.country));
+
+	React.useEffect(() => {
+		const defaultRegions = getRegions(country);
+
+		setRegions([
+			...defaultRegions,
+			getCustomOptions(defaultRegions, valueType, customOptions)
+		]);
+	}, [props.country]);
+
+	const isDisabled = disabled || (disableWhenEmpty && country === '');
+
+	const attrs = {
+		ref,
+		...arbitraryProps,
+		name,
+		value,
+		onChange: (e) => onChange(e.target.value, e),
+		onBlur: (e) => onBlur(e),
+		disabled: isDisabled
+	};
+	if (id) {
+		attrs.id = id;
+	}
+	if (classes) {
+		attrs.className = classes;
 	}
 
-	componentDidUpdate (prevProps) {
-		const { country } = this.props;
-		if (country === prevProps.country) {
-			return;
-		}
+	return (
+		<select {...attrs}>
+			<DefaultOption {...props} />
+			<RegionList regions={regions} labelType={labelType} valueType={valueType} />
+		</select>
+	);
+});
 
-		const defaultRegions = this.getRegions(country);
+const RegionList = ({ regions, labelType, valueType }) => {
+	return regions.map(({ regionName, regionShortCode }) => {
+		const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
+		const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
+		return <option value={value} key={regionName}>{label}</option>;
+	});
+};
 
-		this.setState({
-			regions: [
-				...defaultRegions,
-				...this.getCustomOptions(defaultRegions)
-			]
-		});
+// there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
+// a "default" option which shows
+const DefaultOption = ({ country, blankOptionLabel, showDefaultOption, defaultOptionLabel }) => {
+	if (!country) {
+		return <option value="">{blankOptionLabel}</option>;
+	}
+	if (showDefaultOption) {
+		return <option value="">{defaultOptionLabel}</option>;
 	}
 
-	getCustomOptions (regions) {
-		const { customOptions } = this.props;
+	return null;
+};
 
-		const duplicateRegions = this.getDuplicates(regions);
+export default RegionDropdown;
 
-		if (duplicateRegions.length) {
-			console.error('Error: Duplicate regions present: ' + duplicateRegions.toString() + '.\nThe above item(s) is/are already getting added to the region dropdown by the library.');
-			return [];
-		}
-
-		return customOptions.map((option) => {
-			if (option) {
-				return { regionName: option, regionShortCode: option };
-			}
-		});
+const getRegions = (country) => {
+	if (!country) {
+		return [];
 	}
 
-	getDuplicates (regions) {
-		const { customOptions, valueType } = this.props;
-		const regionKey = valueType === C.DISPLAY_TYPE_FULL ? 'regionName' : 'regionShortCode';
+	const { countryValueType } = this.props;
+	const searchIndex = (countryValueType === C.DISPLAY_TYPE_FULL) ? 0 : 1;
+	let regions = [];
+	CountryRegionData.forEach((i) => {
+		if (i[searchIndex] === country) {
+			regions = i;
+		}
+	});
 
-		return regions.filter((region) => customOptions.indexOf(region[regionKey]) !== -1).map(region => region[regionKey]);
+	// this could happen if the user is managing the state of the region/country themselves and screws up passing
+	// in a valid country
+	if (!regions || regions.length === 0) {
+		console.error('Error. Unknown country passed: ' + country + '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionDropdown');
+		return [];
+	}
+	return regions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
+		let [regionName, regionShortCode = null] = regionPair.split(C.SINGLE_REGION_DELIMITER);
+		return { regionName, regionShortCode };
+	});
+};
+
+const getCustomOptions = (regions, valueType, customOptions) => {
+	const regionKey = valueType === C.DISPLAY_TYPE_FULL ? 'regionName' : 'regionShortCode';
+
+	const duplicateRegions = regions.filter((region) => customOptions.indexOf(region[regionKey]) !== -1).map(region => region[regionKey]);
+
+	if (duplicateRegions.length) {
+		console.error('Error: Duplicate regions present: ' + duplicateRegions.toString() + '.\nThe above item(s) is/are already getting added to the region dropdown by the library.');
+		return [];
 	}
 
-	getRegions (country) {
-		if (!country) {
-			return [];
+	return customOptions.map((option) => {
+		if (option) {
+			return { regionName: option, regionShortCode: option };
 		}
+	});
+};
 
-		const { countryValueType } = this.props;
-		const searchIndex = (countryValueType === C.DISPLAY_TYPE_FULL) ? 0 : 1;
-		let regions = [];
-		CountryRegionData.forEach((i) => {
-			if (i[searchIndex] === country) {
-				regions = i;
-			}
-		});
+RegionList.propTypes = {
+	region: PropTypes.array,
+	labelType: PropTypes.string,
+	valueType: PropTypes.string
+};
 
-		// this could happen if the user is managing the state of the region/country themselves and screws up passing
-		// in a valid country
-		if (!regions || regions.length === 0) {
-			console.error('Error. Unknown country passed: ' + country + '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionDropdown');
-			return [];
-		}
-		return regions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
-			let [regionName, regionShortCode = null] = regionPair.split(C.SINGLE_REGION_DELIMITER);
-			return { regionName, regionShortCode };
-		});
-	}
-
-	getRegionList () {
-		const { labelType, valueType } = this.props;
-		return this.state.regions.map(({ regionName, regionShortCode }) => {
-			const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
-			const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
-			return <option value={value} key={regionName}>{label}</option>;
-		});
-	}
-
-	// there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
-	// a "default" option which shows
-	getDefaultOption () {
-		const { blankOptionLabel, showDefaultOption, defaultOptionLabel, country } = this.props;
-		if (!country) {
-			return <option value="">{blankOptionLabel}</option>;
-		}
-		if (showDefaultOption) {
-			return <option value="">{defaultOptionLabel}</option>;
-		}
-		return null;
-	}
-
-	render () {
-		const {
-			value, country, onChange, onBlur, id, name, classes, disabled, blankOptionLabel, showDefaultOption,
-			defaultOptionLabel, labelType, valueType, countryValueType, disableWhenEmpty, customOptions,
-			...arbitraryProps
-		} = this.props;
-
-		const isDisabled = disabled || (disableWhenEmpty && country === '');
-		const attrs = {
-			...arbitraryProps,
-			name,
-			value,
-			onChange: (e) => onChange(e.target.value, e),
-			onBlur: (e) => onBlur(e),
-			disabled: isDisabled
-		};
-		if (id) {
-			attrs.id = id;
-		}
-		if (classes) {
-			attrs.className = classes;
-		}
-
-		return (
-			<select {...attrs}>
-				{this.getDefaultOption()}
-				{this.getRegionList()}
-			</select>
-		);
-	}
-}
+DefaultOption.propTypes = {
+	country: PropTypes.string,
+	blankOptionLabel: PropTypes.string,
+	showDefaultOption: PropTypes.bool,
+	defaultOptionLabel: PropTypes.string
+};
 
 RegionDropdown.propTypes = {
 	country: PropTypes.string,
@@ -150,6 +144,7 @@ RegionDropdown.propTypes = {
 	disableWhenEmpty: PropTypes.bool,
 	customOptions: PropTypes.array
 };
+
 RegionDropdown.defaultProps = {
 	country: '',
 	value: '',

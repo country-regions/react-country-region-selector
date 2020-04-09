@@ -1,16 +1,16 @@
 import React from 'react';
 import { RegionDropdown } from '../../dist/rcrs.es';
-import Enzyme, { shallow } from 'enzyme';
 
-const Adapter = require('enzyme-adapter-react-16');
-Enzyme.configure({ adapter: new Adapter() });
+import { render, queryByTestId, waitFor, screen } from '@testing-library/react';
 
 describe('RegionDropdown', () => {
 
-	it('sets ID attribute', () => {
-		const wrapper = shallow(
-			<RegionDropdown id="id-attribute" />
+	it.only('sets ID attribute', () => {
+		const wrapper = render(
+			<RegionDropdown data-testid="id-attribute" />
 		);
+
+		console.log(wrapper.debug(), queryByTestId(wrapper, 'id-attribute'))
 		expect(wrapper.find('#id-attribute').length).toBe(1);
 		expect(wrapper.find('#fake-id-attribute').length).toBe(0);
 	});
