@@ -18,7 +18,7 @@ export interface CountryDropdownProps<T = Element> {
   value: string;
 
   /**
-   * that gets called when the user selects a country. Use
+   * Callback that gets called when the user selects a country. Use
    * this to store the value in whatever store you're
    * using (or just the parent component state).
    * 
@@ -31,9 +31,11 @@ export interface CountryDropdownProps<T = Element> {
   /**
    * Callback that gets called when the user blurs off the country field.
    *
+   * The original event is also provided optionally.
+   *
    * Default value: undefined
    */
-  onBlur?: (val: string) => void;
+  onBlur?: (val: string, e?: React.ChangeEvent<T>) => void;
 
   /**
    * The name attribute of the generated select box.
@@ -155,9 +157,11 @@ export interface RegionDropdownProps<T = Element> {
   /**
    * Callback that gets called when the user blurs off the region field.
    *
+   * The original event is also provided optionally.
+   *
    * Default value: undefined
    */
-  onBlur?: string;
+  onBlur?: (val: string, e?: React.ChangeEvent<T>) => void;
 
   /**
    * The name attribute of the generated select box.
