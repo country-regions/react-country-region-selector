@@ -1,169 +1,175 @@
 import React from 'react';
 import { CountryDropdown, CountryRegionData } from '../../dist/rcrs.es';
-import Enzyme, { shallow, mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 
-const Adapter = require('enzyme-adapter-react-16');
-Enzyme.configure({ adapter: new Adapter() });
-
-xdescribe('CountryDropdown', () => {
-
+describe('CountryDropdown', () => {
 	it('sets ID attribute', () => {
-		const wrapper = shallow(
-			<CountryDropdown id="id-attribute" />
+		const { getByTestId } = render(
+			<CountryDropdown data-testid="id-attribute" />
 		);
-		expect(wrapper.find('#id-attribute').length).toBe(1);
-		expect(wrapper.find('#fake-id-attribute').length).toBe(0);
+
+		expect(getByTestId('id-attribute')).toBeTruthy();
 	});
 
 	it('classes attribute gets recognized', () => {
-		const wrapper = shallow(
-			<CountryDropdown classes="one two three" />
+		const { getByTestId } = render(
+			<CountryDropdown classes="one two three" data-testid="id-attribute" />
 		);
-		expect(wrapper.find('select').hasClass('one two three')).toBe(true);
+
+		expect(getByTestId('id-attribute')).toHaveClass('one two three');
 	});
 
 	it('passes arbitrary properties', () => {
-		const wrapper = shallow(
-			<CountryDropdown style={{ color: 'red' }} data-whatever="5" />
+		const { getByTestId } = render(
+			<CountryDropdown style={{ color: 'red' }} data-whatever="5" data-testid="id-attribute" />
 		);
-		expect(wrapper.find('select').getElement().props.style.color).toBe('red');
-		expect(wrapper.find('select').getElement().props['data-whatever']).toBe('5');
+
+		expect(getByTestId('id-attribute')).toHaveStyle('color: red');
+		expect(getByTestId('id-attribute')).toHaveAttribute('data-whatever');
 	});
 
 	describe('name attribute', () => {
 		it('falls back on default name attribute when not specified', () => {
-			const wrapper = shallow(<CountryDropdown />);
-			expect(wrapper.find('select').getElement().props.name).toBe('rcrs-country');
+			const { getByTestId } = render(<CountryDropdown data-testid="id-attribute" />);
+
+			expect(getByTestId('id-attribute').name).toBe('rcrs-country');
 		});
 
 		it('sets explicit name attribute', () => {
-			const wrapper = shallow(
-				<CountryDropdown name="name-attribute" />
+			const { getByTestId } = render(
+				<CountryDropdown name="name-attribute" data-testid="id-attribute" />
 			);
-			expect(wrapper.find('select[name="name-attribute"]').length).toBe(1);
-			expect(wrapper.find('select[name="fake-name-attribute"]').length).toBe(0);
+
+			expect(getByTestId('id-attribute')).toHaveAttribute('name');
 		});
 	});
 
 	describe('disabled attribute', () => {
 		it('disabled attribute not on by default', () => {
-			const wrapper = shallow(
-				<CountryDropdown />
+			const { getByTestId } = render(
+				<CountryDropdown data-testid="id-attribute" />
 			);
-			expect(wrapper.find('select').getElement().props.disabled).toBe(false);
+
+			expect(getByTestId('id-attribute').disabled).toBeFalsy();
 		});
 		it('disabled attribute', () => {
-			const wrapper = shallow(
-				<CountryDropdown disabled={true} />
+			const { getByTestId } = render(
+				<CountryDropdown disabled={true} data-testid="id-attribute" />
 			);
-			expect(wrapper.find('select').getElement().props.disabled).toBe(true);
+
+			expect(getByTestId('id-attribute').disabled).toBeTruthy();
 		});
 	});
 
 	describe('default blank option', () => {
 		it('showDefaultOption = false removes the default option', () => {
-			const wrapper = mount(<CountryDropdown showDefaultOption={false} />);
-			expect(wrapper.find('option').length).toBe(CountryRegionData.length);
+			const { getByTestId } = render(<CountryDropdown showDefaultOption={false} data-testid="id-attribute" />);
+
+			expect(getByTestId('id-attribute').length).toBe(CountryRegionData.length);
 		});
 
 		it('confirm default label is "Select Country"', () => {
-			const wrapper = shallow(
+			const { getByText } = render(
 				<CountryDropdown />
 			);
-			expect(wrapper.find('select').childAt(0).text()).toBe('Select Country');
+			expect(getByText('Select Country')).toBeTruthy();
 		});
 
 		it('defaultOptionLabel', () => {
-			const customLabel = 'Holy moly I am a custom label!';
-			const wrapper = shallow(
-				<CountryDropdown defaultOptionLabel={customLabel} />
+			const customLabel = 'Holy moly I am a custom label';
+			const { getByText } = render(
+				<CountryDropdown defaultOptionLabel={customLabel}  />
 			);
-			expect(wrapper.find('select').childAt(0).text()).toBe(customLabel);
+
+			expect(getByText(customLabel)).toBeTruthy();
 		});
 	});
 
 	describe('country list', () => {
 		it('outputs the list of countries', () => {
-			const wrapper = mount(<CountryDropdown />);
-			expect(wrapper.find('option').length).toBe(CountryRegionData.length + 1); // 1 for the "Select Country" default option
+			const { getByTestId } = render(<CountryDropdown data-testid="id-attribute" />);
+
+			expect(getByTestId('id-attribute').length).toBe(CountryRegionData.length + 1); // 1 for the "Select Country" default option
 		});
 
 		it('respects the blacklist', () => {
 			const blacklist = ['GB', 'CA', 'US'];
-			const wrapper = mount(
-				<CountryDropdown blacklist={blacklist} showDefaultOption={false} />
+			const { getByTestId, queryByText } = render(
+				<CountryDropdown blacklist={blacklist} showDefaultOption={false} data-testid="id-attribute" />
 			);
-			expect(wrapper.find('option').length).toBe(CountryRegionData.length - blacklist.length);
+			expect(getByTestId('id-attribute').length).toBe(CountryRegionData.length - blacklist.length);
 
 			// confirm a non-blacklist item appears
-			expect(wrapper.find('option[value="Afghanistan"]').length).toBe(1);
+			expect(queryByText('Afghanistan')).toBeTruthy();
 
 			// confirm none of the blacklist item appears
-			expect(wrapper.find('option[value="United Kingdom"]').length).toBe(0);
-			expect(wrapper.find('option[value="Canada"]').length).toBe(0);
-			expect(wrapper.find('option[value="United States"]').length).toBe(0);
+			expect(queryByText('United Kingdom')).toBeFalsy();
+			expect(queryByText('Canada')).toBeFalsy();
+			expect(queryByText('United States')).toBeFalsy();
 		});
 
 		it('respects the whitelist', () => {
 			const whitelist = ['GB', 'CA', 'US'];
-			const wrapper = mount(
-				<CountryDropdown whitelist={whitelist} showDefaultOption={false} />
+			const { queryByText, getByTestId } = render(
+				<CountryDropdown whitelist={whitelist} showDefaultOption={false} data-testid="id-attribute" />
 			);
-			expect(wrapper.find('option').length).toBe(whitelist.length);
+			expect(getByTestId('id-attribute').length).toBe(whitelist.length);
 
 			// confirm the expected items appear
-			expect(wrapper.find('option[value="United Kingdom"]').length).toBe(1);
-			expect(wrapper.find('option[value="Canada"]').length).toBe(1);
-			expect(wrapper.find('option[value="United States"]').length).toBe(1);
+			// confirm none of the blacklist item appears
+			expect(queryByText('United Kingdom')).toBeTruthy();
+			expect(queryByText('Canada')).toBeTruthy();
+			expect(queryByText('United States')).toBeTruthy();
 		});
 	});
 
 	describe('valueType', () => {
 		it('confirm value is full country name by default', () => {
-			const wrapper = mount(
+			const { getByText } = render(
 				<CountryDropdown showDefaultOption={false} />
 			);
-			expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(CountryRegionData[0][0]);
+			expect(getByText(CountryRegionData[0][0]).value).toBe('Afghanistan');
 		});
 
 		it('confirm explicit valueType="full" also sets full country name', () => {
-			const wrapper = mount(
+			const { getByText } = render(
 				<CountryDropdown
 					showDefaultOption={false}
 					valueType="full" />
 			);
-			expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(CountryRegionData[0][0]);
+			expect(getByText(CountryRegionData[0][0]).value).toBe('Afghanistan');
 		});
 
 		it('confirm valueType="short" outputs country short code', () => {
-			const wrapper = mount(
+			const { getByText } = render(
 				<CountryDropdown showDefaultOption={false} valueType="short" />
 			);
-			expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(CountryRegionData[0][1]);
+			expect(getByText(CountryRegionData[0][0]).value).toBe('AF');
 		});
 	});
 
 	describe('labelType', () => {
 		it('confirm label type is full country name by default', () => {
-			const wrapper = mount(
+			const { getByText } = render(
 				<CountryDropdown showDefaultOption={false} />
 			);
 
-			expect(wrapper.find('select').childAt(0).text()).toBe(CountryRegionData[0][0]);
+			expect(getByText(CountryRegionData[0][0]).value).toBe('Afghanistan');
 		});
 
 		it('confirm label type is full country name when explicitly set', () => {
-			const wrapper = mount(
+			const { getByText } = render(
 				<CountryDropdown showDefaultOption={false} labelType="full" />
 			);
-			expect(wrapper.find('select').childAt(0).text()).toBe(CountryRegionData[0][0]);
+			expect(getByText(CountryRegionData[0][0]).value).toBe('Afghanistan');
 		});
 
 		it('confirm label type is the country shortcode when set', () => {
-			const wrapper = mount(
+			const { getByText } = render(
 				<CountryDropdown showDefaultOption={false} labelType="short" />
 			);
-			expect(wrapper.find('select').childAt(0).text()).toBe(CountryRegionData[0][1]);
+			expect(getByText(CountryRegionData[0][0]).value).toBe('AF');
 		});
 	});
 
