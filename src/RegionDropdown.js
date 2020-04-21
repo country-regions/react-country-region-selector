@@ -10,10 +10,10 @@ const RegionDropdown = React.forwardRef((props, ref) => {
     ...arbitraryProps
   } = props
 
-  const [regions, setRegions] = React.useState(getRegions(props.country))
+  const [regions, setRegions] = React.useState(getRegions(props.country, countryValueType))
 
   React.useEffect(() => {
-    const defaultRegions = getRegions(country)
+    const defaultRegions = getRegions(country, countryValueType)
 
     setRegions([
       ...defaultRegions,
@@ -70,12 +70,11 @@ const DefaultOption = ({ country, blankOptionLabel, showDefaultOption, defaultOp
 
 export default RegionDropdown
 
-const getRegions = (country) => {
+const getRegions = (country, countryValueType) => {
   if (!country) {
     return []
   }
 
-  const { countryValueType } = this.props
   const searchIndex = (countryValueType === C.DISPLAY_TYPE_FULL) ? 0 : 1
   let regions = []
   CountryRegionData.forEach((i) => {
