@@ -20,7 +20,7 @@ const CountryDropdown = React.forwardRef((props, ref) => {
   const getCountries = () => {
     const { valueType, labelType } = props
     return countries.map(([countryName, countrySlug]) => (
-      <option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
+      <option key={countryName} value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
         {(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}
       </option>
     ))
