@@ -17,7 +17,7 @@ const RegionDropdown = React.forwardRef((props, ref) => {
 
     setRegions([
       ...defaultRegions,
-      getCustomOptions(defaultRegions, valueType, customOptions)
+      ...getCustomOptions(defaultRegions, valueType, customOptions)
     ])
   }, [props.country])
 
@@ -48,10 +48,10 @@ const RegionDropdown = React.forwardRef((props, ref) => {
 })
 
 const RegionList = ({ regions, labelType, valueType }) => {
-  return regions.map(({ regionName, regionShortCode }, index) => {
+  return regions.map(({ regionName, regionShortCode }) => {
     const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode
     const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode
-    return <option value={value} key={index}>{label}</option>
+    return <option key={regionName} value={value}>{label}</option>
   })
 }
 

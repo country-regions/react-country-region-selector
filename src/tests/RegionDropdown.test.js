@@ -78,7 +78,6 @@ describe('RegionDropdown', () => {
           <RegionDropdown country="" data-testid="id" />
         )
 
-        // does this find option length?
         expect(getByTestId('id').length).toBe(1)
         expect(findByText('-')).toBeTruthy()
       })
