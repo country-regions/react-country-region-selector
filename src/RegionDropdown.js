@@ -48,10 +48,10 @@ const RegionDropdown = React.forwardRef((props, ref) => {
 })
 
 const RegionList = ({ regions, labelType, valueType }) => {
-  return regions.map(({ regionName, regionShortCode }) => {
+  return regions.map(({ regionName, regionShortCode }, index) => {
     const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode
     const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode
-    return <option value={value} key={regionName}>{label}</option>
+    return <option value={value} key={index}>{label}</option>
   })
 }
 
