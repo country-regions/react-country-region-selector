@@ -174,8 +174,10 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
-- `2.0.0` - Mar 21, 2020:
-	- Typings fixes (breaking change)
+- `2.1.0` - Mar 28, 2020
+	- country-region-data updated to 1.6.0
+- `2.0.0` - Mar 21, 2020
+    - Typings fixes
 	- Dependency updates
 - `1.4.7` - Dec 24, 2019:
     - Fix to include typings in published bundle.
@@ -231,7 +233,7 @@ To run this locally, do the following:
 - `npm install`
 - in one terminal window: `npm start`
 - in another terminal window, go to the `/example` subfolder and do the same: `npm install`, `npm start`
-- Open `http://localhost:3000/` in a browser.
+- open `http://localhost:3000` in your browser.
 
 
 <a name="thanks"></a>
