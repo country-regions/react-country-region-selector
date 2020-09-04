@@ -113,7 +113,7 @@ export default class RegionDropdown extends PureComponent {
 			name,
 			value,
 			onChange: (e) => onChange(e.target.value, e),
-			onBlur: (e) => onBlur(e),
+			onBlur: (e) => onBlur(e.target.value, e),
 			disabled: isDisabled
 		};
 		if (id) {
