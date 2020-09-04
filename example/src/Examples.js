@@ -223,13 +223,62 @@ class Examples extends Component {
 				},
 
 				{
-					label: 'Arbitrary attributes (style, tabindex) passed to Country and Region dropdown',
+					label: 'Blacklist specific regions.',
 					jsx: () => {
 						return (
 							<div>
 								<CountryDropdown
 									value={this.getCountryValue(9)}
 									onChange={(val) => this.selectCountry(9, val)}
+									whitelist={['CA', 'US']} />
+								<RegionDropdown
+									country={this.getCountryValue(9)}
+									value={this.getRegionValue(9)}
+									onChange={(val) => this.selectRegion(9, val)}
+									blacklist={{
+										"CA": ["Alberta"]
+									}}
+								/>
+							</div>
+						);
+					},
+					codeVisible: false,
+					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
+					country: 'United States',
+					region: 'Washington'
+				},
+
+				{
+					label: 'Whitelist specific regions.',
+					jsx: () => {
+						return (
+							<div>
+								<CountryDropdown
+									value={this.getCountryValue(10)}
+									onChange={(val) => this.selectCountry(10, val)}
+									disabled={true}/>
+								<RegionDropdown
+									country={this.getCountryValue(10)}
+									value={this.getRegionValue(10)}
+									onChange={(val) => this.selectRegion(10, val)}
+									disabled={true}/>
+							</div>
+						);
+					},
+					codeVisible: false,
+					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
+					country: 'United States',
+					region: 'Washington'
+				},
+
+				{
+					label: 'Arbitrary attributes (style, tabindex) passed to Country and Region dropdown',
+					jsx: () => {
+						return (
+							<div>
+								<CountryDropdown
+									value={this.getCountryValue(11)}
+									onChange={(val) => this.selectCountry(11, val)}
 									style={{
 										backgroundColor: 'blue',
 										color: 'white',
@@ -237,9 +286,9 @@ class Examples extends Component {
 									}}
 									tabIndex={1000}/>
 								<RegionDropdown
-									country={this.getCountryValue(9)}
-									value={this.getRegionValue(9)}
-									onChange={(val) => this.selectRegion(9, val)}
+									country={this.getCountryValue(11)}
+									value={this.getRegionValue(11)}
+									onChange={(val) => this.selectRegion(11, val)}
 									style={{
 										backgroundColor: 'green',
 										color: 'white'
@@ -260,13 +309,13 @@ class Examples extends Component {
 						return (
 							<div>
 								<CountryDropdown
-									value={this.getCountryValue(10)}
-									onChange={(val) => this.selectCountry(10, val)}/>
+									value={this.getCountryValue(12)}
+									onChange={(val) => this.selectCountry(12, val)}/>
 								<RegionDropdown
-									country={this.getCountryValue(10)}
-									value={this.getRegionValue(10)}
+									country={this.getCountryValue(12)}
+									value={this.getRegionValue(12)}
 									customOptions={['-- Custom option 1', '-- Custom option 2']}
-									onChange={(val) => this.selectRegion(10, val)}/>
+									onChange={(val) => this.selectRegion(12, val)}/>
 							</div>
 						);
 					},
@@ -282,13 +331,13 @@ class Examples extends Component {
 						return (
 							<div>
 								<CountryDropdown
-									value={this.getCountryValue(11)}
-									onChange={(val) => this.selectCountry(11, val)}
+									value={this.getCountryValue(13)}
+									onChange={(val) => this.selectCountry(13, val)}
 									priorityOptions={['CA', 'US', 'GB']} />
 								<RegionDropdown
-									country={this.getCountryValue(11)}
-									value={this.getRegionValue(11)}
-									onChange={(val) => this.selectRegion(11, val)} />
+									country={this.getCountryValue(13)}
+									value={this.getRegionValue(13)}
+									onChange={(val) => this.selectRegion(13, val)} />
 							</div>
 						);
 					},
