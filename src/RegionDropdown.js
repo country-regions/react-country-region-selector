@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
+import { filterRegions } from './helpers';
 import C from './constants';
 
 export default class RegionDropdown extends PureComponent {
@@ -57,7 +58,7 @@ export default class RegionDropdown extends PureComponent {
 			return [];
 		}
 
-		const { countryValueType } = this.props;
+		const { countryValueType, whitelist, blacklist } = this.props;
 		const searchIndex = (countryValueType === C.DISPLAY_TYPE_FULL) ? 0 : 1;
 		let regions = [];
 		CountryRegionData.forEach((i) => {
@@ -72,7 +73,10 @@ export default class RegionDropdown extends PureComponent {
 			console.error('Error. Unknown country passed: ' + country + '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionDropdown');
 			return [];
 		}
-		return regions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
+
+		const filteredRegions = filterRegions(regions, whitelist, blacklist);
+
+		return filteredRegions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
 			let [regionName, regionShortCode = null] = regionPair.split(C.SINGLE_REGION_DELIMITER);
 			return { regionName, regionShortCode };
 		});
@@ -146,6 +150,8 @@ RegionDropdown.propTypes = {
 	onBlur: PropTypes.func,
 	labelType: PropTypes.string,
 	valueType: PropTypes.string,
+	whitelist: PropTypes.object,
+	blacklist: PropTypes.object,
 	disabled: PropTypes.bool,
 	disableWhenEmpty: PropTypes.bool,
 	customOptions: PropTypes.array
@@ -159,13 +165,13 @@ RegionDropdown.defaultProps = {
 	blankOptionLabel: '-',
 	showDefaultOption: true,
 	defaultOptionLabel: 'Select Region',
-	onChange: () => {
-	},
-	onBlur: () => {
-	},
+	onChange: () => {},
+	onBlur: () => {},
 	countryValueType: C.DISPLAY_TYPE_FULL,
 	labelType: C.DISPLAY_TYPE_FULL,
 	valueType: C.DISPLAY_TYPE_FULL,
+	whitelist: {},
+	blacklist: {},
 	disabled: false,
 	disableWhenEmpty: false,
 	customOptions: []

@@ -8,7 +8,6 @@ class Examples extends Component {
 		this.getCountryValue = this.getCountryValue.bind(this);
 		this.getRegionValue = this.getRegionValue.bind(this);
 
-		// we really only need to stash the selected region + country in state, but I was feeling wacky
 		this.state = {
 			examples: [
 				{
@@ -18,11 +17,11 @@ class Examples extends Component {
 							<div>
 								<CountryDropdown
 									value={this.getCountryValue(0)}
-									onChange={(val) => this.selectCountry(0, val)}/>
+									onChange={(val) => this.selectCountry(0, val)} />
 								<RegionDropdown
 									country={this.getCountryValue(0)}
 									value={this.getRegionValue(0)}
-									onChange={(val) => this.selectRegion(0, val)}/>
+									onChange={(val) => this.selectRegion(0, val)} />
 							</div>
 						);
 					},
@@ -162,7 +161,7 @@ class Examples extends Component {
 								<CountryDropdown
 									value={this.getCountryValue(6)}
 									onChange={(val) => this.selectCountry(6, val)}
-									whitelist={['GB', 'US', 'CA']}/>
+									whitelist={['GB', 'US', 'CA']} />
 								<RegionDropdown
 									country={this.getCountryValue(6)}
 									value={this.getRegionValue(6)}
@@ -223,29 +222,30 @@ class Examples extends Component {
 				},
 
 				{
-					label: 'Blacklist specific regions.',
+					label: 'Blacklist specific regions. Alberta is removed from the Canadian provinces list and Washington and Oregon are omitted from the US state list.',
 					jsx: () => {
 						return (
 							<div>
 								<CountryDropdown
 									value={this.getCountryValue(9)}
 									onChange={(val) => this.selectCountry(9, val)}
-									whitelist={['CA', 'US']} />
+								/>
 								<RegionDropdown
 									country={this.getCountryValue(9)}
 									value={this.getRegionValue(9)}
 									onChange={(val) => this.selectRegion(9, val)}
 									blacklist={{
-										"CA": ["Alberta"]
+										CA: ['Alberta'],
+										US: ['Washington', 'Oregon']
 									}}
 								/>
 							</div>
 						);
 					},
 					codeVisible: false,
-					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
+					code: "&lt;CountryDropdown\n  value={this.getCountryValue(9)}\n  onChange={(val) => this.selectCountry(9, val)}\n  whitelist={[\"CA\", \"US\"]} />\n&lt;RegionDropdown\n  country={this.getCountryValue(9)}\n  value={this.getRegionValue(9)}\\n  onChange={(val) => this.selectRegion(9, val)}\n  blacklist={{\n    CA: [\"Alberta\"],\n    US: [\"Washington\", \"Oregon\"]\n  }}\n/>",
 					country: 'United States',
-					region: 'Washington'
+					region: 'Alabama'
 				},
 
 				{
@@ -256,17 +256,22 @@ class Examples extends Component {
 								<CountryDropdown
 									value={this.getCountryValue(10)}
 									onChange={(val) => this.selectCountry(10, val)}
-									disabled={true}/>
+									whitelist={['CA', 'US']}
+								/>
 								<RegionDropdown
 									country={this.getCountryValue(10)}
 									value={this.getRegionValue(10)}
 									onChange={(val) => this.selectRegion(10, val)}
-									disabled={true}/>
+									whitelist={{
+										CA: ['BC', 'AB', 'MB'],
+										US: ['Washington', 'Oregon', 'Illinois']
+									}}
+								/>
 							</div>
 						);
 					},
 					codeVisible: false,
-					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
+					code: "&lt;CountryDropdown\n  value={this.getCountryValue(10)}\n  onChange={(val) => this.selectCountry(10, val)}\n  whitelist={[\"CA\", \"US\"]}\n/>\n&lt;RegionDropdown\n  country={this.getCountryValue(10)}\n  value={this.getRegionValue(10)}\n  onChange={(val) => this.selectRegion(10, val)}\n  whitelist={{\n    CA: [\"BC\", \"AB\", \"MB\"],\n    US: [\"Washington\", \"Oregon\", \"Illinois\"]\n  }}\n/>",
 					country: 'United States',
 					region: 'Washington'
 				},

@@ -177,6 +177,10 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
+- `3.0.0` - Sep 8, 2020
+	- blacklist option added for the Region component (thanks [Mitch Rickman](https://github.com/mitch-rickman)!)
+	- typings fix and onBlur callback standardized with value passed as first param, with full event as second. This 
+is a *breaking change*. Thanks [Vinod Ramakrishnan](https://github.com/vinod-rp)!
 - `2.1.0` - Mar 28, 2020
 	- country-region-data updated to 1.6.0
 - `2.0.0` - Mar 21, 2020
