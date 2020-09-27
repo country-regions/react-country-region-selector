@@ -177,6 +177,8 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
+- `3.0.1` - Sep 26, 2020
+    - typings file fix. 
 - `3.0.0` - Sep 8, 2020
 	- blacklist option added for the Region component (thanks [Mitch Rickman](https://github.com/mitch-rickman)!)
 	- typings fix and onBlur callback standardized with value passed as first param, with full event as second. This 

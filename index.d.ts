@@ -1,6 +1,6 @@
-// Type definitions for react-country-region-selector 2.0.0 by 
+// Type definitions for react-country-region-selector 3.0.1 by
 // Project: https://github.com/country-regions/react-country-region-selector
-// Definitions by: Kyle Davis <https://github.com/kyledavisdev>
+// Definitions by: Kyle Davis <https://github.com/kyledavisdev>, Ben Keen <https://github.com/benkeen>
 
 import * as React from "react";
 
@@ -21,7 +21,7 @@ export interface CountryDropdownProps<T = Element> {
    * Callback that gets called when the user selects a country. Use
    * this to store the value in whatever store you're
    * using (or just the parent component state).
-   * 
+   *
    * The original event is also provided optionally.
    *
    * Default value: undefined
@@ -257,3 +257,5 @@ export interface RegionDropdownProps<T = Element> {
 }
 
 export class RegionDropdown extends React.Component<RegionDropdownProps> {}
+
+export type CountryRegionData = [string[]];
