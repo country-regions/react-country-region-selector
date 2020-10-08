@@ -108,7 +108,7 @@ class Example extends Component {
 }
 ```
 
-Generally you don't need `CountryRegionData`, but should you need it, the raw data is accessible like in the above example.
+Generally you don't need `CountryRegionData`, but if you should need it, the raw data is accessible like in the above example.
 
 
 <a name="options"></a>
