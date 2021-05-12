@@ -177,6 +177,8 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 <a name="changelog"></a>
 ### Changelog
 
+- `3.1.0` - May 11, 2021
+    - React 17 support added, thanks [madhums](https://github.com/madhums)!
 - `3.0.2` - Jan 18, 2021
     - typings file fix.
 - `3.0.1` - Sep 26, 2020
