@@ -176,7 +176,8 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 
 <a name="changelog"></a>
 ### Changelog
-
+- `3.2.0` - Jul 30, 2021
+    - Upgrade country-region-data to 1.9.0.
 - `3.1.0` - May 11, 2021
     - React 17 support added, thanks [madhums](https://github.com/madhums)!
 - `3.0.2` - Jan 18, 2021
