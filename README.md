@@ -176,6 +176,8 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 
 <a name="changelog"></a>
 ### Changelog
+- `3.3.0` - Aug 17, 2021
+    - Upgrade country-region-data to 1.10.0.
 - `3.2.0` - Jul 30, 2021
     - Upgrade country-region-data to 1.9.0.
 - `3.1.0` - May 11, 2021
