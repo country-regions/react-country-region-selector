@@ -26,7 +26,7 @@ export interface CountryDropdownProps<T = Element> {
    *
    * Default value: undefined
    */
-  onChange: (val: string, e?: React.ChangeEvent<T>) => void;
+  onChange: (val: string, e: React.ChangeEvent<T>) => void;
 
   /**
    * Callback that gets called when the user blurs off the country field.
@@ -35,7 +35,7 @@ export interface CountryDropdownProps<T = Element> {
    *
    * Default value: undefined
    */
-  onBlur?: (val: string, e?: React.ChangeEvent<T>) => void;
+  onBlur?: (val: string, e: React.ChangeEvent<T>) => void;
 
   /**
    * The name attribute of the generated select box.
@@ -152,7 +152,7 @@ export interface RegionDropdownProps<T = Element> {
    *
    * Default value: undefined
    */
-  onChange: (val: string, e?: React.ChangeEvent<T>) => void;
+  onChange: (val: string, e: React.ChangeEvent<T>) => void;
 
   /**
    * Callback that gets called when the user blurs off the region field.
@@ -161,7 +161,7 @@ export interface RegionDropdownProps<T = Element> {
    *
    * Default value: undefined
    */
-  onBlur?: (val: string, e?: React.ChangeEvent<T>) => void;
+  onBlur?: (val: string, e: React.ChangeEvent<T>) => void;
 
   /**
    * The name attribute of the generated select box.
