@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import CountryRegionData from '../node_modules/country-region-data/data.json';
+import CountryRegionData from '../countries-formatted.json';
 import C from './constants';
 import * as helpers from './helpers';
 
 export default class CountryDropdown extends Component {
-
 	constructor (props) {
 		super(props);
 
@@ -44,7 +43,7 @@ export default class CountryDropdown extends Component {
 			name,
 			value,
 			onChange: (e) => onChange(e.target.value, e),
-			onBlur: (e) => onBlur(e.target.value, e),
+			onBlur: (e) => onBlur(e),
 			disabled
 		};
 		if (id) {

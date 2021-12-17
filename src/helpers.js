@@ -11,7 +11,6 @@ export const filterCountries = (countries, priorityCountries, whitelist, blackli
 	}
 
 	if (priorityCountries.length > 0) {
-
 		// ensure the countries are added in the order in which they are specified by the user
 		priorityCountries.forEach((slug) => {
 			const result = filteredCountries.find(([, countrySlug]) => countrySlug === slug);

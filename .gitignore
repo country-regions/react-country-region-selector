@@ -8,3 +8,6 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+countries.json
+countries-formatted.json
