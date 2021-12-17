@@ -43,7 +43,7 @@ export default class CountryDropdown extends Component {
 			name,
 			value,
 			onChange: (e) => onChange(e.target.value, e),
-			onBlur: (e) => onBlur(e),
+			onBlur: (e) => onBlur(e.target.value, e),
 			disabled
 		};
 		if (id) {
