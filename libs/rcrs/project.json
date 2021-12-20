@@ -1,0 +1,23 @@
+{
+  "root": "libs/rcrs",
+  "sourceRoot": "libs/rcrs/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/rcrs/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/rcrs"],
+      "options": {
+        "jestConfig": "libs/rcrs/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
