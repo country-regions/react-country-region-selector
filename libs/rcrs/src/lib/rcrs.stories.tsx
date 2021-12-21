@@ -1,12 +1,12 @@
 import { Story, Meta } from '@storybook/react';
-import { Rcrs, RcrsProps } from './rcrs';
+import { Intro as Intro2 } from './rcrs';
 
 export default {
-	component: Rcrs,
-	title: 'Components',
+	component: Intro2,
+	title: 'Components'
 } as Meta;
 
-const Template: Story<RcrsProps> = (args) => <Rcrs {...args} />;
+const Template: Story<any> = (args) => <Intro2 {...args} />;
 
 export const Intro = Template.bind({});
 Intro.args = {};

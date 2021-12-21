@@ -1,5 +1,6 @@
 {
   "name": "react-country-region-selector",
+  "version": "3.0.0",
   "scripts": {
     "build": ""
   }

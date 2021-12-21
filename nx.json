@@ -1,7 +1,7 @@
 {
   "npmScope": "rcrs",
   "affected": {
-    "defaultBase": "main"
+    "defaultBase": "master"
   },
   "cli": {
     "defaultCollection": "@nrwl/react"

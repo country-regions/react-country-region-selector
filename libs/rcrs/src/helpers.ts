@@ -1,4 +1,18 @@
-// @ts-nocheck
+import React from 'react';
+import { CountryData } from 'country-region-data';
+
+export const enum ValueType {
+	full = 'full',
+	short = 'short'
+}
+
+export interface RCRSContextInterface {
+	countries: CountryData[]
+}
+
+export const RCRSContext = React.createContext<RCRSContextInterface>({
+	countries: []
+});
 
 // reduces the subset of countries depending on whether the user specified a white/blacklist, and lists priority
 // countries first

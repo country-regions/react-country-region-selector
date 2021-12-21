@@ -1,9 +1,5 @@
-import * as CountryDropdown from './CountryDropdown';
-import * as Provider from './Provider';
-import * as RegionDropdown from './RegionDropdown';
+import { RCRSContext } from './helpers';
+export { default as CountrySelector } from './CountrySelector';
+export { default as RegionSelector } from './RegionSelector';
 
-export {
-	CountryDropdown,
-	Provider,
-	RegionDropdown
-};
+export const Provider = RCRSContext.Provider;
