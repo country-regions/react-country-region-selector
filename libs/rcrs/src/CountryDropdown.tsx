@@ -1,11 +1,10 @@
+// @ts-nocheck
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import CountryRegionData from '../node_modules/country-region-data/data.json';
+import CountryRegionData from 'country-region-data';
 import C from './constants';
 import * as helpers from './helpers';
 
 export default class CountryDropdown extends Component {
-
 	constructor (props) {
 		super(props);
 
@@ -63,22 +62,23 @@ export default class CountryDropdown extends Component {
 	}
 }
 
-CountryDropdown.propTypes = {
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	name: PropTypes.string,
-	id: PropTypes.string,
-	classes: PropTypes.string,
-	showDefaultOption: PropTypes.bool,
-	defaultOptionLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	priorityOptions: PropTypes.array,
-	onChange: PropTypes.func,
-	onBlur: PropTypes.func,
-	labelType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
-	valueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
-	whitelist: PropTypes.array,
-	blacklist: PropTypes.array,
-	disabled: PropTypes.bool
-};
+// CountryDropdown.propTypes = {
+// 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+// 	name: PropTypes.string,
+// 	id: PropTypes.string,
+// 	classes: PropTypes.string,
+// 	showDefaultOption: PropTypes.bool,
+// 	defaultOptionLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+// 	priorityOptions: PropTypes.array,
+// 	onChange: PropTypes.func,
+// 	onBlur: PropTypes.func,
+// 	labelType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
+// 	valueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
+// 	whitelist: PropTypes.array,
+// 	blacklist: PropTypes.array,
+// 	disabled: PropTypes.bool
+// };
+
 CountryDropdown.defaultProps = {
 	value: '',
 	name: 'rcrs-country',

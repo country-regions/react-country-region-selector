@@ -10,13 +10,17 @@
   "private": true,
   "dependencies": {
     "core-js": "^3.6.5",
+    "country-region-data": "2.0.0-beta.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "regenerator-runtime": "0.13.7",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/core": "7.12.13",
+    "@babel/preset-typescript": "7.12.13",
     "@nrwl/cli": "13.3.11",
+    "@nrwl/cypress": "13.3.11",
     "@nrwl/eslint-plugin-nx": "13.3.11",
     "@nrwl/jest": "13.3.11",
     "@nrwl/linter": "13.3.11",
@@ -25,6 +29,11 @@
     "@nrwl/tao": "13.3.11",
     "@nrwl/web": "13.3.11",
     "@nrwl/workspace": "13.3.11",
+    "@storybook/addon-essentials": "~6.4.5",
+    "@storybook/builder-webpack5": "~6.4.5",
+    "@storybook/manager-webpack5": "~6.4.5",
+    "@storybook/react": "~6.4.5",
+    "@svgr/webpack": "^5.4.0",
     "@testing-library/react": "12.1.2",
     "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.0.2",
@@ -34,8 +43,11 @@
     "@typescript-eslint/eslint-plugin": "~5.3.0",
     "@typescript-eslint/parser": "~5.3.0",
     "babel-jest": "27.2.3",
+    "babel-loader": "8.1.0",
+    "cypress": "^9.1.0",
     "eslint": "8.2.0",
     "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "2.25.2",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.26.1",
@@ -44,6 +56,7 @@
     "prettier": "^2.3.1",
     "react-test-renderer": "17.0.2",
     "ts-jest": "27.0.5",
-    "typescript": "~4.4.3"
+    "typescript": "~4.4.3",
+    "url-loader": "^3.0.0"
   }
 }

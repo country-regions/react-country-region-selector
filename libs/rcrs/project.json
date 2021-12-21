@@ -18,6 +18,46 @@
         "jestConfig": "libs/rcrs/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "options": {
+        "entryFile": "libs/rcrs/src/index.ts",
+        "project": "libs/rcrs/package.json",
+        "outputPath": "libs/rcrs/dist",
+        "tsConfig": "libs/rcrs/tsconfig.json"
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "uiFramework": "@storybook/react",
+        "port": 4400,
+        "config": {
+          "configFolder": "libs/rcrs/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "uiFramework": "@storybook/react",
+        "outputPath": "dist/storybook/rcrs",
+        "config": {
+          "configFolder": "libs/rcrs/.storybook"
+        }
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
     }
   }
 }

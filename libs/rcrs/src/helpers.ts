@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // reduces the subset of countries depending on whether the user specified a white/blacklist, and lists priority
 // countries first
 export const filterCountries = (countries, priorityCountries, whitelist, blacklist) => {

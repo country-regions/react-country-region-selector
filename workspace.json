@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "rcrs": "libs/rcrs"
+    "rcrs": "libs/rcrs",
+    "rcrs-e2e": "apps/rcrs-e2e"
   }
 }
