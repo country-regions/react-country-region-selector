@@ -1,9 +1,7 @@
 // @ts-nocheck
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import CountryRegionData from 'country-region-data';
 import { filterRegions } from './helpers';
-import C from './constants';
 
 export default class RegionDropdown extends PureComponent {
 	constructor (props) {
@@ -137,26 +135,26 @@ export default class RegionDropdown extends PureComponent {
 	}
 }
 
-RegionDropdown.propTypes = {
-	country: PropTypes.string,
-	countryValueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	name: PropTypes.string,
-	id: PropTypes.string,
-	classes: PropTypes.string,
-	blankOptionLabel: PropTypes.string,
-	showDefaultOption: PropTypes.bool,
-	defaultOptionLabel: PropTypes.string,
-	onChange: PropTypes.func,
-	onBlur: PropTypes.func,
-	labelType: PropTypes.string,
-	valueType: PropTypes.string,
-	whitelist: PropTypes.object,
-	blacklist: PropTypes.object,
-	disabled: PropTypes.bool,
-	disableWhenEmpty: PropTypes.bool,
-	customOptions: PropTypes.array
-};
+// RegionDropdown.propTypes = {
+// 	country: PropTypes.string,
+// 	countryValueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
+// 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+// 	name: PropTypes.string,
+// 	id: PropTypes.string,
+// 	classes: PropTypes.string,
+// 	blankOptionLabel: PropTypes.string,
+// 	showDefaultOption: PropTypes.bool,
+// 	defaultOptionLabel: PropTypes.string,
+// 	onChange: PropTypes.func,
+// 	onBlur: PropTypes.func,
+// 	labelType: PropTypes.string,
+// 	valueType: PropTypes.string,
+// 	whitelist: PropTypes.object,
+// 	blacklist: PropTypes.object,
+// 	disabled: PropTypes.bool,
+// 	disableWhenEmpty: PropTypes.bool,
+// 	customOptions: PropTypes.array
+// };
 RegionDropdown.defaultProps = {
 	country: '',
 	value: '',

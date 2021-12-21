@@ -6,7 +6,11 @@ Commands:
 - `nx run rcrs:storybook` - runs storybook
 
 
+#### Docs
 
+Mention we're dropping React 15 support. Pretty old now. 
+
+ 
 #### Misc notes
 
 - tooling exists for moving and removing libs. https://nx.dev/l/r/structure/grouping-libraries#move-generator

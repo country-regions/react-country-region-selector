@@ -1,97 +1,88 @@
-// @ts-nocheck
-import React, { Component } from 'react';
-import CountryRegionData from 'country-region-data';
-import C from './constants';
-import * as helpers from './helpers';
+import React, { useState } from 'react';
 
-export default class CountryDropdown extends Component {
-	constructor (props) {
-		super(props);
+export const enum DisplayType {
+	full = 'full',
+	short = 'short'
+}
 
-		this.state = {
-			countries: helpers.filterCountries(CountryRegionData, props.priorityOptions, props.whitelist, props.blacklist)
-		};
-	}
+export interface CountryDropdownProps {
+	value?: number | string;
+	name?: string;
+	disabled?: boolean;
+	id?: string;
+	classes?: string;
+ 	showDefaultOption?: boolean;
+	defaultOptionLabel?: string | number;
+	priorityOptions?: any; // TODO
+	onChange?: any; //PropTypes.func;
+	onBlur?: any; //
+	labelType?: DisplayType;
+	valueType?: DisplayType;
+	whitelist?: string[]; // TODO PropTypes.array,
+	blacklist?: string[]; // PropTypes.array,
+}
 
-	getCountries () {
-		const { valueType, labelType } = this.props;
+const CountryDropdown = ({
+	value,
+	name = 'rcrs-country',
+	disabled = false,
+	id = '',
+	classes = '',
+	showDefaultOption = true,
+	defaultOptionLabel = 'Select Country',
+	priorityOptions = [],
+	blacklist = [],
+	whitelist = [],
+	onChange = () => {},
+	onBlur = () => {},
+	labelType = DisplayType.full,
+	valueType = DisplayType.short,
+}: CountryDropdownProps) => {
 
-		return this.state.countries.map(([countryName, countrySlug]) => (
-			<option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
-				{(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}
-			</option>
-		));
-	}
+	const [countries] = useState(() => {
+		// TODO use context for the data
+		// return helpers.filterCountries(CountryRegionData, priorityOptions, whitelist, blacklist)
+	});
 
-	getDefaultOption () {
-		const { showDefaultOption, defaultOptionLabel } = this.props;
+	const getCountries = React.useCallback(() => {
+		// return countries.map(([countryName, countrySlug]) => (
+		// 	<option value={(valueType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName} key={countrySlug}>
+		// 		{(labelType === C.DISPLAY_TYPE_SHORT) ? countrySlug : countryName}
+		// 	</option>
+		// ));
+		return null;
+	}, [countries]);
+
+	const getDefaultOption = React.useCallback(() => {
 		if (!showDefaultOption) {
 			return null;
 		}
 		return (
 			<option value="" key="default">{defaultOptionLabel}</option>
 		);
+	}, [showDefaultOption, defaultOptionLabel]);
+
+	const attrs: React.HTMLProps<HTMLSelectElement> = {
+		// ...arbitraryProps,
+		name,
+		value: "",
+		onChange: (e: any) => onChange(e.target.value, e),
+		onBlur: (e: any) => onBlur(e.target.value, e),
+		disabled
+	};
+	if (id) {
+		attrs.id = id;
+	}
+	if (classes) {
+		attrs.className = classes;
 	}
 
-	render () {
-		// unused properties deliberately added so arbitraryProps gets populated with anything else the user specifies
-		const { name, id, classes, value, onChange, onBlur, disabled, showDefaultOption, defaultOptionLabel,
-			labelType, valueType, whitelist, blacklist, customOptions, priorityOptions, ...arbitraryProps } = this.props;
-
-		const attrs = {
-			...arbitraryProps,
-			name,
-			value,
-			onChange: (e) => onChange(e.target.value, e),
-			onBlur: (e) => onBlur(e.target.value, e),
-			disabled
-		};
-		if (id) {
-			attrs.id = id;
-		}
-		if (classes) {
-			attrs.className = classes;
-		}
-
-		return (
-			<select {...attrs}>
-				{this.getDefaultOption()}
-				{this.getCountries()}
-			</select>
-		);
-	}
-}
-
-// CountryDropdown.propTypes = {
-// 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-// 	name: PropTypes.string,
-// 	id: PropTypes.string,
-// 	classes: PropTypes.string,
-// 	showDefaultOption: PropTypes.bool,
-// 	defaultOptionLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-// 	priorityOptions: PropTypes.array,
-// 	onChange: PropTypes.func,
-// 	onBlur: PropTypes.func,
-// 	labelType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
-// 	valueType: PropTypes.oneOf([C.DISPLAY_TYPE_FULL, C.DISPLAY_TYPE_SHORT]),
-// 	whitelist: PropTypes.array,
-// 	blacklist: PropTypes.array,
-// 	disabled: PropTypes.bool
-// };
-
-CountryDropdown.defaultProps = {
-	value: '',
-	name: 'rcrs-country',
-	id: '',
-	classes: '',
-	showDefaultOption: true,
-	defaultOptionLabel: 'Select Country',
-	priorityOptions: [],
-	onChange: () => {},
-	onBlur: () => {},
-	labelType: C.DISPLAY_TYPE_FULL,
-	valueType: C.DISPLAY_TYPE_FULL,
-	whitelist: [],
-	blacklist: [],
-	disabled: false
+	return (
+		<select {...attrs}>
+			{getDefaultOption()}
+			{getCountries()}
+		</select>
+	);
 };
+
+export default CountryDropdown;

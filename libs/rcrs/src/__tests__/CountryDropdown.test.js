@@ -1,5 +1,5 @@
 import React from 'react';
-import { CountryDropdown, CountryRegionData } from '../../dist/rcrs.es';
+import { CountryDropdown, CountryRegionData } from '../../dist/index.esm';
 import Enzyme, { shallow } from 'enzyme';
 
 const Adapter = require('enzyme-adapter-react-16');

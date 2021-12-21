@@ -3,10 +3,10 @@ import { Rcrs, RcrsProps } from './rcrs';
 
 export default {
 	component: Rcrs,
-	title: 'Rcrs',
+	title: 'Components',
 } as Meta;
 
 const Template: Story<RcrsProps> = (args) => <Rcrs {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Intro = Template.bind({});
+Intro.args = {};
