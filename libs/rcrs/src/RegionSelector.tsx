@@ -23,37 +23,6 @@ export interface RegionDropdownProps<T = Element> {
 	blacklist?: string[];
 }
 
-const getRegions = (country: string, countries: CountryData[], countryValueType: ValueType, whitelist: string[], blacklist: string[]) => {
-	if (!country) {
-		return [];
-	}
-	const searchIndex = (countryValueType === ValueType.full) ? 0 : 1;
-
-	let selectedCountry: CountryData | null = null;
-	countries.forEach((row) => {
-		if (row[searchIndex] === country) {
-			selectedCountry = row;
-		}
-	});
-
-	// this could happen if the user is managing the state of the region/country themselves and screws up passing
-	// in a valid country
-	if (!selectedCountry) {
-		console.error('Error. Unknown country passed: ' + country + '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionSelector');
-		return [];
-	}
-
-	// const filteredRegions = filterRegions(selectedCountry, whitelist, blacklist);
-
-	// return filteredRegions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
-		// let [regionName, regionShortCode = null] = regionPair.split(C.SINGLE_REGION_DELIMITER);
-		// return { regionName, regionShortCode };
-	// });
-
-	return selectedCountry[2];
-};
-
-
 const RegionSelector = ({
 	country = '',
 	value = '',
@@ -75,15 +44,43 @@ const RegionSelector = ({
 	const context = useContext(RCRSContext);
 	const [regions, setRegions] = useState([]);
 
-// 	// regions: this.getRegions(country);
+	const getRegions = (country: string, countries: CountryData[]) => {
+		if (!country) {
+			return [];
+		}
+		const searchIndex = (countryValueType === ValueType.full) ? 0 : 1;
+
+		let selectedCountry: CountryData | null = null;
+		countries.forEach((row) => {
+			if (row[searchIndex] === country) {
+				selectedCountry = row;
+			}
+		});
+
+		// this could happen if the user is managing the state of the region/country themselves and screws up passing
+		// in a valid country
+		if (!selectedCountry) {
+			console.error('Error. Unknown country passed: ' + country + '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionSelector');
+			return [];
+		}
+
+		// const filteredRegions = filterRegions(selectedCountry, whitelist, blacklist);
+
+		// return filteredRegions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
+		// let [regionName, regionShortCode = null] = regionPair.split(C.SINGLE_REGION_DELIMITER);
+		// return { regionName, regionShortCode };
+		// });
+
+		return selectedCountry[2];
+	};
 
 	useEffect(() => {
-		const defaultRegions: any[] = []; //getRegions(country, context.countries);
+		const regions = getRegions(country, context.countries);
 
-		// setRegions([
-		// 	...defaultRegions,
-		// 	// ...getCustomOptions(defaultRegions)
-		// ]);
+		setRegions([
+			...regions,
+			// ...getCustomOptions(defaultRegions)
+		]);
 	}, [country, context.countries]);
 
 	const getCustomOptions = (regions: Region[]) => {
@@ -108,31 +105,26 @@ const RegionSelector = ({
 		return regions.filter((region) => customOptions.indexOf(region[index]) !== -1).map(region => region[index]);
 	};
 
-
-// 	const getRegionList = () => {
-// 		const { labelType, valueType } = this.props;
-// 		return this.state.regions.map(({ regionName, regionShortCode }) => {
-// 			const label = (labelType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
-// 			const value = (valueType === C.DISPLAY_TYPE_FULL) ? regionName : regionShortCode;
-// 			return <option value={value} key={regionName}>{label}</option>;
-// 		});
-// 	};
+	const getRegionList = () => {
+		return regions.map(([regionName, regionShortCode]: Region) => {
+			const label = (labelType === ValueType.full) ? regionName : regionShortCode;
+			const value = (valueType === ValueType.full) ? regionName : regionShortCode;
+			return <option value={value} key={regionName}>{label}</option>;
+		});
+	};
 
 	// there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
 	// a "default" option which shows
 	const getDefaultOption = () => {
-		// const { blankOptionLabel, showDefaultOption, defaultOptionLabel, country } = this.props;
-		// if (!country) {
-		// 	return <option value="">{blankOptionLabel}</option>;
-		// }
-		// if (showDefaultOption) {
-		// 	return <option value="">{defaultOptionLabel}</option>;
-		// }
+		if (!country) {
+			return <option value="">{blankOptionLabel}</option>;
+		}
+		if (showDefaultOption) {
+			return <option value="">{defaultOptionLabel}</option>;
+		}
 		return null;
 	};
 
-	let options: any = [];
-//
 // 	const {
 // 		value, country, onChange, onBlur, id, name, classes, disabled, blankOptionLabel, showDefaultOption,
 // 		defaultOptionLabel, labelType, valueType, countryValueType, disableWhenEmpty, customOptions,
@@ -148,6 +140,7 @@ const RegionSelector = ({
 		onBlur: (e: any) => onBlur(e.target.value, e),
 		disabled: isDisabled
 	};
+
 	if (id) {
 		attrs.id = id;
 	}
@@ -158,7 +151,7 @@ const RegionSelector = ({
 	return (
 		<select {...attrs}>
 			{getDefaultOption()}
-			{options}
+			{getRegionList()}
 		</select>
 	);
 };

@@ -7,6 +7,8 @@ export const Intro = () => {
 	const [country, setCountry] = useState("");
 	const [region, setRegion] = useState("");
 
+	console.log("in demo: ", { country, region });
+
 	return (
 		<div>
 			<h1>react-country-region-selector</h1>
@@ -19,7 +21,7 @@ export const Intro = () => {
 
 			<Provider value={{ countries: allCountries }}>
 				<CountrySelector value={country} onChange={(val) => setCountry(val)} />
-				<RegionSelector value={region} onChange={(val) => setRegion(val)}/>
+				<RegionSelector country={country} value={region} onChange={(val) => setRegion(val)}/>
 			</Provider>
 		</div>
 	);

@@ -135,7 +135,7 @@ const CountrySelector = ({
 	whitelist = [],
 	onBlur = () => {},
 	labelType = ValueType.full,
-	valueType = ValueType.short,
+	valueType = ValueType.full
 }: CountryDropdownProps) => {
 	const context = useContext(RCRSContext);
 	const [countries, setCountries] = useState([]);
