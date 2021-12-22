@@ -24,7 +24,7 @@
       "options": {
         "entryFile": "libs/rcrs/src/index.ts",
         "project": "libs/rcrs/package.json",
-        "outputPath": "libs/rcrs/dist",
+        "outputPath": "dist/rcrs",
         "tsConfig": "libs/rcrs/tsconfig.json"
       }
     },

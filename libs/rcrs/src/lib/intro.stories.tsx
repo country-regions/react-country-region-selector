@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Provider, CountrySelector, RegionSelector } from '@rcrs/rcrs';
 import { allCountries } from 'country-region-data';
+import { Meta } from '@storybook/react';
 
 export const Intro = () => {
 	const [country, setCountry] = useState("");
@@ -23,3 +24,13 @@ export const Intro = () => {
 		</div>
 	);
 };
+
+export default {
+	component: Intro,
+	title: 'Demos'
+} as Meta;
+
+// const Template: Story<any> = (args) => <Intro2 {...args} />;
+//
+// export const Intro = Template.bind({});
+// Intro.args = {};

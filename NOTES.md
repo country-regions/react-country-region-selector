@@ -16,6 +16,8 @@ offers an tree-shakeable es6 version of the data which this package consumes.
 - Whitelist and blacklist props are passed on the provider level, e.g.
 ```jsx
 <Provider whitelist={{ CA: ["BC", "AB"] }} countries={...}>
+    ...
+</Provider>
 ```
 
 #### Misc notes
@@ -24,4 +26,4 @@ offers an tree-shakeable es6 version of the data which this package consumes.
 - `yarn nx dep-graph` -> dependency graph
 - `nx run-many --target=build --all` - runs the build command on everything in the repo
 
-- After this refactor, it's allllmost so generic it could be used for react-native. 
+- After this refactor, it's allllmost become so generic it could be used for react-native or with react-select etc.
