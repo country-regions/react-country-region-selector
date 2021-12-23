@@ -119,13 +119,14 @@ export interface CountryDropdownProps<T = Element> {
 }
 
 const CountrySelector = ({
-	// required [TODO add runtime check or just give default value?]
-	value = '',
-	onChange = () => {},
+	// required
+	value,
+	onChange,
 
 	// optional
-	name = 'rcrs-country',
 	disabled = false,
+	onBlur = () => {},
+	name = 'rcrs-country',
 	id = '',
 	classes = '',
 	showDefaultOption = true,
@@ -133,7 +134,6 @@ const CountrySelector = ({
 	priorityOptions = [],
 	blacklist = [],
 	whitelist = [],
-	onBlur = () => {},
 	labelType = ValueType.full,
 	valueType = ValueType.full
 }: CountryDropdownProps) => {
@@ -144,21 +144,16 @@ const CountrySelector = ({
 		setCountries(filterCountries(context.countries, priorityOptions, whitelist, blacklist));
 	}, [context.countries]);
 
-	const options = React.useMemo(() => {
-		return countries.map(([countryName, countrySlug]: CountryData) => (
+	const options = React.useMemo(() => (
+		countries.map(([countryName, countrySlug]: CountryData) => (
 			<option value={(valueType === ValueType.short) ? countrySlug : countryName} key={countrySlug}>
 				{(labelType === ValueType.short) ? countrySlug : countryName}
 			</option>
-		));
-	}, [countries]);
+		))
+	), [countries]);
 
-	const getDefaultOption = React.useCallback(() => {
-		if (!showDefaultOption) {
-			return null;
-		}
-		return (
-			<option value="" key="default">{defaultOptionLabel}</option>
-		);
+	const defaultOption = React.useMemo(() => {
+		return (!showDefaultOption) ? null : <option value="" key="default">{defaultOptionLabel}</option>;
 	}, [showDefaultOption, defaultOptionLabel]);
 
 	const attrs: React.HTMLProps<HTMLSelectElement> = {
@@ -178,7 +173,7 @@ const CountrySelector = ({
 
 	return (
 		<select {...attrs}>
-			{getDefaultOption()}
+			{defaultOption}
 			{options}
 		</select>
 	);

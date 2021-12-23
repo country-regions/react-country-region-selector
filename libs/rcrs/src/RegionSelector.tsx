@@ -24,16 +24,19 @@ export interface RegionDropdownProps<T = Element> {
 }
 
 const RegionSelector = ({
-	country = '',
-	value = '',
+	// required
+	country,
+	value,
+	onChange,
+
+	// optional
+	onBlur = () => {},
 	name = 'rcrs-region',
 	id = '',
 	classes = '',
 	blankOptionLabel = '-',
 	showDefaultOption = true,
 	defaultOptionLabel = 'Select Region',
-	onChange = () => {},
-	onBlur = () => {},
 	countryValueType = ValueType.full,
 	labelType = ValueType.full,
 	valueType = ValueType.full,
