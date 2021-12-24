@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { CountryData } from 'country-region-data';
 import { filterCountries, RCRSContext, ValueType } from './helpers';
 
-export interface CountryDropdownProps<T = Element> {
+export interface CountryDropdownProps {
 	/**
 	 * The currently selected country. This should either
 	 * be the shortcode, or the full country name depending
@@ -18,7 +18,7 @@ export interface CountryDropdownProps<T = Element> {
 	 *
 	 * The original event is also provided optionally.
 	 */
-	onChange: (val: string, e: React.ChangeEvent<T>) => void;
+	onChange: (e: React.ChangeEvent<HTMLSelectElement>) => any;
 
 	/**
 	 * Callback that gets called when the user blurs off the country field.
@@ -27,7 +27,7 @@ export interface CountryDropdownProps<T = Element> {
 	 *
 	 * Default value: undefined
 	 */
-	onBlur?: (val: string, e: React.ChangeEvent<T>) => void;
+	onBlur?: (e: React.ChangeEvent<HTMLSelectElement>) => any;
 
 	/**
 	 * The name attribute of the generated select box.
@@ -160,8 +160,8 @@ const CountrySelector = ({
 		// ...arbitraryProps,
 		name,
 		value: "",
-		onChange: (e: any) => onChange(e.target.value, e),
-		onBlur: (e: any) => onBlur(e.target.value, e),
+		onChange: (e: React.ChangeEvent<HTMLSelectElement>) => onChange(e),
+		onBlur: (e: React.ChangeEvent<HTMLSelectElement>) => onBlur(e),
 		disabled
 	};
 	if (id) {

@@ -18,8 +18,8 @@ export const Intro = () => {
 			</p>
 
 			<Provider value={{ countries: allCountries }}>
-				<CountrySelector value={country} onChange={(val) => setCountry(val)} />
-				<RegionSelector country={country} value={region} onChange={(val) => setRegion(val)}/>
+				<CountrySelector value={country} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setCountry(e.target.value)} />
+				<RegionSelector country={country} value={region} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setRegion(e.target.value)}/>
 			</Provider>
 		</div>
 	);

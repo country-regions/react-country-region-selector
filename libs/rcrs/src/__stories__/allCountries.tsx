@@ -20,8 +20,8 @@ export const AllCountries = () => {
 
 			<h3>Demo</h3>
 			<Provider value={{ countries: allCountries }}>
-				<CountrySelector value={country} onChange={(val) => setCountry(val)} />
-				<RegionSelector country={country} value={region} onChange={(val) => setRegion(val)}/>
+				<CountrySelector value={country} onChange={(e) => setCountry(e.target.value)} />
+				<RegionSelector country={country} value={region} onChange={(e) => setRegion(e.target.value)}/>
 			</Provider>
 
 			<h3>Code</h3>
@@ -35,8 +35,8 @@ const Example = () => {
 
     return (
         <Provider value={{ countries: allCountries }}>
-            <CountrySelector value={country} onChange={(val) => setCountry(val)} />
-            <RegionSelector country={country} value={region} onChange={(val) => setRegion(val)}/>
+            <CountrySelector value={country} onChange={(e) => setCountry(e.target.value)} />
+            <RegionSelector country={country} value={region} onChange={(e) => setRegion(e.target.value)}/>
         </Provider>
     );
 };`}</SyntaxHighlighter>

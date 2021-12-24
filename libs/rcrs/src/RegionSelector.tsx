@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { RCRSContext, ValueType } from './helpers';
 import { CountryData, Region } from 'country-region-data';
 
-export interface RegionDropdownProps<T = Element> {
+export interface RegionDropdownProps {
 	country: string;
 	value: string;
-	onChange: (val: string, e: React.ChangeEvent<T>) => void;
-	onBlur?: (val: string, e: React.ChangeEvent<T>) => void;
+	onChange: (e: React.ChangeEvent<HTMLSelectElement>) => any;
+	onBlur?: (e: React.ChangeEvent<HTMLSelectElement>) => any;
 	name?: string;
 	id?: string;
 	classes?: string;
@@ -19,8 +19,6 @@ export interface RegionDropdownProps<T = Element> {
 	disableWhenEmpty?: boolean;
 	disabled?: boolean;
 	customOptions?: string[];
-	whitelist?: string[];
-	blacklist?: string[];
 }
 
 const RegionSelector = ({
@@ -44,7 +42,7 @@ const RegionSelector = ({
 	disableWhenEmpty = false,
 	customOptions = []
 }: RegionDropdownProps) => {
-	const context = useContext(RCRSContext);
+	const { countries, whitelist, blacklist } = useContext(RCRSContext);
 	const [regions, setRegions] = useState([]);
 
 	const getRegions = (country: string, countries: CountryData[]) => {
@@ -77,16 +75,7 @@ const RegionSelector = ({
 		return selectedCountry[2];
 	};
 
-	useEffect(() => {
-		const regions = getRegions(country, context.countries);
-
-		setRegions([
-			...regions,
-			// ...getCustomOptions(defaultRegions)
-		]);
-	}, [country, context.countries]);
-
-	const getCustomOptions = (regions: Region[]) => {
+	const safeCustomOptions = useMemo(() => {
 		const duplicateRegions = getDuplicates(regions);
 
 		if (duplicateRegions.length) {
@@ -94,14 +83,17 @@ const RegionSelector = ({
 			return [];
 		}
 
-		return [];
-		// TODO...
-		// return customOptions.map((option: string) => {
-		// 	if (option) {
-		// 		return { regionName: option, regionShortCode: option };
-		// 	}
-		// });
-	};
+		return customOptions.map((option: string) => [option, option]);
+	}, [regions, customOptions]);
+
+	// useEffect(() => {
+	// 	// const regions = getRegions(country, countries);
+	//
+	// 	setRegions([
+	// 		...regions,
+	// 		...safeCustomOptions
+	// 	]);
+	// }, [country, safeCustomOptions, countries]);
 
 	const getDuplicates = (regions: Region[]) => {
 		const index = valueType === ValueType.full ? 0 : 1;
@@ -139,8 +131,8 @@ const RegionSelector = ({
 		// ...arbitraryProps,
 		name,
 		value,
-		onChange: (e: any) => onChange(e.target.value, e),
-		onBlur: (e: any) => onBlur(e.target.value, e),
+		onChange: (e: React.ChangeEvent<HTMLSelectElement>) => onChange(e),
+		onBlur: (e: React.ChangeEvent<HTMLSelectElement>) => onBlur(e),
 		disabled: isDisabled
 	};
 
