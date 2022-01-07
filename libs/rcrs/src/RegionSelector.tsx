@@ -45,6 +45,11 @@ const RegionSelector = ({
 	const { countries, whitelist, blacklist } = useContext(RCRSContext);
 	const [regions, setRegions] = useState([]);
 
+	const getDuplicates = (regions: Region[]) => {
+		const index = valueType === ValueType.full ? 0 : 1;
+		return regions.filter((region) => customOptions.indexOf(region[index]) !== -1).map(region => region[index]);
+	};
+
 	const getRegions = (country: string, countries: CountryData[]) => {
 		if (!country) {
 			return [];
@@ -94,11 +99,6 @@ const RegionSelector = ({
 	// 		...safeCustomOptions
 	// 	]);
 	// }, [country, safeCustomOptions, countries]);
-
-	const getDuplicates = (regions: Region[]) => {
-		const index = valueType === ValueType.full ? 0 : 1;
-		return regions.filter((region) => customOptions.indexOf(region[index]) !== -1).map(region => region[index]);
-	};
 
 	const getRegionList = () => {
 		return regions.map(([regionName, regionShortCode]: Region) => {

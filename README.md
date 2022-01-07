@@ -1,6 +1,6 @@
 # react-country-region-selector
 
-> Dec 20th, 2021. This repo will be in limbo for a little while. We're converting the repo to Nx, changing the code 
+> Jan 6th, 2021. This repo will be in limbo for a little while. We're converting the repo to Nx, changing the code 
 > to typescript and various other updates. 
 
 [![Build Status](https://travis-ci.com/country-regions/react-country-region-selector.svg?branch=master)](https://travis-ci.com/country-regions/react-country-region-selector)

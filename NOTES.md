@@ -2,8 +2,8 @@
 
 Nx commands:
 
-- `nx build rcrs` - runs the rollup build for the rcrs lib
-- `nx run rcrs:storybook` - runs storybook
+- `npx nx build rcrs` - runs the rollup build for the rcrs lib
+- `npx nx run rcrs:storybook` - runs storybook
 
 
 #### Breaking changes from 2.x
