@@ -5763,10 +5763,10 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-country-region-data@2.0.0-beta.3:
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/country-region-data/-/country-region-data-2.0.0-beta.3.tgz#5a243f128846c44d8c311509bc09d757641fe943"
-  integrity sha512-wUamuHPAzB2bXRL001qCd10Xp1roNnYIp8Y+E27gpGQjQmC9vZjFDv9Oge1OTNw4guNPA7HyxkxYE1hXgdPY7g==
+country-region-data@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/country-region-data/-/country-region-data-2.0.0.tgz#26a0a0ceae276d2ed1863cde6bb8bfd94f1fca32"
+  integrity sha512-1VKsHc/ZRlCqHTCJd/AyfaJxELRaZoeJcRTn3e9LyrDa5iOcw0sV1Jk6KQItP20eZocg8C7HbTSFddgBkzUnAA==
 
 cp-file@^7.0.0:
   version "7.0.0"

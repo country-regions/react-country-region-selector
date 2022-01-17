@@ -43,7 +43,7 @@ const RegionSelector = ({
 	customOptions = []
 }: RegionDropdownProps) => {
 	const { countries, whitelist, blacklist } = useContext(RCRSContext);
-	const [regions, setRegions] = useState([]);
+	const [regions, setRegions] = useState<any>([]);
 
 	const getDuplicates = (regions: Region[]) => {
 		const index = valueType === ValueType.full ? 0 : 1;
@@ -70,13 +70,6 @@ const RegionSelector = ({
 			return [];
 		}
 
-		// const filteredRegions = filterRegions(selectedCountry, whitelist, blacklist);
-
-		// return filteredRegions[2].split(C.REGION_LIST_DELIMITER).map((regionPair) => {
-		// let [regionName, regionShortCode = null] = regionPair.split(C.SINGLE_REGION_DELIMITER);
-		// return { regionName, regionShortCode };
-		// });
-
 		return selectedCountry[2];
 	};
 
@@ -91,14 +84,14 @@ const RegionSelector = ({
 		return customOptions.map((option: string) => [option, option]);
 	}, [regions, customOptions]);
 
-	// useEffect(() => {
-	// 	// const regions = getRegions(country, countries);
-	//
-	// 	setRegions([
-	// 		...regions,
-	// 		...safeCustomOptions
-	// 	]);
-	// }, [country, safeCustomOptions, countries]);
+	useEffect(() => {
+		const countryRegions = getRegions(country, countries);
+
+		setRegions([
+			...countryRegions,
+			...safeCustomOptions
+		]);
+	}, [country, countries]);
 
 	const getRegionList = () => {
 		return regions.map(([regionName, regionShortCode]: Region) => {

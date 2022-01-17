@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CountryData } from 'country-region-data';
-import { filterCountries, RCRSContext, ValueType } from './helpers';
+import { filterCountries, getCountries, RCRSContext, ValueType } from './helpers';
 
 export interface CountryDropdownProps {
 	/**
@@ -141,7 +141,9 @@ const CountrySelector = ({
 	const [countries, setCountries] = useState([]);
 
 	useEffect(() => {
-		setCountries(filterCountries(context.countries, priorityOptions, whitelist, blacklist));
+		if (context.countries) {
+			setCountries(getCountries(context.countries, priorityOptions, whitelist, blacklist));
+		}
 	}, [context.countries]);
 
 	const options = React.useMemo(() => (
@@ -159,7 +161,7 @@ const CountrySelector = ({
 	const attrs: React.HTMLProps<HTMLSelectElement> = {
 		// ...arbitraryProps,
 		name,
-		value: "",
+		value,
 		onChange: (e: React.ChangeEvent<HTMLSelectElement>) => onChange(e),
 		onBlur: (e: React.ChangeEvent<HTMLSelectElement>) => onBlur(e),
 		disabled

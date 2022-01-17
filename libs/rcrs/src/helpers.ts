@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { CountryData, CountrySlug, Region } from 'country-region-data';
+import { CountryData, CountrySlug, Region, RegionName } from 'country-region-data';
 
 export const enum ValueType {
 	full = 'full',
@@ -8,12 +8,25 @@ export const enum ValueType {
 }
 
 export type CountryMap = {
-	// @ts-ignore-line
 	[countrySlug: CountrySlug]: Region[];
 }
 
+export type CustomCountryName = string;
+export type CustomCountrySlug= string;
+
+export type CustomCountryData = [
+	CustomCountryName,
+	CustomCountrySlug,
+	Region[]
+];
+
+export type CustomShortCountryData = [
+	CustomCountryName,
+	RegionName[]
+];
+
 export interface RCRSContextInterface {
-	countries: CountryData[]
+	countries: CountryData[] | ShortCountryData[];
 	whitelist?: CountryMap;
 	blacklist?: CountryMap;
 }
@@ -26,26 +39,28 @@ export const RCRSContext = React.createContext<RCRSContextInterface>({
 
 // reduces the subset of countries depending on whether the user specified a white/blacklist, and lists priority
 // countries first
-export const filterCountries = (countries, priorityCountries, whitelist, blacklist) => {
+export const getCountries = (countries, priorityCountries, whitelist, blacklist) => {
 	let countriesListedFirst = [];
 	let filteredCountries = countries;
 
-	if (whitelist.length > 0) {
-		filteredCountries = countries.filter(([, countrySlug]) => whitelist.indexOf(countrySlug) > -1);
-	} else if (blacklist.length > 0) {
-		filteredCountries = countries.filter(([, countrySlug]) => blacklist.indexOf(countrySlug) === -1);
+	// if the user provided a short format for the country data, it's been manually provided: no whitelist/blacklist'
+	// should be applied
+	if (countries.length && countries[0].length > 2) {
+		if (whitelist.length > 0) {
+			filteredCountries = countries.filter(([, countrySlug]) => whitelist.indexOf(countrySlug) > -1);
+		} else if (blacklist.length > 0) {
+			filteredCountries = countries.filter(([, countrySlug]) => blacklist.indexOf(countrySlug) === -1);
+		}
 	}
 
+	// ensure the countries are added in the order in which they are specified by the user
 	if (priorityCountries.length > 0) {
-
-		// ensure the countries are added in the order in which they are specified by the user
 		priorityCountries.forEach((slug) => {
 			const result = filteredCountries.find(([, countrySlug]) => countrySlug === slug);
 			if (result) {
 				countriesListedFirst.push(result);
 			}
 		});
-
 		filteredCountries = filteredCountries.filter(([, countrySlug]) => priorityCountries.indexOf(countrySlug) === -1);
 	}
 
