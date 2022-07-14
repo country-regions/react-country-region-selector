@@ -3,5 +3,6 @@
   "projects": {
     "rcrs": "libs/rcrs",
     "rcrs-e2e": "apps/rcrs-e2e"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

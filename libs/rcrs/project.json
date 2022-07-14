@@ -1,5 +1,5 @@
 {
-  "root": "libs/rcrs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/rcrs/src",
   "projectType": "library",
   "tags": [],
@@ -15,7 +15,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/rcrs"],
       "options": {
-        "jestConfig": "libs/rcrs/jest.config.js",
+        "jestConfig": "libs/rcrs/jest.config.ts",
         "passWithNoTests": true
       }
     },
