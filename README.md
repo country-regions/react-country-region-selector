@@ -176,6 +176,8 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 
 <a name="changelog"></a>
 ### Changelog
+- `3.5.0` - Jul 30, 2022
+    - Upgrade country-region-data to 2.6.0.  
 - `3.4.0` - Oct 24, 2021
     - Typings fix.
     - Upgrade country-region-data to 1.11.0.
@@ -190,14 +192,14 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 - `3.0.1` - Sep 26, 2020
     - typings file fix. 
 - `3.0.0` - Sep 8, 2020
-	- blacklist option added for the Region component (thanks [Mitch Rickman](https://github.com/mitch-rickman)!)
-	- typings fix and onBlur callback standardized with value passed as first param, with full event as second. This 
+    - blacklist option added for the Region component (thanks [Mitch Rickman](https://github.com/mitch-rickman)!)
+    - typings fix and onBlur callback standardized with value passed as first param, with full event as second. This 
 is a *breaking change*. Thanks [Vinod Ramakrishnan](https://github.com/vinod-rp)!
 - `2.1.0` - Mar 28, 2020
-	- country-region-data updated to 1.6.0
+    - country-region-data updated to 1.6.0
 - `2.0.0` - Mar 21, 2020
     - Typings fixes
-	- Dependency updates
+    - Dependency updates
 - `1.4.7` - Dec 24, 2019:
     - Fix to include typings in published bundle.
 - `1.4.6` - Dec 22, 2019:
