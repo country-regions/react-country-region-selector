@@ -1,6 +1,6 @@
 {
   "name": "react-country-region-selector",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "description": "CountryDropdown and RegionDropdown React components for your forms.",
   "author": "country-regions",
   "license": "MIT",
@@ -27,8 +27,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",
-    "react": "^15.0.0 || ^16.0.0 || ^17.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0 || ^17.0.0"
+    "react": ">=15",
+    "react-dom": ">=^15"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

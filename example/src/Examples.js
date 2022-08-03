@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { atomDark as theme } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 class Examples extends Component {
 	constructor (props) {
@@ -26,7 +28,15 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
+					code: (`<CountryDropdown
+	value={country}
+	onChange={selectCountry}
+/>
+<RegionDropdown
+	country={country}
+	value={region}
+	onChange={selectRegion}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -48,7 +58,16 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  disableWhenEmpty={true}\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
+					code: (`<CountryDropdown
+	value={country}
+	onChange={selectCountry}
+/>
+<RegionDropdown
+	disableWhenEmpty={true}
+	country={country}
+	value={region}
+	onChange={selectRegion}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -71,7 +90,17 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  showDefaultOption={false}\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  showDefaultOption={false}\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
+					code: (`<CountryDropdown
+	showDefaultOption={false}
+	value={country}
+	onChange={selectCountry}
+/>
+<RegionDropdown
+	showDefaultOption={false}
+	country={country}
+	value={region}
+	onChange={selectRegion}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -95,7 +124,18 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  defaultOptionLabel="Select a country, man."\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  blankOptionLabel="No country selected, man."\n  defaultOptionLabel="Now select a region, pal."\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
+					code: (`<CountryDropdown
+	defaultOptionLabel="Select a country, man."
+	value={country}
+	onChange={selectCountry}
+/>
+<RegionDropdown
+	blankOptionLabel="No country selected, man."
+	defaultOptionLabel="Now select a region, pal."
+	country={country}
+	value={region}
+	onChange={selectRegion}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -122,7 +162,21 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  value={country}\n  id="my-country-field-id"\n  name="my-country-field"\n  classes="my-custom-class second-class"\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  name="my-region-field-name"\n  id="my-region-field-id"\n  classes="another-custom-class"\n  onChange={selectRegion} />',
+					code: (`<CountryDropdown
+	value={country}
+	id="my-country-field-id"
+	name="my-country-field"
+	classes="my-custom-class second-class"
+	onChange={selectCountry}
+/>
+<RegionDropdown
+	country={country}
+	value={region}
+	name="my-region-field-name"
+	id="my-region-field-id"
+	classes="another-custom-class"
+	onChange={selectRegion}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -148,7 +202,20 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  value={country}\n  labelType="short"\n  valueType="short"\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  countryValueType="short"\n  labelType="short"\n  valueType="short"\n  onChange={selectRegion} />',
+					code: (`<CountryDropdown
+	value={country}
+	labelType="short"
+	valueType="short"
+	onChange={selectCountry}
+/>
+<RegionDropdown
+	country={country}
+	value={region}
+	countryValueType="short"
+	labelType="short"
+	valueType="short"
+	onChange={selectRegion}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -170,7 +237,20 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  value={country}\n  labelType="short"\n  valueType="short"\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  countryValueType="short"\n  labelType="short"\n  valueType="short"\n  onChange={selectRegion} />',
+					code: (`<CountryDropdown
+	value={country}
+	labelType="short"
+	valueType="short"
+	onChange={selectCountry}
+/>
+<RegionDropdown
+	country={country}
+	value={region}
+	countryValueType="short"
+	labelType="short"
+	valueType="short"
+	onChange={selectRegion}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -192,7 +272,16 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: "&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry}\n  blacklist={['AF','AX','AL','DZ','AS','AD','AO','AI','AQ','AG']} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion} />",
+					code: (`<CountryDropdown
+	value={country}
+	onChange={selectCountry}
+	blacklist={['AF','AX','AL','DZ','AS','AD','AO','AI','AQ','AG']}
+/>
+<RegionDropdown
+	country={country}
+	value={region}
+	onChange={selectRegion}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -216,7 +305,17 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n disabled={true} />",
+					code: (`<CountryDropdown
+	value="United States"
+	onChange={selectCountry}
+	disabled={true}
+/>
+<RegionDropdown
+	country={country}
+	value="Washington"
+	onChange={selectRegion}
+	disabled={true}
+/>`),
 					country: 'United States',
 					region: 'Washington'
 				},
@@ -243,7 +342,20 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: "&lt;CountryDropdown\n  value={this.getCountryValue(9)}\n  onChange={(val) => this.selectCountry(9, val)}\n  whitelist={[\"CA\", \"US\"]} />\n&lt;RegionDropdown\n  country={this.getCountryValue(9)}\n  value={this.getRegionValue(9)}\\n  onChange={(val) => this.selectRegion(9, val)}\n  blacklist={{\n    CA: [\"Alberta\"],\n    US: [\"Washington\", \"Oregon\"]\n  }}\n/>",
+					code: (`<CountryDropdown
+	value={this.getCountryValue(9)}
+	onChange={(val) => this.selectCountry(9, val)}
+	whitelist={["CA", "US"]}
+/>
+<RegionDropdown
+	country={this.getCountryValue(9)}
+	value={this.getRegionValue(9)}
+	onChange={(val) => this.selectRegion(9, val)}
+	blacklist={{
+		CA: ["Alberta"],
+		US: ["Washington", "Oregon"]
+	}}
+/>`),
 					country: 'United States',
 					region: 'Alabama'
 				},
@@ -271,7 +383,20 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: "&lt;CountryDropdown\n  value={this.getCountryValue(10)}\n  onChange={(val) => this.selectCountry(10, val)}\n  whitelist={[\"CA\", \"US\"]}\n/>\n&lt;RegionDropdown\n  country={this.getCountryValue(10)}\n  value={this.getRegionValue(10)}\n  onChange={(val) => this.selectRegion(10, val)}\n  whitelist={{\n    CA: [\"BC\", \"AB\", \"MB\"],\n    US: [\"Washington\", \"Oregon\", \"Illinois\"]\n  }}\n/>",
+					code: (`<CountryDropdown
+	value={this.getCountryValue(10)}
+	onChange={(val) => this.selectCountry(10, val)}
+	whitelist={["CA", "US"]}
+/>
+<RegionDropdown
+	country={this.getCountryValue(10)}
+	value={this.getRegionValue(10)}
+	onChange={(val) => this.selectRegion(10, val)}
+	whitelist={{
+		CA: ["BC", "AB", "MB"],
+		US: ["Washington", "Oregon", "Illinois"]
+	}}
+/>`),
 					country: 'United States',
 					region: 'Washington'
 				},
@@ -303,7 +428,28 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: "&lt;CountryDropdown\n  value=\"United States\"\n  onChange={selectCountry}\n  style={{\n    backgroundColor: 'blue',\n    color: 'white',\n    fontSize: 20\n}}\n  tabIndex={1000}\n  disabled={true} />\n&lt;RegionDropdown\n  country={country}\n  value=\"Washington\"\n  onChange={selectRegion}\n  style={{\n    backgroundColor: 'green',\n    color: 'white']\n  }}\n  tabIndex={1001}\n  disabled={true} />",
+					code: (`<CountryDropdown
+	value="United States"
+	onChange={selectCountry}
+	style={{
+		backgroundColor: 'blue',
+		color: 'white',
+		fontSize: 20
+	}}
+	tabIndex={1000}
+	disabled={true}
+/>
+<RegionDropdown
+	country={country}
+	value="Washington"
+	onChange={selectRegion}
+	style={{
+		backgroundColor: 'green',
+		color: 'white'
+	}}
+	tabIndex={1001}
+	disabled={true}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -325,7 +471,17 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion}\n  customOptions={[\'-- Custom option 1\', \'-- Custom option 2\']} />',
+					code: (`<CountryDropdown
+	value={country}
+	onChange={selectCountry}
+/>
+
+<RegionDropdown
+	country={country}
+	value={region}
+	onChange={selectRegion}
+	customOptions={["-- Custom option 1", "-- Custom option 2"]}
+/>`),
 					country: '',
 					region: ''
 				},
@@ -347,7 +503,16 @@ class Examples extends Component {
 						);
 					},
 					codeVisible: false,
-					code: '&lt;CountryDropdown\n  value={country}\n  onChange={selectCountry}\n  priorityOptions={["CA", "US", "GB"]} />\n&lt;RegionDropdown\n  country={country}\n  value={region}\n  onChange={selectRegion} />',
+					code: (`<CountryDropdown
+	value={country}
+	onChange={selectCountry}
+	priorityOptions={["CA", "US", "GB"]}
+/>
+<RegionDropdown
+	country={country}
+	value={region}
+	onChange={selectRegion}
+/>`),
 					country: '',
 					region: ''
 				}
@@ -394,9 +559,11 @@ class Examples extends Component {
 						      onClick={() => this.toggleCode(j)}>&lt;/&gt;</span>
 					</p>
 					{example.jsx()}
-					<pre className="hljs html" style={{ display: example.codeVisible ? 'block' : 'none' }}>
-						<code className="html" dangerouslySetInnerHTML={{ __html: example.code }}/>
-					</pre>
+					<div style={{ display: example.codeVisible ? 'block' : 'none' }}>
+						<SyntaxHighlighter language="html" style={theme}>
+							{example.code}
+						</SyntaxHighlighter>
+					</div>
 				</section>
 			);
 		});
