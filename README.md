@@ -176,8 +176,11 @@ countries you specify here. This *seriously* reduces file size, so if you can do
 
 <a name="changelog"></a>
 ### Changelog
+
+- `3.6.1` - Aug 3, 2022
+    - Dependency version fix. 
 - `3.6.0` - Aug 2, 2022
-  - React 18 support added.
+    - React 18 support added.
 - `3.5.0` - Jul 30, 2022
     - Upgrade country-region-data to 2.6.0.  
 - `3.4.0` - Oct 24, 2021
