@@ -70,41 +70,28 @@ It's very easy to use, but note that you will need to track the country and regi
 component state or in a store somewhere. Here's a simple example that uses state:
 
 ```javascript
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 // note that you can also export the source data via CountryRegionData. It's in a deliberately concise format to 
 // keep file size down
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 
-class Example extends Component {
-  constructor (props) {
-    super(props);
-    this.state = { country: '', region: '' };
-  }
+const Example = () => {
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
 
-  selectCountry (val) {
-    this.setState({ country: val });
-  }
-
-  selectRegion (val) {
-    this.setState({ region: val });
-  }
-
-  render () {
-    const { country, region } = this.state;
-    return (
-      <div>
-        <CountryDropdown
-          value={country}
-          onChange={(val) => this.selectCountry(val)} />
-        <RegionDropdown
-          country={country}
-          value={region}
-          onChange={(val) => this.selectRegion(val)} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <CountryDropdown
+        value={country}
+        onChange={(val) => setCountry(val)} />
+      <RegionDropdown
+        country={country}
+        value={region}
+        onChange={(val) => setRegion(val)} />
+    </div>
+  );
 }
 ```
 
