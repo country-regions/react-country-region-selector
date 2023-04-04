@@ -199,7 +199,7 @@ export interface RegionDropdownProps<T = Element> {
    *
    * Default value: true
    */
-  showDefaultOption?: string;
+  showDefaultOption?: boolean;
 
   /**
    * string	The default region option.
