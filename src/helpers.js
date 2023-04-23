@@ -1,6 +1,6 @@
 // reduces the subset of countries depending on whether the user specified a white/blacklist, and lists priority
 // countries first
-export const filterCountries = (countries, priorityCountries, whitelist, blacklist) => {
+export const filterCountries = (countries, priorityCountries, whitelist, blacklist, priorityRepeat) => {
 	let countriesListedFirst = [];
 	let filteredCountries = countries;
 
@@ -19,8 +19,9 @@ export const filterCountries = (countries, priorityCountries, whitelist, blackli
 				countriesListedFirst.push(result);
 			}
 		});
-
-		filteredCountries = filteredCountries.filter(([, countrySlug]) => priorityCountries.indexOf(countrySlug) === -1);
+		if (!priorityRepeat) {
+			filteredCountries = filteredCountries.filter(([, countrySlug]) => priorityCountries.indexOf(countrySlug) === -1);
+		}
 	}
 
 	return countriesListedFirst.length ? [...countriesListedFirst, ...filteredCountries] : filteredCountries;
