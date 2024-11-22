@@ -1,4 +1,10 @@
 {
-  "main.js": "static/js/main.1abd5c6e.js",
-  "main.js.map": "static/js/main.1abd5c6e.js.map"
+  "files": {
+    "main.js": "/react-country-region-selector/static/js/main.dcdd522c.js",
+    "index.html": "/react-country-region-selector/index.html",
+    "main.dcdd522c.js.map": "/react-country-region-selector/static/js/main.dcdd522c.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.dcdd522c.js"
+  ]
 }
