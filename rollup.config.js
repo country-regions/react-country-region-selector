@@ -13,33 +13,36 @@ const argv = require('minimist')(process.argv.slice(2));
 // e.g. rollup -c --config-countries=GB,CA,US
 let countries = [];
 if (argv.hasOwnProperty('config-countries')) {
-	countries = argv['config-countries'].split(',');
+  countries = argv['config-countries'].split(',');
 }
 
 export default {
-	input: 'src/index.js',
-	output: [{
-		file: pkg.main,
-		format: 'cjs',
-		sourcemap: true
-	}, {
-		file: pkg.module,
-		format: 'es',
-		sourcemap: true
-	}],
-	plugins: [
-		parseCountryList({ countries }),
-		external(),
-		postcss({
-			modules: true
-		}),
-		json(),
-		url(),
-		babel({
-			exclude: 'node_modules/**',
-			plugins: ['external-helpers']
-		}),
-		resolve(),
-		commonjs()
-	]
+  input: 'src/index.js',
+  output: [
+    {
+      file: pkg.main,
+      format: 'cjs',
+      sourcemap: true,
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true,
+    },
+  ],
+  plugins: [
+    parseCountryList({ countries }),
+    external(),
+    postcss({
+      modules: true,
+    }),
+    json(),
+    url(),
+    babel({
+      exclude: 'node_modules/**',
+      plugins: ['external-helpers'],
+    }),
+    resolve(),
+    commonjs(),
+  ],
 };

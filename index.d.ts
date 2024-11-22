@@ -2,9 +2,9 @@
 // Project: https://github.com/country-regions/react-country-region-selector
 // Definitions by: Kyle Davis <https://github.com/kyledavisdev>, Ben Keen <https://github.com/benkeen>
 
-import * as React from "react";
+import * as React from 'react';
 
-export type ValueType = "full" | "short";
+export type ValueType = 'full' | 'short';
 
 export interface CountryDropdownProps<T = Element> {
   /**
