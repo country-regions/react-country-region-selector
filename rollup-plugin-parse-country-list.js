@@ -1,4 +1,4 @@
-export default (options = {}) => {
+module.exports = (options = {}) => {
   const convertFormat = (countries) => {
     return countries.map((countryData) => [
       countryData.countryName,
