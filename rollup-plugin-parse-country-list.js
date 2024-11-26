@@ -1,3 +1,11 @@
+/**
+ * The data for this package is pulled from country-region-data:
+ * https://github.com/country-regions/country-region-data
+ *
+ * The full country-region data is quite large. For some use-cases, you don't need the full data set. This plugin
+ * is used with the rollup build to generate a package with a smaller subset of data. See here for more info:
+ * https://github.com/country-regions/react-country-region-selector?tab=readme-ov-file#command-line
+ */
 module.exports = (options = {}) => {
   const convertFormat = (countries) => {
     return countries.map((countryData) => [
