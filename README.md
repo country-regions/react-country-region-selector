@@ -57,11 +57,12 @@ JSX code.
 
 ### Installation
 
-Using npm or yarn:
+Using your favourite package manager:
 
 ```javascript
 npm i react-country-region-selector
 yarn add react-country-region-selector
+pnpm add react-country-region-selector
 ```
 
 <a name="features"></a>
@@ -185,8 +186,10 @@ Check out the `scripts` section of the package.json file to see them all, but th
   - typings file fix.
 - `3.0.1` - Sep 26, 2020
   - typings file fix.
-- `3.0.0` - Sep 8, 2020 - blacklist option added for the Region component (thanks [Mitch Rickman](https://github.com/mitch-rickman)!) - typings fix and onBlur callback standardized with value passed as first param, with full event as second. This
-  is a _breaking change_. Thanks [Vinod Ramakrishnan](https://github.com/vinod-rp)!
+- `3.0.0` - Sep 8, 2020
+  - blacklist option added for the Region component (thanks [Mitch Rickman](https://github.com/mitch-rickman)!)
+  - typings fix and onBlur callback standardized with value passed as first param, with full event as second. This
+    is a _breaking change_. Thanks [Vinod Ramakrishnan](https://github.com/vinod-rp)!
 - `2.1.0` - Mar 28, 2020
   - country-region-data updated to 1.6.0
 - `2.0.0` - Mar 21, 2020
@@ -209,12 +212,15 @@ Check out the `scripts` section of the package.json file to see them all, but th
   - `customOptions` setting added for the Region dropdown.
   - `priorityOptions` option added to the CountryDropdown to allow placing items at the top of the country dropdown.
 - `1.4.1` - Sept 9, 2018: bug fix for invalid JSON data source conversion.
-- `1.4.0` - Sept 8, 2018: - _Breaking change_: the library is no longer exported in UMD format. Now it's only exported in es6
-  (`dist/rcrs.es.js`) and commonJS (`dist/rcrs.js`) format. This library is intended for use in _React_ applications. - _Breaking change_: no longer available via Bower. I don't recall ANY react component used via Bower, so if I'm
-  mistaken here, open a github issue to explain your use-case and I can re-add it.  
-   If you need UMD, check out the [plain vanilla version](https://github.com/country-regions/country-region-selector). - country-region-data updated to latest version (1.4.4) - You can now pass arbitrary attributes to the components (e.g. `style={{ color: 'red' }}` and have them output in the
-  markup) - the old gulp build process updated to use rollup - this component library, the source data set and the plain vanilla JS version are now all grouped under a single github
-  organization
+- `1.4.0` - Sept 8, 2018:
+  - _Breaking change_: the library is no longer exported in UMD format. Now it's only exported in es6
+    (`dist/rcrs.es.js`) and commonJS (`dist/rcrs.js`) format. This library is intended for use in _React_ applications.
+  - _Breaking change_: no longer available via Bower. I don't recall ANY react component used via Bower, so if I'm
+    mistaken here, open a github issue to explain your use-case and I can re-add it.  
+     If you need UMD, check out the [plain vanilla version](https://github.com/country-regions/country-region-selector).
+  - country-region-data updated to latest version (1.4.4) - You can now pass arbitrary attributes to the components (e.g. `style={{ color: 'red' }}` and have them output in the
+    markup)
+  - the old gulp build process updated to use rollup - this component library, the source data set and the plain vanilla JS version are now all grouped under a single github organization
 - `1.3.0` - Mar 20, 2018. Bug fix for invalid country, [@n-david](https://github.com/n-david)! onBlur event added.
 - `1.2.3` - Nov 7, 2017. Country data updates. React moved to peer dependency, thanks [@iamdey](https://github.com/iamdey)!
 - `1.2.2` - Oct 4, 2017 - Update to pass event on change. Thanks [@robertnealan](https://github.com/robertnealan)!
@@ -238,9 +244,9 @@ The Jest/Enzyme unit tests are found in the `src/tests` folder. The repo is hook
 
 This is pretty dated, I'm afraid. But to run this locally, do the following:
 
-- `npm install`
-- in one terminal window: `npm start`
-- in another terminal window, go to the `/example` subfolder and do the same: `npm install`, `npm start`
+- `yarn install`
+- in one terminal window: `yarn start`
+- in another terminal window, go to the `/example` subfolder and do the same: `yarn install`, `yarn start`
 - open `http://localhost:3000` in your browser.
 
 <a name="thanks"></a>
