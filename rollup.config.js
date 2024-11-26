@@ -1,5 +1,4 @@
 const babel = require('@rollup/plugin-babel');
-// const commonjs = require('@rollup/plugin-commonjs');
 const resolve = require('@rollup/plugin-node-resolve');
 const url = require('@rollup/plugin-url');
 const json = require('@rollup/plugin-json');
@@ -36,11 +35,11 @@ module.exports = {
     url(),
     babel({
       exclude: 'node_modules/**',
+
       // TODO check https://github.com/rollup/plugins/tree/master/packages/babel#babelhelpers
       babelHelpers: 'bundled',
     }),
     resolve(),
-    // commonjs(),
     terser(),
   ],
   external: ['react', 'react-dom', 'prop-types'],
