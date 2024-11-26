@@ -1,7 +1,5 @@
 # react-country-region-selector
 
-[![Build Status](https://travis-ci.com/country-regions/react-country-region-selector.svg?branch=master)](https://travis-ci.com/country-regions/react-country-region-selector)
-
 - [About](#about)
   - [Features](#features)
   - [Gotchas](#gotchas)
@@ -236,7 +234,7 @@ Check out the `scripts` section of the package.json file to see them all, but th
 
 ### Tests
 
-The Jest/Enzyme unit tests are found in the `src/tests` folder. The repo is hooked up to Travis CI to automatically run the tests for each commit.
+The Jest/Enzyme unit tests are found in the `src/tests` folder.
 
 <a name="localDev"></a>
 
