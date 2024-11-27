@@ -7,8 +7,6 @@ const config = {
   collectCoverage: true,
   coverageDirectory: 'temp/coverage',
   coverageProvider: 'v8',
-  // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
-  // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
   // moduleDirectories: [
@@ -39,34 +37,11 @@ const config = {
   // An enum that specifies notification mode. Requires { notify: true }
   // notifyMode: "failure-change",
 
-  // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
-
-  // Run tests from one or more projects
-  // projects: undefined,
-
-  // Use this configuration option to add custom reporters to Jest
-  // reporters: undefined,
-
-  // Automatically reset mock state before every test
-  // resetMocks: false,
-
   // Reset the module registry before running each individual test
   // resetModules: false,
 
   // A path to a custom resolver
   // resolver: undefined,
-
-  // Automatically restore mock state and implementation before every test
-  // restoreMocks: false,
-
-  // The root directory that Jest should scan for tests and modules within
-  // rootDir: undefined,
-
-  // A list of paths to directories that Jest should use to search for files in
-  // roots: [
-  //   "<rootDir>"
-  // ],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -117,7 +92,7 @@ const config = {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
-  //   "/node_modules/",
+  //   '/node_modules/',
   //   "\\.pnp\\.[^\\/]+$"
   // ],
 

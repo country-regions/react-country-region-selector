@@ -21,21 +21,21 @@ export interface CountryDropdownProps {
 }
 
 export type RegionDropdownProps = {
-  readonly country: string;
-  readonly value?: string | number;
+  readonly value: string | number;
+  readonly onChange: (value: string, event: any) => null;
+  readonly country?: string;
   readonly id?: string;
   readonly name?: string;
   readonly blankOptionLabel?: string;
   readonly classes?: string;
   readonly showDefaultOption?: boolean;
-  readonly defaultOptionLabel: string;
+  readonly defaultOptionLabel?: string;
   readonly disabled?: boolean;
   readonly disableWhenEmpty?: boolean;
   readonly labelType?: ValueType;
   readonly countryValueType?: ValueType;
   readonly valueType?: ValueType;
-  readonly customOptions: ValueType[];
-  readonly onChange?: (value: string, event: any) => null;
+  readonly customOptions?: ValueType[];
   readonly onBlur?: (value: string, event: any) => null;
   readonly whitelist?: object;
   readonly blacklist?: object;

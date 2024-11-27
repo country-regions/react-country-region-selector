@@ -6,8 +6,8 @@ import type { RegionDropdownProps } from './rcrs.types';
 
 export const RegionDropdown: FC<RegionDropdownProps> = ({
   onChange,
+  value,
   country = '',
-  value = '',
   onBlur = () => null,
   id = '',
   name = 'rcrs-region',

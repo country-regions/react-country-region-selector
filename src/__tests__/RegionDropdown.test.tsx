@@ -1,13 +1,18 @@
 import React from 'react';
-import { RegionDropdown } from '../../dist/rcrs.es';
+import { RegionDropdown } from '../RegionDropdown';
 import { render } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
+import { RegionDropdownProps } from '../rcrs.types';
 
 describe('RegionDropdown', () => {
-  it('sets ID attribute', () => {
-    render(<RegionDropdown id="id-attribute" />);
+  const setupTest = (props: Partial<RegionDropdownProps>) => {
+    return render(<RegionDropdown onChange={() => null} value="" {...props} />);
+  };
 
-    screen.debug();
+  it('sets ID attribute', () => {
+    const { container } = setupTest({ id: 'id-attribute' });
+
+    expect(container.firstChild).toHaveProperty('id');
 
     // expect(wrapper.find('#id-attribute').length).toBe(1);
     // expect(wrapper.find('#fake-id-attribute').length).toBe(0);
@@ -17,6 +22,7 @@ describe('RegionDropdown', () => {
   //   const wrapper = shallow(<RegionDropdown classes="one two three" />);
   //   expect(wrapper.find('select').hasClass('one two three')).toBe(true);
   // });
+
   // describe('name attribute', () => {
   //   it('falls back on default name attribute when not specified', () => {
   //     const wrapper = shallow(<RegionDropdown />);
