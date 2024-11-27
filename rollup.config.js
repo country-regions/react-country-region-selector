@@ -6,6 +6,7 @@ const terser = require('@rollup/plugin-terser');
 const pkg = require('./package.json');
 const argv = require('minimist')(process.argv.slice(2));
 const parseCountryList = require('./rollup-plugin-parse-country-list');
+const typescript = require('@rollup/plugin-typescript');
 
 // e.g. rollup -c --config-countries=GB,CA,US
 let countries = [];
@@ -14,7 +15,7 @@ if (argv.hasOwnProperty('config-countries')) {
 }
 
 module.exports = {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: [
     {
       file: pkg.main,
@@ -39,8 +40,11 @@ module.exports = {
       // TODO check https://github.com/rollup/plugins/tree/master/packages/babel#babelhelpers
       babelHelpers: 'bundled',
     }),
-    resolve(),
+    resolve({
+      extensions: ['.ts', '.tsx', '.js'],
+    }),
     terser(),
+    typescript(),
   ],
-  external: ['react', 'react-dom', 'prop-types'],
+  external: ['react', 'react-dom', 'react/jsx-runtime'],
 };

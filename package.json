@@ -43,12 +43,14 @@
     "react-dom": "^16.4.1",
     "react-scripts": "^5.0.1",
     "rollup": "^4.27.4",
+    "typescript": "^5.7.2",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "0.4.4",
-    "@rollup/plugin-url": "^8.0.2"
+    "@rollup/plugin-url": "^8.0.2",
+    "@rollup/plugin-typescript": "^12.1.1"
   },
   "files": [
     "dist",
