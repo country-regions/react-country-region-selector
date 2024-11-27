@@ -34,7 +34,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     let regionArray = [];
     CountryRegionData.forEach((i) => {
       if (i[searchIndex] === country) {
-        regionArray = i;
+        // regionArray = i;
       }
     });
 
@@ -130,7 +130,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
 
   const isDisabled = disabled || (disableWhenEmpty && country === '');
   const attrs: any = {
-    ...arbitraryProps,
+    // ...arbitraryProps,
     name,
     value,
     onChange: (e) => onChange(e.target.value, e),

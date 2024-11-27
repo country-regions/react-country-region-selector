@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC, useMemo } from 'react';
 import CountryRegionData from 'country-region-data/data.json';
 import * as C from './constants';
 import * as helpers from './helpers';
@@ -27,7 +27,6 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   //       props.whitelist,
   //       props.blacklist
   //     ),
-  //   };
 
   const getCountries = () => {
     // return countries.map(([countryName, countrySlug]) => (
@@ -40,41 +39,19 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
     // ));
   };
 
-  const getDefaultOption = () => {
-    //   const { showDefaultOption, defaultOptionLabel } = this.props;
-    //   if (!showDefaultOption) {
-    //     return null;
-    //   }
-    //   return (
-    //     <option value="" key="default">
-    //       {defaultOptionLabel}
-    //     </option>
-    //   );
-  };
-
-  // render() {
-  //   // unused properties deliberately added so arbitraryProps gets populated with anything else the user specifies
-  //   const {
-  //     name,
-  //     id,
-  //     classes,
-  //     value,
-  //     onChange,
-  //     onBlur,
-  //     disabled,
-  //     showDefaultOption,
-  //     defaultOptionLabel,
-  //     labelType,
-  //     valueType,
-  //     whitelist,
-  //     blacklist,
-  //     customOptions,
-  //     priorityOptions,
-  //     ...arbitraryProps
-  //   } = this.props;
+  const defaultOption = useMemo(() => {
+    if (!showDefaultOption) {
+      return null;
+    }
+    return (
+      <option value="" key="default">
+        {defaultOptionLabel}
+      </option>
+    );
+  }, [showDefaultOption, defaultOptionLabel]);
 
   const attrs: any = {
-    ...arbitraryProps,
+    // ...arbitraryProps,
     name,
     value,
     onChange: (e) => onChange(e.target.value, e),
@@ -90,7 +67,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
 
   return (
     <select {...attrs}>
-      {getDefaultOption()}
+      {defaultOption}
       {getCountries()}
     </select>
   );

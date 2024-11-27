@@ -1,10 +1,10 @@
 export type DisplayType = 'full' | 'short';
 
-export type CountryDropdownProps = {
-  readonly name: string;
-  readonly id: string;
-  readonly classes: string;
-  readonly value: string;
+export interface CountryDropdownProps {
+  readonly name?: string;
+  readonly id?: string;
+  readonly classes?: string;
+  readonly value?: string;
   readonly onChange?: (value: string, event: any) => null;
   readonly onBlur?: (value: string, event: any) => null;
   readonly disabled: boolean;
@@ -16,7 +16,7 @@ export type CountryDropdownProps = {
   readonly blacklist: object;
   readonly customOptions: string[];
   readonly priorityOptions: string[];
-};
+}
 
 export type RegionDropdownProps = {
   readonly country: string;
