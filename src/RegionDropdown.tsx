@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import CountryRegionData from 'country-region-data/data.json';
+import CountryRegionData from '../node_modules/country-region-data/data.json';
 import { filterRegions } from './helpers';
 import * as C from './constants';
 import type { RegionDropdownProps } from './rcrs.types';
@@ -31,16 +31,16 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     }
 
     const searchIndex = countryValueType === 'full' ? 0 : 1;
-    let regionArray = [];
+    let regionArray: any = [];
     CountryRegionData.forEach((i) => {
       if (i[searchIndex] === country) {
-        // regionArray = i;
+        regionArray = i;
       }
     });
 
     // this could happen if the user is managing the state of the region/country themselves and screws up passing
     // in a valid country
-    if (!regions || regions.length === 0) {
+    if (!regionArray || regionArray.length === 0) {
       console.error(
         'Error. Unknown country passed: ' +
           country +
@@ -48,7 +48,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
       );
       return [];
     }
-    const filteredRegions = filterRegions(regions, whitelist, blacklist);
+    const filteredRegions = filterRegions(regionArray, whitelist, blacklist);
 
     return filteredRegions[2]
       .split(C.REGION_LIST_DELIMITER)

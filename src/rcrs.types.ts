@@ -1,26 +1,30 @@
-import * as React from 'react';
+import { ComponentProps } from 'react';
 
 export type ValueType = 'full' | 'short';
 
-export interface CountryDropdownProps {
+type NativeDropdownProps = Omit<
+  ComponentProps<'select'>,
+  'onChange' | 'onBlur'
+>;
+export interface CountryDropdownProps extends NativeDropdownProps {
+  readonly value?: string;
   readonly name?: string;
   readonly id?: string;
   readonly classes?: string;
-  readonly value?: string;
   readonly onChange?: (value: string, event: any) => null;
   readonly onBlur?: (value: string, event: any) => null;
-  readonly disabled: boolean;
-  readonly showDefaultOption: boolean;
-  readonly defaultOptionLabel: string;
-  readonly labelType: ValueType;
-  readonly valueType: ValueType;
-  readonly whitelist: object;
-  readonly blacklist: object;
-  readonly customOptions: string[];
-  readonly priorityOptions: string[];
+  readonly disabled?: boolean;
+  readonly showDefaultOption?: boolean;
+  readonly defaultOptionLabel?: string;
+  readonly labelType?: ValueType;
+  readonly valueType?: ValueType;
+  readonly whitelist?: object;
+  readonly blacklist?: object;
+  readonly customOptions?: string[];
+  readonly priorityOptions?: string[];
 }
 
-export type RegionDropdownProps = {
+export interface RegionDropdownProps extends NativeDropdownProps {
   readonly value: string | number;
   readonly onChange: (value: string, event: any) => null;
   readonly country?: string;
@@ -39,7 +43,7 @@ export type RegionDropdownProps = {
   readonly onBlur?: (value: string, event: any) => null;
   readonly whitelist?: object;
   readonly blacklist?: object;
-};
+}
 
 // Type definitions for react-country-region-selector 3.0.1 by
 // Project: https://github.com/country-regions/react-country-region-selector

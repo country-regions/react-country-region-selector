@@ -1,68 +1,77 @@
-import React from 'react';
-import { RegionDropdown } from '../RegionDropdown';
+import { RegionDropdown } from '../../dist/rcrs.es';
+import { RegionDropdownProps } from '../rcrs.types';
 import { render } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
-import { RegionDropdownProps } from '../rcrs.types';
 
 describe('RegionDropdown', () => {
-  const setupTest = (props: Partial<RegionDropdownProps>) => {
-    return render(<RegionDropdown onChange={() => null} value="" {...props} />);
+  const setupTest = (props?: Partial<RegionDropdownProps>) => {
+    render(
+      <RegionDropdown
+        onChange={() => null}
+        value=""
+        {...props}
+        role="combobox"
+      />
+    );
+    return screen.getByRole('combobox') as HTMLSelectElement;
   };
 
   it('sets ID attribute', () => {
-    const { container } = setupTest({ id: 'id-attribute' });
-
-    expect(container.firstChild).toHaveProperty('id');
-
-    // expect(wrapper.find('#id-attribute').length).toBe(1);
-    // expect(wrapper.find('#fake-id-attribute').length).toBe(0);
+    const select = setupTest({ id: 'id-attr' });
+    expect(select.getAttribute('id')).toBe('id-attr');
   });
 
-  // it('classes attribute gets recognized', () => {
-  //   const wrapper = shallow(<RegionDropdown classes="one two three" />);
-  //   expect(wrapper.find('select').hasClass('one two three')).toBe(true);
-  // });
+  it('classes attribute gets recognized', () => {
+    const select = setupTest({ classes: 'one two three' });
+    expect(select.className).toBe('one two three');
+  });
 
-  // describe('name attribute', () => {
-  //   it('falls back on default name attribute when not specified', () => {
-  //     const wrapper = shallow(<RegionDropdown />);
-  //     expect(wrapper.find('select').getElement().props.name).toBe(
-  //       'rcrs-region'
-  //     );
-  //   });
-  //   it('sets explicit name attribute', () => {
-  //     const wrapper = shallow(<RegionDropdown name="name-attribute" />);
-  //     expect(wrapper.find('select[name="name-attribute"]').length).toBe(1);
-  //     expect(wrapper.find('select[name="fake-name-attribute"]').length).toBe(0);
-  //   });
-  // });
-  // describe('disabled attribute', () => {
-  //   it('not disabled by default', () => {
-  //     const wrapper = shallow(<RegionDropdown />);
-  //     expect(wrapper.find('select').getElement().props.disabled).toBe(false);
-  //   });
-  //   it('disabled attribute', () => {
-  //     const wrapper = shallow(<RegionDropdown disabled={true} />);
-  //     expect(wrapper.find('select').getElement().props.disabled).toBe(true);
-  //   });
-  // });
-  // describe('default option', () => {
-  //   it('confirm default label when there are no countries is "-"', () => {
-  //     const wrapper = shallow(<RegionDropdown />);
-  //     expect(wrapper.find('select').childAt(0).text()).toBe('-');
-  //   });
-  //   it('confirm default label when there are countries is "Select Region"', () => {
-  //     const wrapper = shallow(<RegionDropdown country="Canada" />);
-  //     expect(wrapper.find('select').childAt(0).text()).toBe('Select Region');
-  //   });
-  //   it('defaultOptionLabel - applies only when a country is passed note!', () => {
-  //     const customLabel = 'Holy moly I am a custom label!';
-  //     const wrapper = shallow(
-  //       <RegionDropdown defaultOptionLabel={customLabel} country="Canada" />
-  //     );
-  //     expect(wrapper.find('select').childAt(0).text()).toBe(customLabel);
-  //   });
-  // });
+  describe('name attribute', () => {
+    it('falls back on default name attribute when not specified', () => {
+      const select = setupTest();
+      expect(select.getAttribute('name')).toBe('rcrs-region');
+    });
+
+    it('sets explicit name attribute', () => {
+      const select = setupTest({ name: 'name-attribute' });
+      expect(select.getAttribute('name')).toBe('name-attribute');
+    });
+  });
+
+  describe('disabled attribute', () => {
+    it('not disabled by default', () => {
+      const select = setupTest();
+      expect(select).not.toBeDisabled();
+    });
+
+    it('disabled attribute', () => {
+      const select = setupTest({ disabled: true });
+      expect(select).toBeDisabled();
+    });
+  });
+
+  describe('default option', () => {
+    it('confirm default label when there are no countries is "-"', () => {
+      const select = setupTest();
+      const defaultOption = select.options[0].text;
+      expect(defaultOption).toBe('-');
+    });
+
+    it('confirm default label when there are countries is "Select Region"', () => {
+      const select = setupTest({ country: 'Canada' });
+      const defaultOption = select.options[0].text;
+      expect(defaultOption).toBe('Select Region');
+    });
+
+    // it('defaultOptionLabel - applies only when a country is passed note!', () => {
+    //   const customLabel = 'Holy moly I am a custom label!';
+    //   const wrapper = shallow(
+    //     <RegionDropdown defaultOptionLabel={customLabel} country="Canada" />
+    //   );
+    //   expect(wrapper.find('select').childAt(0).text()).toBe(customLabel);
+    // });
+  });
+
   // describe('country parameter', () => {
   //   describe('blank country parameter', () => {
   //     it('setting no country parameter shows the default blank option and no other options', () => {

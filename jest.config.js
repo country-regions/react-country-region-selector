@@ -31,26 +31,10 @@ const config = {
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
 
-  // Activates notifications for test results
-  // notify: false,
-
-  // An enum that specifies notification mode. Requires { notify: true }
-  // notifyMode: "failure-change",
-
-  // Reset the module registry before running each individual test
-  // resetModules: false,
-
-  // A path to a custom resolver
-  // resolver: undefined,
-
-  // Allows you to use a custom runner instead of Jest's default test runner
-  // runner: "jest-runner",
-
   // The paths to modules that run some code to configure or set up the testing environment before each test
   // setupFiles: [],
 
-  // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['<rootDir>/config/jest-setup.js'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
