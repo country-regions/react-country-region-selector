@@ -50,6 +50,8 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     }
     const filteredRegions = filterRegions(regionArray, whitelist, blacklist);
 
+    console.log('Filtered regions...', filterRegions);
+
     return filteredRegions[2]
       .split(C.REGION_LIST_DELIMITER)
       .map((regionPair) => {

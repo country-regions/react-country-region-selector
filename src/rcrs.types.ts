@@ -6,12 +6,30 @@ type NativeDropdownProps = Omit<
   ComponentProps<'select'>,
   'onChange' | 'onBlur'
 >;
+
 export interface CountryDropdownProps extends NativeDropdownProps {
+  /**
+   * The currently selected country. This should either be the shortcode, or the full country name
+   * depending on what you're using for your value attribute (see the valueType option). By
+   * default it's the full country name.
+   *
+   * Default value: ""
+   */
   readonly value?: string;
+
   readonly name?: string;
   readonly id?: string;
   readonly classes?: string;
+
+  /**
+   * Callback that gets called when the user selects a country. Use this to store the value in
+   * whatever store you're using (or just the parent component state). The original event is also
+   * available via the second argument.
+   *
+   * Default value: undefined
+   */
   readonly onChange?: (value: string, event: any) => null;
+
   readonly onBlur?: (value: string, event: any) => null;
   readonly disabled?: boolean;
   readonly showDefaultOption?: boolean;
@@ -50,25 +68,6 @@ export interface RegionDropdownProps extends NativeDropdownProps {
 // Definitions by: Kyle Davis <https://github.com/kyledavisdev>, Ben Keen <https://github.com/benkeen>
 
 // export interface CountryDropdownProps<T = Element> {
-//   /**
-//    * The currently selected country. This should either
-//    * be the shortcode, or the full country name depending
-//    * on what you're using for your value attribute
-//    * (see the valueType option). By default it's the full country name.
-//    *
-//    * Default value: ""
-//    */
-//   value: string;
-
-//   /**
-//    * Callback that gets called when the user selects a country. Use
-//    * this to store the value in whatever store you're
-//    * using (or just the parent component state).
-//    *
-//    * The original event is also provided optionally.
-//    *
-//    * Default value: undefined
-//    */
 //   onChange: (val: string, e: React.ChangeEvent<T>) => void;
 
 //   /**

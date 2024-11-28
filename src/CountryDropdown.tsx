@@ -19,7 +19,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   whitelist = [],
   blacklist = [],
   disabled = false,
-  // ...arbitraryProps
+  ...arbitraryProps
 }) => {
   //     countries: helpers.filterCountries(
   //       CountryRegionData,
@@ -51,7 +51,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   }, [showDefaultOption, defaultOptionLabel]);
 
   const attrs: any = {
-    // ...arbitraryProps,
+    ...arbitraryProps,
     name,
     value,
     onChange: (e) => onChange(e.target.value, e),

@@ -1,6 +1,8 @@
+// the rollup build converts the raw data from country-region-data into a smaller format, which is why this
+// imports from the dist. So run `yarn` prior to running the tests
+import { CountryDropdown } from '../../dist/rcrs.es';
 import { render } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
-import { CountryDropdown } from '../CountryDropdown';
 import { CountryDropdownProps } from '../rcrs.types';
 
 describe('CountryDropdown', () => {
@@ -9,8 +11,8 @@ describe('CountryDropdown', () => {
       <CountryDropdown
         onChange={() => null}
         value=""
-        {...props}
         role="combobox"
+        {...props}
       />
     );
     return screen.getByRole('combobox') as HTMLSelectElement;
@@ -26,15 +28,12 @@ describe('CountryDropdown', () => {
     expect(select.className).toBe('one two three');
   });
 
-  //   it('passes arbitrary properties', () => {
-  //     const wrapper = shallow(
-  //       <CountryDropdown style={{ color: 'red' }} data-whatever="5" />
-  //     );
-  //     expect(wrapper.find('select').getElement().props.style.color).toBe('red');
-  //     expect(wrapper.find('select').getElement().props['data-whatever']).toBe(
-  //       '5'
-  //     );
-  //   });
+  it('passes arbitrary properties', () => {
+    const select = setupTest({ style: { color: 'red' }, 'data-whatever': 5 });
+
+    expect(select.style.color).toBe('red');
+    expect(select.getAttribute('data-whatever')).toBe('5');
+  });
 
   //   describe('name attribute', () => {
   //     it('falls back on default name attribute when not specified', () => {
