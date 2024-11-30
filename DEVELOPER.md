@@ -16,7 +16,8 @@ Others:
 
 - needs linting + prettier set up.
 
-### Notes for next 4.x release.
+### Notes for next 4.x release
 
 - Minimum react version updated to 16.8.0 (hooks)
 - typings now permit _any_ native props on <select> fields.
+- `classes` prop has been renamed `className`

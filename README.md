@@ -115,7 +115,7 @@ specified here will be added directly to the `<select>` DOM element._
 | onBlur | No | `-` | `function` | Callback that gets called when the user blurs off the country field. |
 | name | No | `"rcrs-country"` | `string` | The name attribute of the generated select box. |
 | id | No | `""` | `string` | The ID of the generated select box. Not added by default. |
-| classes | No | `""` | `string` | Any additional space-separated classes you want to add. |
+| className | No | `""` | `string` | Any additional space-separated classes you want to add. |
 | showDefaultOption | No | `true` | `boolean` | Whether you want to show a default option. |
 | priorityOptions | No | `array` | `[]` | Lets you target countries that should appear at the top of the dropdown. Should also be an array of country shortcodes. |
 | defaultOptionLabel | No | `"Select Country"` | `string` | The default option label. |
@@ -133,7 +133,7 @@ specified here will be added directly to the `<select>` DOM element._
 | onBlur | No | - | `function` | Callback that gets called when the user blurs off the region field. |
 | name | No | `"rcrs-region"` | `string` | The name attribute of the generated select box. |
 | id | No | `""` | `string` | The ID of the generated select box. Not added by default. |
-| classes | No | `""` | `string` | Any additional space-separated classes you want to add. |
+| className | No | `""` | `string` | Any additional space-separated classes you want to add. |
 | blankOptionLabel | No | `-` | `string` | The label that appears in the region dropdown when the user hasn't selected a country yet.|
 | showDefaultOption | No | `true` | `boolean` | Whether you want to show a default option. This is what the user sees in the region dropdown after selecting a country. It defaults to the `defaultOptionLabel` setting (see next). |
 | defaultOptionLabel | No | `Select Region` | `string` | The default region option. |

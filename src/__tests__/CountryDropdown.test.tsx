@@ -23,16 +23,19 @@ describe('CountryDropdown', () => {
     expect(select.getAttribute('id')).toBe('id-attr');
   });
 
-  it('classes attribute gets recognized', () => {
-    const select = setupTest({ classes: 'one two three' });
+  it('className attribute gets recognized', () => {
+    const select = setupTest({ className: 'one two three' });
     expect(select.className).toBe('one two three');
   });
 
   it('passes arbitrary properties', () => {
-    const select = setupTest({ style: { color: 'red' }, 'data-whatever': 5 });
+    const select = setupTest({
+      style: { color: 'red' },
+      'aria-label': "The user's country",
+    });
 
     expect(select.style.color).toBe('red');
-    expect(select.getAttribute('data-whatever')).toBe('5');
+    expect(select.getAttribute('aria-label')).toBe("The user's country");
   });
 
   //   describe('name attribute', () => {

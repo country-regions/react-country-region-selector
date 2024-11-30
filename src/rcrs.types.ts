@@ -7,106 +7,12 @@ type NativeDropdownProps = Omit<
   'onChange' | 'onBlur'
 >;
 
-// export interface CountryDropdownProps<T = Element> {
-//   onChange: (val: string, e: React.ChangeEvent<T>) => void;
-
-//   /**
-//    * Callback that gets called when the user blurs off the country field.
-//    *
-//    * The original event is also provided optionally.
-//    *
-//    * Default value: undefined
-//    */
-//   onBlur?: (val: string, e: React.ChangeEvent<T>) => void;
-
-//   /**
-//    * The name attribute of the generated select box.
-//    *
-//    * Default value: "rcrs-country"
-//    */
-//   name?: string;
-
-//   /**
-//    * The ID of the generated select box. Not added by default.
-//    *
-//    * Default value: ""
-//    */
-//   id?: string;
-
-//   /**
-//    * Any additional space-separated classes you want to add.
-//    *
-//    * Default value: ""
-//    */
-
-//   classes?: string;
-
 //   /**
 //    *  Whether you want to show a default option.
 //    *
 //    * Default value: true
 //    */
 //   showDefaultOption?: boolean;
-
-//   /**
-//    * Lets you target countries that should appear at the top
-//    * of the dropdown. Should also be an array of country shortcodes.
-//    *
-//    * Default value: array
-//    */
-//   priorityOptions?: string[];
-
-//   /**
-//    * The default option label.
-//    *
-//    * Default value: "Select Country"
-//    */
-//   defaultOptionLabel?: string;
-
-//   /**
-//    * Either "full" or "short". This governs whether you see
-//    * country names or country short codes in the dropdown.
-//    *
-//    * Default value: "full"
-//    */
-//   labelType?: ValueType;
-
-//   /**
-//    * Either "full" or "short". This controls the actual value
-//    * attribute of each <option> in the dropdown. Please note,
-//    * if you set this to "short" you will need to let the
-//    * corresponding <RegionDropdown /> component know as well,
-//    * by passing a countryValueType="short" attribute.
-//    *
-//    * Default value: "full"
-//    */
-//   valueType?: ValueType;
-
-//   /**
-//    * This setting lets you target specific countries to appear
-//    * in the dropdown. Only those specified here will appear.
-//    * This should be an array of country shortcodes. See the
-//    * country-region-data repo for the data and the shortcodes.
-//    *
-//    * Default value: []
-//    */
-//   whitelist?: string[];
-
-//   /**
-//    * Lets you target countries that should not appear in the
-//    * dropdown. Should also be an array of country shortcodes.
-//    *
-//    * Default value: []
-//    */
-//   blacklist?: string[];
-
-//   /**
-//    * Disables the country field.
-//    *
-//    * Default value: false
-//    */
-//   disabled?: boolean;
-// }
 
 export interface CountryDropdownProps extends NativeDropdownProps {
   /**
@@ -118,9 +24,26 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    */
   readonly value?: string;
 
+  /**
+   * The name attribute of the generated select box.
+   *
+   * Default value: "rcrs-country"
+   */
   readonly name?: string;
+
+  /**
+   * The ID of the generated select box. Not added by default.
+   *
+   * Default value: ""
+   */
   readonly id?: string;
-  readonly classes?: string;
+
+  /**
+   * Any additional space-separated classes you want to add.
+   *
+   * Default value: ""
+   */
+  readonly className?: string;
 
   /**
    * Callback that gets called when the user selects a country. Use this to store the value in
@@ -131,17 +54,69 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    */
   readonly onChange?: (value: string, event: any) => null;
 
+  /**
+   * Callback that gets called when the user blurs off the country field. The original event is
+   * provided optionally.
+   *
+   * Default value: undefined
+   */
   readonly onBlur?: (value: string, event: any) => null;
+
+  /**
+   * Disables the country field.
+   *
+   * Default value: false
+   */
   readonly disabled?: boolean;
   readonly showDefaultOption?: boolean;
-  readonly defaultOptionLabel?: string;
-  readonly labelType?: ValueType;
-  readonly valueType?: ValueType;
-  readonly whitelist?: object;
-  readonly blacklist?: object;
 
+  /**
+   * The default option label.
+   *
+   * Default value: "Select Country"
+   */
+  readonly defaultOptionLabel?: string;
+
+  /**
+   * Either "full" or "short". This governs whether you see country names or country short codes in the dropdown.
+   *
+   * Default value: "full"
+   */
+  readonly labelType?: ValueType;
+
+  /**
+   * Either "full" or "short". This controls the actual value attribute of each <option> in the dropdown.
+   * Please note, if you set this to "short" you will need to let the corresponding <RegionDropdown />
+   * component know as well, by passing a countryValueType="short" attribute.
+   *
+   * Default value: "full"
+   */
+  readonly valueType?: ValueType;
   readonly customOptions?: string[];
+
+  /**
+   * Lets you target countries that should appear at the top of the dropdown. Should be an array of country
+   * shortcodes.
+   *
+   * Default value: array
+   */
   readonly priorityOptions?: string[];
+
+  /**
+   * This setting lets you target specific countries to appear in the dropdown. Only those specified here will
+   * appear. This should be an array of country shortcodes. See the country-region-data repo for the data and
+   * the shortcodes.
+   *
+   * Default value: []
+   */
+  readonly whitelist?: object;
+
+  /**
+   * Lets you target countries that should not appear in the dropdown. Should be an array of country shortcodes.
+   *
+   * Default value: []
+   */
+  readonly blacklist?: object;
 }
 
 export interface RegionDropdownProps extends NativeDropdownProps {
@@ -195,7 +170,7 @@ export interface RegionDropdownProps extends NativeDropdownProps {
    *
    * Default value: ""
    */
-  readonly classes?: string;
+  readonly className?: string;
 
   /**
    * Whether you want to show a default option. This is what the user sees in the region dropdown
@@ -257,12 +232,11 @@ export interface RegionDropdownProps extends NativeDropdownProps {
   readonly customOptions?: string[];
 
   /**
-   * Callback that gets called when the user blurs off the region field. The first prop passed is the current selected
-   * value; the second the full event.
+   * Callback that gets called when the user blurs off the region field.
    *
    * Default value: undefined
    */
-  readonly onBlur?: (value: string, event: any) => null;
+  readonly onBlur?: (event: any) => null;
 
   /**
    * This lets you specify a list of regions that should appear for a specify country. If you specify regions

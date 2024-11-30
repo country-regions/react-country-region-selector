@@ -3,7 +3,8 @@
 import { RegionDropdown } from '../../dist/rcrs.es';
 import { RegionDropdownProps } from '../rcrs.types';
 import { render } from '@testing-library/react';
-import { screen } from '@testing-library/dom';
+import { fireEvent, screen } from '@testing-library/dom';
+import userEvent from '@testing-library/user-event';
 
 describe('RegionDropdown', () => {
   const setupTest = (props?: Partial<RegionDropdownProps>) => {
@@ -11,8 +12,8 @@ describe('RegionDropdown', () => {
       <RegionDropdown
         onChange={() => null}
         value=""
-        {...props}
         role="combobox"
+        {...props}
       />
     );
     return screen.getByRole('combobox') as HTMLSelectElement;
@@ -23,8 +24,8 @@ describe('RegionDropdown', () => {
     expect(select.getAttribute('id')).toBe('id-attr');
   });
 
-  it('classes attribute gets recognized', () => {
-    const select = setupTest({ classes: 'one two three' });
+  it('className attribute gets recognized', () => {
+    const select = setupTest({ className: 'one two three' });
     expect(select.className).toBe('one two three');
   });
 
@@ -203,7 +204,7 @@ describe('RegionDropdown', () => {
           );
         });
 
-        it.only('should throw an error when the duplicate values are present.', () => {
+        it('should throw an error when the duplicate values are present.', () => {
           const consoleMock = jest.spyOn(console, 'error').mockImplementation();
           setupTest({
             country: 'Canada',
@@ -218,5 +219,18 @@ describe('RegionDropdown', () => {
         });
       });
     });
+  });
+
+  test('calls onChange callback with expected value', () => {
+    const onChange = jest.fn();
+    const select = setupTest({
+      country: 'Canada',
+      showDefaultOption: true,
+      onChange,
+    });
+
+    fireEvent.change(select, { target: { value: 'Manitoba' } });
+
+    expect(onChange).toHaveBeenCalledWith('Manitoba', expect.any(Object));
   });
 });

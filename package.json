@@ -1,6 +1,6 @@
 {
   "name": "react-country-region-selector",
-  "version": "3.7.0",
+  "version": "4.0.0-alpha",
   "description": "CountryDropdown and RegionDropdown React components for your forms.",
   "author": "country-regions",
   "license": "MIT",
@@ -52,6 +52,7 @@
     "@testing-library/react": "^16.0.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.14"
   },
   "files": [

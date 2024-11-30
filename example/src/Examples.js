@@ -158,7 +158,7 @@ class Examples extends Component {
                   value={this.getCountryValue(4)}
                   id="my-country-field-id"
                   name="my-country-field"
-                  classes="my-custom-class second-class"
+                  className="my-custom-class second-class"
                   onChange={(val) => this.selectCountry(4, val)}
                 />
                 <RegionDropdown
@@ -166,7 +166,7 @@ class Examples extends Component {
                   value={this.getRegionValue(4)}
                   name="my-region-field-name"
                   id="my-region-field-id"
-                  classes="another-custom-class"
+                  className="another-custom-class"
                   onChange={(val) => this.selectRegion(4, val)}
                 />
               </div>
@@ -177,7 +177,7 @@ class Examples extends Component {
 	value={country}
 	id="my-country-field-id"
 	name="my-country-field"
-	classes="my-custom-class second-class"
+	className="my-custom-class second-class"
 	onChange={selectCountry}
 />
 <RegionDropdown
@@ -185,7 +185,7 @@ class Examples extends Component {
 	value={region}
 	name="my-region-field-name"
 	id="my-region-field-id"
-	classes="another-custom-class"
+	className="another-custom-class"
 	onChange={selectRegion}
 />`,
           country: '',

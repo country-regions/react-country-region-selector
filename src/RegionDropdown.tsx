@@ -11,7 +11,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
   onBlur = () => null,
   id = '',
   name = 'rcrs-region',
-  classes = '',
+  className = '',
   disabled = false,
   blankOptionLabel = '-',
   showDefaultOption = true,
@@ -49,7 +49,6 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
       return [];
     }
     const filteredRegions = filterRegions(regionArray, whitelist, blacklist);
-
     if (!filteredRegions.length) {
       return [];
     }
@@ -60,10 +59,8 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
         let [regionName, regionShortCode = null] = regionPair.split(
           C.SINGLE_REGION_DELIMITER
         );
-
         const label = labelType === 'full' ? regionName : regionShortCode;
         const value = valueType === 'full' ? regionName : regionShortCode;
-
         return { label, value };
       });
   }, [country, countryValueType, whitelist, blacklist]);
@@ -119,15 +116,16 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     ...arbitraryProps,
     name,
     value,
-    onChange: (e) => onChange(e.target.value, e),
-    onBlur: (e) => onBlur(e.target.value, e),
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
+      onChange(e.target.value, e),
+    onBlur: (e: any) => onBlur(e),
     disabled: isDisabled,
   };
   if (id) {
     attrs.id = id;
   }
-  if (classes) {
-    attrs.className = classes;
+  if (className) {
+    attrs.className = className;
   }
 
   return (

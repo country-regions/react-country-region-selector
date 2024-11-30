@@ -8,7 +8,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   value = '',
   name = 'rcrs-country',
   id = '',
-  classes = '',
+  className = '',
   showDefaultOption = true,
   defaultOptionLabel = 'Select Country',
   priorityOptions = [],
@@ -61,8 +61,8 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   if (id) {
     attrs.id = id;
   }
-  if (classes) {
-    attrs.className = classes;
+  if (className) {
+    attrs.className = className;
   }
 
   return (
