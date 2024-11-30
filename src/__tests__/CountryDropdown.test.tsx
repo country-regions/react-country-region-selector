@@ -4,6 +4,7 @@ import { CountryDropdown } from '../../dist/rcrs.es';
 import { render } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { CountryDropdownProps } from '../rcrs.types';
+import { CountryRegionData } from '..';
 
 describe('CountryDropdown', () => {
   const setupTest = (props?: Partial<CountryDropdownProps>) => {
@@ -38,89 +39,86 @@ describe('CountryDropdown', () => {
     expect(select.getAttribute('aria-label')).toBe("The user's country");
   });
 
-  //   describe('name attribute', () => {
-  //     it('falls back on default name attribute when not specified', () => {
-  //       const wrapper = shallow(<CountryDropdown />);
-  //       expect(wrapper.find('select').getElement().props.name).toBe(
-  //         'rcrs-country'
-  //       );
-  //     });
+  describe('name attribute', () => {
+    it('falls back on default name attribute when not specified', () => {
+      const select = setupTest();
+      expect(select.getAttribute('name')).toBe('rcrs-country');
+    });
 
-  //     it('sets explicit name attribute', () => {
-  //       const wrapper = shallow(<CountryDropdown name="name-attribute" />);
-  //       expect(wrapper.find('select[name="name-attribute"]').length).toBe(1);
-  //       expect(wrapper.find('select[name="fake-name-attribute"]').length).toBe(0);
-  //     });
-  //   });
+    it('sets explicit name attribute', () => {
+      const select = setupTest({ name: 'name-attribute' });
+      expect(select.getAttribute('name')).toBe('name-attribute');
+    });
+  });
 
-  //   describe('disabled attribute', () => {
-  //     it('disabled attribute not on by default', () => {
-  //       const wrapper = shallow(<CountryDropdown />);
-  //       expect(wrapper.find('select').getElement().props.disabled).toBe(false);
-  //     });
-  //     it('disabled attribute', () => {
-  //       const wrapper = shallow(<CountryDropdown disabled={true} />);
-  //       expect(wrapper.find('select').getElement().props.disabled).toBe(true);
-  //     });
-  //   });
+  describe('disabled attribute', () => {
+    it('disabled attribute not on by default', () => {
+      const select = setupTest();
+      expect(select).not.toBeDisabled();
+    });
+    it('disabled attribute', () => {
+      const select = setupTest({ disabled: true });
+      expect(select).toBeDisabled();
+    });
+  });
 
-  //   describe('default blank option', () => {
-  //     it('showDefaultOption = false removes the default option', () => {
-  //       const wrapper = shallow(<CountryDropdown showDefaultOption={false} />);
-  //       expect(wrapper.find('option').length).toBe(CountryRegionData.length);
-  //     });
+  describe('default blank option', () => {
+    it('showDefaultOption = false outputs the expected number of options', () => {
+      const select = setupTest({ showDefaultOption: false });
+      expect(select.options.length).toBe(CountryRegionData.length);
+    });
 
-  //     it('confirm default label is "Select Country"', () => {
-  //       const wrapper = shallow(<CountryDropdown />);
-  //       expect(wrapper.find('select').childAt(0).text()).toBe('Select Country');
-  //     });
+    it('showDefaultOption = true outputs the expected number of options', () => {
+      const select = setupTest({ showDefaultOption: true });
+      expect(select.options.length).toBe(CountryRegionData.length + 1);
+    });
 
-  //     it('defaultOptionLabel', () => {
-  //       const customLabel = 'Holy moly I am a custom label!';
-  //       const wrapper = shallow(
-  //         <CountryDropdown defaultOptionLabel={customLabel} />
-  //       );
-  //       expect(wrapper.find('select').childAt(0).text()).toBe(customLabel);
-  //     });
-  //   });
+    it('confirm default label is "Select Country"', () => {
+      const select = setupTest();
+      expect(
+        (select.querySelectorAll('option:checked')[0] as HTMLOptionElement).text
+      ).toBe('Select Country');
+    });
 
-  //   describe('country list', () => {
-  //     it('outputs the list of countries', () => {
-  //       const wrapper = shallow(<CountryDropdown />);
-  //       expect(wrapper.find('option').length).toBe(CountryRegionData.length + 1); // 1 for the "Select Country" default option
-  //     });
+    it('defaultOptionLabel provides custom label', () => {
+      const customLabel = 'Holy moly I am a custom label!';
+      const select = setupTest({ defaultOptionLabel: customLabel });
+      expect(
+        (select.querySelectorAll('option:checked')[0] as HTMLOptionElement).text
+      ).toBe(customLabel);
+    });
+  });
 
-  //     it('respects the blacklist', () => {
-  //       const blacklist = ['GB', 'CA', 'US'];
-  //       const wrapper = shallow(
-  //         <CountryDropdown blacklist={blacklist} showDefaultOption={false} />
-  //       );
-  //       expect(wrapper.find('option').length).toBe(
-  //         CountryRegionData.length - blacklist.length
-  //       );
+  describe('country list', () => {
+    it('respects the blacklist', () => {
+      const blacklist = ['GB', 'CA', 'US'];
+      const select = setupTest({ blacklist, showDefaultOption: false });
+      expect(select.options.length).toBe(
+        CountryRegionData.length - blacklist.length
+      );
 
-  //       // confirm a non-blacklist item appears
-  //       expect(wrapper.find('option[value="Afghanistan"]').length).toBe(1);
+      // confirm a non-blacklist item appears
+      // expect(wrapper.find('option[value="Afghanistan"]').length).toBe(1);
 
-  //       // confirm none of the blacklist item appears
-  //       expect(wrapper.find('option[value="United Kingdom"]').length).toBe(0);
-  //       expect(wrapper.find('option[value="Canada"]').length).toBe(0);
-  //       expect(wrapper.find('option[value="United States"]').length).toBe(0);
-  //     });
+      // // confirm none of the blacklist item appears
+      // expect(wrapper.find('option[value="United Kingdom"]').length).toBe(0);
+      // expect(wrapper.find('option[value="Canada"]').length).toBe(0);
+      // expect(wrapper.find('option[value="United States"]').length).toBe(0);
+    });
 
-  //     it('respects the whitelist', () => {
-  //       const whitelist = ['GB', 'CA', 'US'];
-  //       const wrapper = shallow(
-  //         <CountryDropdown whitelist={whitelist} showDefaultOption={false} />
-  //       );
-  //       expect(wrapper.find('option').length).toBe(whitelist.length);
+    //     it('respects the whitelist', () => {
+    //       const whitelist = ['GB', 'CA', 'US'];
+    //       const wrapper = shallow(
+    //         <CountryDropdown whitelist={whitelist} showDefaultOption={false} />
+    //       );
+    //       expect(wrapper.find('option').length).toBe(whitelist.length);
 
-  //       // confirm the expected items appear
-  //       expect(wrapper.find('option[value="United Kingdom"]').length).toBe(1);
-  //       expect(wrapper.find('option[value="Canada"]').length).toBe(1);
-  //       expect(wrapper.find('option[value="United States"]').length).toBe(1);
-  //     });
-  //   });
+    //       // confirm the expected items appear
+    //       expect(wrapper.find('option[value="United Kingdom"]').length).toBe(1);
+    //       expect(wrapper.find('option[value="Canada"]').length).toBe(1);
+    //       expect(wrapper.find('option[value="United States"]').length).toBe(1);
+    //     });
+  });
 
   //   describe('valueType', () => {
   //     it('confirm value is full country name by default', () => {

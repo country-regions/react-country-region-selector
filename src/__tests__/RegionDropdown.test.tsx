@@ -4,7 +4,6 @@ import { RegionDropdown } from '../../dist/rcrs.es';
 import { RegionDropdownProps } from '../rcrs.types';
 import { render } from '@testing-library/react';
 import { fireEvent, screen } from '@testing-library/dom';
-import userEvent from '@testing-library/user-event';
 
 describe('RegionDropdown', () => {
   const setupTest = (props?: Partial<RegionDropdownProps>) => {

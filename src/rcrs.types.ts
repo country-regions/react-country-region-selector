@@ -7,13 +7,6 @@ type NativeDropdownProps = Omit<
   'onChange' | 'onBlur'
 >;
 
-//   /**
-//    *  Whether you want to show a default option.
-//    *
-//    * Default value: true
-//    */
-//   showDefaultOption?: boolean;
-
 export interface CountryDropdownProps extends NativeDropdownProps {
   /**
    * The currently selected country. This should either be the shortcode, or the full country name
@@ -55,12 +48,11 @@ export interface CountryDropdownProps extends NativeDropdownProps {
   readonly onChange?: (value: string, event: any) => null;
 
   /**
-   * Callback that gets called when the user blurs off the country field. The original event is
-   * provided optionally.
+   * Callback that gets called when the user blurs off the country field.
    *
    * Default value: undefined
    */
-  readonly onBlur?: (value: string, event: any) => null;
+  readonly onBlur?: (event: any) => null;
 
   /**
    * Disables the country field.
@@ -68,6 +60,12 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    * Default value: false
    */
   readonly disabled?: boolean;
+
+  /**
+   * Whether you want to show a default option.
+   *
+   * Default value: true
+   */
   readonly showDefaultOption?: boolean;
 
   /**
@@ -92,7 +90,6 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    * Default value: "full"
    */
   readonly valueType?: ValueType;
-  readonly customOptions?: string[];
 
   /**
    * Lets you target countries that should appear at the top of the dropdown. Should be an array of country

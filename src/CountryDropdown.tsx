@@ -1,7 +1,6 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from 'country-region-data/data.json';
-import * as C from './constants';
-import * as helpers from './helpers';
+import { filterCountries } from './helpers';
 import type { CountryDropdownProps } from './rcrs.types';
 
 export const CountryDropdown: FC<CountryDropdownProps> = ({
@@ -12,8 +11,8 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   showDefaultOption = true,
   defaultOptionLabel = 'Select Country',
   priorityOptions = [],
-  onChange = () => {},
-  onBlur = () => {},
+  onChange = () => null,
+  onBlur = () => null,
   labelType = 'full',
   valueType = 'full',
   whitelist = [],
@@ -21,23 +20,23 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   disabled = false,
   ...arbitraryProps
 }) => {
-  //     countries: helpers.filterCountries(
-  //       CountryRegionData,
-  //       props.priorityOptions,
-  //       props.whitelist,
-  //       props.blacklist
-  //     ),
+  const countries = useMemo(() => {
+    const countries = filterCountries(
+      CountryRegionData,
+      priorityOptions,
+      whitelist,
+      blacklist
+    );
 
-  const getCountries = () => {
-    // return countries.map(([countryName, countrySlug]) => (
-    //   <option
-    //     value={valueType === 'short' ? countrySlug : countryName}
-    //     key={countrySlug}
-    //   >
-    //     {labelType === 'short' ? countrySlug : countryName}
-    //   </option>
-    // ));
-  };
+    return countries.map(([countryName, countrySlug]) => (
+      <option
+        value={valueType === 'short' ? countrySlug : countryName}
+        key={countrySlug}
+      >
+        {labelType === 'short' ? countrySlug : countryName}
+      </option>
+    ));
+  }, [priorityOptions, whitelist, blacklist, valueType, labelType]);
 
   const defaultOption = useMemo(() => {
     if (!showDefaultOption) {
@@ -55,7 +54,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
     name,
     value,
     onChange: (e) => onChange(e.target.value, e),
-    onBlur: (e) => onBlur(e.target.value, e),
+    onBlur: (e) => onBlur(e),
     disabled,
   };
   if (id) {
@@ -68,7 +67,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   return (
     <select {...attrs}>
       {defaultOption}
-      {getCountries()}
+      {countries}
     </select>
   );
 };
