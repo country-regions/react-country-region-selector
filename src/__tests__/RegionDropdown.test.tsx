@@ -101,95 +101,122 @@ describe('RegionDropdown', () => {
     });
 
     it('does not show any country if you pass an invalid country name', () => {
-      // const consoleMock = jest.spyOn(console, 'error').mockImplementation();
+      const consoleMock = jest.spyOn(console, 'error').mockImplementation();
       const select = setupTest({ country: 'ChickenLand' });
       expect(select.options.length).toBe(1);
       expect(select.options[0].text).toBe('Select Region');
-      // consoleMock.mockRestore();
+      expect(consoleMock).toHaveBeenCalledWith(
+        expect.stringContaining('Error. Unknown country passed: ChickenLand')
+      );
+      consoleMock.mockRestore();
     });
 
     describe('valueType', () => {
-      // it.only('region values are full region name by default', () => {
-      //   const select = setupTest({
-      //     country: 'Alberta',
-      //     showDefaultOption: false,
-      //   });
-      //   screen.debug();
-      //   expect(select.value).toBe('Alberta');
-      // });
-      //     it('valueType = full still uses full region name as option values', () => {
-      //       const wrapper = shallow(
-      //         <RegionDropdown
-      //           country="Canada"
-      //           showDefaultOption={false}
-      //           valueType="full"
-      //         />
-      //       );
-      //       expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(
-      //         'Alberta'
-      //       );
-      //     });
-      //     it('valueType changes value to region short codes when specified', () => {
-      //       const wrapper = shallow(
-      //         <RegionDropdown
-      //           country="Canada"
-      //           showDefaultOption={false}
-      //           valueType="short"
-      //         />
-      //       );
-      //       expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(
-      //         'AB'
-      //       );
-      //     });
-      //   });
-      //   describe('labelType', () => {
-      //     it('region labels are full region name by default', () => {
-      //       const wrapper = shallow(
-      //         <RegionDropdown country="Canada" showDefaultOption={false} />
-      //       );
-      //       expect(wrapper.find('select').childAt(0).text()).toBe('Alberta');
-      //     });
-      //     it('labelType = full still uses full region name as option values', () => {
-      //       const wrapper = shallow(
-      //         <RegionDropdown
-      //           country="Canada"
-      //           showDefaultOption={false}
-      //           labelType="full"
-      //         />
-      //       );
-      //       expect(wrapper.find('select').childAt(0).text()).toBe('Alberta');
-      //     });
-      //     it('valueType changes value to region short codes when specified', () => {
-      //       const wrapper = shallow(
-      //         <RegionDropdown
-      //           country="Canada"
-      //           showDefaultOption={false}
-      //           labelType="short"
-      //         />
-      //       );
-      //       expect(wrapper.find('select').childAt(0).text()).toBe('AB');
-      //     });
-      //   });
-      //   describe('customOptions', () => {
-      //     it('should render the custom options in the dropdown when a valid list is provided.', () => {
-      //       const wrapper = shallow(
-      //         <RegionDropdown showDefaultOption={false} customOptions={['All']} />
-      //       );
-      //       wrapper.setProps({ country: 'Antarctica' });
-      //       expect(wrapper.find('select').childAt(1).text()).toBe('All');
-      //     });
-      //     it('should throw an error when the duplicate values are present.', () => {
-      //       console.error = jest.fn();
-      //       const wrapper = shallow(
-      //         <RegionDropdown
-      //           showDefaultOption={false}
-      //           customOptions={['Antarctica']}
-      //         />
-      //       );
-      //       wrapper.setProps({ country: 'Antarctica' });
-      //       expect(console.error).toBeCalledWith(
-      //         'Error: Duplicate regions present: Antarctica.\nThe above item(s) is/are already getting added to the region dropdown by the library.'
-      //       );
+      it('region values are full region name by default', () => {
+        const select = setupTest({
+          country: 'Canada',
+          showDefaultOption: false,
+        });
+        expect(select.value).toBe('Alberta');
+      });
+
+      it('valueType = full still uses full region name as option values', () => {
+        const select = setupTest({
+          country: 'Canada',
+          showDefaultOption: false,
+          valueType: 'full',
+        });
+        expect(select.value).toBe('Alberta');
+      });
+
+      it('valueType changes value to region short codes when specified', () => {
+        const select = setupTest({
+          country: 'Canada',
+          showDefaultOption: false,
+          valueType: 'short',
+        });
+        expect(select.value).toBe('AB');
+      });
+    });
+
+    describe('labelType', () => {
+      it('region labels are full region name by default', () => {
+        const select = setupTest({
+          country: 'Canada',
+          showDefaultOption: false,
+        });
+        expect(
+          (select.querySelectorAll('option:checked')[0] as HTMLOptionElement)
+            .text
+        ).toBe('Alberta');
+      });
+
+      it('labelType = full still uses full region name as option values', () => {
+        const select = setupTest({
+          country: 'Canada',
+          showDefaultOption: false,
+          labelType: 'full',
+        });
+        expect(
+          (select.querySelectorAll('option:checked')[0] as HTMLOptionElement)
+            .text
+        ).toBe('Alberta');
+      });
+
+      it('valueType changes value to region short codes when specified', () => {
+        const select = setupTest({
+          country: 'Canada',
+          showDefaultOption: false,
+          labelType: 'short',
+        });
+        expect(
+          (select.querySelectorAll('option:checked')[0] as HTMLOptionElement)
+            .text
+        ).toBe('AB');
+      });
+
+      describe('customOptions', () => {
+        it('should not render any custom options when no country value is passed', () => {
+          const select = setupTest({
+            country: '',
+            showDefaultOption: false,
+            customOptions: ['All', 'Final Entry'],
+          });
+
+          const options = select.querySelectorAll('option');
+          expect(options.length).toEqual(1);
+        });
+
+        it('should render the custom options in the region dropdown.', () => {
+          const select = setupTest({
+            country: 'Canada',
+            showDefaultOption: false,
+            customOptions: ['All', 'Final Entry'],
+          });
+
+          const options = select.querySelectorAll('option');
+          expect((options[options.length - 2] as HTMLOptionElement).text).toBe(
+            'All'
+          );
+          expect((options[options.length - 1] as HTMLOptionElement).text).toBe(
+            'Final Entry'
+          );
+        });
+
+        it.only('should throw an error when the duplicate values are present.', () => {
+          const consoleMock = jest.spyOn(console, 'error').mockImplementation();
+          setupTest({
+            country: 'Canada',
+            showDefaultOption: false,
+            customOptions: ['Final Entry', 'Alberta'],
+          });
+
+          expect(consoleMock).toHaveBeenCalledWith(
+            expect.stringContaining('Error: Duplicate regions present: Alberta')
+          );
+          consoleMock.mockRestore();
+        });
+      });
     });
   });
 });

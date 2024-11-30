@@ -1,3 +1,5 @@
+import { ValueType } from './rcrs.types';
+
 /**
  * Helper to reduce country list depending on whether the user specified a white/blacklist, and lists priority
  * countries first.
@@ -80,4 +82,10 @@ export const filterRegions = (
   }
 
   return [country, countryCode, filteredRegions.join('|')];
+};
+
+export const findDuplicates = (regions, customOptions: string[]) => {
+  return regions
+    .filter(({ value }) => customOptions.indexOf(value) !== -1)
+    .map(({ label }) => label);
 };

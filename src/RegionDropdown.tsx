@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
-import { filterRegions } from './helpers';
+import { filterRegions, findDuplicates } from './helpers';
 import * as C from './constants';
 import type { RegionDropdownProps } from './rcrs.types';
 
@@ -23,7 +23,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
   customOptions = [],
   whitelist = {},
   blacklist = {},
-  // ...arbitraryProps
+  ...arbitraryProps
 }) => {
   const regions = useMemo(() => {
     if (!country) {
@@ -50,7 +50,9 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     }
     const filteredRegions = filterRegions(regionArray, whitelist, blacklist);
 
-    console.log('Filtered regions...', filterRegions);
+    if (!filteredRegions.length) {
+      return [];
+    }
 
     return filteredRegions[2]
       .split(C.REGION_LIST_DELIMITER)
@@ -62,61 +64,43 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
         const label = labelType === 'full' ? regionName : regionShortCode;
         const value = valueType === 'full' ? regionName : regionShortCode;
 
-        return (
-          <option value={value} key={regionName}>
-            {label}
-          </option>
-        );
+        return { label, value };
       });
   }, [country, countryValueType, whitelist, blacklist]);
 
-  // useEffect(() => {
+  const regionsJsx = useMemo(() => {
+    return regions.map(({ label, value }) => (
+      <option value={value} key={value}>
+        {label}
+      </option>
+    ));
+  }, [regions]);
 
-  // }, []);
+  const customRegionsJsx = useMemo(() => {
+    if (!country) {
+      return [];
+    }
 
-  // componentDidUpdate(prevProps) {
-  //   const { country } = this.props;
-  //   if (country === prevProps.country) {
-  //     return;
-  //   }
+    const duplicateRegions = findDuplicates(regions, customOptions);
+    if (duplicateRegions.length) {
+      console.error(
+        'Error: Duplicate regions present: ' +
+          duplicateRegions.toString() +
+          '.\nThe above item(s) is/are already getting added to the region dropdown by the library.'
+      );
+      return [];
+    }
 
-  //   const defaultRegions = this.getRegions(country);
-
-  //   this.setState({
-  //     regions: [...defaultRegions, ...this.getCustomOptions(defaultRegions)],
-  //   });
-  // }
-
-  // const getCustomOptions = (regions) => {
-  //   const { customOptions } = this.props;
-
-  //   const duplicateRegions = this.getDuplicates(regions);
-
-  //   if (duplicateRegions.length) {
-  //     console.error(
-  //       'Error: Duplicate regions present: ' +
-  //         duplicateRegions.toString() +
-  //         '.\nThe above item(s) is/are already getting added to the region dropdown by the library.'
-  //     );
-  //     return [];
-  //   }
-
-  //   return customOptions.map((option) => {
-  //     if (option) {
-  //       return { regionName: option, regionShortCode: option };
-  //     }
-  //   });
-  // };
-
-  // getDuplicates(regions) {
-  //   const { customOptions, valueType } = this.props;
-  //   const regionKey =
-  //     valueType === 'full' ? 'regionName' : 'regionShortCode';
-
-  //   return regions
-  //     .filter((region) => customOptions.indexOf(region[regionKey]) !== -1)
-  //     .map((region) => region[regionKey]);
-  // }
+    return customOptions.map((option) => {
+      if (option) {
+        return (
+          <option value={option} key={option}>
+            {option}
+          </option>
+        );
+      }
+    });
+  }, [regions, country, customOptions]);
 
   // there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
   // a "default" option which shows
@@ -132,7 +116,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
 
   const isDisabled = disabled || (disableWhenEmpty && country === '');
   const attrs: any = {
-    // ...arbitraryProps,
+    ...arbitraryProps,
     name,
     value,
     onChange: (e) => onChange(e.target.value, e),
@@ -149,7 +133,8 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
   return (
     <select {...attrs}>
       {getDefaultOption()}
-      {regions}
+      {regionsJsx}
+      {customRegionsJsx}
     </select>
   );
 };

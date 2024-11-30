@@ -7,66 +7,6 @@ type NativeDropdownProps = Omit<
   'onChange' | 'onBlur'
 >;
 
-export interface CountryDropdownProps extends NativeDropdownProps {
-  /**
-   * The currently selected country. This should either be the shortcode, or the full country name
-   * depending on what you're using for your value attribute (see the valueType option). By
-   * default it's the full country name.
-   *
-   * Default value: ""
-   */
-  readonly value?: string;
-
-  readonly name?: string;
-  readonly id?: string;
-  readonly classes?: string;
-
-  /**
-   * Callback that gets called when the user selects a country. Use this to store the value in
-   * whatever store you're using (or just the parent component state). The original event is also
-   * available via the second argument.
-   *
-   * Default value: undefined
-   */
-  readonly onChange?: (value: string, event: any) => null;
-
-  readonly onBlur?: (value: string, event: any) => null;
-  readonly disabled?: boolean;
-  readonly showDefaultOption?: boolean;
-  readonly defaultOptionLabel?: string;
-  readonly labelType?: ValueType;
-  readonly valueType?: ValueType;
-  readonly whitelist?: object;
-  readonly blacklist?: object;
-  readonly customOptions?: string[];
-  readonly priorityOptions?: string[];
-}
-
-export interface RegionDropdownProps extends NativeDropdownProps {
-  readonly value: string | number;
-  readonly onChange: (value: string, event: any) => null;
-  readonly country?: string;
-  readonly id?: string;
-  readonly name?: string;
-  readonly blankOptionLabel?: string;
-  readonly classes?: string;
-  readonly showDefaultOption?: boolean;
-  readonly defaultOptionLabel?: string;
-  readonly disabled?: boolean;
-  readonly disableWhenEmpty?: boolean;
-  readonly labelType?: ValueType;
-  readonly countryValueType?: ValueType;
-  readonly valueType?: ValueType;
-  readonly customOptions?: ValueType[];
-  readonly onBlur?: (value: string, event: any) => null;
-  readonly whitelist?: object;
-  readonly blacklist?: object;
-}
-
-// Type definitions for react-country-region-selector 3.0.1 by
-// Project: https://github.com/country-regions/react-country-region-selector
-// Definitions by: Kyle Davis <https://github.com/kyledavisdev>, Ben Keen <https://github.com/benkeen>
-
 // export interface CountryDropdownProps<T = Element> {
 //   onChange: (val: string, e: React.ChangeEvent<T>) => void;
 
@@ -168,136 +108,184 @@ export interface RegionDropdownProps extends NativeDropdownProps {
 //   disabled?: boolean;
 // }
 
-// export class CountryDropdown extends React.Component<CountryDropdownProps> {}
+export interface CountryDropdownProps extends NativeDropdownProps {
+  /**
+   * The currently selected country. This should either be the shortcode, or the full country name
+   * depending on what you're using for your value attribute (see the valueType option). By
+   * default it's the full country name.
+   *
+   * Default value: ""
+   */
+  readonly value?: string;
 
-// export interface RegionDropdownProps<T = Element> {
-//   /**
-//    * The currently selected country.
-//    *
-//    * Default value: ""
-//    */
-//   country: string;
+  readonly name?: string;
+  readonly id?: string;
+  readonly classes?: string;
 
-//   /**
-//    * The currently selected region.
-//    *
-//    * Default value: ""
-//    */
-//   value: string;
+  /**
+   * Callback that gets called when the user selects a country. Use this to store the value in
+   * whatever store you're using (or just the parent component state). The original event is also
+   * available via the second argument.
+   *
+   * Default value: undefined
+   */
+  readonly onChange?: (value: string, event: any) => null;
 
-//   /**
-//    * Callback that gets called when the user selects a region.
-//    * Use this to store the value in whatever store you're
-//    * using (or just the parent component state).
-//    *
-//    * The original event is also provided optionally.
-//    *
-//    * Default value: undefined
-//    */
-//   onChange: (val: string, e: React.ChangeEvent<T>) => void;
+  readonly onBlur?: (value: string, event: any) => null;
+  readonly disabled?: boolean;
+  readonly showDefaultOption?: boolean;
+  readonly defaultOptionLabel?: string;
+  readonly labelType?: ValueType;
+  readonly valueType?: ValueType;
+  readonly whitelist?: object;
+  readonly blacklist?: object;
 
-//   /**
-//    * Callback that gets called when the user blurs off the region field.
-//    *
-//    * The original event is also provided optionally.
-//    *
-//    * Default value: undefined
-//    */
-//   onBlur?: (val: string, e: React.ChangeEvent<T>) => void;
+  readonly customOptions?: string[];
+  readonly priorityOptions?: string[];
+}
 
-//   /**
-//    * The name attribute of the generated select box.
-//    *
-//    * Default value: "rcrs-region"
-//    */
-//   name?: string;
+export interface RegionDropdownProps extends NativeDropdownProps {
+  /**
+   * The currently selected region.
+   *
+   * Default value: ""
+   */
+  readonly value: string | number;
 
-//   /**
-//    * The ID of the generated select box. Not added by default.
-//    *
-//    * Default value: ""
-//    */
-//   id?: string;
+  /**
+   * The currently selected country. The region needs to know this information to automatically load the right
+   * country regions.
+   *
+   * Default value: ""
+   */
+  readonly country: string;
 
-//   /**
-//    * Any additional space-separated classes you want to add.
-//    *
-//    * Default value: ""
-//    */
-//   classes?: string;
+  /**
+   * Callback for when the user selects a region. The first argument is the selected value, the second
+   * is the full event - in case you need to access it.
+   *
+   * Default value: undefined
+   */
+  readonly onChange?: (value: string, event: any) => null;
 
-//   /**
-//    * The label that appears in the region dropdown when the user
-//    * hasn't selected a country yet.
-//    *
-//    * Default value: undefined
-//    */
-//   blankOptionLabel?: string;
+  /**
+   * The ID of the generated select box. Not added by default.
+   *
+   * Default value: ""
+   */
+  readonly id?: string;
 
-//   /**
-//    * Whether you want to show a default option. This is what the
-//    * user sees in the region dropdown after selecting a country.
-//    * It defaults to the defaultOptionLabel setting (see next).
-//    *
-//    * Default value: true
-//    */
-//   showDefaultOption?: boolean;
+  /**
+   * The name attribute of the generated select box. Not required, but it'll be added with a default value
+   * if you don't add it (intended for standard form submits which require a name prop to identify the data).
+   *
+   * Default value: "rcrs-region"
+   */
+  readonly name?: string;
 
-//   /**
-//    * string	The default region option.
-//    *
-//    * Default value: "Select Region"
-//    */
-//   defaultOptionLabel?: string;
+  /**
+   * The label that appears in the region dropdown when the user hasn't selected a country yet.
+   *
+   * Default value: undefined
+   */
+  readonly blankOptionLabel?: string;
 
-//   /**
-//    * If you've changed the country dropdown valueType to short you
-//    * will need to set this value to short as well, so the component
-//    * knows what's being passed in the country property.
-//    *
-//    * Default value: "full"
-//    */
-//   countryValueType?: ValueType;
+  /**
+   * Any additional space-separated class names you want to add to the select field.
+   *
+   * Default value: ""
+   */
+  readonly classes?: string;
 
-//   /**
-//    * Either "full" or "short". This governs whether you see
-//    * region names or region short codes in the dropdown.
-//    *
-//    * Default value: "full"
-//    */
-//   labelType?: ValueType;
+  /**
+   * Whether you want to show a default option. This is what the user sees in the region dropdown
+   * after selecting a country. It defaults to the defaultOptionLabel prop (see next).
+   *
+   * Default value: true
+   */
+  readonly showDefaultOption?: boolean;
 
-//   /**
-//    * Either "full" or "short". This controls the actual value
-//    * attribute of each <option> in the dropdown.
-//    *
-//    * Default value: "full"
-//    */
-//   valueType?: ValueType;
+  /**
+   * The default visible region option.
+   *
+   * Default value: "Select Region"
+   */
+  readonly defaultOptionLabel?: string;
 
-//   /**
-//    * Disables the region field when the user hasn't selected a country.
-//    *
-//    * Default value: false
-//    */
-//   disableWhenEmpty?: boolean;
+  /**
+   * Disables the region field. If set to true, it overrides disableWhenEmpty.
+   *
+   * Default value: false
+   */
+  readonly disabled?: boolean;
 
-//   /**
-//    * Disables the region field. If set to true, it overrides disableWhenEmpty
-//    *
-//    * Default value: false
-//    */
-//   disabled?: boolean;
+  /**
+   * Disables the region field when the user hasn't selected a country.
+   *
+   * Default value: false
+   */
+  readonly disableWhenEmpty?: boolean;
 
-//   /**
-//    * Appends a list of string to the every region dropdown,
-//    * regardless of the country selected.
-//    *
-//    * Default value: []
-//    */
-//   customOptions?: string[];
-// }
+  /**
+   * Either "full" or "short". This governs whether you see region names or short codes in the dropdown.
+   *
+   * Default value: "full"
+   */
+  readonly labelType?: ValueType;
 
-// export class RegionDropdown extends React.Component<RegionDropdownProps> {}
+  /**
+   * If you've changed the country dropdown valueType to short you will need to set this value to short as
+   * well, so the component knows what type of string is being passed in the `country` property.
+   *
+   * Default value: "full"
+   */
+  readonly countryValueType?: ValueType;
+
+  /**
+   * Either "full" or "short". This controls the actual value attribute of each <option> in the dropdown.
+   *
+   * Default value: "full"
+   */
+  readonly valueType?: ValueType;
+
+  /**
+   * Appends additional options to the region dropdown, regardless of the country selected. The values and labels
+   * will get the same value passed.
+   *
+   * Default value: []
+   */
+  readonly customOptions?: string[];
+
+  /**
+   * Callback that gets called when the user blurs off the region field. The first prop passed is the current selected
+   * value; the second the full event.
+   *
+   * Default value: undefined
+   */
+  readonly onBlur?: (value: string, event: any) => null;
+
+  /**
+   * This lets you specify a list of regions that should appear for a specify country. If you specify regions
+   * for a country (specified by country code, not full name), only the regions that you enter here will show up.
+   * For any countries that you didn't specify the whitelist, all their regions will show up.
+   *
+   * Note the data structure is different than the `whitelist` and `blacklist` properties on the CountryDropdown
+   * component.
+   *
+   * Default value: undefined
+   */
+  readonly whitelist?: {
+    [countryCode: string]: string[];
+  };
+
+  /**
+   * This lets you specify a list of regions that should be omitted for a specify country.
+   *
+   * Default value: undefined
+   */
+  readonly blacklist?: {
+    [countryCode: string]: string[];
+  };
+}
 
 export type CountryRegionData = [string[]];
