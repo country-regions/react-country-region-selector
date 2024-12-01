@@ -1,11 +1,11 @@
-import { ValueType } from './rcrs.types';
+import { CountryRegionData, ValueType } from './rcrs.types';
 
 /**
  * Helper to reduce country list depending on whether the user specified a white/blacklist, and lists priority
  * countries first.
  */
 export const filterCountries = (
-  countries,
+  countries: any,
   priorityCountries,
   whitelist,
   blacklist

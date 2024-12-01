@@ -1,62 +1,19 @@
 {
-  "name": "react-country-region-selector",
-  "version": "4.0.0-alpha",
-  "description": "CountryDropdown and RegionDropdown React components for your forms.",
-  "author": "country-regions",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/country-regions/react-country-region-selector.git"
-  },
-  "main": "dist/rcrs.js",
-  "module": "dist/rcrs.es.js",
-  "types": "./index.d.ts",
-  "jsnext:main": "dist/rcrs.es.js",
+  "name": "rcrs-monorepo",
+  "private": true,
   "scripts": {
-    "test": "jest",
-    "build": "rollup -c",
-    "start": "rollup -c -w",
-    "prepare": "npm run build",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
-    "@babel/eslint-parser": "^7.25.6",
-    "@babel/preset-env": "^7.26.0",
-    "@babel/preset-stage-0": "^7.8.3",
-    "@babel/preset-react": "^7.25.9",
-    "@babel/preset-typescript": "^7.26.0",
-    "country-region-data": "^3.1.0",
-    "cross-env": "^5.1.4",
-    "eslint": "^8.57.1",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "gh-pages": "^1.2.0",
-    "minimalist": "^1.0.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "rollup": "^4.27.4",
-    "typescript": "^5.7.2",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-commonjs": "^28.0.1",
-    "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^15.3.0",
-    "@rollup/plugin-terser": "0.4.4",
-    "@rollup/plugin-url": "^8.0.2",
-    "@rollup/plugin-typescript": "^12.1.1",
-    "@testing-library/react": "^16.0.1",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/jest": "^29.5.14"
+    "prettier": "^3.2.5",
+    "turbo": "^2.3.2",
+    "typescript": "^5.7.2"
   },
-  "files": [
-    "dist",
-    "index.d.ts"
-  ]
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20"
+  }
 }
