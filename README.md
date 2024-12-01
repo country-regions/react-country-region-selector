@@ -15,6 +15,8 @@
 
 ---
 
+> Warning! I'm actively working on 4.0.0 so the master branch will be a little broken until it's ready. Stay tuned.
+
 <a name="about"></a>
 
 ### About

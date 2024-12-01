@@ -6,10 +6,9 @@
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
-    "react-country-region-selector": "file:../",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-country-region-selector": "file:../",
+    "react-syntax-highlighter": "^15.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
