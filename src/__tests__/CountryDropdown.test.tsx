@@ -98,79 +98,80 @@ describe('CountryDropdown', () => {
       );
 
       // confirm a non-blacklist item appears
-      // expect(wrapper.find('option[value="Afghanistan"]').length).toBe(1);
+      expect(
+        select.querySelectorAll('option[value="Afghanistan"]').length
+      ).toBe(1);
 
       // // confirm none of the blacklist item appears
-      // expect(wrapper.find('option[value="United Kingdom"]').length).toBe(0);
-      // expect(wrapper.find('option[value="Canada"]').length).toBe(0);
-      // expect(wrapper.find('option[value="United States"]').length).toBe(0);
+      expect(
+        select.querySelectorAll('option[value="United Kingdom"]').length
+      ).toBe(0);
+      expect(select.querySelectorAll('option[value="Canada"]').length).toBe(0);
+      expect(
+        select.querySelectorAll('option[value="United States"]').length
+      ).toBe(0);
     });
 
-    //     it('respects the whitelist', () => {
-    //       const whitelist = ['GB', 'CA', 'US'];
-    //       const wrapper = shallow(
-    //         <CountryDropdown whitelist={whitelist} showDefaultOption={false} />
-    //       );
-    //       expect(wrapper.find('option').length).toBe(whitelist.length);
+    it('respects the whitelist', () => {
+      const whitelist = ['GB', 'CA', 'US'];
+      const select = setupTest({ whitelist, showDefaultOption: false });
+      expect(select.querySelectorAll('option').length).toBe(whitelist.length);
 
-    //       // confirm the expected items appear
-    //       expect(wrapper.find('option[value="United Kingdom"]').length).toBe(1);
-    //       expect(wrapper.find('option[value="Canada"]').length).toBe(1);
-    //       expect(wrapper.find('option[value="United States"]').length).toBe(1);
-    //     });
+      // confirm the expected items appear
+      expect(
+        select.querySelectorAll('option[value="United Kingdom"]').length
+      ).toBe(1);
+      expect(select.querySelectorAll('option[value="Canada"]').length).toBe(1);
+      expect(
+        select.querySelectorAll('option[value="United States"]').length
+      ).toBe(1);
+    });
   });
 
-  //   describe('valueType', () => {
-  //     it('confirm value is full country name by default', () => {
-  //       const wrapper = shallow(<CountryDropdown showDefaultOption={false} />);
-  //       expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(
-  //         CountryRegionData[0][0]
-  //       );
-  //     });
+  describe('valueType', () => {
+    it('confirm value is full country name by default', () => {
+      const select = setupTest({ showDefaultOption: false });
+      expect(select.options[0].value).toBe(CountryRegionData[0].countryName);
+    });
 
-  //     it('confirm explicit valueType="full" also sets full country name', () => {
-  //       const wrapper = shallow(
-  //         <CountryDropdown showDefaultOption={false} valueType="full" />
-  //       );
-  //       expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(
-  //         CountryRegionData[0][0]
-  //       );
-  //     });
+    it('confirm explicit valueType="full" also sets full country name', () => {
+      const select = setupTest({ showDefaultOption: false, valueType: 'full' });
+      expect(select.value).toBe(CountryRegionData[0].countryName);
+    });
 
-  //     it('confirm valueType="short" outputs country short code', () => {
-  //       const wrapper = shallow(
-  //         <CountryDropdown showDefaultOption={false} valueType="short" />
-  //       );
-  //       expect(wrapper.find('select').childAt(0).getElement().props.value).toBe(
-  //         CountryRegionData[0][1]
-  //       );
-  //     });
-  //   });
+    it('confirm valueType="short" outputs country short code', () => {
+      const select = setupTest({
+        showDefaultOption: false,
+        valueType: 'short',
+      });
+      expect(select.value).toBe(CountryRegionData[0].countryShortCode);
+    });
+  });
 
-  //   describe('labelType', () => {
-  //     it('confirm label type is full country name by default', () => {
-  //       const wrapper = shallow(<CountryDropdown showDefaultOption={false} />);
-  //       expect(wrapper.find('select').childAt(0).text()).toBe(
-  //         CountryRegionData[0][0]
-  //       );
-  //     });
+  describe('labelType', () => {
+    it('confirm label type is full country name by default', () => {
+      const select = setupTest({
+        showDefaultOption: false,
+      });
+      expect(select.options[0].text).toBe(CountryRegionData[0].countryName);
+    });
 
-  //     it('confirm label type is full country name when explicitly set', () => {
-  //       const wrapper = shallow(
-  //         <CountryDropdown showDefaultOption={false} labelType="full" />
-  //       );
-  //       expect(wrapper.find('select').childAt(0).text()).toBe(
-  //         CountryRegionData[0][0]
-  //       );
-  //     });
+    it('confirm label type is full country name when explicitly set', () => {
+      const select = setupTest({
+        showDefaultOption: false,
+        labelType: 'full',
+      });
+      expect(select.options[0].text).toBe(CountryRegionData[0].countryName);
+    });
 
-  //     it('confirm label type is the country shortcode when set', () => {
-  //       const wrapper = shallow(
-  //         <CountryDropdown showDefaultOption={false} labelType="short" />
-  //       );
-  //       expect(wrapper.find('select').childAt(0).text()).toBe(
-  //         CountryRegionData[0][1]
-  //       );
-  //     });
-  //   });
+    it('confirm label type is the country shortcode when set', () => {
+      const select = setupTest({
+        showDefaultOption: false,
+        labelType: 'short',
+      });
+      expect(select.options[0].text).toBe(
+        CountryRegionData[0].countryShortCode
+      );
+    });
+  });
 });
