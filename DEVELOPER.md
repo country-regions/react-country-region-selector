@@ -21,11 +21,6 @@ Ugly bits:
 
 ### Notes for next 4.x release
 
-- Breaking changes:
-  - Minimum react version updated to 16.8.0 (hooks)
-  - `classes` prop has been renamed `className`
-  - `onBlur` callback is no longer passed the selected value, just the event
-
 Remaining checklist:
 
 [ ] finish tests

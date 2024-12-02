@@ -11,7 +11,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   showDefaultOption = true,
   defaultOptionLabel = 'Select Country',
   priorityOptions = [],
-  onChange = () => null,
+  onChange = (value: string, e: any) => null,
   onBlur = () => null,
   labelType = 'full',
   valueType = 'full',
@@ -53,8 +53,8 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
     ...arbitraryProps,
     name,
     value,
-    onChange: (e) => onChange(e.target.value, e),
-    onBlur: (e) => onBlur(e),
+    onChange: (e: any) => onChange(e.target.value, e),
+    onBlur: (e: any) => onBlur(e),
     disabled,
   };
   if (id) {

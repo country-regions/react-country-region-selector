@@ -1,0 +1,38 @@
+---
+title: Disable Empty Region Field
+sidebar_position: 3
+---
+
+import DisableEmptyRegionField from '@site/src/components/examples/DisableEmptyRegionField';
+
+When the user hasn't selected a country, nothing's going to show up in the Region dropdown. If you want to disable it,
+use the `disableWhenEmpty` prop.
+
+<DisableEmptyRegionField />
+
+---
+
+```tsx
+import React, { useState } from 'react';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+const NoDefaultOption = () => {
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
+
+  return (
+    <>
+      <CountryDropdown value={country} onChange={(val) => setCountry(val)} />
+      <RegionDropdown
+        country={country}
+        value={region}
+        onChange={(val) => setRegion(val)}
+        // highlight-next-line
+        disableWhenEmpty={true}
+      />
+    </>
+  );
+};
+
+export default NoDefaultOption;
+```

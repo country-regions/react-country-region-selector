@@ -28,3 +28,11 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+div.language-tsx {
+  font-size: 14px;
+}
+
+span.theme-code-block-highlighted-line {
+  background-color: rgba(183, 177, 255, 0.15);
+}
