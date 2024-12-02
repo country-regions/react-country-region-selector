@@ -1,0 +1,48 @@
+---
+title: Custom Default Option Labels
+sidebar_position: 4
+---
+
+import CustomDefaultOptionLabels from '@site/src/components/examples/CustomDefaultOptionLabels';
+
+In case you want to localize the strings or just change the defaults, take a look at the following props:
+
+- `defaultOptionLabel` (both RegionDropdown and CountryDropdown)
+- `blankOptionLabel` (RegionDropdown only). By default it just shows a "-" character when no country has been selected,
+  but this prop allows it to be customized.
+
+<CustomDefaultOptionLabels />
+
+---
+
+```tsx
+import React, { useState } from 'react';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+const CustomDefaultOptionLabels = () => {
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
+
+  return (
+    <>
+      <CountryDropdown
+        value={country}
+        onChange={(val) => setCountry(val)}
+        // highlight-next-line
+        defaultOptionLabel="Go ahead, select a country!"
+      />
+      <RegionDropdown
+        country={country}
+        value={region}
+        onChange={(val) => setRegion(val)}
+        // highlight-next-line
+        blankOptionLabel="No country selected..."
+        // highlight-next-line
+        defaultOptionLabel="Now select a region, pal"
+      />
+    </>
+  );
+};
+
+export default CustomDefaultOptionLabels;
+```

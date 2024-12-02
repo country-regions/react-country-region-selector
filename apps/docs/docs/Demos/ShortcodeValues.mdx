@@ -1,0 +1,47 @@
+---
+title: Shortcode Values
+sidebar_position: 7
+---
+
+import ShortcodeLabels from '@site/src/components/examples/ShortcodeLabels';
+
+The `valueType` prop on both components alters the _value_ of each option to be a short code rather than the full
+country or region name, like with the visible label. Note that when you use `valueType` as `short` for the
+`CountryDropdown` component you need to tell the RegionDropdown component that it's using shortcodes via the
+`countryValueType` prop.
+
+<ShortcodeLabels />
+
+---
+
+```tsx
+import React, { useState } from 'react';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+const ShortcodeValues = () => {
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
+
+  return (
+    <>
+      <CountryDropdown
+        value={country}
+        onChange={(val) => setCountry(val)}
+        // highlight-next-line
+        valueType="short"
+      />
+      <RegionDropdown
+        country={country}
+        value={region}
+        // highlight-next-line
+        valueType="short"
+        // highlight-next-line
+        countryValueType="short"
+        onChange={(val) => setRegion(val)}
+      />
+    </>
+  );
+};
+
+export default ShortcodeValues;
+```

@@ -1,0 +1,52 @@
+---
+title: Name, ID, Class attributes
+sidebar_position: 5
+---
+
+import NameIdClassAttrs from '@site/src/components/examples/NameIdClassAttrs';
+
+This demo shows how to set `name`, `id` and `class` attributes on each component.
+
+There's nothing visible to see on this demo, but view the HTML source to see the change.
+
+<NameIdClassAttrs />
+
+---
+
+```tsx
+import React, { useState } from 'react';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+const NameIdClassAttrs = () => {
+  const [country, setCountry] = useState('Canada');
+  const [region, setRegion] = useState('British Columbia');
+
+  return (
+    <>
+      <CountryDropdown
+        value={country}
+        // highlight-next-line
+        id="my-country-field-id"
+        // highlight-next-line
+        name="my-country-field"
+        // highlight-next-line
+        className="my-custom-class second-class"
+        onChange={(val) => setCountry(val)}
+      />
+      <RegionDropdown
+        country={country}
+        value={region}
+        // highlight-next-line
+        name="my-region-field-name"
+        // highlight-next-line
+        id="my-region-field-id"
+        // highlight-next-line
+        className="another-custom-class"
+        onChange={(val) => setRegion(val)}
+      />
+    </>
+  );
+};
+
+export default NameIdClassAttrs;
+```
