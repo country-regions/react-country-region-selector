@@ -1,11 +1,7 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from 'country-region-data/data.json';
-import {
-  filterCountries,
-  defaultRenderOption,
-  defaultRenderSelect,
-} from './helpers';
-import type { CountryDropdownProps } from './rcrs.types';
+import { filterCountries, defaultRender } from './helpers';
+import type { CountryDropdownProps, RenderDataOption } from './rcrs.types';
 
 export const CountryDropdown: FC<CountryDropdownProps> = ({
   value = '',
@@ -22,11 +18,10 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   whitelist = [],
   blacklist = [],
   disabled = false,
-  renderSelect = defaultRenderSelect,
-  renderOption = defaultRenderOption,
+  customRender = defaultRender,
   ...arbitraryProps
 }) => {
-  const countries = useMemo(() => {
+  const countries: RenderDataOption[] = useMemo(() => {
     const countries = filterCountries(
       CountryRegionData,
       priorityOptions,
@@ -34,24 +29,21 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
       blacklist
     );
 
-    return countries.map(([countryName, countrySlug]) =>
-      renderOption({
-        value: valueType === 'short' ? countrySlug : countryName,
-        key: countrySlug,
-        label: labelType === 'short' ? countrySlug : countryName,
-      })
-    );
+    return countries.map(([countryName, countrySlug]) => ({
+      value: valueType === 'short' ? countrySlug : countryName,
+      key: countrySlug,
+      label: labelType === 'short' ? countrySlug : countryName,
+    }));
   }, [priorityOptions, whitelist, blacklist, valueType, labelType]);
 
   const defaultOption = useMemo(() => {
-    if (!showDefaultOption) {
-      return null;
+    if (showDefaultOption) {
+      return {
+        value: '',
+        key: 'default',
+        label: defaultOptionLabel,
+      };
     }
-    return renderOption({
-      value: '',
-      key: 'default',
-      label: defaultOptionLabel,
-    });
   }, [showDefaultOption, defaultOptionLabel]);
 
   const attrs: any = {
@@ -69,8 +61,8 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
     attrs.className = className;
   }
 
-  return renderSelect({
+  return customRender({
     ...attrs,
-    children: [defaultOption, countries],
+    options: [defaultOption, ...countries],
   });
 };

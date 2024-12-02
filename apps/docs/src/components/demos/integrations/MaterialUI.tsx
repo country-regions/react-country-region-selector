@@ -6,17 +6,16 @@ import Select from '@mui/material/Select';
 import Grid from '@mui/material/Grid2';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
-const renderSelect = ({ onChange, value, children }) => (
-  <Select value={value} label="Age" onChange={onChange}>
-    {children}
+const customRender = ({ options, ...selectProps }) => (
+  <Select {...selectProps}>
+    {options.map(({ label, value, key }) => (
+      <MenuItem value={value} key={key}>
+        {label}
+      </MenuItem>
+    ))}
   </Select>
 );
 
-const renderOption = ({ value, label }) => (
-  <MenuItem value={value}>{label}</MenuItem>
-);
-
-// https://mui.com/material-ui/react-select/
 const MaterialUISelect = () => {
   const [country, setCountry] = React.useState('');
   const [region, setRegion] = React.useState('');
@@ -25,27 +24,32 @@ const MaterialUISelect = () => {
     <Grid container spacing={2}>
       <Grid size={6}>
         <FormControl fullWidth>
-          <InputLabel id="mui-country-field">Country</InputLabel>
+          <InputLabel id="label-mui-country-field">Country</InputLabel>
           <CountryDropdown
             value={country}
+            labelId="label-mui-country-field"
             id="mui-country-field"
-            onChange={(val) => setCountry(val)}
-            renderSelect={renderSelect}
-            renderOption={renderOption}
+            label="Country"
+            onChange={(val) => {
+              setCountry(val);
+              setRegion('');
+            }}
+            customRender={customRender}
           />
         </FormControl>
       </Grid>
       <Grid size={6}>
         <FormControl fullWidth>
-          <InputLabel id="mui-region-field">Region</InputLabel>
+          <InputLabel id="label-mui-region-field">Region</InputLabel>
           <RegionDropdown
             country={country}
             value={region}
+            labelId="label-mui-region-field"
+            label="Region"
             id="mui-region-field"
             onChange={(val) => setRegion(val)}
             disableWhenEmpty={true}
-            renderSelect={renderSelect}
-            renderOption={renderOption}
+            customRender={customRender}
           />
         </FormControl>
       </Grid>

@@ -1,4 +1,4 @@
-import { CountryRegionData, ValueType } from './rcrs.types';
+import { CountryRegionData, RenderData, ValueType } from './rcrs.types';
 
 /**
  * Helper to reduce country list depending on whether the user specified a white/blacklist, and lists priority
@@ -90,23 +90,17 @@ export const findDuplicates = (regions, customOptions: string[]) => {
     .map(({ label }) => label);
 };
 
-export const defaultRenderSelect = (props: any) => {
-  const { children, ...rest } = props;
+export const defaultRender = (data: RenderData) => {
+  const { options, ...rest } = data;
   return (
     <select {...rest}>
-      <>{children}</>
+      {options
+        .filter((row) => !row)
+        .map(({ label, value, key }) => (
+          <option value={value} key={key}>
+            {label}
+          </option>
+        ))}
     </select>
   );
-};
-
-export const defaultRenderOption = ({
-  label,
-  value,
-  key,
-}: {
-  label: string;
-  value: string;
-  key: string;
-}) => {
-  return <option value={value}>{label}</option>;
 };

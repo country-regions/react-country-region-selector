@@ -5,10 +5,69 @@ sidebar_position: 1
 
 import MaterialUI from '@site/src/components/demos/integrations/MaterialUI';
 
+This demo illustrates how you can integrate this script with Material UI. Note the `customRender` method and how
+its handling the actual rendering of the dropdowns.
+
 <MaterialUI />
 
 ---
 
 ```tsx
+import * as React from 'react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Grid from '@mui/material/Grid2';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
+const customRender = ({ options, ...selectProps }) => (
+  <Select {...selectProps}>
+    {options.map(({ label, value, key }) => (
+      <MenuItem value={value} key={key}>
+        {label}
+      </MenuItem>
+    ))}
+  </Select>
+);
+
+const MaterialUISelect = () => {
+  const [country, setCountry] = React.useState('');
+  const [region, setRegion] = React.useState('');
+
+  return (
+    <Grid container spacing={2}>
+      <Grid size={6}>
+        <FormControl fullWidth>
+          <InputLabel id="label-mui-country-field">Country</InputLabel>
+          <CountryDropdown
+            value={country}
+            labelId="label-mui-country-field"
+            id="mui-country-field"
+            label="Country"
+            onChange={(val) => setCountry(val)}
+            customRender={customRender}
+          />
+        </FormControl>
+      </Grid>
+      <Grid size={6}>
+        <FormControl fullWidth>
+          <InputLabel id="label-mui-region-field">Region</InputLabel>
+          <RegionDropdown
+            country={country}
+            value={region}
+            labelId="label-mui-region-field"
+            label="Region"
+            id="mui-region-field"
+            onChange={(val) => setRegion(val)}
+            disableWhenEmpty={true}
+            customRender={customRender}
+          />
+        </FormControl>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default MaterialUISelect;
 ```

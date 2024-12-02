@@ -1,13 +1,8 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
-import {
-  defaultRenderSelect,
-  defaultRenderOption,
-  filterRegions,
-  findDuplicates,
-} from './helpers';
+import { defaultRender, filterRegions, findDuplicates } from './helpers';
 import * as C from './constants';
-import type { RegionDropdownProps } from './rcrs.types';
+import type { RegionDropdownProps, RenderDataOption } from './rcrs.types';
 
 export const RegionDropdown: FC<RegionDropdownProps> = ({
   onChange,
@@ -28,11 +23,10 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
   customOptions = [],
   whitelist = {},
   blacklist = {},
-  renderSelect = defaultRenderSelect,
-  renderOption = defaultRenderOption,
+  customRender = defaultRender,
   ...arbitraryProps
 }) => {
-  const regions = useMemo(() => {
+  const regions: RenderDataOption[] = useMemo(() => {
     if (!country) {
       return [];
     }
@@ -62,23 +56,17 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
 
     return filteredRegions[2]
       .split(C.REGION_LIST_DELIMITER)
-      .map((regionPair) => {
+      .map((regionPair: string) => {
         let [regionName, regionShortCode = null] = regionPair.split(
           C.SINGLE_REGION_DELIMITER
         );
         const label = labelType === 'full' ? regionName : regionShortCode;
         const value = valueType === 'full' ? regionName : regionShortCode;
-        return { label, value };
+        return { label, value, key: value };
       });
   }, [country, countryValueType, whitelist, blacklist]);
 
-  const regionsJsx = useMemo(() => {
-    return regions.map(({ label, value }) =>
-      renderOption({ value, key: value, label })
-    );
-  }, [regions]);
-
-  const customRegionsJsx = useMemo(() => {
+  const customRegions: RenderDataOption[] = useMemo(() => {
     if (!country) {
       return [];
     }
@@ -95,30 +83,29 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
 
     return customOptions.map((option) => {
       if (option) {
-        return renderOption({ value: option, key: option, label: option });
+        return { value: option, key: option, label: option };
       }
     });
   }, [regions, country, customOptions]);
 
   // there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
   // a "default" option which shows
-  const getDefaultOption = () => {
+  const defaultOption: RenderDataOption | undefined = useMemo(() => {
     if (!country) {
-      return renderOption({
+      return {
         value: '',
         key: 'default',
         label: blankOptionLabel,
-      });
+      };
     }
     if (showDefaultOption) {
-      return renderOption({
+      return {
         value: '',
         key: 'default',
         label: defaultOptionLabel,
-      });
+      };
     }
-    return null;
-  };
+  }, [country, blankOptionLabel, defaultOptionLabel]);
 
   const isDisabled = disabled || (disableWhenEmpty && country === '');
   const attrs: any = {
@@ -137,8 +124,8 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     attrs.className = className;
   }
 
-  return renderSelect({
+  return customRender({
     ...attrs,
-    children: [getDefaultOption(), regionsJsx, customRegionsJsx],
+    options: [defaultOption, ...regions, ...customRegions],
   });
 };

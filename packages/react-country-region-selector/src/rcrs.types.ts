@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react';
+import { JSXSource } from 'react/jsx-dev-runtime';
 
 export type ValueType = 'full' | 'short';
 
@@ -115,8 +116,13 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    */
   readonly blacklist?: object;
 
-  readonly renderSelect: any;
-  readonly renderOption: any;
+  /**
+   * An optional prop to allow consumers to manage their own rendering. If this is provided, it will be called
+   * on render with all the data needed for the entire Country dropdown.
+   *
+   * Default value: undefined
+   */
+  readonly customRender?: (data: RenderData) => JSX.Element;
 }
 
 export interface RegionDropdownProps extends NativeDropdownProps {
@@ -261,8 +267,23 @@ export interface RegionDropdownProps extends NativeDropdownProps {
     [countryCode: string]: string[];
   };
 
-  readonly renderSelect: any;
-  readonly renderOption: any;
+  /**
+   * An optional prop to allow consumers to manage their own rendering. If this is provided, it will be called
+   * on render with all the data needed for the entire Region dropdown.
+   *
+   * Default value: undefined
+   */
+  readonly customRender?: (data: RenderData) => JSX.Element;
 }
 
 export type CountryRegionDataMinified = [string[]];
+
+export type RenderDataOption = {
+  readonly label: string;
+  readonly value: string;
+  readonly key: string;
+};
+
+export interface RenderData extends NativeDropdownProps {
+  options: RenderDataOption[];
+}
