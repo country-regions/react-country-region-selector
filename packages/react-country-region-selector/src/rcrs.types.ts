@@ -114,6 +114,9 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    * Default value: []
    */
   readonly blacklist?: object;
+
+  readonly renderSelect: any;
+  readonly renderOption: any;
 }
 
 export interface RegionDropdownProps extends NativeDropdownProps {
@@ -257,6 +260,9 @@ export interface RegionDropdownProps extends NativeDropdownProps {
   readonly blacklist?: {
     [countryCode: string]: string[];
   };
+
+  readonly renderSelect: any;
+  readonly renderOption: any;
 }
 
-export type CountryRegionData = [string[]];
+export type CountryRegionDataMinified = [string[]];

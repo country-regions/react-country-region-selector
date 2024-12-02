@@ -89,3 +89,24 @@ export const findDuplicates = (regions, customOptions: string[]) => {
     .filter(({ value }) => customOptions.indexOf(value) !== -1)
     .map(({ label }) => label);
 };
+
+export const defaultRenderSelect = (props: any) => {
+  const { children, ...rest } = props;
+  return (
+    <select {...rest}>
+      <>{children}</>
+    </select>
+  );
+};
+
+export const defaultRenderOption = ({
+  label,
+  value,
+  key,
+}: {
+  label: string;
+  value: string;
+  key: string;
+}) => {
+  return <option value={value}>{label}</option>;
+};

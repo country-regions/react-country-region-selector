@@ -1,6 +1,11 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
-import { filterRegions, findDuplicates } from './helpers';
+import {
+  defaultRenderSelect,
+  defaultRenderOption,
+  filterRegions,
+  findDuplicates,
+} from './helpers';
 import * as C from './constants';
 import type { RegionDropdownProps } from './rcrs.types';
 
@@ -23,6 +28,8 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
   customOptions = [],
   whitelist = {},
   blacklist = {},
+  renderSelect = defaultRenderSelect,
+  renderOption = defaultRenderOption,
   ...arbitraryProps
 }) => {
   const regions = useMemo(() => {
@@ -66,11 +73,9 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
   }, [country, countryValueType, whitelist, blacklist]);
 
   const regionsJsx = useMemo(() => {
-    return regions.map(({ label, value }) => (
-      <option value={value} key={value}>
-        {label}
-      </option>
-    ));
+    return regions.map(({ label, value }) =>
+      renderOption({ value, key: value, label })
+    );
   }, [regions]);
 
   const customRegionsJsx = useMemo(() => {
@@ -90,11 +95,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
 
     return customOptions.map((option) => {
       if (option) {
-        return (
-          <option value={option} key={option}>
-            {option}
-          </option>
-        );
+        return renderOption({ value: option, key: option, label: option });
       }
     });
   }, [regions, country, customOptions]);
@@ -103,10 +104,18 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
   // a "default" option which shows
   const getDefaultOption = () => {
     if (!country) {
-      return <option value="">{blankOptionLabel}</option>;
+      return renderOption({
+        value: '',
+        key: 'default',
+        label: blankOptionLabel,
+      });
     }
     if (showDefaultOption) {
-      return <option value="">{defaultOptionLabel}</option>;
+      return renderOption({
+        value: '',
+        key: 'default',
+        label: defaultOptionLabel,
+      });
     }
     return null;
   };
@@ -128,11 +137,8 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     attrs.className = className;
   }
 
-  return (
-    <select {...attrs}>
-      {getDefaultOption()}
-      {regionsJsx}
-      {customRegionsJsx}
-    </select>
-  );
+  return renderSelect({
+    ...attrs,
+    children: [getDefaultOption(), regionsJsx, customRegionsJsx],
+  });
 };

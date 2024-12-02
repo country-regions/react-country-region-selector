@@ -1,0 +1,42 @@
+---
+title: Disable Fields
+sidebar_position: 12
+---
+
+import DisableFields from '@site/src/components/demos/features/DisableFields';
+
+The `disabled` prop can be used on either component.
+
+<DisableFields />
+
+---
+
+```tsx
+import React, { useState } from 'react';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+const DisableFields = () => {
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
+
+  return (
+    <>
+      <CountryDropdown
+        value={country}
+        onChange={(val) => setCountry(val)}
+        // highlight-next-line
+        disabled={true}
+      />
+      <RegionDropdown
+        country={country}
+        value={region}
+        onChange={(val) => setRegion(val)}
+        // highlight-next-line
+        disabled={true}
+      />
+    </>
+  );
+};
+
+export default DisableFields;
+```

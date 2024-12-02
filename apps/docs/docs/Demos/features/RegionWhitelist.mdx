@@ -1,15 +1,15 @@
 ---
-title: Country Whitelist
-sidebar_position: 8
+title: Region Whitelist
+sidebar_position: 10
 ---
 
-import CountryWhitelist from '@site/src/components/examples/CountryWhitelist';
+import RegionWhitelist from '@site/src/components/demos/features/RegionWhitelist';
 
-The `whitelist` prop on the CountryDropdown component limits the listed countries to those that you specify. The
+The `whitelist` prop on the `RegionDropdown` component limits the listed regions to those that you specify. The
 values are found in the `countryShortCode` value in the [source data package](https://github.com/country-regions/country-region-data/blob/master/data.json).
 Note the order will always be alphabetical.
 
-<CountryWhitelist />
+<RegionWhitelist />
 
 ---
 
@@ -17,7 +17,7 @@ Note the order will always be alphabetical.
 import React, { useState } from 'react';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
-const CountryWhitelist = () => {
+const RegionWhitelist = () => {
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
 
@@ -26,17 +26,22 @@ const CountryWhitelist = () => {
       <CountryDropdown
         value={country}
         onChange={(val) => setCountry(val)}
-        // highlight-next-line
-        whitelist={['GB', 'US', 'CA']}
+        whitelist={['CA', 'US']}
       />
       <RegionDropdown
         country={country}
         value={region}
         onChange={(val) => setRegion(val)}
+        // highlight-start
+        whitelist={{
+          CA: ['AB', 'BC'],
+          US: ['WA', 'TX'],
+        }}
+        // highlight-end
       />
     </>
   );
 };
 
-export default CountryWhitelist;
+export default RegionWhitelist;
 ```

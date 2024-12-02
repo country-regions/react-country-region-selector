@@ -1,0 +1,47 @@
+---
+title: Region Blacklist
+sidebar_position: 11
+---
+
+import RegionBlacklist from '@site/src/components/demos/features/RegionBlacklist';
+
+The `blacklist` prop on the RegionDropdown copmonent lets you hide specific regions from the list. This hides
+Alberta and BC from Canada's regions and Washington and Texas from US. The
+values are found in the `countryShortCode` value in the [source data package](https://github.com/country-regions/country-region-data/blob/master/data.json).
+
+<RegionBlacklist />
+
+---
+
+```tsx
+import React, { useState } from 'react';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+const RegionBlacklist = () => {
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
+
+  return (
+    <>
+      <CountryDropdown
+        value={country}
+        onChange={(val) => setCountry(val)}
+        whitelist={['CA', 'US']}
+      />
+      <RegionDropdown
+        country={country}
+        value={region}
+        onChange={(val) => setRegion(val)}
+        // highlight-start
+        blacklist={{
+          CA: ['AB', 'BC'],
+          US: ['WA', 'TX'],
+        }}
+        // highlight-end
+      />
+    </>
+  );
+};
+
+export default RegionBlacklist;
+```

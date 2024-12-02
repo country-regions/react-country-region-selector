@@ -1,0 +1,59 @@
+---
+title: Country Blacklist
+sidebar_position: 9
+---
+
+import CountryBlacklist from '@site/src/components/demos/features/CountryBlacklist';
+
+The `blacklist` prop omits those countries from the dropdown. This demo hides all countries starting with `A`.
+The values are found in the `countryShortCode` value in the [source data package](https://github.com/country-regions/country-region-data/blob/master/data.json).
+
+<CountryBlacklist />
+
+---
+
+```tsx
+import React, { useState } from 'react';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+const CountryBlacklist = () => {
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
+
+  return (
+    <>
+      <CountryDropdown
+        value={country}
+        onChange={(val) => setCountry(val)}
+        // highlight-start
+        blacklist={[
+          'AF',
+          'AX',
+          'AL',
+          'DZ',
+          'AS',
+          'AD',
+          'AO',
+          'AI',
+          'AQ',
+          'AG',
+          'AR',
+          'AM',
+          'AW',
+          'AU',
+          'AT',
+          'AZ',
+        ]}
+        // highlight-end
+      />
+      <RegionDropdown
+        country={country}
+        value={region}
+        onChange={(val) => setRegion(val)}
+      />
+    </>
+  );
+};
+
+export default CountryBlacklist;
+```

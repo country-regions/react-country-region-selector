@@ -1,23 +1,11 @@
 ## Developer Notes
 
-This was a very old script which I revamped in Dec 2024 to bring it into the 21st century. Version `4.0.0` now uses Typescript,
-modern rollup + babel and jest for testing, plus uses this crazy new thing called "hooks" in React.
+This was a very old script which I revamped in Dec 2024 to bring it into the 21st century. Version `4.0.0` now uses Turborepo, Typescript,
+modern rollup + babel, jest for testing, modern React, Docusaurus for the doc, eslint and prettier.
 
-The dev environment is functional but needs work.
-
-`yarn build` -> builds the script.
-`yarn` - bootstraps the app. Also builds it.
-`yarn test` - runs the tests. Note, if you're altering the code run `yarn && yarn test` (see "Ugly bits" below).
-
-Ugly bits:
-
-- The country-regions data set is very large, so to keep bundle sizes down, the rollup build for this script parses
-  the data and minifies it as much as it can. That's done in via a custom rollup plugin. It works fine, but makes local dev a
-  bit awkward, e.g. running the tests while tweaking the code. For that you have to run `yarn && yarn test` to first rebuild,
-  then run the tests - and the tests are ran on the `/dist` result. Awkward. This'd be nice to rethink.
-- The `/example` folder is a mess. It's very data, requires a bit of custom setup to bootstrap both the main repo and that. Plus,
-  just like the tests it won't auto-reload when you change the source: you have to do a rebuild and even restart the server.
-- needs linting + prettier set up.
+`pnpm install` - bootstraps the monorepo
+`npm run dev` - starts dev mode.
+`npm run test` - runs the tests
 
 ### Notes for next 4.x release
 

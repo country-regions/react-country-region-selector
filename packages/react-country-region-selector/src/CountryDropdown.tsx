@@ -1,6 +1,10 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from 'country-region-data/data.json';
-import { filterCountries } from './helpers';
+import {
+  filterCountries,
+  defaultRenderOption,
+  defaultRenderSelect,
+} from './helpers';
 import type { CountryDropdownProps } from './rcrs.types';
 
 export const CountryDropdown: FC<CountryDropdownProps> = ({
@@ -18,6 +22,8 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   whitelist = [],
   blacklist = [],
   disabled = false,
+  renderSelect = defaultRenderSelect,
+  renderOption = defaultRenderOption,
   ...arbitraryProps
 }) => {
   const countries = useMemo(() => {
@@ -28,25 +34,24 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
       blacklist
     );
 
-    return countries.map(([countryName, countrySlug]) => (
-      <option
-        value={valueType === 'short' ? countrySlug : countryName}
-        key={countrySlug}
-      >
-        {labelType === 'short' ? countrySlug : countryName}
-      </option>
-    ));
+    return countries.map(([countryName, countrySlug]) =>
+      renderOption({
+        value: valueType === 'short' ? countrySlug : countryName,
+        key: countrySlug,
+        label: labelType === 'short' ? countrySlug : countryName,
+      })
+    );
   }, [priorityOptions, whitelist, blacklist, valueType, labelType]);
 
   const defaultOption = useMemo(() => {
     if (!showDefaultOption) {
       return null;
     }
-    return (
-      <option value="" key="default">
-        {defaultOptionLabel}
-      </option>
-    );
+    return renderOption({
+      value: '',
+      key: 'default',
+      label: defaultOptionLabel,
+    });
   }, [showDefaultOption, defaultOptionLabel]);
 
   const attrs: any = {
@@ -64,10 +69,8 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
     attrs.className = className;
   }
 
-  return (
-    <select {...attrs}>
-      {defaultOption}
-      {countries}
-    </select>
-  );
+  return renderSelect({
+    ...attrs,
+    children: [defaultOption, countries],
+  });
 };
