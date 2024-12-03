@@ -167,33 +167,6 @@ Check out the `scripts` section of the package.json file to see them all, but th
 
 - [See CHANGELOG.md](./CHANGELOG.md)
 
-<a name="tests"></a>
-
-### Tests
-
-The Jest/Enzyme unit tests are found in the `src/tests` folder.
-
-<a name="localDev"></a>
-
-### Local Dev
-
-This is pretty dated, I'm afraid. But to run this locally, do the following:
-
-- `yarn install`
-- in one terminal window: `yarn start`
-- in another terminal window, go to the `/example` subfolder and do the same: `yarn install`, `yarn start`
-- open `http://localhost:3000` in your browser.
-
-<a name="thanks"></a>
-
-### Thanks!
-
-Big thanks to a whole boatload of people:
-
-- contributors to this project and the source data.
-- Special thanks to the [create-react-library](https://github.com/transitive-bullshit/create-react-library) tool which
-  I use here (un-ejected) to rollup this component library. Great stuff.
-
 <a name="license"></a>
 
 ### License
