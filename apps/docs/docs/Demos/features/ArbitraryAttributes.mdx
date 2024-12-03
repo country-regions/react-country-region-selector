@@ -1,0 +1,51 @@
+---
+title: Arbitrary Attributes
+sidebar_position: 13
+---
+
+import ArbitraryAttributes from '@site/src/components/demos/features/ArbitraryAttributes';
+
+You can pass any additional attributes you want to the two components and they'll be added to the native `select`
+HTML element as-is. This example passes a custom `style` prop to make it look as ugly as $&@!$\*!@ hell.
+
+<ArbitraryAttributes />
+
+---
+
+```tsx
+import React, { useState } from 'react';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+const ArbitraryProps = () => {
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
+
+  return (
+    <>
+      <CountryDropdown
+        value={country}
+        onChange={(val) => setCountry(val)}
+        style={{
+          backgroundColor: 'blue',
+          color: 'white',
+          padding: 10,
+          fontSize: 20,
+        }}
+      />
+      <RegionDropdown
+        country={country}
+        value={region}
+        onChange={(val) => setRegion(val)}
+        style={{
+          backgroundColor: 'green',
+          color: 'white',
+          padding: 10,
+          fontSize: 20,
+        }}
+      />
+    </>
+  );
+};
+
+export default ArbitraryProps;
+```

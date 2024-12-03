@@ -8,11 +8,11 @@ import ReactSelect from '@site/src/components/demos/integrations/ReactSelect';
 example integration.
 
 _Warning: opinions!_ I've used react-select on many projects and it's a beautiful library. Once it's integrated into
-your app it looks and works beautifully. But the API of passing a complex object as the `value` is very poor design.
-Even simple things like accommodating localization becomes very complicated since the value prop changes based on
-language and you need to change the value prop each time.
+your app it looks and works intuitively and everyone loves it. But every time I use it I'm struck by how awful the API
+of passing a complex object as the `value` to the fields. Super awkward! Even common things like accommodating
+localization becomes very complicated since the value needs to change all the time.
 
-This integration highlights that difficult API decision on their parts. We have to store in state all the info
+This integration highlights that difficult API. We have to store in state all the info
 react-select needs - then it'll be up to you to store that info.
 
 The code here could be improved; typings too. But hopefully it gets you on the right path.
