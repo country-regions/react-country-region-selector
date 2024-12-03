@@ -1,0 +1,94 @@
+---
+title: React Select
+---
+
+import ReactSelect from '@site/src/components/demos/integrations/ReactSelect';
+
+[React-select](https://react-select.com/) is a popular standalone component for dropdowns. This shows an
+example integration.
+
+_Warning: opinions!_ I've used react-select on many projects and it's a beautiful library. Once it's integrated into
+your app it looks and works beautifully. But the API of passing a complex object as the `value` is very poor design.
+Even simple things like accommodating localization becomes very complicated since the value prop changes based on
+language and you need to change the value prop each time.
+
+This integration highlights that difficult API decision on their parts. We have to store in state all the info
+react-select needs - then it'll be up to you to store that info.
+
+The code here could be improved; typings too. But hopefully it gets you on the right path.
+
+<ReactSelect />
+
+---
+
+```tsx
+import React, { useState } from 'react';
+import Select from 'react-select';
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+
+const customRender = (props) => {
+  const {
+    options,
+    value,
+    disabled,
+    onChange,
+    reactSelectValue,
+    onBlur,
+    ...selectProps
+  } = props;
+
+  return (
+    <Select
+      {...selectProps}
+      options={options}
+      isDisabled={disabled}
+      isSearchable={true}
+      isClearable={true}
+      value={reactSelectValue}
+      onChange={(data: any) => {
+        onChange({ target: { value: data } }, null);
+      }}
+    />
+  );
+};
+
+const ReactSelect = () => {
+  const [country, setCountry] = useState();
+  const [region, setRegion] = useState();
+
+  return (
+    <>
+      <div style={{ width: 200, display: 'inline-block', marginRight: 8 }}>
+        <CountryDropdown
+          value={country?.value || ''}
+          reactSelectValue={country}
+          className="country"
+          name="country-field"
+          classNamePrefix="country-"
+          onChange={(val) => {
+            setCountry(val ? val : undefined);
+            setRegion(null);
+          }}
+          customRender={customRender}
+        />
+      </div>
+      <div style={{ width: 200, display: 'inline-block' }}>
+        <RegionDropdown
+          country={country?.value || ''}
+          value={region?.value || null}
+          reactSelectValue={region}
+          className="region"
+          name="region-field"
+          classNamePrefix="region-"
+          onChange={(val) => {
+            setRegion(val);
+          }}
+          customRender={customRender}
+        />
+      </div>
+    </>
+  );
+};
+
+export default ReactSelect;
+```

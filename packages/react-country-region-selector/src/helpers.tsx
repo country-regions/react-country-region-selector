@@ -95,7 +95,7 @@ export const defaultRender = (data: RenderData) => {
   return (
     <select {...rest}>
       {options
-        .filter((row) => !row)
+        .filter((row) => row)
         .map(({ label, value, key }) => (
           <option value={value} key={key}>
             {label}

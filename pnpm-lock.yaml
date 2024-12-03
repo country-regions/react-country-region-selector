@@ -29,6 +29,7 @@ importers:
       react: ^18.0.0
       react-country-region-selector: workspace:*
       react-dom: ^18.0.0
+      react-select: ^5.8.3
       typescript: ~5.6.2
     dependencies:
       '@docusaurus/core': 3.6.3_rjmn7ub6jwfoncbionbi4nckku
@@ -43,6 +44,7 @@ importers:
       react: 18.3.1
       react-country-region-selector: link:../../packages/react-country-region-selector
       react-dom: 18.3.1_react@18.3.1
+      react-select: 5.8.3_nnrd3gsncyragczmpvfhocinkq
     devDependencies:
       '@docusaurus/module-type-aliases': 3.6.3_nnrd3gsncyragczmpvfhocinkq
       '@docusaurus/tsconfig': 3.6.3
@@ -11293,6 +11295,10 @@ packages:
       fs-monkey: 1.0.6
     dev: false
 
+  /memoize-one/6.0.0:
+    resolution: {integrity: sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==}
+    dev: false
+
   /merge-descriptors/1.0.3:
     resolution: {integrity: sha512-gaNvAS7TZ897/rVaZ0nMtAyxNyi/pdbjbAwUpFQpN70GqnVfOiXpeUUMKRBmzXaSQ8DdTX4/0ms62r2K+hE6mQ==}
     dev: false
@@ -13337,6 +13343,28 @@ packages:
       tiny-warning: 1.0.3
     dev: false
 
+  /react-select/5.8.3_nnrd3gsncyragczmpvfhocinkq:
+    resolution: {integrity: sha512-lVswnIq8/iTj1db7XCG74M/3fbGB6ZaluCzvwPGT5ZOjCdL/k0CLWhEK0vCBLuU5bHTEf6Gj8jtSvi+3v+tO1w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.26.0
+      '@emotion/cache': 11.13.5
+      '@emotion/react': 11.13.5_react@18.3.1
+      '@floating-ui/dom': 1.6.12
+      '@types/react-transition-group': 4.4.11
+      memoize-one: 6.0.0
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1_react@18.3.1
+      react-transition-group: 4.4.5_nnrd3gsncyragczmpvfhocinkq
+      use-isomorphic-layout-effect: 1.1.2_react@18.3.1
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+    dev: false
+
   /react-transition-group/4.4.5_nnrd3gsncyragczmpvfhocinkq:
     resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
     peerDependencies:
@@ -14931,6 +14959,18 @@ packages:
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1_react@18.3.1
+    dev: false
+
+  /use-isomorphic-layout-effect/1.1.2_react@18.3.1:
+    resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      react: 18.3.1
     dev: false
 
   /use-sync-external-store/1.2.2_react@18.3.1:
