@@ -1,16 +1,21 @@
-import { RenderData } from './types';
+import {
+  RenderData,
+  CountryRegionDataMinified,
+  RegionsWhiteList,
+  RegionsBlackList,
+} from './types';
 
 /**
  * Helper to reduce country list depending on whether the user specified a white/blacklist, and lists priority
  * countries first.
  */
 export const filterCountries = (
-  countries: any,
-  priorityCountries,
-  whitelist,
-  blacklist
+  countries: CountryRegionDataMinified[],
+  priorityCountries: string[],
+  whitelist: string[],
+  blacklist: string[]
 ) => {
-  let countriesListedFirst = [];
+  let countriesListedFirst: CountryRegionDataMinified[] = [];
   let filteredCountries = countries;
 
   if (whitelist.length > 0) {
@@ -47,18 +52,14 @@ export const filterCountries = (
 // called when requesting new regions. It reduces the subset of regions depending on whether the user specifies
 // a white/blacklist
 export const filterRegions = (
-  regionsObject,
-  whitelistObject,
-  blacklistObject
+  regions: CountryRegionDataMinified,
+  whitelistData: RegionsWhiteList,
+  blacklistData: RegionsBlackList
 ) => {
-  const [country, countryCode, regions] = regionsObject;
-  const whitelist = whitelistObject.hasOwnProperty(countryCode)
-    ? whitelistObject[countryCode]
-    : [];
-  const blacklist = blacklistObject.hasOwnProperty(countryCode)
-    ? blacklistObject[countryCode]
-    : [];
-  let filteredRegions = regions.split('|');
+  const [country, countryCode, regionsMinified] = regions;
+  const whitelist = whitelistData[countryCode] || [];
+  const blacklist = blacklistData[countryCode] || [];
+  let filteredRegions = regionsMinified.split('|');
 
   if (whitelist.length > 0 && filteredRegions.length > 0) {
     filteredRegions = filteredRegions.filter((region) => {

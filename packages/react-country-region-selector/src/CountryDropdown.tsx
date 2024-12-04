@@ -1,7 +1,11 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from 'country-region-data/data.json';
 import { filterCountries, defaultRender } from './helpers';
-import type { CountryDropdownProps, RenderDataOption } from './types';
+import type {
+  CountryDropdownProps,
+  CountryRegionDataMinified,
+  RenderDataOption,
+} from './types';
 
 export const CountryDropdown: FC<CountryDropdownProps> = ({
   value = '',
@@ -23,7 +27,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
 }) => {
   const countries: RenderDataOption[] = useMemo(() => {
     const countries = filterCountries(
-      CountryRegionData,
+      CountryRegionData as unknown as CountryRegionDataMinified[],
       priorityOptions,
       whitelist,
       blacklist

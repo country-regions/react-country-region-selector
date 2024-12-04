@@ -107,14 +107,14 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    *
    * Default value: []
    */
-  readonly whitelist?: object;
+  readonly whitelist?: string[];
 
   /**
    * Lets you target countries that should not appear in the dropdown. Should be an array of country shortcodes.
    *
    * Default value: []
    */
-  readonly blacklist?: object;
+  readonly blacklist?: string[];
 
   /**
    * An optional prop to allow consumers to manage their own rendering. If this is provided, it will be called
@@ -124,6 +124,14 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    */
   readonly customRender?: (data: RenderData) => JSX.Element;
 }
+
+export type RegionsWhiteList = {
+  [countryCode: string]: string[];
+};
+
+export type RegionsBlackList = {
+  [countryCode: string]: string[];
+};
 
 export interface RegionDropdownProps extends NativeDropdownProps {
   /**
@@ -254,18 +262,14 @@ export interface RegionDropdownProps extends NativeDropdownProps {
    *
    * Default value: undefined
    */
-  readonly whitelist?: {
-    [countryCode: string]: string[];
-  };
+  readonly whitelist?: RegionsWhiteList;
 
   /**
    * This lets you specify a list of regions that should be omitted for a specify country.
    *
    * Default value: undefined
    */
-  readonly blacklist?: {
-    [countryCode: string]: string[];
-  };
+  readonly blacklist?: RegionsBlackList;
 
   /**
    * An optional prop to allow consumers to manage their own rendering. If this is provided, it will be called
@@ -276,7 +280,14 @@ export interface RegionDropdownProps extends NativeDropdownProps {
   readonly customRender?: (data: RenderData) => JSX.Element;
 }
 
-export type CountryRegionDataMinified = [string[]];
+type CountryFullName = string;
+type CountryShortCode = string;
+type MinifiedRegions = string;
+export type CountryRegionDataMinified = [
+  CountryFullName,
+  CountryShortCode,
+  MinifiedRegions,
+];
 
 export type RenderDataOption = {
   readonly label: string;

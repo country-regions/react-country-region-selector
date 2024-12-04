@@ -2,7 +2,11 @@ import { FC, useMemo } from 'react';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import { defaultRender, filterRegions, findDuplicates } from './helpers';
 import * as C from './constants';
-import type { RegionDropdownProps, RenderDataOption } from './types';
+import type {
+  CountryRegionDataMinified,
+  RegionDropdownProps,
+  RenderDataOption,
+} from './types';
 
 export const RegionDropdown: FC<RegionDropdownProps> = ({
   onChange,
@@ -33,7 +37,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
 
     const searchIndex = countryValueType === 'full' ? 0 : 1;
     let regionArray: any = [];
-    CountryRegionData.forEach((i) => {
+    (CountryRegionData as unknown as CountryRegionDataMinified).forEach((i) => {
       if (i[searchIndex] === country) {
         regionArray = i;
       }
@@ -81,11 +85,14 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
       return [];
     }
 
-    return customOptions.map((option) => {
+    const options: RenderDataOption[] = [];
+    customOptions.map((option) => {
       if (option) {
-        return { value: option, key: option, label: option };
+        options.push({ value: option, key: option, label: option });
       }
     });
+
+    return options;
   }, [regions, country, customOptions]);
 
   // there are two default options. The "blank" option which shows up when the user hasn't selected a country yet, and
@@ -112,8 +119,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     ...arbitraryProps,
     name,
     value,
-    onChange: (e: React.ChangeEvent<HTMLSelectElement>) =>
-      onChange(e.target.value, e),
+    onChange: (e: any) => (onChange ? onChange(e.target.value, e) : null),
     onBlur: (e: any) => onBlur(e),
     disabled: isDisabled,
   };
