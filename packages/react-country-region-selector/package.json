@@ -10,13 +10,12 @@
   },
   "main": "dist/rcrs.js",
   "module": "dist/rcrs.es.js",
-  "types": "./index.d.ts",
+  "types": "./dist/types.d.ts",
   "jsnext:main": "dist/rcrs.es.js",
   "scripts": {
     "test": "jest",
     "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "prepare": "npm run build"
+    "dev": "rollup -c -w"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -40,6 +39,7 @@
     "react-dom": "^18.3.1",
     "rollup": "^4.27.4",
     "typescript": "^5.7.2",
+    "rollup-plugin-dts": "^6.1.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-json": "^6.1.0",

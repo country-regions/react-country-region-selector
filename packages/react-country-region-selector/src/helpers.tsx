@@ -1,4 +1,4 @@
-import { RenderData } from './rcrs.types';
+import { RenderData } from './types';
 
 /**
  * Helper to reduce country list depending on whether the user specified a white/blacklist, and lists priority

@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from 'country-region-data/data.json';
 import { filterCountries, defaultRender } from './helpers';
-import type { CountryDropdownProps, RenderDataOption } from './rcrs.types';
+import type { CountryDropdownProps, RenderDataOption } from './types';
 
 export const CountryDropdown: FC<CountryDropdownProps> = ({
   value = '',

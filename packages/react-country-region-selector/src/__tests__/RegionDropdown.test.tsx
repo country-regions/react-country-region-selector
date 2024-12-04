@@ -1,7 +1,7 @@
 // the rollup build converts the raw data from country-region-data into a smaller format, which is why this
 // imports from the dist. So run `yarn` prior to running the tests
 import { RegionDropdown } from '../../dist/rcrs.es';
-import { RegionDropdownProps } from '../rcrs.types';
+import { RegionDropdownProps } from '../types';
 import { render } from '@testing-library/react';
 import { fireEvent, screen } from '@testing-library/dom';
 

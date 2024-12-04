@@ -114,6 +114,7 @@ importers:
       react: ^18.3.1
       react-dom: ^18.3.1
       rollup: ^4.27.4
+      rollup-plugin-dts: ^6.1.1
       typescript: ^5.7.2
     devDependencies:
       '@babel/core': 7.26.0
@@ -149,6 +150,7 @@ importers:
       react: 18.3.1
       react-dom: 18.3.1_react@18.3.1
       rollup: 4.28.0
+      rollup-plugin-dts: 6.1.1_2tdrm75irdlournvxvipmzuvsy
       typescript: 5.7.2
 
   packages/typescript-config:
@@ -10855,7 +10857,7 @@ packages:
   /jsonfile/4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
     optionalDependencies:
-      graceful-fs: 4.1.11
+      graceful-fs: 4.2.11
     dev: true
 
   /jsonfile/6.1.0:
@@ -13758,6 +13760,20 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+
+  /rollup-plugin-dts/6.1.1_2tdrm75irdlournvxvipmzuvsy:
+    resolution: {integrity: sha512-aSHRcJ6KG2IHIioYlvAOcEq6U99sVtqDDKVhnwt70rW6tsz3tv5OSjEiWcgzfsHdLyGXZ/3b/7b/+Za3Y6r1XA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      rollup: ^3.29.4 || ^4
+      typescript: ^4.5 || ^5.0
+    dependencies:
+      magic-string: 0.30.14
+      rollup: 4.28.0
+      typescript: 5.7.2
+    optionalDependencies:
+      '@babel/code-frame': 7.26.2
+    dev: true
 
   /rollup/4.28.0:
     resolution: {integrity: sha512-G9GOrmgWHBma4YfCcX8PjH0qhXSdH8B4HDE2o4/jaxj93S4DPCIDoLcXz99eWMji4hB29UFCEd7B2gwGJDR9cQ==}

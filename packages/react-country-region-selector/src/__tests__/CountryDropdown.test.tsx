@@ -3,7 +3,7 @@
 import { CountryDropdown } from '../../dist/rcrs.es';
 import { render } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
-import { CountryDropdownProps } from '../rcrs.types';
+import { CountryDropdownProps } from '../types';
 import { CountryRegionData } from '..';
 
 describe('CountryDropdown', () => {

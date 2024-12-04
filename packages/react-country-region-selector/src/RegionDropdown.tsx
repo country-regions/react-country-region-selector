@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import CountryRegionData from '../node_modules/country-region-data/data.json';
 import { defaultRender, filterRegions, findDuplicates } from './helpers';
 import * as C from './constants';
-import type { RegionDropdownProps, RenderDataOption } from './rcrs.types';
+import type { RegionDropdownProps, RenderDataOption } from './types';
 
 export const RegionDropdown: FC<RegionDropdownProps> = ({
   onChange,
