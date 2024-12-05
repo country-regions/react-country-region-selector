@@ -3,8 +3,10 @@
   "compilerOptions": {
     "declaration": true,
     "outDir": "dist",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
     "types": ["@testing-library/jest-dom"]
   },
-  "include": ["src"],
+  "include": ["src", "config"],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import CountryRegionData from '../node_modules/country-region-data/data.json';
+import CountryRegionData from '../node_modules/country-region-data/data.json' with { type: 'json' };
 import { defaultRender, filterRegions, findDuplicates } from './helpers';
 import * as C from './constants';
 import type {

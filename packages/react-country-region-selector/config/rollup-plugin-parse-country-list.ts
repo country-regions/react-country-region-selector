@@ -6,17 +6,9 @@
  * is used with the rollup build to generate a package with a smaller subset of data. See here for more info:
  * https://github.com/country-regions/react-country-region-selector?tab=readme-ov-file#command-line
  */
-module.exports = (options = {}) => {
-  const convertFormat = (countries) => {
-    return countries.map((countryData) => [
-      countryData.countryName,
-      countryData.countryShortCode,
-      countryData.regions
-        .map((regionData) => `${regionData.name}~${regionData.shortCode}`)
-        .join('|'),
-    ]);
-  };
+import { minifyCountryData } from '../src/helpers';
 
+export default (options = {}) => {
   return {
     name: 'ParseCountryList',
     transform: (source, id) => {
@@ -36,7 +28,7 @@ module.exports = (options = {}) => {
 
       // and return the converted data structure for bundling with the script
       return {
-        code: JSON.stringify(convertFormat(json)),
+        code: JSON.stringify(minifyCountryData(json)),
         map: { mappings: '' },
       };
     },

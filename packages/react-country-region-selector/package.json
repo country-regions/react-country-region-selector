@@ -11,11 +11,10 @@
   "main": "dist/rcrs.js",
   "module": "dist/rcrs.es.js",
   "types": "./dist/types.d.ts",
-  "jsnext:main": "dist/rcrs.es.js",
   "scripts": {
     "test": "jest",
-    "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "build": "rollup --config config/rollup.config.ts --configPlugin typescript",
+    "dev": "rollup -c -w --config config/rollup.config.ts --configPlugin typescript"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import CountryRegionData from 'country-region-data/data.json';
+import CountryRegionData from 'country-region-data/data.json' with { type: 'json' };
 import { filterCountries, defaultRender } from './helpers';
 import type {
   CountryDropdownProps,

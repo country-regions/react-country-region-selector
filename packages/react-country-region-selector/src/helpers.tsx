@@ -94,3 +94,13 @@ export const defaultRender = (data: RenderData) => {
     </select>
   );
 };
+
+export const minifyCountryData = (countries) => {
+  return countries.map((countryData) => [
+    countryData.countryName,
+    countryData.countryShortCode,
+    countryData.regions
+      .map((regionData) => `${regionData.name}~${regionData.shortCode}`)
+      .join('|'),
+  ]);
+};
