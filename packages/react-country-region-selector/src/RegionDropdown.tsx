@@ -36,16 +36,17 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     }
 
     const searchIndex = countryValueType === 'full' ? 0 : 1;
-    let regionArray: any = [];
+
+    let selectedCountryData: any = [];
     (CountryRegionData as unknown as CountryRegionDataMinified).forEach((i) => {
       if (i[searchIndex] === country) {
-        regionArray = i;
+        selectedCountryData = i;
       }
     });
 
     // this could happen if the user is managing the state of the region/country themselves and screws up passing
     // in a valid country
-    if (!regionArray || regionArray.length === 0) {
+    if (!selectedCountryData || selectedCountryData.length === 0) {
       console.error(
         'Error. Unknown country passed: ' +
           country +
@@ -53,8 +54,12 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
       );
       return [];
     }
-    const filteredRegions = filterRegions(regionArray, whitelist, blacklist);
-    if (!filteredRegions.length) {
+    const filteredRegions = filterRegions(
+      selectedCountryData,
+      whitelist,
+      blacklist
+    );
+    if (!filteredRegions || !filteredRegions.length) {
       return [];
     }
 
@@ -64,8 +69,12 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
         let [regionName, regionShortCode = null] = regionPair.split(
           C.SINGLE_REGION_DELIMITER
         );
-        const label = labelType === 'full' ? regionName : regionShortCode;
-        const value = valueType === 'full' ? regionName : regionShortCode;
+        const label = (
+          labelType === 'full' ? regionName : regionShortCode
+        ) as string;
+        const value = (
+          valueType === 'full' ? regionName : regionShortCode
+        ) as string;
         return { label, value, key: value };
       });
   }, [country, countryValueType, whitelist, blacklist]);

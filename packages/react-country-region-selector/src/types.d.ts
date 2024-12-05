@@ -284,9 +284,12 @@ type CountryFullName = string;
 type CountryShortCode = string;
 type MinifiedRegions = string;
 export type CountryRegionDataMinified = [
-  CountryFullName,
-  CountryShortCode,
-  MinifiedRegions,
+  string,
+  string,
+  string,
+  // CountryFullName,
+  // CountryShortCode,
+  // MinifiedRegions,
 ];
 
 export type RenderDataOption = {

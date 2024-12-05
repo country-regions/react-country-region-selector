@@ -46,7 +46,7 @@ module.exports = [
         extensions: ['.ts', '.tsx', '.js'],
       }),
       terser(),
-      typescript(),
+      typescript({}),
     ],
     external: ['react', 'react-dom', 'react/jsx-runtime'],
   },

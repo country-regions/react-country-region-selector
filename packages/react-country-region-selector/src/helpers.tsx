@@ -52,34 +52,23 @@ export const filterCountries = (
 // called when requesting new regions. It reduces the subset of regions depending on whether the user specifies
 // a white/blacklist
 export const filterRegions = (
-  regions: CountryRegionDataMinified,
+  selectedCountryData: CountryRegionDataMinified,
   whitelistData: RegionsWhiteList,
   blacklistData: RegionsBlackList
 ) => {
-  const [country, countryCode, regionsMinified] = regions;
+  const [country, countryCode, regionsMinified] = selectedCountryData;
   const whitelist = whitelistData[countryCode] || [];
   const blacklist = blacklistData[countryCode] || [];
   let filteredRegions = regionsMinified.split('|');
 
   if (whitelist.length > 0 && filteredRegions.length > 0) {
-    filteredRegions = filteredRegions.filter((region) => {
-      for (let i = 0, n = whitelist.length; i < n; i++) {
-        if (region.indexOf(whitelist[i]) > -1) {
-          return true;
-        }
-      }
-      return false;
-    });
+    filteredRegions = filteredRegions.filter((region) =>
+      whitelist.some((row) => region.indexOf(row) > -1)
+    );
   } else if (blacklist.length > 0 && filteredRegions.length > 0) {
-    filteredRegions = filteredRegions.filter((region) => {
-      for (let i = 0, n = blacklist.length; i < n; i++) {
-        if (region.indexOf(blacklist[i]) > -1) {
-          return false;
-        }
-      }
-
-      return true;
-    });
+    filteredRegions = filteredRegions.filter((region) =>
+      blacklist.some((row) => region.indexOf(row) > -1)
+    );
   }
 
   return [country, countryCode, filteredRegions.join('|')];
