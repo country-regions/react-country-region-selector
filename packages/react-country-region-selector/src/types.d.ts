@@ -283,14 +283,7 @@ export interface RegionDropdownProps extends NativeDropdownProps {
 type CountryFullName = string;
 type CountryShortCode = string;
 type MinifiedRegions = string;
-export type CountryRegionDataMinified = [
-  string,
-  string,
-  string,
-  // CountryFullName,
-  // CountryShortCode,
-  // MinifiedRegions,
-];
+export type CountryRegionDataMinified = [string, string, string];
 
 export type RenderDataOption = {
   readonly label: string;

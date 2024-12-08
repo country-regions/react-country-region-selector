@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import CountryRegionData from '../node_modules/country-region-data/data.json' with { type: 'json' };
+import CountryRegionData from './_data';
 import { defaultRender, filterRegions, findDuplicates } from './helpers';
 import * as C from './constants';
 import type {
@@ -63,7 +63,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
       return [];
     }
 
-    return filteredRegions[2]
+    return (filteredRegions[2] as string)
       .split(C.REGION_LIST_DELIMITER)
       .map((regionPair: string) => {
         let [regionName, regionShortCode = null] = regionPair.split(

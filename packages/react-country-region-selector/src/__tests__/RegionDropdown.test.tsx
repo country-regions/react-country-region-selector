@@ -1,6 +1,6 @@
 // the rollup build converts the raw data from country-region-data into a smaller format, which is why this
 // imports from the dist. So run `yarn` prior to running the tests
-import { RegionDropdown } from '../../dist/rcrs.es';
+import { RegionDropdown } from '../RegionDropdown';
 import { RegionDropdownProps } from '../types';
 import { render } from '@testing-library/react';
 import { fireEvent, screen } from '@testing-library/dom';
@@ -61,7 +61,7 @@ describe('RegionDropdown', () => {
 
     it('confirm default label when there are countries is "Select Region"', () => {
       const select = setupTest({ country: 'Canada' });
-      const defaultOption = select.options[0].text;
+      const defaultOption = select.options![0].text;
       expect(defaultOption).toBe('Select Region');
     });
 

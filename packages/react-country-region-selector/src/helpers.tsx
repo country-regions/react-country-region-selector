@@ -3,6 +3,8 @@ import {
   CountryRegionDataMinified,
   RegionsWhiteList,
   RegionsBlackList,
+  RenderDataOption,
+  CountryRegionJson,
 } from './types';
 
 /**
@@ -74,7 +76,10 @@ export const filterRegions = (
   return [country, countryCode, filteredRegions.join('|')];
 };
 
-export const findDuplicates = (regions, customOptions: string[]) => {
+export const findDuplicates = (
+  regions: RenderDataOption[],
+  customOptions: string[]
+) => {
   return regions
     .filter(({ value }) => customOptions.indexOf(value) !== -1)
     .map(({ label }) => label);
@@ -93,14 +98,4 @@ export const defaultRender = (data: RenderData) => {
         ))}
     </select>
   );
-};
-
-export const minifyCountryData = (countries) => {
-  return countries.map((countryData) => [
-    countryData.countryName,
-    countryData.countryShortCode,
-    countryData.regions
-      .map((regionData) => `${regionData.name}~${regionData.shortCode}`)
-      .join('|'),
-  ]);
 };

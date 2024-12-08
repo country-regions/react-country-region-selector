@@ -14,7 +14,9 @@
   "scripts": {
     "test": "jest",
     "build": "rollup --config config/rollup.config.ts --configPlugin typescript",
-    "dev": "rollup -c -w --config config/rollup.config.ts --configPlugin typescript"
+    "dev": "rollup -c -w --config config/rollup.config.ts --configPlugin typescript",
+    "minify-data": "node config/minify-data.js",
+    "prepare": "minify-data"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

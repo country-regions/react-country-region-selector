@@ -4,19 +4,9 @@ import url from '@rollup/plugin-url';
 import json from '@rollup/plugin-json';
 import terser from '@rollup/plugin-terser';
 import pkg from '../package.json' with { type: 'json' };
-import argv from 'minimist';
-import parseCountryList from './rollup-plugin-parse-country-list';
 import typescript from '@rollup/plugin-typescript';
 import { dts } from 'rollup-plugin-dts';
 import type { RollupOptions } from 'rollup';
-
-const args = argv(process.argv.slice(2));
-
-// e.g. rollup -c --config-countries=GB,CA,US
-let countries = [];
-if (args.hasOwnProperty('config-countries')) {
-  countries = args['config-countries'].split(',');
-}
 
 const config: RollupOptions[] = [
   {
@@ -36,7 +26,6 @@ const config: RollupOptions[] = [
       },
     ],
     plugins: [
-      parseCountryList({ countries }),
       json(),
       url(),
       babel({
@@ -54,11 +43,11 @@ const config: RollupOptions[] = [
     external: ['react', 'react-dom', 'react/jsx-runtime'],
   },
 
-  {
-    input: './src/types.d.ts',
-    output: [{ file: 'dist/types.d.ts', format: 'es' }],
-    plugins: [dts()],
-  },
+  // {
+  //   input: './src/types.d.ts',
+  //   output: [{ file: 'dist/types.d.ts', format: 'es' }],
+  //   plugins: [dts()],
+  // },
 ];
 
 export default config;
