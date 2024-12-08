@@ -84,7 +84,7 @@ export const findDuplicates = (
     .map(({ label }) => label);
 };
 
-export const defaultRender = (data: RenderData) => {
+export const defaultRender = (data: RenderData): JSX.Element => {
   const { options, ...rest } = data;
   return (
     <select {...rest}>

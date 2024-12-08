@@ -1,10 +1,10 @@
 ## Changelog
 
-- `4.0.0-alpha` - Dec 1, 2024 - **In development**
+- `4.0.0-alpha` - Dec 7, 2024 - **In development**
   - Breaking changes:
     - Minimum react version updated to 16.8.0 (hooks)
     - `classes` prop has been renamed `className`
-    - `onBlur` callback is no longer passed the selected value, just the event
+    - `onBlur` callback is no longer passed the selected value as first argument, just the event
 - `3.7.0` - Nov 21, 2024
   - Upgrade country-region-data to 3.1.0.
 - `3.6.1` - Aug 3, 2022

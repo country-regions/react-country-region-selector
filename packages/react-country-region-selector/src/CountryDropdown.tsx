@@ -15,7 +15,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   showDefaultOption = true,
   defaultOptionLabel = 'Select Country',
   priorityOptions = [],
-  onChange = (value: string, e: any) => null,
+  onChange = () => null,
   onBlur = () => null,
   labelType = 'full',
   valueType = 'full',
@@ -24,7 +24,7 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   disabled = false,
   customRender = defaultRender,
   ...arbitraryProps
-}) => {
+}): JSX.Element => {
   const countries: RenderDataOption[] = useMemo(() => {
     const countries = filterCountries(
       CountryRegionData as unknown as CountryRegionDataMinified[],

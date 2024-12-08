@@ -60,7 +60,10 @@
     "@types/react-dom": "18.3.0"
   },
   "files": [
-    "dist",
-    "index.d.ts"
+    "dist/rcrs.es.js",
+    "dist/rcrs.es.js.map",
+    "dist/rcrs.js",
+    "dist/rcrs.js.map",
+    "dist/types.d.ts"
   ]
 }

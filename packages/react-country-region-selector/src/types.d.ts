@@ -46,7 +46,7 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    *
    * Default value: undefined
    */
-  readonly onChange?: (value: string, event?: any) => null;
+  readonly onChange?: (value: string, event?: any) => void;
 
   /**
    * Callback that gets called when the user blurs off the country field.
@@ -155,7 +155,7 @@ export interface RegionDropdownProps extends NativeDropdownProps {
    *
    * Default value: undefined
    */
-  readonly onChange?: (value: string, event?: any) => null;
+  readonly onChange?: (value: string, event?: any) => void;
 
   /**
    * The ID of the generated select box. Not added by default.

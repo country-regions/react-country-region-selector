@@ -43,11 +43,11 @@ const config: RollupOptions[] = [
     external: ['react', 'react-dom', 'react/jsx-runtime'],
   },
 
-  // {
-  //   input: './src/types.d.ts',
-  //   output: [{ file: 'dist/types.d.ts', format: 'es' }],
-  //   plugins: [dts()],
-  // },
+  {
+    input: './src/index.ts',
+    output: [{ file: 'dist/types.d.ts', format: 'es' }],
+    plugins: [dts()],
+  },
 ];
 
 export default config;
