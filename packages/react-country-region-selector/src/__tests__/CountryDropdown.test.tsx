@@ -1,10 +1,10 @@
 // the rollup build converts the raw data from country-region-data into a smaller format, which is why this
 // imports from the dist. So run `yarn` prior to running the tests
-import { CountryDropdown } from '../../dist/rcrs.es';
+import { CountryDropdown } from '../CountryDropdown';
 import { render } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import { CountryDropdownProps } from '../types';
-import { CountryRegionData } from '..';
+import CountryRegionData from '../_data';
 
 describe('CountryDropdown', () => {
   const setupTest = (props?: Partial<CountryDropdownProps>) => {
@@ -131,12 +131,12 @@ describe('CountryDropdown', () => {
   describe('valueType', () => {
     it('confirm value is full country name by default', () => {
       const select = setupTest({ showDefaultOption: false });
-      expect(select.options[0].value).toBe(CountryRegionData[0].countryName);
+      expect(select.options[0]!.value).toBe(CountryRegionData[0]![0]);
     });
 
     it('confirm explicit valueType="full" also sets full country name', () => {
       const select = setupTest({ showDefaultOption: false, valueType: 'full' });
-      expect(select.value).toBe(CountryRegionData[0].countryName);
+      expect(select.value).toBe(CountryRegionData[0]![0]);
     });
 
     it('confirm valueType="short" outputs country short code', () => {
@@ -144,7 +144,7 @@ describe('CountryDropdown', () => {
         showDefaultOption: false,
         valueType: 'short',
       });
-      expect(select.value).toBe(CountryRegionData[0].countryShortCode);
+      expect(select.value).toBe(CountryRegionData[0]![1]);
     });
   });
 
@@ -153,7 +153,7 @@ describe('CountryDropdown', () => {
       const select = setupTest({
         showDefaultOption: false,
       });
-      expect(select.options[0].text).toBe(CountryRegionData[0].countryName);
+      expect(select.options[0]!.text).toBe(CountryRegionData[0]![0]);
     });
 
     it('confirm label type is full country name when explicitly set', () => {
@@ -161,7 +161,7 @@ describe('CountryDropdown', () => {
         showDefaultOption: false,
         labelType: 'full',
       });
-      expect(select.options[0].text).toBe(CountryRegionData[0].countryName);
+      expect(select.options[0]!.text).toBe(CountryRegionData[0]![0]);
     });
 
     it('confirm label type is the country shortcode when set', () => {
@@ -169,9 +169,7 @@ describe('CountryDropdown', () => {
         showDefaultOption: false,
         labelType: 'short',
       });
-      expect(select.options[0].text).toBe(
-        CountryRegionData[0].countryShortCode
-      );
+      expect(select.options[0]!.text).toBe(CountryRegionData[0]![1]);
     });
   });
 });

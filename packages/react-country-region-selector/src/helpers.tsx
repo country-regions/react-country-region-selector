@@ -4,7 +4,6 @@ import {
   RegionsWhiteList,
   RegionsBlackList,
   RenderDataOption,
-  CountryRegionJson,
 } from './types';
 
 /**

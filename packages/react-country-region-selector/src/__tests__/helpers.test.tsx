@@ -8,9 +8,9 @@ describe('filterRegions', () => {
     'AB~Alberta|BC~British Columbia|Saskatchewan~SK',
   ];
 
-  test('', () => {
+  it('returns full region list when no whitelist or blacklist defined', () => {
     const data = filterRegions(minifiedData, {}, {});
 
-    console.log(data);
+    expect(data).toEqual(minifiedData);
   });
 });

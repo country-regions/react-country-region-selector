@@ -4,7 +4,7 @@
     "declaration": true,
     "outDir": "dist",
     "esModuleInterop": true,
-    "resolveJsonModule": true,
+    "moduleResolution": "node",
     "types": ["@testing-library/jest-dom"]
   },
   "include": ["src", "config"],

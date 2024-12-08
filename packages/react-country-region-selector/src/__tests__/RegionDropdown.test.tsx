@@ -9,6 +9,7 @@ describe('RegionDropdown', () => {
   const setupTest = (props?: Partial<RegionDropdownProps>) => {
     render(
       <RegionDropdown
+        country="Canada"
         onChange={() => null}
         value=""
         role="combobox"
@@ -54,14 +55,14 @@ describe('RegionDropdown', () => {
 
   describe('default option', () => {
     it('confirm default label when there are no countries is "-"', () => {
-      const select = setupTest();
-      const defaultOption = select.options[0].text;
+      const select = setupTest({ country: '' });
+      const defaultOption = select.options[0]!.text;
       expect(defaultOption).toBe('-');
     });
 
     it('confirm default label when there are countries is "Select Region"', () => {
       const select = setupTest({ country: 'Canada' });
-      const defaultOption = select.options![0].text;
+      const defaultOption = select.options[0]!.text;
       expect(defaultOption).toBe('Select Region');
     });
 
@@ -71,7 +72,7 @@ describe('RegionDropdown', () => {
         defaultOptionLabel: customLabel,
         country: 'Canada',
       });
-      const defaultOption = select.options[0].text;
+      const defaultOption = select.options[0]!.text;
       expect(defaultOption).toBe(customLabel);
     });
   });
@@ -80,7 +81,7 @@ describe('RegionDropdown', () => {
     it('setting no country parameter shows the default blank option and no other options', () => {
       const select = setupTest({ country: '' });
       expect(select.options.length).toBe(1);
-      expect(select.options[0].text).toBe('-');
+      expect(select.options[0]!.text).toBe('-');
     });
 
     it('does not disable the region field by default when there is no country param', () => {
@@ -96,15 +97,15 @@ describe('RegionDropdown', () => {
     it('shows the regions for the selected country', () => {
       const select = setupTest({ country: 'Canada' });
       expect(select.options.length).toBe(14);
-      expect(select.options[1].text).toBe('Alberta');
-      expect(select.options[2].text).toBe('British Columbia');
+      expect(select.options[1]!.text).toBe('Alberta');
+      expect(select.options[2]!.text).toBe('British Columbia');
     });
 
     it('does not show any country if you pass an invalid country name', () => {
       const consoleMock = jest.spyOn(console, 'error').mockImplementation();
       const select = setupTest({ country: 'ChickenLand' });
       expect(select.options.length).toBe(1);
-      expect(select.options[0].text).toBe('Select Region');
+      expect(select.options[0]!.text).toBe('Select Region');
       expect(consoleMock).toHaveBeenCalledWith(
         expect.stringContaining('Error. Unknown country passed: ChickenLand')
       );
