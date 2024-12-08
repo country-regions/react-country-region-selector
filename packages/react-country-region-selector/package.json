@@ -13,10 +13,10 @@
   "types": "./dist/types.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "rollup --config config/rollup.config.ts --configPlugin typescript",
-    "dev": "rollup -c -w --config config/rollup.config.ts --configPlugin typescript",
-    "minify-data": "node config/minify-data.js",
-    "prepare": "minify-data"
+    "build": "rollup --config build/rollup.config.ts --configPlugin typescript",
+    "dev": "rollup -w --config build/rollup.config.ts --configPlugin typescript",
+    "minify-data": "node build/minify-data.js",
+    "prepare": "npm run minify-data"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

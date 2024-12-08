@@ -123,6 +123,14 @@ export interface CountryDropdownProps extends NativeDropdownProps {
    * Default value: undefined
    */
   readonly customRender?: (data: RenderData) => JSX.Element;
+
+  /**
+   * If you're using a custom render method, this prop can be used to pass along any additional arbitrary props
+   * you want to your render method,
+   *
+   * Default value: undefined
+   */
+  readonly customProps?: object;
 }
 
 export type RegionsWhiteList = {
@@ -278,6 +286,14 @@ export interface RegionDropdownProps extends NativeDropdownProps {
    * Default value: undefined
    */
   readonly customRender?: (data: RenderData) => JSX.Element;
+
+  /**
+   * If you're using a custom render method, this prop can be used to pass along any additional arbitrary props
+   * you want to your render method,
+   *
+   * Default value: undefined
+   */
+  readonly customProps?: object;
 }
 
 type CountryFullName = string;

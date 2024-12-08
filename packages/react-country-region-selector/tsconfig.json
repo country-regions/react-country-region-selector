@@ -7,6 +7,6 @@
     "moduleResolution": "node",
     "types": ["@testing-library/jest-dom"]
   },
-  "include": ["src", "config"],
+  "include": ["src", "build/rollup.config.ts", "build/minify-data.js"],
   "exclude": ["node_modules", "dist"]
 }

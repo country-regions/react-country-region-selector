@@ -10,6 +10,7 @@ const customRender = (props) => {
     onChange,
     reactSelectValue,
     onBlur,
+    customProps,
     ...selectProps
   } = props;
 
@@ -29,7 +30,7 @@ const customRender = (props) => {
 };
 
 const ReactSelect = () => {
-  const [country, setCountry] = useState();
+  const [country, setCountry] = useState<{ value: '' }>();
   const [region, setRegion] = useState();
 
   return (
@@ -37,30 +38,33 @@ const ReactSelect = () => {
       <div style={{ width: 200, display: 'inline-block', marginRight: 8 }}>
         <CountryDropdown
           value={country?.value || ''}
-          reactSelectValue={country}
           className="country"
           name="country-field"
-          classNamePrefix="country-"
           onChange={(val) => {
             setCountry(val ? val : undefined);
             setRegion(null);
           }}
           customRender={customRender}
+          customProps={{
+            reactSelectValue: country,
+            classNamePrefix: 'country-',
+          }}
         />
       </div>
       <div style={{ width: 200, display: 'inline-block' }}>
         <RegionDropdown
           country={country?.value || ''}
           value={region?.value || null}
-          reactSelectValue={region}
           className="region"
           name="region-field"
-          classNamePrefix="region-"
           onChange={(val) => {
-            console.log('... ', val);
             setRegion(val);
           }}
           customRender={customRender}
+          customProps={{
+            reactSelectValue: region,
+            classNamePrefix: 'region-',
+          }}
         />
       </div>
     </>
