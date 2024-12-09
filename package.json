@@ -9,6 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "gh-pages": "^6.2.0",
     "prettier": "^3.2.5",
     "turbo": "^2.3.2",
     "typescript": "^5.7.2"
