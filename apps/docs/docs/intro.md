@@ -24,7 +24,7 @@ It's pretty versatile.
 - If you need to fine-tune it, you can customize exactly which countries and regions appear.
 - [A lot of options](./props.md) are provided, for things like styling, event callbacks and so on.
 - To keep file sizes down you have the option of creating a custom build of the library containing only a list of
-  those countries you want to show up. See [command line options](#command-line) for more info.
+  those countries you want to show up. See [Advanced](./advanced/) for more info.
 - by default the script renders plain ol' HTML `<select>` elements. But if you want to use it within a framework's
   coponents, like Material UI etc., that's fine too. See the [integrations demos](./demos/integrations/).
 
