@@ -21,8 +21,8 @@ import Select from '@mui/material/Select';
 import Grid from '@mui/material/Grid2';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
-const customRender = ({ options, ...selectProps }) => (
-  <Select {...selectProps}>
+const customRender = ({ options, customProps, ...selectProps }) => (
+  <Select {...selectProps} {...customProps}>
     {options.map(({ label, value, key }) => (
       <MenuItem value={value} key={key}>
         {label}
@@ -42,11 +42,16 @@ const MaterialUISelect = () => {
           <InputLabel id="label-mui-country-field">Country</InputLabel>
           <CountryDropdown
             value={country}
-            labelId="label-mui-country-field"
             id="mui-country-field"
-            label="Country"
-            onChange={(val) => setCountry(val)}
+            onChange={(val) => {
+              setCountry(val);
+              setRegion('');
+            }}
             customRender={customRender}
+            customProps={{
+              labelId: 'label-mui-country-field',
+              label: 'Country',
+            }}
           />
         </FormControl>
       </Grid>
@@ -56,12 +61,14 @@ const MaterialUISelect = () => {
           <RegionDropdown
             country={country}
             value={region}
-            labelId="label-mui-region-field"
-            label="Region"
             id="mui-region-field"
             onChange={(val) => setRegion(val)}
             disableWhenEmpty={true}
             customRender={customRender}
+            customProps={{
+              labelId: 'label-mui-region-field',
+              label: 'Region',
+            }}
           />
         </FormControl>
       </Grid>

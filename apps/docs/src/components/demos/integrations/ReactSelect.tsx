@@ -8,7 +8,6 @@ const customRender = (props) => {
     value,
     disabled,
     onChange,
-    reactSelectValue,
     onBlur,
     customProps,
     ...selectProps
@@ -21,17 +20,20 @@ const customRender = (props) => {
       isDisabled={disabled}
       isSearchable={true}
       isClearable={true}
-      value={reactSelectValue}
-      onChange={(data: any) => {
-        onChange({ target: { value: data } }, null);
-      }}
+      value={customProps.reactSelectValue}
+      onChange={customProps.onChange}
     />
   );
 };
 
+type ReactSelectOption = {
+  label: string;
+  value: string;
+};
+
 const ReactSelect = () => {
-  const [country, setCountry] = useState<{ value: '' }>();
-  const [region, setRegion] = useState();
+  const [country, setCountry] = useState<ReactSelectOption | undefined>();
+  const [region, setRegion] = useState<ReactSelectOption | undefined>();
 
   return (
     <>
@@ -40,14 +42,14 @@ const ReactSelect = () => {
           value={country?.value || ''}
           className="country"
           name="country-field"
-          onChange={(val) => {
-            setCountry(val ? val : undefined);
-            setRegion(null);
-          }}
           customRender={customRender}
           customProps={{
             reactSelectValue: country,
             classNamePrefix: 'country-',
+            onChange: (value: ReactSelectOption) => {
+              setCountry(value ? value : undefined);
+              setRegion(null);
+            },
           }}
         />
       </div>
@@ -57,13 +59,13 @@ const ReactSelect = () => {
           value={region?.value || null}
           className="region"
           name="region-field"
-          onChange={(val) => {
-            setRegion(val);
-          }}
           customRender={customRender}
           customProps={{
             reactSelectValue: region,
             classNamePrefix: 'region-',
+            onChange: (value: ReactSelectOption) => {
+              setRegion(value ? value : undefined);
+            },
           }}
         />
       </div>

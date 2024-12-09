@@ -2,12 +2,19 @@
 title: Integrations
 ---
 
-Since `4.0.0` you can now integrate `react-country-region-selector` with any external script you want, like Material UI,
+Since `4.0.0` you can now integrate `react-country-region-selector` with any external component library, like Material UI,
 Fluent UI etc.
 
-Since each library has its own unique behaviours, JSX structure and components, we offer a generic `customRender` prop which
-will get passed all the data you need to display the dropdowns. This should be flexible enough to accommodate any library/framework
-but if not, please do raise an [issue on github](https://github.com/country-regions/react-country-region-selector/issues) and explain why
-it's not possible in your case.
+Every library has its own unique behaviours and components, so we kept the API generic to keep it as flexible as possible.
+You'll be most interested in these two props:
 
-If you do a new integration not listed here, we'd welcome PRs!
+1. `customRender`: use this prop to handle rendering whatever JSX you want
+2. `customProps`. this lets pass any additional arbitrary data you want into your `customRender` method that isn't already defined
+   on `CountryDropdown` and `RegionDropdown`.
+
+These two props should make it flexible enough to accommodate any library/framework you're using, but if not, please raise an
+[issue on github](https://github.com/country-regions/react-country-region-selector/issues) and explain why it's not possible in your case.
+
+Take a look at the following integrations to see how they can be used.
+
+_Oh - and if you do a new integration not listed here, we'd welcome PRs!_

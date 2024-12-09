@@ -3,13 +3,16 @@ sidebar_position: 1
 slug: /
 ---
 
-# Documentation
+# Docs
 
 ### About
 
 This library provides a pair of React components to display _connected_ country and region dropdowns (pick a country, it shows the relevant regions). If you're not using React, check out the [plain vanilla JS version](https://github.com/country-regions/country-region-selector) instead (warning: it's a bit dated now). The list of countries and regions is maintained separately and found in the [country-region-data](https://github.com/country-regions/country-region-data) repo.
 
 Check out the [Basic Usage](./demos/BasicUsage.mdx) demo for a plain vanilla example of what the script does.
+
+This doc is for demoing the tool, explaining the features and how to integrate it with external component library. For building the script locally,
+see [DEVELOPER.md](https://github.com/country-regions/react-country-region-selector/blob/master/DEVELOPER.md). For the changelog [see here](https://github.com/country-regions/react-country-region-selector/blob/master/CHANGELOG.md).
 
 ### Features
 
@@ -27,7 +30,7 @@ It's pretty versatile.
 
 ### Installation
 
-You know the song, but let's sing together: using your favourite package manager, install it like so:
+Install it using your favourite package manager like so:
 
 ```bash
 npm install react-country-region-selector
@@ -37,7 +40,7 @@ pnpm add react-country-region-selector
 
 ### Gotchas
 
-It's a short list, but please note the following gotchas:
+Please note the following gotchas:
 
 - _Page charset_: some country names contain UTF-8 chars, so your page will need an appropriate charset to handle them.
   If you see some invalid characters appearing in the dropdown, make sure you have UTF-8 specified in your page

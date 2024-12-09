@@ -7,15 +7,15 @@ import ReactSelect from '@site/src/components/demos/integrations/ReactSelect';
 [React-select](https://react-select.com/) is a popular standalone component for dropdowns. This shows an
 example integration.
 
-_Warning: opinions!_ I've used react-select on many projects and it's a beautiful library. Once it's integrated into
-your app it looks and works intuitively and everyone loves it. But every time I use it I'm struck by how awful the API
-of passing a complex object as the `value` to the fields. Super awkward! Even common things like accommodating
-localization becomes very complicated since the value needs to change all the time.
+_Warning: opinions!_ I've used react-select on many projects and like it a lot. Once it's integrated into
+your app it looks and works intuitively and everyone loves it. But every time I use it I'm struck by the poor
+API design of having to pass a complex object as the `value` to the fields. That makes even common things like
+accommodating localization becomes very complicated since the value needs to change all the time.
 
-This integration highlights that difficult API. We have to store in state all the info
-react-select needs - then it'll be up to you to store that info.
+This integration highlights that difficult API: we rely on the `customProps` prop to pass in various things including
+a custom `onChange` handler.
 
-The code here could be improved; typings too. But hopefully it gets you on the right path.
+But hopefully this'll give you a starting point for configurating your own `react-select` usage.
 
 <ReactSelect />
 
@@ -32,8 +32,8 @@ const customRender = (props) => {
     value,
     disabled,
     onChange,
-    reactSelectValue,
     onBlur,
+    customProps,
     ...selectProps
   } = props;
 
@@ -44,46 +44,53 @@ const customRender = (props) => {
       isDisabled={disabled}
       isSearchable={true}
       isClearable={true}
-      value={reactSelectValue}
-      onChange={(data: any) => {
-        onChange({ target: { value: data } }, null);
-      }}
+      value={customProps.reactSelectValue}
+      onChange={customProps.onChange}
     />
   );
 };
 
+type ReactSelectOption = {
+  label: string;
+  value: string;
+};
+
 const ReactSelect = () => {
-  const [country, setCountry] = useState();
-  const [region, setRegion] = useState();
+  const [country, setCountry] = useState<ReactSelectOption | undefined>();
+  const [region, setRegion] = useState<ReactSelectOption | undefined>();
 
   return (
     <>
       <div style={{ width: 200, display: 'inline-block', marginRight: 8 }}>
         <CountryDropdown
           value={country?.value || ''}
-          reactSelectValue={country}
           className="country"
           name="country-field"
-          classNamePrefix="country-"
-          onChange={(val) => {
-            setCountry(val ? val : undefined);
-            setRegion(null);
-          }}
           customRender={customRender}
+          customProps={{
+            reactSelectValue: country,
+            classNamePrefix: 'country-',
+            onChange: (value: ReactSelectOption) => {
+              setCountry(value ? value : undefined);
+              setRegion(null);
+            },
+          }}
         />
       </div>
       <div style={{ width: 200, display: 'inline-block' }}>
         <RegionDropdown
           country={country?.value || ''}
           value={region?.value || null}
-          reactSelectValue={region}
           className="region"
           name="region-field"
-          classNamePrefix="region-"
-          onChange={(val) => {
-            setRegion(val);
-          }}
           customRender={customRender}
+          customProps={{
+            reactSelectValue: region,
+            classNamePrefix: 'region-',
+            onChange: (value: ReactSelectOption) => {
+              setRegion(value ? value : undefined);
+            },
+          }}
         />
       </div>
     </>
