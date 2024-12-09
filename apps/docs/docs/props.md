@@ -4,8 +4,7 @@ sidebar_position: 2
 
 # Props
 
-These are the attributes that can be passed to the two components. Any other attributes that aren't specified here will be added directly to
-the `<select>` DOM element - or passed to your custom render method as props if you define a `customRender` method (see [integrations](./demos/integrations/).)
+These are the props that can be passed to the two components. Any other valid HTML `select` attributes that aren't specified here will be passed through and added to the select fields. If you've defined a `customRender` method (see [integrations](./demos/integrations/)), check out `customProps` as a means to pass arbitrary props to your render method.
 
 ### `<CountryDropdown />`
 

@@ -11,7 +11,7 @@ This library provides a pair of React components to display _connected_ country 
 
 Check out the [Basic Usage](./demos/BasicUsage.mdx) demo for a plain vanilla example of what the script does.
 
-This doc is for demoing the tool, explaining the features and how to integrate it with external component library. For building the script locally,
+This doc is for demoing the tool, explaining the features and how to integrate it with external component libraries. For building the script locally,
 see [DEVELOPER.md](https://github.com/country-regions/react-country-region-selector/blob/master/DEVELOPER.md). For the changelog [see here](https://github.com/country-regions/react-country-region-selector/blob/master/CHANGELOG.md).
 
 ### Features
@@ -25,12 +25,11 @@ It's pretty versatile.
 - [A lot of options](./props.md) are provided, for things like styling, event callbacks and so on.
 - To keep file sizes down you have the option of creating a custom build of the library containing only a list of
   those countries you want to show up. See [Advanced](./advanced/) for more info.
-- by default the script renders plain ol' HTML `<select>` elements. But if you want to use it within a framework's
-  coponents, like Material UI etc., that's fine too. See the [integrations demos](./demos/integrations/).
+- by default the script renders plain ol' HTML `<select>` elements. But if you want to use it with Material UI or other component frameworks, that's fine too. See the [integration demos](./demos/integrations/).
 
 ### Installation
 
-Install it using your favourite package manager like so:
+You know the ropes! Install it using your favourite package manager like so:
 
 ```bash
 npm install react-country-region-selector
