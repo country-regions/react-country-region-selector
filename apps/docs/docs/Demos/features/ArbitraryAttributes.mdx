@@ -25,23 +25,27 @@ const ArbitraryProps = () => {
       <CountryDropdown
         value={country}
         onChange={(val) => setCountry(val)}
+        // highlight-start
         style={{
           backgroundColor: 'blue',
           color: 'white',
           padding: 10,
           fontSize: 20,
         }}
+        // highlight-end
       />
       <RegionDropdown
         country={country}
         value={region}
         onChange={(val) => setRegion(val)}
+        // highlight-start
         style={{
           backgroundColor: 'green',
           color: 'white',
           padding: 10,
           fontSize: 20,
         }}
+        // highlight-end
       />
     </>
   );

@@ -25,6 +25,7 @@ const PriorityOptions = () => {
       <CountryDropdown
         value={country}
         onChange={(val) => setCountry(val)}
+        // highlight-next-line
         priorityOptions={['CA', 'US', 'GB']}
       />
       <RegionDropdown
