@@ -98,3 +98,13 @@ export const defaultRender = (data: RenderData): JSX.Element => {
     </select>
   );
 };
+
+export const sortByLabel = (arr: RenderDataOption[]) =>
+  arr.sort((a, b) => {
+    if (a.label > b.label) {
+      return 1;
+    } else if (a.label < b.label) {
+      return -1;
+    }
+    return 0;
+  });

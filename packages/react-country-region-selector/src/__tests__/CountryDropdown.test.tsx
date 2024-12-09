@@ -169,7 +169,7 @@ describe('CountryDropdown', () => {
         showDefaultOption: false,
         labelType: 'short',
       });
-      expect(select.options[0]!.text).toBe(CountryRegionData[0]![1]);
+      expect(select.options[0]!.text).toBe('AD');
     });
   });
 });

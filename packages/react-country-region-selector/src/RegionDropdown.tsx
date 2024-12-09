@@ -1,6 +1,11 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from './_data';
-import { defaultRender, filterRegions, findDuplicates } from './helpers';
+import {
+  defaultRender,
+  filterRegions,
+  findDuplicates,
+  sortByLabel,
+} from './helpers';
 import * as C from './constants';
 import type {
   CountryRegionDataMinified,
@@ -59,29 +64,32 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
       whitelist,
       blacklist
     );
+
     if (!filteredRegions || !filteredRegions.length) {
       return [];
     }
 
-    return (filteredRegions[2] as string)
-      .split(C.REGION_LIST_DELIMITER)
-      .map((regionPair: string) => {
-        let [regionName, regionShortCode = null] = regionPair.split(
-          C.SINGLE_REGION_DELIMITER
-        );
-        const label = (
-          labelType === 'short' && regionShortCode
-            ? regionShortCode
-            : regionName
-        ) as string;
-        const value = (
-          valueType === 'short' && regionShortCode
-            ? regionShortCode
-            : regionName
-        ) as string;
+    return sortByLabel(
+      (filteredRegions[2] as string)
+        .split(C.REGION_LIST_DELIMITER)
+        .map((regionPair: string) => {
+          let [regionName, regionShortCode = null] = regionPair.split(
+            C.SINGLE_REGION_DELIMITER
+          );
+          const label = (
+            labelType === 'short' && regionShortCode
+              ? regionShortCode
+              : regionName
+          ) as string;
+          const value = (
+            valueType === 'short' && regionShortCode
+              ? regionShortCode
+              : regionName
+          ) as string;
 
-        return { label, value, key: value };
-      });
+          return { label, value, key: value };
+        })
+    );
   }, [country, countryValueType, whitelist, blacklist]);
 
   const customRegions: RenderDataOption[] = useMemo(() => {
