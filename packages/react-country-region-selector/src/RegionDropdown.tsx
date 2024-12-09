@@ -70,11 +70,16 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
           C.SINGLE_REGION_DELIMITER
         );
         const label = (
-          labelType === 'full' ? regionName : regionShortCode
+          labelType === 'short' && regionShortCode
+            ? regionShortCode
+            : regionName
         ) as string;
         const value = (
-          valueType === 'full' ? regionName : regionShortCode
+          valueType === 'short' && regionShortCode
+            ? regionShortCode
+            : regionName
         ) as string;
+
         return { label, value, key: value };
       });
   }, [country, countryValueType, whitelist, blacklist]);

@@ -268,7 +268,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Cook Islands",
     "CK",
-    "Aitutaki~undefined|Atiu~undefined|Avarua~undefined|Mangaia~undefined|Manihiki~undefined|Ma'uke~undefined|Mitiaro~undefined|Nassau~undefined|Palmerston~undefined|Penrhyn~undefined|Pukapuka~undefined|Rakahanga~undefined"
+    "Aitutaki~|Atiu~|Avarua~|Mangaia~|Manihiki~|Ma'uke~|Mitiaro~|Nassau~|Palmerston~|Penrhyn~|Pukapuka~|Rakahanga~"
   ],
   [
     "Costa Rica",
@@ -363,12 +363,12 @@ const data: CountryRegionDataMinified[] = [
   [
     "Falkland Islands (Islas Malvinas)",
     "FK",
-    "Falkland Islands (Islas Malvinas)~undefined"
+    "Falkland Islands (Islas Malvinas)~"
   ],
   [
     "Faroe Islands",
     "FO",
-    "Bordoy~undefined|Eysturoy~undefined|Mykines~undefined|Sandoy~undefined|Skuvoy~undefined|Streymoy~undefined|Suduroy~undefined|Tvoroyri~undefined|Vagar~undefined"
+    "Bordoy~|Eysturoy~|Mykines~|Sandoy~|Skuvoy~|Streymoy~|Suduroy~|Tvoroyri~|Vagar~"
   ],
   [
     "Fiji",
@@ -388,17 +388,17 @@ const data: CountryRegionDataMinified[] = [
   [
     "French Guiana",
     "GF",
-    "French Guiana~undefined"
+    "French Guiana~"
   ],
   [
     "French Polynesia",
     "PF",
-    "Archipel des Marquises~undefined|Archipel des Tuamotu~undefined|Archipel des Tubuai~undefined|Iles du Vent~undefined|Iles Sous-le-Vent~undefined"
+    "Archipel des Marquises~|Archipel des Tuamotu~|Archipel des Tubuai~|Iles du Vent~|Iles Sous-le-Vent~"
   ],
   [
     "French Southern and Antarctic Lands",
     "TF",
-    "Adelie Land~undefined|Ile Crozet~undefined|Iles Kerguelen~undefined|Iles Saint-Paul et Amsterdam~undefined"
+    "Adelie Land~|Ile Crozet~|Iles Kerguelen~|Iles Saint-Paul et Amsterdam~"
   ],
   [
     "Gabon",
@@ -428,7 +428,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Gibraltar",
     "GI",
-    "Gibraltar~undefined"
+    "Gibraltar~"
   ],
   [
     "Greece",
@@ -448,12 +448,12 @@ const data: CountryRegionDataMinified[] = [
   [
     "Guadeloupe",
     "GP",
-    "Guadeloupe~undefined"
+    "Guadeloupe~"
   ],
   [
     "Guam",
     "GU",
-    "Guam~undefined"
+    "Guam~"
   ],
   [
     "Guatemala",
@@ -463,7 +463,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Guernsey",
     "GG",
-    "Castel~undefined|Forest~undefined|St. Andrew~undefined|St. Martin~undefined|St. Peter Port~undefined|St. Pierre du Bois~undefined|St. Sampson~undefined|St. Saviour~undefined|Torteval~undefined|Vale~undefined"
+    "Castel~|Forest~|St. Andrew~|St. Martin~|St. Peter Port~|St. Pierre du Bois~|St. Sampson~|St. Saviour~|Torteval~|Vale~"
   ],
   [
     "Guinea",
@@ -488,7 +488,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Heard Island and McDonald Islands",
     "HM",
-    "Heard Island and McDonald Islands~undefined"
+    "Heard Island and McDonald Islands~"
   ],
   [
     "Holy See (Vatican City)",
@@ -543,7 +543,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Isle of Man",
     "IM",
-    "Isle of Man~undefined"
+    "Isle of Man~"
   ],
   [
     "Israel",
@@ -568,7 +568,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Jersey",
     "JE",
-    "Jersey~undefined"
+    "Jersey~"
   ],
   [
     "Jordan",
@@ -578,7 +578,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Kazakhstan",
     "KZ",
-    "Almaty~ALA|Aqmola~AKM|Aqtobe~AKT|Astana~AST|Atyrau~ATY|Batys Qazaqstan~ZAP|Bayqongyr~undefined|Mangghystau~MAN|Ongtustik Qazaqstan~YUZ|Pavlodar~PAV|Qaraghandy~KAR|Qostanay~KUS|Qyzylorda~KZY|Shyghys Qazaqstan~VOS|Soltustik Qazaqstan~SEV|Zhambyl~ZHA"
+    "Almaty~ALA|Aqmola~AKM|Aqtobe~AKT|Astana~AST|Atyrau~ATY|Batys Qazaqstan~ZAP|Bayqongyr~|Mangghystau~MAN|Ongtustik Qazaqstan~YUZ|Pavlodar~PAV|Qaraghandy~KAR|Qostanay~KUS|Qyzylorda~KZY|Shyghys Qazaqstan~VOS|Soltustik Qazaqstan~SEV|Zhambyl~ZHA"
   ],
   [
     "Kenya",
@@ -588,7 +588,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Kiribati",
     "KI",
-    "Abaiang~undefined|Abemama~undefined|Aranuka~undefined|Arorae~undefined|Banaba~undefined|Beru~undefined|Butaritari~undefined|Central Gilberts~undefined|Gilbert Islands~G|Kanton~undefined|Kiritimati~undefined|Kuria~undefined|Line Islands~L|Maiana~undefined|Makin~undefined|Marakei~undefined|Nikunau~undefined|Nonouti~undefined|Northern Gilberts~undefined|Onotoa~undefined|Phoenix Islands~P|Southern Gilberts~undefined|Tabiteuea~undefined|Tabuaeran~undefined|Tamana~undefined|Tarawa~undefined|Teraina~undefined"
+    "Abaiang~|Abemama~|Aranuka~|Arorae~|Banaba~|Beru~|Butaritari~|Central Gilberts~|Gilbert Islands~G|Kanton~|Kiritimati~|Kuria~|Line Islands~L|Maiana~|Makin~|Marakei~|Nikunau~|Nonouti~|Northern Gilberts~|Onotoa~|Phoenix Islands~P|Southern Gilberts~|Tabiteuea~|Tabuaeran~|Tamana~|Tarawa~|Teraina~"
   ],
   [
     "Korea, Democratic People's Republic of",
@@ -663,7 +663,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Macao",
     "MO",
-    "Macao~undefined"
+    "Macao~"
   ],
   [
     "Macedonia, Republic of",
@@ -708,7 +708,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Martinique",
     "MQ",
-    "Martinique~undefined"
+    "Martinique~"
   ],
   [
     "Mauritania",
@@ -758,7 +758,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Montserrat",
     "MS",
-    "Saint Anthony~undefined|Saint Georges~undefined|Saint Peter's~undefined"
+    "Saint Anthony~|Saint Georges~|Saint Peter's~"
   ],
   [
     "Morocco",
@@ -798,7 +798,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "New Caledonia",
     "NC",
-    "Iles Loyaute~undefined|Nord~undefined|Sud~undefined"
+    "Iles Loyaute~|Nord~|Sud~"
   ],
   [
     "New Zealand",
@@ -823,17 +823,17 @@ const data: CountryRegionDataMinified[] = [
   [
     "Niue",
     "NU",
-    "Niue~undefined"
+    "Niue~"
   ],
   [
     "Norfolk Island",
     "NF",
-    "Norfolk Island~undefined"
+    "Norfolk Island~"
   ],
   [
     "Northern Mariana Islands",
     "MP",
-    "Northern Islands~undefined|Rota~undefined|Saipan~undefined|Tinian~undefined"
+    "Northern Islands~|Rota~|Saipan~|Tinian~"
   ],
   [
     "Norway",
@@ -888,7 +888,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Pitcairn",
     "PN",
-    "Pitcairn Islands~undefined"
+    "Pitcairn Islands~"
   ],
   [
     "Poland",
@@ -903,7 +903,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Puerto Rico",
     "PR",
-    "Adjuntas~undefined|Aguada~undefined|Aguadilla~undefined|Aguas Buenas~undefined|Aibonito~undefined|Anasco~undefined|Arecibo~undefined|Arroyo~undefined|Barceloneta~undefined|Barranquitas~undefined|Bayamon~undefined|Cabo Rojo~undefined|Caguas~undefined|Camuy~undefined|Canovanas~undefined|Carolina~undefined|Cat~undefined|Ceiba~undefined|Ciales~undefined|Cidra~undefined|Coamo~undefined|Comerio~undefined|Corozal~undefined|Culebra~undefined|Dorado~undefined|Fajardo~undefined|Florida~undefined|Guanica~undefined|Guayama~undefined|Guayanilla~undefined|Guaynabo~undefined|Gurabo~undefined|Hatillo~undefined|Hormigueros~undefined|Humacao~undefined|Isabe~undefined|Juana Diaz~undefined|Juncos~undefined|Lajas~undefined|Lares~undefined|Las Marias~undefined|Las oiza~undefined|Luquillo~undefined|Manati~undefined|Maricao~undefined|Maunabo~undefined|Mayaguez~undefined|Moca~undefined|Morovis~undefined|Naguabo~undefined|Naranjito~undefined|Orocovis~undefined|Patillas~undefined|Penuelas~undefined|Ponce~undefined|Quebradillas~undefined|Rincon~undefined|Rio Grande~undefined|Sabana linas~undefined|San German~undefined|San Juan~undefined|San Lorenzo~undefined|San Sebastian~undefined|Santa Isabel~undefined|Toa Alta~undefined|Toa Baja~undefined|Trujillo Alto~undefined|Utuado~undefined|Vega Alta~undefined|Vega ues~undefined|Villalba~undefined|Yabucoa~undefined|Yauco~undefined"
+    "Adjuntas~|Aguada~|Aguadilla~|Aguas Buenas~|Aibonito~|Anasco~|Arecibo~|Arroyo~|Barceloneta~|Barranquitas~|Bayamon~|Cabo Rojo~|Caguas~|Camuy~|Canovanas~|Carolina~|Cat~|Ceiba~|Ciales~|Cidra~|Coamo~|Comerio~|Corozal~|Culebra~|Dorado~|Fajardo~|Florida~|Guanica~|Guayama~|Guayanilla~|Guaynabo~|Gurabo~|Hatillo~|Hormigueros~|Humacao~|Isabe~|Juana Diaz~|Juncos~|Lajas~|Lares~|Las Marias~|Las oiza~|Luquillo~|Manati~|Maricao~|Maunabo~|Mayaguez~|Moca~|Morovis~|Naguabo~|Naranjito~|Orocovis~|Patillas~|Penuelas~|Ponce~|Quebradillas~|Rincon~|Rio Grande~|Sabana linas~|San German~|San Juan~|San Lorenzo~|San Sebastian~|Santa Isabel~|Toa Alta~|Toa Baja~|Trujillo Alto~|Utuado~|Vega Alta~|Vega ues~|Villalba~|Yabucoa~|Yauco~"
   ],
   [
     "Qatar",
@@ -913,7 +913,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Réunion",
     "RE",
-    "Réunion~undefined"
+    "Réunion~"
   ],
   [
     "Romania",
@@ -953,12 +953,12 @@ const data: CountryRegionDataMinified[] = [
   [
     "Saint Martin",
     "MF",
-    "Saint Martin~undefined"
+    "Saint Martin~"
   ],
   [
     "Saint Pierre and Miquelon",
     "PM",
-    "Miquelon~undefined|Saint Pierre~undefined"
+    "Miquelon~|Saint Pierre~"
   ],
   [
     "Saint Vincent and the Grenadines",
@@ -1013,7 +1013,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Sint Maarten (Dutch part)",
     "SX",
-    "Sint Maarten~undefined"
+    "Sint Maarten~"
   ],
   [
     "Slovakia",
@@ -1043,7 +1043,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "South Georgia and South Sandwich Islands",
     "GS",
-    "Bird Island~undefined|Bristol Island~undefined|Clerke Rocks~undefined|Montagu Island~undefined|Saunders Island~undefined|South Georgia~undefined|Southern Thule~undefined|Traversay Islands~undefined"
+    "Bird Island~|Bristol Island~|Clerke Rocks~|Montagu Island~|Saunders Island~|South Georgia~|Southern Thule~|Traversay Islands~"
   ],
   [
     "South Sudan",
@@ -1123,7 +1123,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Tokelau",
     "TK",
-    "Atafu~undefined|Fakaofo~undefined|Nukunonu~undefined"
+    "Atafu~|Fakaofo~|Nukunonu~"
   ],
   [
     "Tonga",
@@ -1153,7 +1153,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Turks and Caicos Islands",
     "TC",
-    "Turks and Caicos Islands~undefined"
+    "Turks and Caicos Islands~"
   ],
   [
     "Tuvalu",

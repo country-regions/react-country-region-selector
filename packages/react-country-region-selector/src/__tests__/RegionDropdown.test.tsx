@@ -233,4 +233,20 @@ describe('RegionDropdown', () => {
 
     expect(onChange).toHaveBeenCalledWith('Manitoba', expect.any(Object));
   });
+
+  test('regions without short codes have their full label and value', () => {
+    const onChange = jest.fn();
+    const select = setupTest({
+      country: 'Puerto Rico',
+      labelType: 'short',
+      valueType: 'short',
+    });
+
+    expect(
+      (select.querySelectorAll('option')[1] as HTMLOptionElement).text
+    ).toBe('Adjuntas');
+    expect(
+      (select.querySelectorAll('option')[1] as HTMLOptionElement).value
+    ).toBe('Adjuntas');
+  });
 });
