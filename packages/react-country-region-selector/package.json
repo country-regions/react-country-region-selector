@@ -63,6 +63,7 @@
     "dist/rcrs.es.js.map",
     "dist/rcrs.js",
     "dist/rcrs.js.map",
-    "dist/types.d.ts"
+    "dist/types.d.ts",
+    "README.md"
   ]
 }

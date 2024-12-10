@@ -38,9 +38,6 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
         },
         blog: false,
-        theme: {
-          customCss: './src/css/custom.css',
-        },
       } satisfies Preset.Options,
     ],
   ],
@@ -59,28 +56,6 @@ const config: Config = {
     footer: {
       style: 'dark',
     },
-    /*
-    theme$j as dracula,
-    theme$i as duotoneDark,
-    theme$h as duotoneLight,
-    theme$g as github,
-    theme$1 as gruvboxMaterialDark,
-    theme as gruvboxMaterialLight,
-    theme$5 as jettwaveDark,
-    theme$4 as jettwaveLight,
-    theme$f as nightOwl,
-    theme$e as nightOwlLight,
-    theme$d as oceanicNext,
-    theme$c as okaidia,
-    theme$3 as oneDark,
-    theme$2 as oneLight,
-    theme$b as palenight,
-    theme$a as shadesOfPurple,
-    theme$9 as synthwave84,
-    theme$8 as ultramin,
-    theme$7 as vsDark,
-    theme$6 as vsLight,
-*/
     prism: {
       theme: prismThemes.oceanicNext,
       darkTheme: prismThemes.oceanicNext,

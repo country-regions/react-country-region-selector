@@ -1,5 +1,10 @@
 ## Changelog
 
+- `4.0.1` - Dec 8, 2024
+
+  - Fix to sort dropdowns alphabetically, not just based on order from data set.
+  - Fix to properly handle missing region short codes.
+
 - `4.0.0` - Dec 8, 2024
 
   - Breaking changes:
