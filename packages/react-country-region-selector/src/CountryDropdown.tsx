@@ -1,11 +1,14 @@
 import { FC, useMemo } from 'react';
 import CountryRegionData from './_data';
-import { filterCountries, defaultRender, sortByLabel } from './helpers';
+import { filterAndSortCountries, defaultRender } from './helpers';
 import type {
   CountryDropdownProps,
   CountryRegionDataMinified,
   RenderDataOption,
 } from './types';
+
+const defaultWhitelist: string[] = [];
+const defaultBlacklist: string[] = [];
 
 export const CountryDropdown: FC<CountryDropdownProps> = ({
   value = '',
@@ -19,27 +22,25 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
   onBlur = () => null,
   labelType = 'full',
   valueType = 'full',
-  whitelist = [],
-  blacklist = [],
+  whitelist = defaultWhitelist,
+  blacklist = defaultBlacklist,
   disabled = false,
   customRender = defaultRender,
   ...arbitraryProps
 }): JSX.Element => {
   const countries: RenderDataOption[] = useMemo(() => {
-    const countries = filterCountries(
+    const countries = filterAndSortCountries(
       CountryRegionData as unknown as CountryRegionDataMinified[],
       priorityOptions,
       whitelist,
-      blacklist
+      blacklist,
+      labelType
     );
-
-    const data = countries.map(([countryName, countrySlug]) => ({
+    return countries.map(([countryName, countrySlug]) => ({
       value: valueType === 'short' ? countrySlug : countryName,
       key: countrySlug,
       label: labelType === 'short' ? countrySlug : countryName,
     }));
-
-    return sortByLabel(data);
   }, [priorityOptions, whitelist, blacklist, valueType, labelType]);
 
   const defaultOption = useMemo(() => {

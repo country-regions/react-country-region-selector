@@ -1,0 +1,18 @@
+---
+sidebar_position: 1
+title: Performance
+---
+
+As of `4.0.2` I fixed a bug where countries with utf-8 characters weren't being sorted properly. The `Åland Islands` would
+end up getting listed at the very end after Zimbabwe, and not with the A's. Oops!
+
+To resolve that, this script now uses `localeCompare` for sorting. This works great, but it's quite a bit slower than the
+previous sorting algorithm.
+
+### Recommendation
+
+If you're using the `whitelist`, `blacklist`, or `priorityOptions` props, don't pass in a fresh object as a prop each time. That'll
+cause an unnecessary and expensive re-sort every time. Instead, memoize the prop instead.
+
+I've documented this issue on those demo pages and added example code so you can see how memoization be be done. See the
+[Priority Options](../demos/features/priorityOptions) as an illustration.

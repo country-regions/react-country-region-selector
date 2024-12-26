@@ -9,17 +9,20 @@ The `whitelist` prop on the CountryDropdown component limits the listed countrie
 values are found in the `countryShortCode` value in the [source data package](https://github.com/country-regions/country-region-data/blob/master/data.json).
 Note the order will always be alphabetical.
 
+Note that we memoize the `whitelist` prop to prevent unnecessary re-renders. See the notes on [performance](../../advanced/performance).
+
 <CountryWhitelist />
 
 ---
 
 ```tsx
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
 const CountryWhitelist = () => {
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
+  const whitelist = useMemo(() => ['GB', 'US', 'CA'], []);
 
   return (
     <>
@@ -27,7 +30,7 @@ const CountryWhitelist = () => {
         value={country}
         onChange={(val) => setCountry(val)}
         // highlight-next-line
-        whitelist={['GB', 'US', 'CA']}
+        whitelist={whitelist}
       />
       <RegionDropdown
         country={country}

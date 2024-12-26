@@ -9,35 +9,41 @@ The `whitelist` prop on the `RegionDropdown` component limits the listed regions
 values are found in the `countryShortCode` value in the [source data package](https://github.com/country-regions/country-region-data/blob/master/data.json).
 Note the order will always be alphabetical.
 
+This demo also adds a whitelist to the country list, just to make it clearer how the region whitelist is being applied. But it's not necessary. Also
+note that we memoize the `whitelist` props to prevent unnecessary re-renders. See the notes on [performance](../../advanced/performance).
+
 <RegionWhitelist />
 
 ---
 
 ```tsx
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
 const RegionWhitelist = () => {
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
+  const countryWhitelist = useMemo(() => ['CA', 'US'], []);
+  const regionWhitelist = useMemo(
+    () => ({
+      CA: ['AB', 'BC'],
+      US: ['WA', 'TX'],
+    }),
+    []
+  );
 
   return (
     <>
       <CountryDropdown
         value={country}
         onChange={(val) => setCountry(val)}
-        whitelist={['CA', 'US']}
+        whitelist={countryWhitelist}
       />
       <RegionDropdown
         country={country}
         value={region}
         onChange={(val) => setRegion(val)}
-        // highlight-start
-        whitelist={{
-          CA: ['AB', 'BC'],
-          US: ['WA', 'TX'],
-        }}
-        // highlight-end
+        whitelist={regionWhitelist}
       />
     </>
   );

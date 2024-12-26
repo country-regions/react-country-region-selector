@@ -4,7 +4,7 @@ import {
   defaultRender,
   filterRegions,
   findDuplicates,
-  sortByLabel,
+  sortObjByLabel,
 } from './helpers';
 import * as C from './constants';
 import type {
@@ -12,6 +12,9 @@ import type {
   RegionDropdownProps,
   RenderDataOption,
 } from './types';
+
+const defaultWhitelist = {};
+const defaultBlacklist = {};
 
 export const RegionDropdown: FC<RegionDropdownProps> = ({
   onChange,
@@ -30,8 +33,8 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
   countryValueType = 'full',
   disableWhenEmpty = false,
   customOptions = [],
-  whitelist = {},
-  blacklist = {},
+  whitelist = defaultWhitelist,
+  blacklist = defaultBlacklist,
   customRender = defaultRender,
   ...arbitraryProps
 }) => {
@@ -69,7 +72,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
       return [];
     }
 
-    return sortByLabel(
+    return sortObjByLabel(
       (filteredRegions[2] as string)
         .split(C.REGION_LIST_DELIMITER)
         .map((regionPair: string) => {

@@ -1,0 +1,28 @@
+---
+sidebar_position: 2
+title: Reducing Bundle Sizes
+---
+
+This package clocks at around `72KB`, minified. This relatively large size is because of the _data set_. Cramming in all the country and region names from
+[country-region-data](https://github.com/country-regions/country-region-data) takes up space. We've converted the raw data in the `react-country-region-selector`
+bundle to reduce the size as much as possible.
+
+If bundle sizes are a concern, I'd first suggest **lazy-loading the component** so it only downloads the code when needed instead of bloating your main
+bundle. See whatever bundler doc you use for further information on that. This is probably the simplest approach and will require the least work down the road.
+
+Alternatively, if you don't need all the data and want to show a subset of all countries (like on this
+[Country Whitelist demo](../demos/features/CountryWhitelist)), you can do a manual build of this script and create a smaller.
+
+Here's how it works. First, get the repo up and running locally from the notes in the [Developer Doc](https://github.com/country-regions/react-country-region-selector/blob/master/DEVELOPER.md).
+Then locally, do the following:
+
+1. On the command line, navigate to `packages/react-country-region-selector`.
+2. Run the following command, passing in the list of countries you want to include:
+   `npm run minify-data --config-countries=CA,US,GB`
+   - To find the list of country shortcodes, see the raw data in [country-region-data](https://github.com/country-regions/country-region-data/blob/master/data.json) (`countryShortCode`).
+3. Run `npm run build`
+
+This will have generated a fresh `/dist` folder in that package. You can then copy + paste those contents into your own repo for usage.
+
+Ideal? No. You'd need to do this manual process every time the package is updated, or find a way to automate it. But the command above that limits the data
+to 3 countries reduces the total bundle size to `8KB`. Quite the savings!

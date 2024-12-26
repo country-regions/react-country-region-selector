@@ -1,5 +1,12 @@
 ## Changelog
 
+- `4.0.2` - Dec 26, 2024
+
+  - Fix to handling sorting country names with UTF-8 chars properly.
+  - Fix for priority options no longer being listed first.
+  - Fix for region blacklist not working properly.
+  - New doc page added for Performance, and various doc pages updated.
+
 - `4.0.1` - Dec 8, 2024
 
   - Fix to sort dropdowns alphabetically, not just based on order from data set.

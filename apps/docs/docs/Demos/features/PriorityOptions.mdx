@@ -6,19 +6,21 @@ sidebar_position: 14
 import PriorityOptions from '@site/src/components/demos/features/PriorityOptions';
 
 The `priorityOptions` property on `CountryDropdown` lets you list options at the top of the country dropdown.
-This demo places Canada, US + the UK at the top of the list.
+This demo places Canada, US + the UK at the top of the list. Note that we memoize the `priorityOptions` prop to
+prevent unnecessary re-renders. See the notes on [performance](../../advanced/performance).
 
 <PriorityOptions />
 
 ---
 
 ```tsx
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
 const PriorityOptions = () => {
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
+  const priorityOptions = useMemo(() => ['CA', 'US', 'GB'], []);
 
   return (
     <>
@@ -26,7 +28,7 @@ const PriorityOptions = () => {
         value={country}
         onChange={(val) => setCountry(val)}
         // highlight-next-line
-        priorityOptions={['CA', 'US', 'GB']}
+        priorityOptions={priorityOptions}
       />
       <RegionDropdown
         country={country}

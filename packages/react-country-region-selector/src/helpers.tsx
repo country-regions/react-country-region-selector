@@ -4,20 +4,23 @@ import {
   RegionsWhiteList,
   RegionsBlackList,
   RenderDataOption,
+  ValueType,
 } from './types';
+import { REGION_LIST_DELIMITER, SINGLE_REGION_DELIMITER } from './constants';
 
 /**
  * Helper to reduce country list depending on whether the user specified a white/blacklist, and lists priority
  * countries first.
  */
-export const filterCountries = (
+export const filterAndSortCountries = (
   countries: CountryRegionDataMinified[],
   priorityCountries: string[],
   whitelist: string[],
-  blacklist: string[]
+  blacklist: string[],
+  labelType: ValueType
 ) => {
   let countriesListedFirst: CountryRegionDataMinified[] = [];
-  let filteredCountries = countries;
+  let filteredCountries = [...countries];
 
   if (whitelist.length > 0) {
     filteredCountries = countries.filter(
@@ -29,8 +32,10 @@ export const filterCountries = (
     );
   }
 
+  // sort all the countries by whatever is being used as the visible label. The priority countries get prepended next
+  filteredCountries = sortMinifiedDataByLabel(filteredCountries, labelType);
+
   if (priorityCountries.length > 0) {
-    // ensure the countries are added in the order in which they are specified by the user
     priorityCountries.forEach((slug) => {
       const result = filteredCountries.find(
         ([, countrySlug]) => countrySlug === slug
@@ -60,19 +65,25 @@ export const filterRegions = (
   const [country, countryCode, regionsMinified] = selectedCountryData;
   const whitelist = whitelistData[countryCode] || [];
   const blacklist = blacklistData[countryCode] || [];
-  let filteredRegions = regionsMinified.split('|');
+  let filteredRegions = regionsMinified.split(REGION_LIST_DELIMITER);
 
   if (whitelist.length > 0 && filteredRegions.length > 0) {
-    filteredRegions = filteredRegions.filter((region) =>
-      whitelist.some((row) => region.indexOf(row) > -1)
+    filteredRegions = filteredRegions.filter((regionLine) =>
+      whitelist.some(
+        (wlRegionCode) =>
+          regionLine.indexOf(`${SINGLE_REGION_DELIMITER}${wlRegionCode}`) > -1
+      )
     );
   } else if (blacklist.length > 0 && filteredRegions.length > 0) {
-    filteredRegions = filteredRegions.filter((region) =>
-      blacklist.some((row) => region.indexOf(row) > -1)
+    filteredRegions = filteredRegions.filter((regionLine) =>
+      blacklist.every(
+        (blRegionCode) =>
+          !regionLine.includes(`${SINGLE_REGION_DELIMITER}${blRegionCode}`)
+      )
     );
   }
 
-  return [country, countryCode, filteredRegions.join('|')];
+  return [country, countryCode, filteredRegions.join(REGION_LIST_DELIMITER)];
 };
 
 export const findDuplicates = (
@@ -99,12 +110,15 @@ export const defaultRender = (data: RenderData): JSX.Element => {
   );
 };
 
-export const sortByLabel = (arr: RenderDataOption[]) =>
-  arr.sort((a, b) => {
-    if (a.label > b.label) {
-      return 1;
-    } else if (a.label < b.label) {
-      return -1;
-    }
-    return 0;
-  });
+export const sortMinifiedDataByLabel = (
+  arr: CountryRegionDataMinified[],
+  labelType: ValueType
+) => {
+  const sortIndex = labelType === 'full' ? 0 : 1;
+
+  // we use `localeCompare` to handle UTF-8 chars
+  return arr.sort((a, b) => a[sortIndex].localeCompare(b[sortIndex]));
+};
+
+export const sortObjByLabel = (arr: RenderDataOption[]) =>
+  arr.sort((a, b) => a.label.localeCompare(b.label));
