@@ -12,6 +12,10 @@ The script outputs raw `select` and `option` HTML elements, so any styling is up
 [integrations](./integrations) section if you want to use the script with Material UI, Fluent UI or other framework
 components instead of basic HTML.
 
+Note the use of the extra `onChangeCountry` method which resets the region value when the country value is removed by
+the user. This may or may not be needed depending on your use-case, but it's never a bad idea to ensure your state is
+correct. The remaining demos won't include that callback and simply call `setCountry` instead.
+
 <BasicUsage />
 
 ---
@@ -24,9 +28,16 @@ const BasicUsage = () => {
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
 
+  const onChangeCountry = (val) => {
+    setCountry(val);
+    if (!val) {
+      setRegion('');
+    }
+  };
+
   return (
     <>
-      <CountryDropdown value={country} onChange={(val) => setCountry(val)} />
+      <CountryDropdown value={country} onChange={onChangeCountry} />
       <RegionDropdown
         country={country}
         value={region}

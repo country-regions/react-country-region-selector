@@ -5,9 +5,16 @@ const BasicUsage = () => {
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
 
+  const onChangeCountry = (val) => {
+    setCountry(val);
+    if (!val) {
+      setRegion('');
+    }
+  };
+
   return (
     <>
-      <CountryDropdown value={country} onChange={(val) => setCountry(val)} />
+      <CountryDropdown value={country} onChange={onChangeCountry} />
       <RegionDropdown
         country={country}
         value={region}
