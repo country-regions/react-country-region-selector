@@ -17,7 +17,7 @@ const minifyCountryData = (countries) => {
     countryData.countryName,
     countryData.countryShortCode,
     countryData.regions
-      .map((regionData) => `${regionData.name}~${regionData.shortCode}`)
+      .map((regionData) => `${regionData.name}~${regionData.shortCode || ''}`)
       .join('|'),
   ]);
 };
