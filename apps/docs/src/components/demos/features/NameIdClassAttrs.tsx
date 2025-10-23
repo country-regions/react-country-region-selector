@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import React, { useState } from "react";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const CustomAttributes = () => {
-  const [country, setCountry] = useState('Canada');
-  const [region, setRegion] = useState('British Columbia');
+  const [country, setCountry] = useState("Canada");
+  const [region, setRegion] = useState("British Columbia");
 
   return (
     <>

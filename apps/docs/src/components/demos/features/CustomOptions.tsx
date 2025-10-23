@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import React, { useState } from "react";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const CustomOptions = () => {
-  const [country, setCountry] = useState('');
-  const [region, setRegion] = useState('');
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
 
   return (
     <>
@@ -13,9 +13,9 @@ const CustomOptions = () => {
         value={region}
         onChange={(val) => setRegion(val)}
         customOptions={[
-          'Custom option 1',
-          'Custom option 2',
-          'Custom option 3',
+          "Custom option 1",
+          "Custom option 2",
+          "Custom option 3",
         ]}
       />
     </>

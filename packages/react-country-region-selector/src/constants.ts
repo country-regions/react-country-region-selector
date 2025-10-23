@@ -1,2 +1,2 @@
-export const REGION_LIST_DELIMITER = '|';
-export const SINGLE_REGION_DELIMITER = '~';
+export const REGION_LIST_DELIMITER = "|";
+export const SINGLE_REGION_DELIMITER = "~";

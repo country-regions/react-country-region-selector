@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import React, { useState } from "react";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const BasicUsage = () => {
-  const [country, setCountry] = useState('');
-  const [region, setRegion] = useState('');
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
 
   const onChangeCountry = (val) => {
     setCountry(val);
     if (!val) {
-      setRegion('');
+      setRegion("");
     }
   };
 

@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from 'react';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import React, { useMemo, useState } from "react";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const PriorityOptions = () => {
-  const [country, setCountry] = useState('');
-  const [region, setRegion] = useState('');
-  const priorityOptions = useMemo(() => ['CA', 'US', 'GB'], []);
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const priorityOptions = useMemo(() => ["CA", "US", "GB"], []);
 
   return (
     <>

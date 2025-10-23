@@ -1,27 +1,27 @@
-import { FC, useMemo } from 'react';
-import CountryRegionData from './_data';
-import { filterAndSortCountries, defaultRender } from './helpers';
+import { FC, useMemo } from "react";
+import CountryRegionData from "./_data";
+import { filterAndSortCountries, defaultRender } from "./helpers";
 import type {
   CountryDropdownProps,
   CountryRegionDataMinified,
   RenderDataOption,
-} from './types';
+} from "./types";
 
 const defaultWhitelist: string[] = [];
 const defaultBlacklist: string[] = [];
 
 export const CountryDropdown: FC<CountryDropdownProps> = ({
-  value = '',
-  name = 'rcrs-country',
-  id = '',
-  className = '',
+  value = "",
+  name = "rcrs-country",
+  id = "",
+  className = "",
   showDefaultOption = true,
-  defaultOptionLabel = 'Select Country',
+  defaultOptionLabel = "Select Country",
   priorityOptions = [],
   onChange = () => null,
   onBlur = () => null,
-  labelType = 'full',
-  valueType = 'full',
+  labelType = "full",
+  valueType = "full",
   whitelist = defaultWhitelist,
   blacklist = defaultBlacklist,
   disabled = false,
@@ -34,20 +34,20 @@ export const CountryDropdown: FC<CountryDropdownProps> = ({
       priorityOptions,
       whitelist,
       blacklist,
-      labelType
+      labelType,
     );
     return countries.map(([countryName, countrySlug]) => ({
-      value: valueType === 'short' ? countrySlug : countryName,
+      value: valueType === "short" ? countrySlug : countryName,
       key: countrySlug,
-      label: labelType === 'short' ? countrySlug : countryName,
+      label: labelType === "short" ? countrySlug : countryName,
     }));
   }, [priorityOptions, whitelist, blacklist, valueType, labelType]);
 
   const defaultOption = useMemo(() => {
     if (showDefaultOption) {
       return {
-        value: '',
-        key: 'default',
+        value: "",
+        key: "default",
         label: defaultOptionLabel,
       };
     }

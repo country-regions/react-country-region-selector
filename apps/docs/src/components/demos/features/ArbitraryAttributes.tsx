@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import React, { useState } from "react";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const ArbitraryProps = () => {
-  const [country, setCountry] = useState('');
-  const [region, setRegion] = useState('');
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
 
   return (
     <>
@@ -11,8 +11,8 @@ const ArbitraryProps = () => {
         value={country}
         onChange={(val) => setCountry(val)}
         style={{
-          backgroundColor: 'blue',
-          color: 'white',
+          backgroundColor: "blue",
+          color: "white",
           padding: 10,
           fontSize: 20,
         }}
@@ -22,8 +22,8 @@ const ArbitraryProps = () => {
         value={region}
         onChange={(val) => setRegion(val)}
         style={{
-          backgroundColor: 'green',
-          color: 'white',
+          backgroundColor: "green",
+          color: "white",
           padding: 10,
           fontSize: 20,
         }}

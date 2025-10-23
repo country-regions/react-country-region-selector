@@ -1,17 +1,17 @@
-import { FC, useMemo } from 'react';
-import CountryRegionData from './_data';
+import { FC, useMemo } from "react";
+import CountryRegionData from "./_data";
 import {
   defaultRender,
   filterRegions,
   findDuplicates,
   sortObjByLabel,
-} from './helpers';
-import * as C from './constants';
+} from "./helpers";
+import * as C from "./constants";
 import type {
   CountryRegionDataMinified,
   RegionDropdownProps,
   RenderDataOption,
-} from './types';
+} from "./types";
 
 const defaultWhitelist = {};
 const defaultBlacklist = {};
@@ -19,18 +19,18 @@ const defaultBlacklist = {};
 export const RegionDropdown: FC<RegionDropdownProps> = ({
   onChange,
   value,
-  country = '',
+  country = "",
   onBlur = () => null,
-  id = '',
-  name = 'rcrs-region',
-  className = '',
+  id = "",
+  name = "rcrs-region",
+  className = "",
   disabled = false,
-  blankOptionLabel = '-',
+  blankOptionLabel = "-",
   showDefaultOption = true,
-  defaultOptionLabel = 'Select Region',
-  labelType = 'full',
-  valueType = 'full',
-  countryValueType = 'full',
+  defaultOptionLabel = "Select Region",
+  labelType = "full",
+  valueType = "full",
+  countryValueType = "full",
   disableWhenEmpty = false,
   customOptions = [],
   whitelist = defaultWhitelist,
@@ -43,7 +43,7 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
       return [];
     }
 
-    const searchIndex = countryValueType === 'full' ? 0 : 1;
+    const searchIndex = countryValueType === "full" ? 0 : 1;
 
     let selectedCountryData: any = [];
     (CountryRegionData as unknown as CountryRegionDataMinified).forEach((i) => {
@@ -56,16 +56,16 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     // in a valid country
     if (!selectedCountryData || selectedCountryData.length === 0) {
       console.error(
-        'Error. Unknown country passed: ' +
+        "Error. Unknown country passed: " +
           country +
-          '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionDropdown'
+          '. If you\'re passing a country shortcode, be sure to include countryValueType="short" on the RegionDropdown',
       );
       return [];
     }
     const filteredRegions = filterRegions(
       selectedCountryData,
       whitelist,
-      blacklist
+      blacklist,
     );
 
     if (!filteredRegions || !filteredRegions.length) {
@@ -77,21 +77,21 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
         .split(C.REGION_LIST_DELIMITER)
         .map((regionPair: string) => {
           let [regionName, regionShortCode = null] = regionPair.split(
-            C.SINGLE_REGION_DELIMITER
+            C.SINGLE_REGION_DELIMITER,
           );
           const label = (
-            labelType === 'short' && regionShortCode
+            labelType === "short" && regionShortCode
               ? regionShortCode
               : regionName
           ) as string;
           const value = (
-            valueType === 'short' && regionShortCode
+            valueType === "short" && regionShortCode
               ? regionShortCode
               : regionName
           ) as string;
 
           return { label, value, key: value };
-        })
+        }),
     );
   }, [country, countryValueType, whitelist, blacklist]);
 
@@ -103,9 +103,9 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
     const duplicateRegions = findDuplicates(regions, customOptions);
     if (duplicateRegions.length) {
       console.error(
-        'Error: Duplicate regions present: ' +
+        "Error: Duplicate regions present: " +
           duplicateRegions.toString() +
-          '.\nThe above item(s) is/are already getting added to the region dropdown by the library.'
+          ".\nThe above item(s) is/are already getting added to the region dropdown by the library.",
       );
       return [];
     }
@@ -125,21 +125,21 @@ export const RegionDropdown: FC<RegionDropdownProps> = ({
   const defaultOption: RenderDataOption | undefined = useMemo(() => {
     if (!country) {
       return {
-        value: '',
-        key: 'default',
+        value: "",
+        key: "default",
         label: blankOptionLabel,
       };
     }
     if (showDefaultOption) {
       return {
-        value: '',
-        key: 'default',
+        value: "",
+        key: "default",
         label: defaultOptionLabel,
       };
     }
   }, [country, blankOptionLabel, defaultOptionLabel]);
 
-  const isDisabled = disabled || (disableWhenEmpty && country === '');
+  const isDisabled = disabled || (disableWhenEmpty && country === "");
   const attrs: any = {
     ...arbitraryProps,
     name,

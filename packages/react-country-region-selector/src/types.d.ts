@@ -1,11 +1,11 @@
-import { ComponentProps } from 'react';
-import { JSXSource } from 'react/jsx-dev-runtime';
+import { ComponentProps } from "react";
+import { JSXSource } from "react/jsx-dev-runtime";
 
-export type ValueType = 'full' | 'short';
+export type ValueType = "full" | "short";
 
 type NativeDropdownProps = Omit<
-  ComponentProps<'select'>,
-  'onChange' | 'onBlur'
+  ComponentProps<"select">,
+  "onChange" | "onBlur"
 >;
 
 export interface CountryDropdownProps extends NativeDropdownProps {

@@ -5,8 +5,8 @@ import {
   RegionsBlackList,
   RenderDataOption,
   ValueType,
-} from './types';
-import { REGION_LIST_DELIMITER, SINGLE_REGION_DELIMITER } from './constants';
+} from "./types";
+import { REGION_LIST_DELIMITER, SINGLE_REGION_DELIMITER } from "./constants";
 
 /**
  * Helper to reduce country list depending on whether the user specified a white/blacklist, and lists priority
@@ -17,18 +17,18 @@ export const filterAndSortCountries = (
   priorityCountries: string[],
   whitelist: string[],
   blacklist: string[],
-  labelType: ValueType
+  labelType: ValueType,
 ) => {
   let countriesListedFirst: CountryRegionDataMinified[] = [];
   let filteredCountries = [...countries];
 
   if (whitelist.length > 0) {
     filteredCountries = countries.filter(
-      ([, countrySlug]) => whitelist.indexOf(countrySlug) > -1
+      ([, countrySlug]) => whitelist.indexOf(countrySlug) > -1,
     );
   } else if (blacklist.length > 0) {
     filteredCountries = countries.filter(
-      ([, countrySlug]) => blacklist.indexOf(countrySlug) === -1
+      ([, countrySlug]) => blacklist.indexOf(countrySlug) === -1,
     );
   }
 
@@ -38,7 +38,7 @@ export const filterAndSortCountries = (
   if (priorityCountries.length > 0) {
     priorityCountries.forEach((slug) => {
       const result = filteredCountries.find(
-        ([, countrySlug]) => countrySlug === slug
+        ([, countrySlug]) => countrySlug === slug,
       );
       if (result) {
         countriesListedFirst.push(result);
@@ -46,7 +46,7 @@ export const filterAndSortCountries = (
     });
 
     filteredCountries = filteredCountries.filter(
-      ([, countrySlug]) => priorityCountries.indexOf(countrySlug) === -1
+      ([, countrySlug]) => priorityCountries.indexOf(countrySlug) === -1,
     );
   }
 
@@ -60,7 +60,7 @@ export const filterAndSortCountries = (
 export const filterRegions = (
   selectedCountryData: CountryRegionDataMinified,
   whitelistData: RegionsWhiteList,
-  blacklistData: RegionsBlackList
+  blacklistData: RegionsBlackList,
 ) => {
   const [country, countryCode, regionsMinified] = selectedCountryData;
   const whitelist = whitelistData[countryCode] || [];
@@ -71,15 +71,15 @@ export const filterRegions = (
     filteredRegions = filteredRegions.filter((regionLine) =>
       whitelist.some(
         (wlRegionCode) =>
-          regionLine.indexOf(`${SINGLE_REGION_DELIMITER}${wlRegionCode}`) > -1
-      )
+          regionLine.indexOf(`${SINGLE_REGION_DELIMITER}${wlRegionCode}`) > -1,
+      ),
     );
   } else if (blacklist.length > 0 && filteredRegions.length > 0) {
     filteredRegions = filteredRegions.filter((regionLine) =>
       blacklist.every(
         (blRegionCode) =>
-          !regionLine.includes(`${SINGLE_REGION_DELIMITER}${blRegionCode}`)
-      )
+          !regionLine.includes(`${SINGLE_REGION_DELIMITER}${blRegionCode}`),
+      ),
     );
   }
 
@@ -88,7 +88,7 @@ export const filterRegions = (
 
 export const findDuplicates = (
   regions: RenderDataOption[],
-  customOptions: string[]
+  customOptions: string[],
 ) => {
   return regions
     .filter(({ value }) => customOptions.indexOf(value) !== -1)
@@ -112,9 +112,9 @@ export const defaultRender = (data: RenderData): JSX.Element => {
 
 export const sortMinifiedDataByLabel = (
   arr: CountryRegionDataMinified[],
-  labelType: ValueType
+  labelType: ValueType,
 ) => {
-  const sortIndex = labelType === 'full' ? 0 : 1;
+  const sortIndex = labelType === "full" ? 0 : 1;
 
   // we use `localeCompare` to handle UTF-8 chars
   return arr.sort((a, b) => a[sortIndex].localeCompare(b[sortIndex]));

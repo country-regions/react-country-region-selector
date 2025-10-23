@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Select,
   useId,
   FluentProvider,
   webLightTheme,
-} from '@fluentui/react-components';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+} from "@fluentui/react-components";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const customRender = ({ options, ...selectProps }) => {
   return (
@@ -20,8 +20,8 @@ const customRender = ({ options, ...selectProps }) => {
 };
 
 const FluentUISelect = () => {
-  const [country, setCountry] = React.useState('');
-  const [region, setRegion] = React.useState('');
+  const [country, setCountry] = React.useState("");
+  const [region, setRegion] = React.useState("");
   const countrySelectId = useId();
   const regionSelectId = useId();
 
@@ -33,7 +33,7 @@ const FluentUISelect = () => {
         id={countrySelectId}
         onChange={(val) => {
           setCountry(val);
-          setRegion('');
+          setRegion("");
         }}
         customRender={customRender}
       />

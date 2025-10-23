@@ -1,16 +1,16 @@
-import React, { useMemo, useState } from 'react';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import React, { useMemo, useState } from "react";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const RegionWhitelist = () => {
-  const [country, setCountry] = useState('');
-  const [region, setRegion] = useState('');
-  const countryWhitelist = useMemo(() => ['CA', 'US'], []);
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const countryWhitelist = useMemo(() => ["CA", "US"], []);
   const regionWhitelist = useMemo(
     () => ({
-      CA: ['AB', 'BC'],
-      US: ['WA', 'TX'],
+      CA: ["AB", "BC"],
+      US: ["WA", "TX"],
     }),
-    []
+    [],
   );
 
   return (

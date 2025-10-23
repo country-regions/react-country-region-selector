@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Select from 'react-select';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import React, { useState } from "react";
+import Select from "react-select";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const customRender = (props) => {
   const {
@@ -37,15 +37,15 @@ const ReactSelect = () => {
 
   return (
     <>
-      <div style={{ width: 200, display: 'inline-block', marginRight: 8 }}>
+      <div style={{ width: 200, display: "inline-block", marginRight: 8 }}>
         <CountryDropdown
-          value={country?.value || ''}
+          value={country?.value || ""}
           className="country"
           name="country-field"
           customRender={customRender}
           customProps={{
             reactSelectValue: country,
-            classNamePrefix: 'country-',
+            classNamePrefix: "country-",
             onChange: (value: ReactSelectOption) => {
               setCountry(value ? value : undefined);
               setRegion(null);
@@ -53,16 +53,16 @@ const ReactSelect = () => {
           }}
         />
       </div>
-      <div style={{ width: 200, display: 'inline-block' }}>
+      <div style={{ width: 200, display: "inline-block" }}>
         <RegionDropdown
-          country={country?.value || ''}
+          country={country?.value || ""}
           value={region?.value || null}
           className="region"
           name="region-field"
           customRender={customRender}
           customProps={{
             reactSelectValue: region,
-            classNamePrefix: 'region-',
+            classNamePrefix: "region-",
             onChange: (value: ReactSelectOption) => {
               setRegion(value ? value : undefined);
             },

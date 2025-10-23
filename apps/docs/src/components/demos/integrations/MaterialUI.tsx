@@ -1,10 +1,10 @@
-import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import Grid from '@mui/material/Grid2';
-import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
+import * as React from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Grid from "@mui/material/Grid2";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 const customRender = ({ options, customProps, ...selectProps }) => (
   <Select {...selectProps} {...customProps}>
@@ -17,8 +17,8 @@ const customRender = ({ options, customProps, ...selectProps }) => (
 );
 
 const MaterialUISelect = () => {
-  const [country, setCountry] = React.useState('');
-  const [region, setRegion] = React.useState('');
+  const [country, setCountry] = React.useState("");
+  const [region, setRegion] = React.useState("");
 
   return (
     <Grid container spacing={2}>
@@ -30,12 +30,12 @@ const MaterialUISelect = () => {
             id="mui-country-field"
             onChange={(val) => {
               setCountry(val);
-              setRegion('');
+              setRegion("");
             }}
             customRender={customRender}
             customProps={{
-              labelId: 'label-mui-country-field',
-              label: 'Country',
+              labelId: "label-mui-country-field",
+              label: "Country",
             }}
           />
         </FormControl>
@@ -51,8 +51,8 @@ const MaterialUISelect = () => {
             disableWhenEmpty={true}
             customRender={customRender}
             customProps={{
-              labelId: 'label-mui-region-field',
-              label: 'Region',
+              labelId: "label-mui-region-field",
+              label: "Region",
             }}
           />
         </FormControl>
