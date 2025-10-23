@@ -11,8 +11,8 @@ JSX code.
 
 ### Developer links
 
-- [CHANGELOG.md](./CHANGELOG.md)
-- [DEVELOPER.md](./DEVELOPER.md)
+- [CHANGELOG.md](../../CHANGELOG.md)
+- [DEVELOPER.md](../../DEVELOPER.md)
 
 ### License
 

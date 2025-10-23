@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Reducing Bundle Sizes
 ---
 
-This package clocks at around `72KB`, minified. This relatively large size is because of the _data set_. Cramming in all the country and region names from
+This package clocks at around `72KB`, minified. This relatively large size is because of the _data set_. The country and region names from
 [country-region-data](https://github.com/country-regions/country-region-data) takes up space. We've converted the raw data in the `react-country-region-selector`
 bundle to reduce the size as much as possible.
 
@@ -11,7 +11,7 @@ If bundle sizes are a concern, I'd first suggest **lazy-loading the component** 
 bundle. See whatever bundler doc you use for further information on that. This is probably the simplest approach and will require the least work down the road.
 
 Alternatively, if you don't need all the data and want to show a subset of all countries (like on this
-[Country Whitelist demo](../demos/features/CountryWhitelist)), you can do a manual build of this script and create a smaller.
+[Country Whitelist demo](../demos/features/CountryWhitelist)), you can do a manual build of this script and create a smaller bundle.
 
 Here's how it works. First, get the repo up and running locally from the notes in the [Developer Doc](https://github.com/country-regions/react-country-region-selector/blob/master/DEVELOPER.md).
 Then locally, do the following:
