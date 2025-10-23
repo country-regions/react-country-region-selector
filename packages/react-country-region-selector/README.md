@@ -11,8 +11,8 @@ JSX code.
 
 ### Developer links
 
-- [CHANGELOG.md](../../CHANGELOG.md)
-- [DEVELOPER.md](../../DEVELOPER.md)
+- [CHANGELOG.md](https://github.com/country-regions/react-country-region-selector/blob/master/CHANGELOG.md)
+- [DEVELOPER.md](https://github.com/country-regions/react-country-region-selector/blob/master/DEVELOPER.md)
 
 ### License
 
