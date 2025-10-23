@@ -1,5 +1,9 @@
 ## Changelog
 
+- `4.0.3` - Oct 22, 2025
+
+  - Upgrade country-region-data to 3.2.0.
+
 - `4.0.2` - Dec 26, 2024
 
   - Fix to handling sorting country names with UTF-8 chars properly.

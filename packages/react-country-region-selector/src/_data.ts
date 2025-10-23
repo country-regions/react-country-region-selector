@@ -228,7 +228,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Chile",
     "CL",
-    "Aisén del General Carlos Ibáñez del Campo~AI|Antofagasta~AN|Araucanía~AR|Arica y Parinacota~AP|Atacama~AT|Bío-Bío~BI|Coquimbo~CO|Libertador General Bernardo O'Higgins~LI|Los Lagos~LL|Los Ríos~LR|Magallanes y Antartica Chilena~MA|Marga-Marga~|Maule~ML|Ñuble~NB|Región Metropolitana de Santiago~RM|Tarapacá~TA|Valparaíso~VS"
+    "Aisén del General Carlos Ibáñez del Campo~AI|Antofagasta~AN|Araucanía~AR|Arica y Parinacota~AP|Atacama~AT|Bío-Bío~BI|Coquimbo~CO|Libertador General Bernardo O'Higgins~LI|Los Lagos~LL|Los Ríos~LR|Magallanes y Antartica Chilena~MA|Maule~ML|Ñuble~NB|Región Metropolitana de Santiago~RM|Tarapacá~TA|Valparaíso~VS"
   ],
   [
     "China",
@@ -268,7 +268,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Cook Islands",
     "CK",
-    "Aitutaki~|Atiu~|Avarua~|Mangaia~|Manihiki~|Ma'uke~|Mitiaro~|Nassau~|Palmerston~|Penrhyn~|Pukapuka~|Rakahanga~"
+    "Aitutaki~undefined|Atiu~undefined|Avarua~undefined|Mangaia~undefined|Manihiki~undefined|Ma'uke~undefined|Mitiaro~undefined|Nassau~undefined|Palmerston~undefined|Penrhyn~undefined|Pukapuka~undefined|Rakahanga~undefined"
   ],
   [
     "Costa Rica",
@@ -363,12 +363,12 @@ const data: CountryRegionDataMinified[] = [
   [
     "Falkland Islands (Islas Malvinas)",
     "FK",
-    "Falkland Islands (Islas Malvinas)~"
+    "Falkland Islands (Islas Malvinas)~undefined"
   ],
   [
     "Faroe Islands",
     "FO",
-    "Bordoy~|Eysturoy~|Mykines~|Sandoy~|Skuvoy~|Streymoy~|Suduroy~|Tvoroyri~|Vagar~"
+    "Bordoy~undefined|Eysturoy~undefined|Mykines~undefined|Sandoy~undefined|Skuvoy~undefined|Streymoy~undefined|Suduroy~undefined|Tvoroyri~undefined|Vagar~undefined"
   ],
   [
     "Fiji",
@@ -388,17 +388,17 @@ const data: CountryRegionDataMinified[] = [
   [
     "French Guiana",
     "GF",
-    "French Guiana~"
+    "French Guiana~undefined"
   ],
   [
     "French Polynesia",
     "PF",
-    "Archipel des Marquises~|Archipel des Tuamotu~|Archipel des Tubuai~|Iles du Vent~|Iles Sous-le-Vent~"
+    "Archipel des Marquises~undefined|Archipel des Tuamotu~undefined|Archipel des Tubuai~undefined|Iles du Vent~undefined|Iles Sous-le-Vent~undefined"
   ],
   [
     "French Southern and Antarctic Lands",
     "TF",
-    "Adelie Land~|Ile Crozet~|Iles Kerguelen~|Iles Saint-Paul et Amsterdam~"
+    "Adelie Land~undefined|Ile Crozet~undefined|Iles Kerguelen~undefined|Iles Saint-Paul et Amsterdam~undefined"
   ],
   [
     "Gabon",
@@ -428,7 +428,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Gibraltar",
     "GI",
-    "Gibraltar~"
+    "Gibraltar~undefined"
   ],
   [
     "Greece",
@@ -448,12 +448,12 @@ const data: CountryRegionDataMinified[] = [
   [
     "Guadeloupe",
     "GP",
-    "Guadeloupe~"
+    "Guadeloupe~undefined"
   ],
   [
     "Guam",
     "GU",
-    "Guam~"
+    "Guam~undefined"
   ],
   [
     "Guatemala",
@@ -463,7 +463,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Guernsey",
     "GG",
-    "Castel~|Forest~|St. Andrew~|St. Martin~|St. Peter Port~|St. Pierre du Bois~|St. Sampson~|St. Saviour~|Torteval~|Vale~"
+    "Castel~undefined|Forest~undefined|St. Andrew~undefined|St. Martin~undefined|St. Peter Port~undefined|St. Pierre du Bois~undefined|St. Sampson~undefined|St. Saviour~undefined|Torteval~undefined|Vale~undefined"
   ],
   [
     "Guinea",
@@ -488,7 +488,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Heard Island and McDonald Islands",
     "HM",
-    "Heard Island and McDonald Islands~"
+    "Heard Island and McDonald Islands~undefined"
   ],
   [
     "Holy See (Vatican City)",
@@ -508,7 +508,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Hungary",
     "HU",
-    "Bács-Kiskun~BK|Baranya~BA|Békés~BE|Békéscsaba~BC|Borsod-Abauj-Zemplen~BZ|Budapest~BU|Csongrád~CS|Debrecen~DE|Dunaújváros~DU|Eger~EG|Érd~ER|Fejér~FE|Győr~GY|Győr-Moson-Sopron~GS|Hajdú-Bihar~HB|Heves~HE|Hódmezővásárhely~HV|Jász-Nagykun-Szolnok~JN|Kaposvár~KV|Kecskemét~KM|Komárom-Esztergom~KE|Miskolc~MI|Nagykanizsa~NK|Nógrád~NO|Nyíregyháza~NY|Pécs~PS|Pest~PE|Salgótarján~ST|Somogy~SO|Sopron~SN|Szabolcs-á-Bereg~SZ|Szeged~SD|Székesfehérvár~SF|Szekszárd~SS|Szolnok~SK|Szombathely~SH|Tatabánya~TB|Tolna~TO|Vas~VA|Veszprém~VE|Veszprém (City)~VM|Zala~ZA|Zalaegerszeg~ZE"
+    "Bács-Kiskun~BK|Baranya~BA|Békés~BE|Borsod-Abaúj-Zemplén~BZ|Budapest~BU|Csongrád-Csanád~CS|Fejér~FE|Győr-Moson-Sopron~GS|Hajdú-Bihar~HB|Heves~HE|Jász-Nagykun-Szolnok~JN|Komárom-Esztergom~KE|Pest~PE|Somogy~SO|Szabolcs-Szatmár-Bereg~SZ|Tolna~TO|Vas~VA|Veszprém~VE|Zala~ZA"
   ],
   [
     "Iceland",
@@ -543,7 +543,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Isle of Man",
     "IM",
-    "Isle of Man~"
+    "Isle of Man~undefined"
   ],
   [
     "Israel",
@@ -568,7 +568,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Jersey",
     "JE",
-    "Jersey~"
+    "Jersey~undefined"
   ],
   [
     "Jordan",
@@ -578,7 +578,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Kazakhstan",
     "KZ",
-    "Almaty~ALA|Aqmola~AKM|Aqtobe~AKT|Astana~AST|Atyrau~ATY|Batys Qazaqstan~ZAP|Bayqongyr~|Mangghystau~MAN|Ongtustik Qazaqstan~YUZ|Pavlodar~PAV|Qaraghandy~KAR|Qostanay~KUS|Qyzylorda~KZY|Shyghys Qazaqstan~VOS|Soltustik Qazaqstan~SEV|Zhambyl~ZHA"
+    "Almaty~ALA|Aqmola~AKM|Aqtobe~AKT|Astana~AST|Atyrau~ATY|Batys Qazaqstan~ZAP|Bayqongyr~undefined|Mangghystau~MAN|Ongtustik Qazaqstan~YUZ|Pavlodar~PAV|Qaraghandy~KAR|Qostanay~KUS|Qyzylorda~KZY|Shyghys Qazaqstan~VOS|Soltustik Qazaqstan~SEV|Zhambyl~ZHA"
   ],
   [
     "Kenya",
@@ -588,7 +588,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Kiribati",
     "KI",
-    "Abaiang~|Abemama~|Aranuka~|Arorae~|Banaba~|Beru~|Butaritari~|Central Gilberts~|Gilbert Islands~G|Kanton~|Kiritimati~|Kuria~|Line Islands~L|Maiana~|Makin~|Marakei~|Nikunau~|Nonouti~|Northern Gilberts~|Onotoa~|Phoenix Islands~P|Southern Gilberts~|Tabiteuea~|Tabuaeran~|Tamana~|Tarawa~|Teraina~"
+    "Abaiang~undefined|Abemama~undefined|Aranuka~undefined|Arorae~undefined|Banaba~undefined|Beru~undefined|Butaritari~undefined|Central Gilberts~undefined|Gilbert Islands~G|Kanton~undefined|Kiritimati~undefined|Kuria~undefined|Line Islands~L|Maiana~undefined|Makin~undefined|Marakei~undefined|Nikunau~undefined|Nonouti~undefined|Northern Gilberts~undefined|Onotoa~undefined|Phoenix Islands~P|Southern Gilberts~undefined|Tabiteuea~undefined|Tabuaeran~undefined|Tamana~undefined|Tarawa~undefined|Teraina~undefined"
   ],
   [
     "Korea, Democratic People's Republic of",
@@ -663,7 +663,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Macao",
     "MO",
-    "Macao~"
+    "Macao~undefined"
   ],
   [
     "Macedonia, Republic of",
@@ -708,7 +708,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Martinique",
     "MQ",
-    "Martinique~"
+    "Martinique~undefined"
   ],
   [
     "Mauritania",
@@ -758,7 +758,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Montserrat",
     "MS",
-    "Saint Anthony~|Saint Georges~|Saint Peter's~"
+    "Saint Anthony~undefined|Saint Georges~undefined|Saint Peter's~undefined"
   ],
   [
     "Morocco",
@@ -798,7 +798,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "New Caledonia",
     "NC",
-    "Iles Loyaute~|Nord~|Sud~"
+    "Iles Loyaute~undefined|Nord~undefined|Sud~undefined"
   ],
   [
     "New Zealand",
@@ -823,22 +823,22 @@ const data: CountryRegionDataMinified[] = [
   [
     "Niue",
     "NU",
-    "Niue~"
+    "Niue~undefined"
   ],
   [
     "Norfolk Island",
     "NF",
-    "Norfolk Island~"
+    "Norfolk Island~undefined"
   ],
   [
     "Northern Mariana Islands",
     "MP",
-    "Northern Islands~|Rota~|Saipan~|Tinian~"
+    "Northern Islands~undefined|Rota~undefined|Saipan~undefined|Tinian~undefined"
   ],
   [
     "Norway",
     "NO",
-    "Akershus~02|Aust-Agder~09|Buskerud~06|Finnmark~20|Hedmark~04|Hordaland~12|Møre og Romsdal~15|Nordland~18|Nord-Trøndelag~17|Oppland~05|Oslo~03|Rogaland~11|Sogn og Fjordane~14|Sør-Trøndelag~16|Telemark~08|Troms~19|Vest-Agder~10|Vestfold~07|Østfold~01|Jan Mayen~22|Svalbard~21"
+    "Agder~09|Innlandet~34|Jan Mayen~22|Møre og Romsdal~15|Nordland~18|Oslo~03|Rogaland~11|Svalbard~21|Troms og Finnmark~54|Trøndelag~50|Vestfold og Telemark~38|Vestland~46|Viken~30"
   ],
   [
     "Oman",
@@ -888,7 +888,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Pitcairn",
     "PN",
-    "Pitcairn Islands~"
+    "Pitcairn Islands~undefined"
   ],
   [
     "Poland",
@@ -903,7 +903,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Puerto Rico",
     "PR",
-    "Adjuntas~|Aguada~|Aguadilla~|Aguas Buenas~|Aibonito~|Anasco~|Arecibo~|Arroyo~|Barceloneta~|Barranquitas~|Bayamon~|Cabo Rojo~|Caguas~|Camuy~|Canovanas~|Carolina~|Cat~|Ceiba~|Ciales~|Cidra~|Coamo~|Comerio~|Corozal~|Culebra~|Dorado~|Fajardo~|Florida~|Guanica~|Guayama~|Guayanilla~|Guaynabo~|Gurabo~|Hatillo~|Hormigueros~|Humacao~|Isabe~|Juana Diaz~|Juncos~|Lajas~|Lares~|Las Marias~|Las oiza~|Luquillo~|Manati~|Maricao~|Maunabo~|Mayaguez~|Moca~|Morovis~|Naguabo~|Naranjito~|Orocovis~|Patillas~|Penuelas~|Ponce~|Quebradillas~|Rincon~|Rio Grande~|Sabana linas~|San German~|San Juan~|San Lorenzo~|San Sebastian~|Santa Isabel~|Toa Alta~|Toa Baja~|Trujillo Alto~|Utuado~|Vega Alta~|Vega ues~|Villalba~|Yabucoa~|Yauco~"
+    "Adjuntas~undefined|Aguada~undefined|Aguadilla~undefined|Aguas Buenas~undefined|Aibonito~undefined|Anasco~undefined|Arecibo~undefined|Arroyo~undefined|Barceloneta~undefined|Barranquitas~undefined|Bayamon~undefined|Cabo Rojo~undefined|Caguas~undefined|Camuy~undefined|Canovanas~undefined|Carolina~undefined|Cat~undefined|Ceiba~undefined|Ciales~undefined|Cidra~undefined|Coamo~undefined|Comerio~undefined|Corozal~undefined|Culebra~undefined|Dorado~undefined|Fajardo~undefined|Florida~undefined|Guanica~undefined|Guayama~undefined|Guayanilla~undefined|Guaynabo~undefined|Gurabo~undefined|Hatillo~undefined|Hormigueros~undefined|Humacao~undefined|Isabe~undefined|Juana Diaz~undefined|Juncos~undefined|Lajas~undefined|Lares~undefined|Las Marias~undefined|Las oiza~undefined|Luquillo~undefined|Manati~undefined|Maricao~undefined|Maunabo~undefined|Mayaguez~undefined|Moca~undefined|Morovis~undefined|Naguabo~undefined|Naranjito~undefined|Orocovis~undefined|Patillas~undefined|Penuelas~undefined|Ponce~undefined|Quebradillas~undefined|Rincon~undefined|Rio Grande~undefined|Sabana linas~undefined|San German~undefined|San Juan~undefined|San Lorenzo~undefined|San Sebastian~undefined|Santa Isabel~undefined|Toa Alta~undefined|Toa Baja~undefined|Trujillo Alto~undefined|Utuado~undefined|Vega Alta~undefined|Vega ues~undefined|Villalba~undefined|Yabucoa~undefined|Yauco~undefined"
   ],
   [
     "Qatar",
@@ -913,7 +913,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Réunion",
     "RE",
-    "Réunion~"
+    "Réunion~undefined"
   ],
   [
     "Romania",
@@ -953,12 +953,12 @@ const data: CountryRegionDataMinified[] = [
   [
     "Saint Martin",
     "MF",
-    "Saint Martin~"
+    "Saint Martin~undefined"
   ],
   [
     "Saint Pierre and Miquelon",
     "PM",
-    "Miquelon~|Saint Pierre~"
+    "Miquelon~undefined|Saint Pierre~undefined"
   ],
   [
     "Saint Vincent and the Grenadines",
@@ -1013,7 +1013,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Sint Maarten (Dutch part)",
     "SX",
-    "Sint Maarten~"
+    "Sint Maarten~undefined"
   ],
   [
     "Slovakia",
@@ -1043,7 +1043,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "South Georgia and South Sandwich Islands",
     "GS",
-    "Bird Island~|Bristol Island~|Clerke Rocks~|Montagu Island~|Saunders Island~|South Georgia~|Southern Thule~|Traversay Islands~"
+    "Bird Island~undefined|Bristol Island~undefined|Clerke Rocks~undefined|Montagu Island~undefined|Saunders Island~undefined|South Georgia~undefined|Southern Thule~undefined|Traversay Islands~undefined"
   ],
   [
     "South Sudan",
@@ -1123,7 +1123,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Tokelau",
     "TK",
-    "Atafu~|Fakaofo~|Nukunonu~"
+    "Atafu~undefined|Fakaofo~undefined|Nukunonu~undefined"
   ],
   [
     "Tonga",
@@ -1153,7 +1153,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "Turks and Caicos Islands",
     "TC",
-    "Turks and Caicos Islands~"
+    "Turks and Caicos Islands~undefined"
   ],
   [
     "Tuvalu",
@@ -1178,7 +1178,7 @@ const data: CountryRegionDataMinified[] = [
   [
     "United Kingdom",
     "GB",
-    "Aberdeen City~ABE|Aberdeenshire~ABD|Angus~ANS|Antrim and Newtownabbey~ANN|Ards and North Down~AND|Argyll and Bute~AGB|Armagh City, Banbridge and Craigavon~ABC|Barking and Dagenham~BDG|Barnet~BNE|Barnsley~BNS|Bath and North East Somerset~BAS|Bedford~BDF|Belfast City~BFS|Berkshire~BRK|Bexley~BEX|Birmingham~BIR|Blackburn with Darwen~BBD|Blackpool~BPL|Blaenau Gwent~BGW|Bolton~BOL|Bournemouth, Christchurch and Poole~BCP|Bracknell Forest~BRC|Bradford~BRD|Brent~BEN|Bridgend~BGE|Brighton and Hove~BNH|Bristol, City of~BST|Bromley~BRY|Buckinghamshire~BKM|Bury~BUR|Caerphilly~CAY|Calderdale~CLD|Cambridgeshire~CAM|Camden~CMD|Cardiff~CRF|Carmarthenshire~CMN|Causeway Coast and Glens~CCG|Central Bedfordshire~CBF|Ceredigion~CGN|Cheshire East~CHE|Cheshire West and Chester~CHW|Clackmannanshire~CLK|Conwy~CWY|Cornwall~CON|Coventry~COV|Croydon~CRY|Cumbria~CMA|Darlington~DAL|Denbighshire~DEN|Derby~DER|Derbyshire~DBY|Derry and Strabane~DRS|Devon~DEV|Doncaster~DNC|Dorset~DOR|Dudley~DUD|Dumfries and Galloway~DGY|Dundee City~DND|Durham, County~DUR|Ealing~EAL|East Ayrshire~EAY|East Dunbartonshire~EDU|East Lothian~ELN|East Renfrewshire~ERW|East Riding of Yorkshire~ERY|East Sussex~ESX|Edinburgh, City of~EDH|Eilean Siar~ELS|Enfield~ENF|Essex~ESS|Falkirk~FAL|Fermanagh and Omagh~FMO|Fife~FIF|Flintshire~FLN|Gateshead~GAT|Glasgow City~GLG|Gloucestershire~GLS|Greenwich~GRE|Gwynedd~GWN|Hackney~HCK|Halton~HAL|Hammersmith and Fulham~HMF|Hampshire~HAM|Haringey~HRY|Harrow~HRW|Hartlepool~HPL|Havering~HAV|Herefordshire~HEF|Hertfordshire~HRT|Highland~HLD|Hillingdon~HIL|Hounslow~HNS|Inverclyde~IVC|Isle of Anglesey~AGY|Isle of Wight~IOW|Isles of Scilly~IOS|Islington~ISL|Kensington and Chelsea~KEC|Kent~KEN|Kingston upon Hull~KHL|Kingston upon Thames~KTT|Kirklees~KIR|Knowsley~KWL|Lambeth~LBH|Lancashire~LAN|Leeds~LDS|Leicester~LCE|Leicestershire~LEC|Lewisham~LEW|Lincolnshire~LIN|Lisburn and Castlereagh~LBC|Liverpool~LIV|London, City of~LND|Luton~LUT|Manchester~MAN|Medway~MDW|Merthyr Tydfil~MTY|Merton~MRT|Mid and East Antrim~MEA|Mid-Ulster~MUL|Middlesbrough~MDB|Midlothian~MLN|Milton Keynes~MIK|Monmouthshire~MON|Moray~MRY|Neath Port Talbot~NTL|Newcastle upon Tyne~NET|Newham~NWM|Newport~NWP|Newry, Mourne and Down~NMD|Norfolk~NFK|North Ayrshire~NAY|North East Lincolnshire~NEL|North Lanarkshire~NLK|North Lincolnshire~NLN|North Somerset~NSM|North Tyneside~NTY|North Yorkshire~NYK|Northamptonshire~NTH|Northumberland~NBL|Nottingham~NGM|Nottinghamshire~NTT|Oldham~OLD|Orkney Islands~ORK|Oxfordshire~OXF|Pembrokeshire~PEM|Perth and Kinross~PKN|Peterborough~PTE|Plymouth~PLY|Portsmouth~POR|Powys~POW|Reading~RDG|Redbridge~RDB|Redcar and Cleveland~RCC|Renfrewshire~RFW|Rhondda Cynon Taff~RCT|Richmond upon Thames~RIC|Rochdale~RCH|Rotherham~ROT|Rutland~RUT|Salford~SLF|Sandwell~SAW|Scottish Borders~SCB|Sefton~SFT|Sheffield~SHF|Shetland Islands~ZET|Shropshire~SHR|Slough~SLG|Solihull~SOL|Somerset~SOM|South Ayrshire~SAY|South Gloucestershire~SGC|South Lanarkshire~SLK|South Tyneside~STY|Southampton~STH|Southend-on-Sea~SOS|Southwark~SWK|St. Helens~SHN|Staffordshire~STS|Stirling~STG|Stockport~SKP|Stockton-on-Tees~STT|Stoke-on-Trent~STE|Suffolk~SFK|Sunderland~SND|Surrey~SRY|Sutton~STN|Swansea~SWA|Swindon~SWD|Tameside~TAM|Telford and Wrekin~TFW|Thurrock~THR|Torbay~TOB|Torfaen~TOF|Tower Hamlets~TWH|Trafford~TRF|Vale of Glamorgan, The~VGL|Wakefield~WKF|Walsall~WLL|Waltham Forest~WFT|Wandsworth~WND|Warrington~WRT|Warwickshire~WAR|West Berkshire~WBK|West Dunbartonshire~WDU|West Lothian~WLN|West Sussex~WSX|Westminster~WSM|Wigan~WGN|Wiltshire~WIL|Windsor and Maidenhead~WNM|Wirral~WRL|Wokingham~WOK|Wolverhampton~WLV|Worcestershire~WOR|Wrexham~WRX|York~YOR"
+    "Aberdeen City~ABE|Aberdeenshire~ABD|Angus~ANS|Antrim and Newtownabbey~ANN|Ards and North Down~AND|Argyll and Bute~AGB|Armagh City, Banbridge and Craigavon~ABC|Barking and Dagenham~BDG|Barnet~BNE|Barnsley~BNS|Bath and North East Somerset~BAS|Bedford~BDF|Belfast City~BFS|Berkshire~BRK|Bexley~BEX|Birmingham~BIR|Blackburn with Darwen~BBD|Blackpool~BPL|Blaenau Gwent~BGW|Bolton~BOL|Bournemouth, Christchurch and Poole~BCP|Bracknell Forest~BRC|Bradford~BRD|Brent~BEN|Bridgend~BGE|Brighton and Hove~BNH|Bristol, City of~BST|Bromley~BRY|Buckinghamshire~BKM|Bury~BUR|Caerphilly~CAY|Calderdale~CLD|Cambridgeshire~CAM|Camden~CMD|Cardiff~CRF|Carmarthenshire~CMN|Causeway Coast and Glens~CCG|Central Bedfordshire~CBF|Ceredigion~CGN|Cheshire East~CHE|Cheshire West and Chester~CHW|Clackmannanshire~CLK|Conwy~CWY|Cornwall~CON|Coventry~COV|Croydon~CRY|Cumbria~CMA|Darlington~DAL|Denbighshire~DEN|Derby~DER|Derbyshire~DBY|Derry and Strabane~DRS|Devon~DEV|Doncaster~DNC|Dorset~DOR|Dudley~DUD|Dumfries and Galloway~DGY|Dundee City~DND|Durham, County~DUR|Ealing~EAL|East Ayrshire~EAY|East Dunbartonshire~EDU|East Lothian~ELN|East Renfrewshire~ERW|East Riding of Yorkshire~ERY|East Sussex~ESX|Edinburgh, City of~EDH|Eilean Siar~ELS|Enfield~ENF|Essex~ESS|Falkirk~FAL|Fermanagh and Omagh~FMO|Fife~FIF|Flintshire~FLN|Gateshead~GAT|Glasgow City~GLG|Gloucestershire~GLS|Greenwich~GRE|Gwynedd~GWN|Hackney~HCK|Halton~HAL|Hammersmith and Fulham~HMF|Hampshire~HAM|Haringey~HRY|Harrow~HRW|Hartlepool~HPL|Havering~HAV|Herefordshire~HEF|Hertfordshire~HRT|Highland~HLD|Hillingdon~HIL|Hounslow~HNS|Inverclyde~IVC|Isle of Anglesey~AGY|Isle of Wight~IOW|Isles of Scilly~IOS|Islington~ISL|Kensington and Chelsea~KEC|Kent~KEN|Kingston upon Hull~KHL|Kingston upon Thames~KTT|Kirklees~KIR|Knowsley~KWL|Lambeth~LBH|Lancashire~LAN|Leeds~LDS|Leicester~LCE|Leicestershire~LEC|Lewisham~LEW|Lincolnshire~LIN|Lisburn and Castlereagh~LBC|Liverpool~LIV|London~LND|Luton~LUT|Manchester~MAN|Medway~MDW|Merthyr Tydfil~MTY|Merton~MRT|Mid and East Antrim~MEA|Mid-Ulster~MUL|Middlesbrough~MDB|Midlothian~MLN|Milton Keynes~MIK|Monmouthshire~MON|Moray~MRY|Neath Port Talbot~NTL|Newcastle upon Tyne~NET|Newham~NWM|Newport~NWP|Newry, Mourne and Down~NMD|Norfolk~NFK|North Ayrshire~NAY|North East Lincolnshire~NEL|North Lanarkshire~NLK|North Lincolnshire~NLN|North Somerset~NSM|North Tyneside~NTY|North Yorkshire~NYK|Northamptonshire~NTH|Northumberland~NBL|Nottingham~NGM|Nottinghamshire~NTT|Oldham~OLD|Orkney Islands~ORK|Oxfordshire~OXF|Pembrokeshire~PEM|Perth and Kinross~PKN|Peterborough~PTE|Plymouth~PLY|Portsmouth~POR|Powys~POW|Reading~RDG|Redbridge~RDB|Redcar and Cleveland~RCC|Renfrewshire~RFW|Rhondda Cynon Taff~RCT|Richmond upon Thames~RIC|Rochdale~RCH|Rotherham~ROT|Rutland~RUT|Salford~SLF|Sandwell~SAW|Scottish Borders~SCB|Sefton~SFT|Sheffield~SHF|Shetland Islands~ZET|Shropshire~SHR|Slough~SLG|Solihull~SOL|Somerset~SOM|South Ayrshire~SAY|South Gloucestershire~SGC|South Lanarkshire~SLK|South Tyneside~STY|Southampton~STH|Southend-on-Sea~SOS|Southwark~SWK|St. Helens~SHN|Staffordshire~STS|Stirling~STG|Stockport~SKP|Stockton-on-Tees~STT|Stoke-on-Trent~STE|Suffolk~SFK|Sunderland~SND|Surrey~SRY|Sutton~STN|Swansea~SWA|Swindon~SWD|Tameside~TAM|Telford and Wrekin~TFW|Thurrock~THR|Torbay~TOB|Torfaen~TOF|Tower Hamlets~TWH|Trafford~TRF|Vale of Glamorgan, The~VGL|Wakefield~WKF|Walsall~WLL|Waltham Forest~WFT|Wandsworth~WND|Warrington~WRT|Warwickshire~WAR|West Berkshire~WBK|West Dunbartonshire~WDU|West Lothian~WLN|West Sussex~WSX|Westminster~WSM|Wigan~WGN|Wiltshire~WIL|Windsor and Maidenhead~WNM|Wirral~WRL|Wokingham~WOK|Wolverhampton~WLV|Worcestershire~WOR|Wrexham~WRX|York~YOR"
   ],
   [
     "United States",
