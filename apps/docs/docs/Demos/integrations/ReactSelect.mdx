@@ -2,7 +2,7 @@
 title: React Select
 ---
 
-import ReactSelect from '@site/src/components/demos/integrations/ReactSelect';
+import ReactSelect from '@site/src/components/Demos/integrations/ReactSelect';
 
 [React-select](https://react-select.com/) is a popular standalone component for dropdowns. This shows an
 example integration.
@@ -64,8 +64,8 @@ const ReactSelect = () => {
       <div style={{ width: 200, display: 'inline-block', marginRight: 8 }}>
         <CountryDropdown
           value={country?.value || ''}
-          className="country"
-          name="country-field"
+          className='country'
+          name='country-field'
           customRender={customRender}
           customProps={{
             reactSelectValue: country,
@@ -81,8 +81,8 @@ const ReactSelect = () => {
         <RegionDropdown
           country={country?.value || ''}
           value={region?.value || null}
-          className="region"
-          name="region-field"
+          className='region'
+          name='region-field'
           customRender={customRender}
           customProps={{
             reactSelectValue: region,

@@ -1,5 +1,8 @@
 ## Changelog
 
+- `4.0.4` - Dec 2, 2025
+  - Upgrade country-region-data to 4.0.0
+
 - `4.0.3` - Oct 22, 2025
   - Upgrade country-region-data to 3.2.0.
 

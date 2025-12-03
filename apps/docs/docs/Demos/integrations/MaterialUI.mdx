@@ -3,7 +3,7 @@ title: Material UI
 sidebar_position: 1
 ---
 
-import MaterialUI from '@site/src/components/demos/integrations/MaterialUI';
+import MaterialUI from '@site/src/components/Demos/integrations/MaterialUI';
 
 This shows an integration with [Material UI](https://mui.com/material-ui/getting-started/). Note the
 `customRender` method and how its handling the actual rendering of the dropdowns.
@@ -39,10 +39,10 @@ const MaterialUISelect = () => {
     <Grid container spacing={2}>
       <Grid size={6}>
         <FormControl fullWidth>
-          <InputLabel id="label-mui-country-field">Country</InputLabel>
+          <InputLabel id='label-mui-country-field'>Country</InputLabel>
           <CountryDropdown
             value={country}
-            id="mui-country-field"
+            id='mui-country-field'
             onChange={(val) => {
               setCountry(val);
               setRegion('');
@@ -57,11 +57,11 @@ const MaterialUISelect = () => {
       </Grid>
       <Grid size={6}>
         <FormControl fullWidth>
-          <InputLabel id="label-mui-region-field">Region</InputLabel>
+          <InputLabel id='label-mui-region-field'>Region</InputLabel>
           <RegionDropdown
             country={country}
             value={region}
-            id="mui-region-field"
+            id='mui-region-field'
             onChange={(val) => setRegion(val)}
             disableWhenEmpty={true}
             customRender={customRender}

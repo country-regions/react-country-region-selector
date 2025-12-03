@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Props
 
-These are the props that can be passed to the two components. Any other valid HTML `select` attributes that aren't specified here will be passed through and added to the select fields. If you've defined a `customRender` method (see [integrations](./demos/integrations/)), check out `customProps` as a means to pass arbitrary props to your render method.
+These are the props that can be passed to the two components. Any other valid HTML `select` attributes that aren't specified here will be passed through and added to the select fields. If you've defined a `customRender` method (see [integrations](./Demos/integrations/)), check out `customProps` as a means to pass arbitrary props to your render method.
 
 ### `<CountryDropdown />`
 
@@ -24,7 +24,7 @@ These are the props that can be passed to the two components. Any other valid HT
 | whitelist          |    No     | `[]`               | `array`    | This setting lets you target specific countries to appear in the dropdown. Only those specified here will appear. This should be an array of country shortcodes. See the [country-region-data](https://github.com/country-regions/country-region-data) repo for the data and the shortcodes.  |
 | blacklist          |    No     | `[]`               | `array`    | Lets you target countries that should _not_ appear in the dropdown. Should also be an array of country shortcodes.                                                                                                                                                                            |
 | disabled           |    No     | `false`            | `boolean`  | Disables the country field.                                                                                                                                                                                                                                                                   |
-| customRender       |    No     | `-`                | `function` | Overrides the default render method to let you control the output for the dropdown. See the [integrations](./demos/integrations) section for examples.                                                                                                                                        |
+| customRender       |    No     | `-`                | `function` | Overrides the default render method to let you control the output for the dropdown. See the [integrations](./Demos/integrations) section for examples.                                                                                                                                        |
 | customProps        |    No     | `-`                | `object`   | This can be used to pass additional data to your `customRender` function if you're handling your own rendering.                                                                                                                                                                               |
 
 ### `<RegionDropdown />`
@@ -52,5 +52,5 @@ These are the props that can be passed to the two components. Any other valid HT
 | blacklist          |    No     | `{ CountryCode: [] }` | `object`        | This setting lets you target specific regions that should _not_ appear in the dropdown. This should be an array of region codes keyed by the country code.                              |
 | disableWhenEmpty   |    No     | `false`               | `boolean`       | Disables the region field when the user hasn't selected a country.                                                                                                                      |
 | disabled           |    No     | `false`               | `boolean`       | Disables the region field. If set to true, it overrides `disableWhenEmpty`                                                                                                              |
-| customRender       |    No     | `-`                   | `function`      | Overrides the default render method to let you control the output for the dropdown. See the [integrations](./demos/integrations) section for examples.                                  |
+| customRender       |    No     | `-`                   | `function`      | Overrides the default render method to let you control the output for the dropdown. See the [integrations](./Demos/integrations) section for examples.                                  |
 | customProps        |    No     | `-`                   | `object`        | This can be used to pass additional data to your `customRender` function if you're handling your own rendering.                                                                         |
