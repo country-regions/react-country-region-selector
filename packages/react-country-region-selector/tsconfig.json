@@ -5,7 +5,7 @@
     "outDir": "dist",
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "types": ["@testing-library/jest-dom"]
+    "types": ["@testing-library/jest-dom", "jest", "node"]
   },
   "include": ["src", "build/rollup.config.ts", "build/minify-data.js"],
   "exclude": ["node_modules", "dist"]

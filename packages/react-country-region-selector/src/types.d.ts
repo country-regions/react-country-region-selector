@@ -1,11 +1,11 @@
-import { ComponentProps } from "react";
-import { JSXSource } from "react/jsx-dev-runtime";
+/* eslint-disable no-unused-vars */
+import { ComponentProps, JSX } from 'react';
 
-export type ValueType = "full" | "short";
+export type ValueType = 'full' | 'short';
 
 type NativeDropdownProps = Omit<
-  ComponentProps<"select">,
-  "onChange" | "onBlur"
+  ComponentProps<'select'>,
+  'onChange' | 'onBlur'
 >;
 
 export interface CountryDropdownProps extends NativeDropdownProps {

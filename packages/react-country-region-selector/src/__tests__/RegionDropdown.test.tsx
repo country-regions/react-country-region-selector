@@ -1,221 +1,219 @@
 // the rollup build converts the raw data from country-region-data into a smaller format, which is why this
 // imports from the dist. So run `yarn` prior to running the tests
-import { RegionDropdown } from "../RegionDropdown";
-import { RegionDropdownProps } from "../types";
-import { render } from "@testing-library/react";
-import { fireEvent, screen } from "@testing-library/dom";
+import { RegionDropdown } from '../RegionDropdown';
+import { RegionDropdownProps } from '../types';
+import { render } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/dom';
 
-describe("RegionDropdown", () => {
+describe('RegionDropdown', () => {
   const setupTest = (props?: Partial<RegionDropdownProps>) => {
     render(
       <RegionDropdown
-        country="Canada"
+        country='Canada'
         onChange={() => null}
-        value=""
-        role="combobox"
+        value=''
+        role='combobox'
         {...props}
-      />,
+      />
     );
-    return screen.getByRole("combobox") as HTMLSelectElement;
+    return screen.getByRole('combobox') as HTMLSelectElement;
   };
 
-  it("sets ID attribute", () => {
-    const select = setupTest({ id: "id-attr" });
-    expect(select.getAttribute("id")).toBe("id-attr");
+  it('sets ID attribute', () => {
+    const select = setupTest({ id: 'id-attr' });
+    expect(select.getAttribute('id')).toBe('id-attr');
   });
 
-  it("className attribute gets recognized", () => {
-    const select = setupTest({ className: "one two three" });
-    expect(select.className).toBe("one two three");
+  it('className attribute gets recognized', () => {
+    const select = setupTest({ className: 'one two three' });
+    expect(select.className).toBe('one two three');
   });
 
-  describe("name attribute", () => {
-    it("falls back on default name attribute when not specified", () => {
+  describe('name attribute', () => {
+    it('falls back on default name attribute when not specified', () => {
       const select = setupTest();
-      expect(select.getAttribute("name")).toBe("rcrs-region");
+      expect(select.getAttribute('name')).toBe('rcrs-region');
     });
 
-    it("sets explicit name attribute", () => {
-      const select = setupTest({ name: "name-attribute" });
-      expect(select.getAttribute("name")).toBe("name-attribute");
+    it('sets explicit name attribute', () => {
+      const select = setupTest({ name: 'name-attribute' });
+      expect(select.getAttribute('name')).toBe('name-attribute');
     });
   });
 
-  describe("disabled attribute", () => {
-    it("not disabled by default", () => {
+  describe('disabled attribute', () => {
+    it('not disabled by default', () => {
       const select = setupTest();
       expect(select).not.toBeDisabled();
     });
 
-    it("disabled attribute", () => {
+    it('disabled attribute', () => {
       const select = setupTest({ disabled: true });
       expect(select).toBeDisabled();
     });
   });
 
-  describe("default option", () => {
+  describe('default option', () => {
     it('confirm default label when there are no countries is "-"', () => {
-      const select = setupTest({ country: "" });
+      const select = setupTest({ country: '' });
       const defaultOption = select.options[0]!.text;
-      expect(defaultOption).toBe("-");
+      expect(defaultOption).toBe('-');
     });
 
     it('confirm default label when there are countries is "Select Region"', () => {
-      const select = setupTest({ country: "Canada" });
+      const select = setupTest({ country: 'Canada' });
       const defaultOption = select.options[0]!.text;
-      expect(defaultOption).toBe("Select Region");
+      expect(defaultOption).toBe('Select Region');
     });
 
-    it("defaultOptionLabel - applies only when a country is passed note!", () => {
-      const customLabel = "Holy moly I am a custom label!";
+    it('defaultOptionLabel - applies only when a country is passed note!', () => {
+      const customLabel = 'Holy moly I am a custom label!';
       const select = setupTest({
         defaultOptionLabel: customLabel,
-        country: "Canada",
+        country: 'Canada',
       });
       const defaultOption = select.options[0]!.text;
       expect(defaultOption).toBe(customLabel);
     });
   });
 
-  describe("country parameter", () => {
-    it("setting no country parameter shows the default blank option and no other options", () => {
-      const select = setupTest({ country: "" });
+  describe('country parameter', () => {
+    it('setting no country parameter shows the default blank option and no other options', () => {
+      const select = setupTest({ country: '' });
       expect(select.options.length).toBe(1);
-      expect(select.options[0]!.text).toBe("-");
+      expect(select.options[0]!.text).toBe('-');
     });
 
-    it("does not disable the region field by default when there is no country param", () => {
-      const select = setupTest({ country: "" });
+    it('does not disable the region field by default when there is no country param', () => {
+      const select = setupTest({ country: '' });
       expect(select).not.toBeDisabled();
     });
 
-    it("disables the region field when there is no country param and disableWhenEmpty set to true", () => {
-      const select = setupTest({ country: "", disableWhenEmpty: true });
+    it('disables the region field when there is no country param and disableWhenEmpty set to true', () => {
+      const select = setupTest({ country: '', disableWhenEmpty: true });
       expect(select).toBeDisabled();
     });
 
-    it("shows the regions for the selected country", () => {
-      const select = setupTest({ country: "Canada" });
+    it('shows the regions for the selected country', () => {
+      const select = setupTest({ country: 'Canada' });
       expect(select.options.length).toBe(14);
-      expect(select.options[1]!.text).toBe("Alberta");
-      expect(select.options[2]!.text).toBe("British Columbia");
+      expect(select.options[1]!.text).toBe('Alberta');
+      expect(select.options[2]!.text).toBe('British Columbia');
     });
 
-    it("does not show any country if you pass an invalid country name", () => {
-      const consoleMock = jest.spyOn(console, "error").mockImplementation();
-      const select = setupTest({ country: "ChickenLand" });
+    it('does not show any country if you pass an invalid country name', () => {
+      const consoleMock = jest.spyOn(console, 'error').mockImplementation();
+      const select = setupTest({ country: 'ChickenLand' });
       expect(select.options.length).toBe(1);
-      expect(select.options[0]!.text).toBe("Select Region");
+      expect(select.options[0]!.text).toBe('Select Region');
       expect(consoleMock).toHaveBeenCalledWith(
-        expect.stringContaining("Error. Unknown country passed: ChickenLand"),
+        expect.stringContaining('Error. Unknown country passed: ChickenLand')
       );
       consoleMock.mockRestore();
     });
 
-    describe("valueType", () => {
-      it("region values are full region name by default", () => {
+    describe('valueType', () => {
+      it('region values are full region name by default', () => {
         const select = setupTest({
-          country: "Canada",
+          country: 'Canada',
           showDefaultOption: false,
         });
-        expect(select.value).toBe("Alberta");
+        expect(select.value).toBe('Alberta');
       });
 
-      it("valueType = full still uses full region name as option values", () => {
+      it('valueType = full still uses full region name as option values', () => {
         const select = setupTest({
-          country: "Canada",
+          country: 'Canada',
           showDefaultOption: false,
-          valueType: "full",
+          valueType: 'full',
         });
-        expect(select.value).toBe("Alberta");
+        expect(select.value).toBe('Alberta');
       });
 
-      it("valueType changes value to region short codes when specified", () => {
+      it('valueType changes value to region short codes when specified', () => {
         const select = setupTest({
-          country: "Canada",
+          country: 'Canada',
           showDefaultOption: false,
-          valueType: "short",
+          valueType: 'short',
         });
-        expect(select.value).toBe("AB");
+        expect(select.value).toBe('AB');
       });
     });
 
-    describe("labelType", () => {
-      it("region labels are full region name by default", () => {
+    describe('labelType', () => {
+      it('region labels are full region name by default', () => {
         const select = setupTest({
-          country: "Canada",
+          country: 'Canada',
           showDefaultOption: false,
         });
         expect(
-          (select.querySelectorAll("option:checked")[0] as HTMLOptionElement)
-            .text,
-        ).toBe("Alberta");
+          (select.querySelectorAll('option:checked')[0] as HTMLOptionElement)
+            .text
+        ).toBe('Alberta');
       });
 
-      it("labelType = full still uses full region name as option values", () => {
+      it('labelType = full still uses full region name as option values', () => {
         const select = setupTest({
-          country: "Canada",
+          country: 'Canada',
           showDefaultOption: false,
-          labelType: "full",
+          labelType: 'full',
         });
         expect(
-          (select.querySelectorAll("option:checked")[0] as HTMLOptionElement)
-            .text,
-        ).toBe("Alberta");
+          (select.querySelectorAll('option:checked')[0] as HTMLOptionElement)
+            .text
+        ).toBe('Alberta');
       });
 
-      it("valueType changes value to region short codes when specified", () => {
+      it('valueType changes value to region short codes when specified', () => {
         const select = setupTest({
-          country: "Canada",
+          country: 'Canada',
           showDefaultOption: false,
-          labelType: "short",
+          labelType: 'short',
         });
         expect(
-          (select.querySelectorAll("option:checked")[0] as HTMLOptionElement)
-            .text,
-        ).toBe("AB");
+          (select.querySelectorAll('option:checked')[0] as HTMLOptionElement)
+            .text
+        ).toBe('AB');
       });
 
-      describe("customOptions", () => {
-        it("should not render any custom options when no country value is passed", () => {
+      describe('customOptions', () => {
+        it('should not render any custom options when no country value is passed', () => {
           const select = setupTest({
-            country: "",
+            country: '',
             showDefaultOption: false,
-            customOptions: ["All", "Final Entry"],
+            customOptions: ['All', 'Final Entry'],
           });
 
-          const options = select.querySelectorAll("option");
+          const options = select.querySelectorAll('option');
           expect(options.length).toEqual(1);
         });
 
-        it("should render the custom options in the region dropdown.", () => {
+        it('should render the custom options in the region dropdown.', () => {
           const select = setupTest({
-            country: "Canada",
+            country: 'Canada',
             showDefaultOption: false,
-            customOptions: ["All", "Final Entry"],
+            customOptions: ['All', 'Final Entry'],
           });
 
-          const options = select.querySelectorAll("option");
+          const options = select.querySelectorAll('option');
           expect((options[options.length - 2] as HTMLOptionElement).text).toBe(
-            "All",
+            'All'
           );
           expect((options[options.length - 1] as HTMLOptionElement).text).toBe(
-            "Final Entry",
+            'Final Entry'
           );
         });
 
-        it("should throw an error when the duplicate values are present.", () => {
-          const consoleMock = jest.spyOn(console, "error").mockImplementation();
+        it('should throw an error when the duplicate values are present.', () => {
+          const consoleMock = jest.spyOn(console, 'error').mockImplementation();
           setupTest({
-            country: "Canada",
+            country: 'Canada',
             showDefaultOption: false,
-            customOptions: ["Final Entry", "Alberta"],
+            customOptions: ['Final Entry', 'Alberta'],
           });
 
           expect(consoleMock).toHaveBeenCalledWith(
-            expect.stringContaining(
-              "Error: Duplicate regions present: Alberta",
-            ),
+            expect.stringContaining('Error: Duplicate regions present: Alberta')
           );
           consoleMock.mockRestore();
         });
@@ -223,32 +221,31 @@ describe("RegionDropdown", () => {
     });
   });
 
-  test("calls onChange callback with expected value", () => {
+  test('calls onChange callback with expected value', () => {
     const onChange = jest.fn();
     const select = setupTest({
-      country: "Canada",
+      country: 'Canada',
       showDefaultOption: true,
       onChange,
     });
 
-    fireEvent.change(select, { target: { value: "Manitoba" } });
+    fireEvent.change(select, { target: { value: 'Manitoba' } });
 
-    expect(onChange).toHaveBeenCalledWith("Manitoba", expect.any(Object));
+    expect(onChange).toHaveBeenCalledWith('Manitoba', expect.any(Object));
   });
 
-  test("regions without short codes have their full label and value", () => {
-    const onChange = jest.fn();
+  test('regions without short codes have their full label and value', () => {
     const select = setupTest({
-      country: "Puerto Rico",
-      labelType: "short",
-      valueType: "short",
+      country: 'Puerto Rico',
+      labelType: 'short',
+      valueType: 'short',
     });
 
     expect(
-      (select.querySelectorAll("option")[1] as HTMLOptionElement).text,
-    ).toBe("Adjuntas");
+      (select.querySelectorAll('option')[1] as HTMLOptionElement).text
+    ).toBe('Adjuntas');
     expect(
-      (select.querySelectorAll("option")[1] as HTMLOptionElement).value,
-    ).toBe("Adjuntas");
+      (select.querySelectorAll('option')[1] as HTMLOptionElement).value
+    ).toBe('Adjuntas');
   });
 });

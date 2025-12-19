@@ -15,6 +15,7 @@
     "test": "jest",
     "build": "rollup --config build/rollup.config.ts --configPlugin typescript",
     "dev": "rollup -w --config build/rollup.config.ts --configPlugin typescript",
+    "lint": "eslint .",
     "minify-data": "node build/minify-data.js",
     "prepare": "npm run minify-data"
   },

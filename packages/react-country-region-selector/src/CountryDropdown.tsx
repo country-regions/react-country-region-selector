@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { type FC, useMemo, type JSX } from 'react';
 import CountryRegionData from './_data';
 import { filterAndSortCountries, defaultRender } from './helpers';
 import type {
@@ -6,10 +6,6 @@ import type {
   CountryRegionDataMinified,
   RenderDataOption,
 } from './types';
-
-import { countryNames } from 'country-region-data';
-
-console.log({ countryNames });
 
 const defaultWhitelist: string[] = [];
 const defaultBlacklist: string[] = [];
