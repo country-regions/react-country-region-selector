@@ -7,6 +7,7 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "publish": "turbo run build && cd packages/react-country-region-selector && npm publish && cd ../../",
     "update-gh-pages": "npm run build && node scripts/gh-pages.js"
   },
   "devDependencies": {

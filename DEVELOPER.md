@@ -15,3 +15,8 @@ modern rollup + babel, jest, modern React, Docusaurus for the doc.
 
 The Jest/RTL unit tests are found in the `packages/react-country-region-selector/src/__tests__` folder. But to run,
 just run `npm run test` in the root.
+
+### Publishing
+
+Package: Run `npm run publish` from the root. Requires 2FA.
+Github pages: Run `npm run update-gh-pages` from the root.
