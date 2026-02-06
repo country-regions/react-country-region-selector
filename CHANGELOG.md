@@ -1,5 +1,8 @@
 ## Changelog
 
+- `4.0.6` - Feb 5, 2026
+  - Upgrade country-region-data to 4.1.0
+
 - `4.0.5` - Dec 18, 2025
   - Removed incorrect console.log: https://github.com/country-regions/react-country-region-selector/issues/180
 
