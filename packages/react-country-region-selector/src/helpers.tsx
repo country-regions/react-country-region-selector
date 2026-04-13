@@ -72,14 +72,14 @@ export const filterRegions = (
     filteredRegions = filteredRegions.filter((regionLine) =>
       whitelist.some(
         (wlRegionCode) =>
-          regionLine.indexOf(`${SINGLE_REGION_DELIMITER}${wlRegionCode}`) > -1
+          regionLine.endsWith(`${SINGLE_REGION_DELIMITER}${wlRegionCode}`)
       )
     );
   } else if (blacklist.length > 0 && filteredRegions.length > 0) {
     filteredRegions = filteredRegions.filter((regionLine) =>
       blacklist.every(
         (blRegionCode) =>
-          !regionLine.includes(`${SINGLE_REGION_DELIMITER}${blRegionCode}`)
+          !regionLine.endsWith(`${SINGLE_REGION_DELIMITER}${blRegionCode}`)
       )
     );
   }
